@@ -1749,18 +1749,19 @@ export default function App() {
   ];
 
   return (
-    <div className="content-bg" style={{minHeight:'100vh', display:'flex', flexDirection:'column'}}>
+    <div className="content-bg" style={{minHeight:'100vh', display:'flex', flexDirection:'column', overflowX:'hidden'}}>
       <Styles/>
       <style>{`
         @media (min-width: 768px) {
           .app-outer { flex-direction: row !important; overflow: hidden !important; height: 100vh !important; }
           .app-sidebar { width: 272px !important; min-width: 272px !important; height: 100vh !important; position: sticky !important; top: 0 !important; overflow-y: auto !important; }
-          .app-sidebar-logo { display: flex !important; }
-          .app-mobile-header { display: none !important; }
-          .app-nav { flex-direction: column !important; overflow-x: visible !important; padding: 16px !important; }
+          .app-nav { flex-direction: column !important; overflow-x: visible !important; padding: 16px !important; flex: 1 !important; }
           .app-nav-dot { display: block !important; }
           .app-content { padding: 40px !important; overflow-y: auto !important; }
+          .app-footer { display: flex !important; }
         }
+        .app-outer { overflow-x: hidden; }
+        .app-content { overflow-x: hidden; }
       `}</style>
       <div className="app-outer" style={{display:'flex', flexDirection:'column', flex:1, minHeight:'100vh'}}>
 
@@ -2255,7 +2256,7 @@ export default function App() {
         </div>
       </div>
       {/* Footer accent */}
-      <div className="hidden md:flex items-center justify-between px-6 py-2" style={{borderTop:'1px solid rgba(15,34,19,0.08)', background:'rgba(244,247,242,0.8)'}}>
+      <div className="app-footer" style={{display:"none", alignItems:"center", justifyContent:"space-between", padding:"6px 24px", borderTop:"1px solid rgba(15,34,19,0.08)", background:"rgba(244,247,242,0.8)"}}>
         <div className="flex items-center gap-1.5">
           <div className="status-dot" style={{width:'6px', height:'6px'}}/>
           <span className="mono-label" style={{fontSize:'8px', color:'#94a3b8'}}>All Systems Nominal · v2.5.0</span>
