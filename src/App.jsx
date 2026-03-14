@@ -163,6 +163,7 @@ const Styles = () => (
     @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
     * { box-sizing: border-box; }
+    input, textarea, select { font-size: 16px !important; }
 
     @keyframes fadeSlideUp {
       from { opacity:0; transform:translateY(10px); }
