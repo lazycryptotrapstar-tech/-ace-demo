@@ -1749,11 +1749,46 @@ export default function App() {
   ];
 
   return (
-    <div className="content-bg" style={{minHeight:'100vh', display:'flex', flexDirection:'row', overflow:'hidden'}}>
+    <div className="content-bg" style={{minHeight:'100vh', display:'flex', flexDirection:'column'}}>
       <Styles/>
+      <style>{`
+        @media (min-width: 768px) {
+          .app-outer { flex-direction: row !important; overflow: hidden !important; height: 100vh !important; }
+          .app-sidebar { width: 272px !important; min-width: 272px !important; height: 100vh !important; position: sticky !important; top: 0 !important; overflow-y: auto !important; }
+          .app-sidebar-logo { display: flex !important; }
+          .app-mobile-header { display: none !important; }
+          .app-nav { flex-direction: column !important; overflow-x: visible !important; padding: 16px !important; }
+          .app-nav-dot { display: block !important; }
+          .app-content { padding: 40px !important; overflow-y: auto !important; }
+        }
+      `}</style>
+      <div className="app-outer" style={{display:'flex', flexDirection:'column', flex:1, minHeight:'100vh'}}>
 
       {/* ── SIDEBAR ── */}
-      <div className="sidebar-bg" style={{width:'272px', minWidth:'272px', color:'white', display:'flex', flexDirection:'column', flexShrink:0, zIndex:20, position:'sticky', top:0, height:'100vh', overflowY:'auto'}}>
+      <div className="app-sidebar sidebar-bg" style={{width:'100%', color:'white', display:'flex', flexDirection:'column', flexShrink:0, zIndex:20}}>
+
+        {/* Logo — desktop only */}
+        <div className="app-sidebar-logo" style={{padding:'20px 28px', borderBottom:'1px solid rgba(255,255,255,0.06)', display:'none', alignItems:'center', gap:'12px'}}>
+          <div style={{width:'44px', height:'44px', flexShrink:0, display:'flex', alignItems:'center', justifyContent:'center', border:'1px solid rgba(92,184,50,0.35)', background:'rgba(92,184,50,0.08)', borderRadius:'12px'}}>
+            <Zap size={18} style={{color:C.lime}}/>
+          </div>
+          <div>
+            <h1 className="futura-heading" style={{fontSize:'22px', lineHeight:'1.1', color:'white', margin:0}}>
+              Ace<span style={{color:C.limeBright}}>.</span><span style={{color:C.lime}}>ai</span>
+            </h1>
+            <p className="mono-label" style={{fontSize:'8px', color:'rgba(255,255,255,0.25)', margin:0}}>Ticketing Intelligence</p>
+          </div>
+        </div>
+
+        {/* Mobile header */}
+        <div className="app-mobile-header" style={{padding:'10px 16px', borderBottom:'1px solid rgba(255,255,255,0.06)', display:'flex', alignItems:'center', gap:'10px'}}>
+          <div style={{width:'30px', height:'30px', display:'flex', alignItems:'center', justifyContent:'center', border:'1px solid rgba(92,184,50,0.35)', background:'rgba(92,184,50,0.08)', borderRadius:'8px'}}>
+            <Zap size={13} style={{color:C.lime}}/>
+          </div>
+          <h1 className="futura-heading" style={{fontSize:'17px', color:'white', margin:0}}>
+            Ace<span style={{color:C.limeBright}}>.</span><span style={{color:C.lime}}>ai</span>
+          </h1>
+        </div>
 
         {/* Logo */}
         <div style={{padding:'28px 28px 24px', borderBottom:'1px solid rgba(255,255,255,0.06)'}}>
@@ -1770,31 +1805,27 @@ export default function App() {
           </div>
         </div>
 
-        {/* Nav — horizontal scroll on mobile, vertical list on desktop */}
-        <nav className="flex md:flex-col gap-1 p-2 md:p-4 md:flex-1 overflow-x-auto md:overflow-visible" style={{WebkitOverflowScrolling:'touch', scrollbarWidth:'none'}}>
-          {navItems.map(item => (
-            <button key={item.id} onClick={() => setActiveTab(item.id)}
-              className={`flex items-center gap-3.5 px-4 py-3 rounded-xl transition-all text-left flex-shrink-0 ${activeTab === item.id ? 'nav-active' : ''}`}
-              style={activeTab !== item.id
-                ? { color:'rgba(255,255,255,0.38)', border:'1px solid transparent' }
-                : { color:'white' }}>
-              <span className="flex-shrink-0" style={activeTab === item.id ? {color:C.lime} : {color:'rgba(255,255,255,0.28)'}}>
-                {React.cloneElement(item.icon, {size:18})}
-              </span>
-              <span className="futura-heading whitespace-nowrap" style={{fontSize:'14px'}}>{item.label}</span>
-              {activeTab === item.id && (
-                <div className="hidden md:block ml-auto flex-shrink-0" style={{width:'5px',height:'5px',borderRadius:'50%',background:C.lime,boxShadow:`0 0 8px ${C.lime}`}}/>
-              )}
-            </button>
-          ))}
+        {/* Nav */}
+        <nav className="app-nav" style={{display:'flex', flexDirection:'row', gap:'4px', padding:'6px 8px', overflowX:'auto', scrollbarWidth:'none', WebkitOverflowScrolling:'touch'}}>
+          {navItems.map(item => {
+            const isActive = activeTab === item.id;
+            return (
+              <button key={item.id} onClick={() => setActiveTab(item.id)}
+                style={{display:'flex', alignItems:'center', gap:'10px', padding:'9px 13px', borderRadius:'12px', textAlign:'left', cursor:'pointer', flexShrink:0, background: isActive ? 'rgba(92,184,50,0.09)' : 'transparent', border: isActive ? '1px solid rgba(92,184,50,0.22)' : '1px solid transparent', boxShadow: isActive ? 'inset 3px 0 0 #5cb832' : 'none', color: isActive ? 'white' : 'rgba(255,255,255,0.38)', transition:'all 0.18s ease'}}>
+                <span style={{flexShrink:0, display:'flex', color: isActive ? C.lime : 'rgba(255,255,255,0.28)'}}>
+                  {React.cloneElement(item.icon, {size:16})}
+                </span>
+                <span className="futura-heading" style={{fontSize:'13px', whiteSpace:'nowrap'}}>{item.label}</span>
+                {isActive && <div className="app-nav-dot" style={{display:'none', marginLeft:'auto', flexShrink:0, width:'5px', height:'5px', borderRadius:'50%', background:C.lime, boxShadow:`0 0 8px ${C.lime}`}}/>}
+              </button>
+            );
+          })}
         </nav>
-
-
       </div>
 
       {/* CONTENT */}
-      <div className="flex-1 p-5 md:p-10 overflow-y-auto min-h-0">
-        <div className="max-w-7xl mx-auto">
+      <div className="app-content" style={{flex:1, padding:'16px', minWidth:0}}>
+        <div style={{maxWidth:'1280px', margin:'0 auto'}}>
 
           {/* SALES AGENT */}
           {activeTab === 'mobile' && (
@@ -2255,6 +2286,7 @@ export default function App() {
           <span className="mono-label" style={{fontSize:'8px', color:'#94a3b8'}}>All Systems Nominal · v2.5.0</span>
         </div>
         <span className="mono-label" style={{fontSize:'8px', color:'#b8c8b8'}}>Powered by <span style={{color:'#5cb832'}}>Peak Sports MGMT</span></span>
+      </div>
       </div>
     </div>
   );
