@@ -1850,9 +1850,12 @@ const SchoolGallery = ({ activeId, onSelect }) => {
 
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('mobile');
   const [activeSchoolId, setActiveSchoolId] = useState('wofford');
+  const [memberTier, setMemberTier] = useState('platinum');
   const school = SCHOOL_LIBRARY[activeSchoolId] || SCHOOL_LIBRARY.wofford;
+  const sc = school.colors;
+  const [localTransactions, setLocalTransactions] = useState([...MOCK_DB.initialStats]);
+  const [activeCampaign, setActiveCampaign] = useState('TICKETING');
 
   const addTransaction = (tx) => setLocalTransactions(prev => [{ ...tx, id:`TX_${Date.now()}` }, ...prev]);
   // Only sum ticket-type purchases (from Ticket Hub / chat) — excludes seeded sponsorship/hospitality rows
