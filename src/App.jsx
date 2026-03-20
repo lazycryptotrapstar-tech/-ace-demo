@@ -76,6 +76,65 @@ function injectThemeVars(theme) {
 }
 
 
+// ── THEME CONFIG — swap this object per client ───────────────────────────────
+// To add a new client: copy this object, update all fields, swap ACTIVE_THEME
+const THEMES = {
+  wofford: {
+    id: 'wofford',
+    name: 'Wofford College',
+    mascot: 'Terriers',
+    conference: 'SoCon',
+    colors: {
+      primary:    '#1a1208',   // deep dark
+      mid:        '#2a1e0e',   // dark mid
+      light:      '#4a3520',   // medium
+      accent:     '#886E4C',   // Old Gold
+      accentSoft: '#C7B37F',   // Khaki
+      offWhite:   '#F5F0E8',   // warm off-white
+      border:     '#e8dfc8',   // warm border
+      cognac:     '#6b5538',   // warm brown
+    },
+    cssVars: {
+      '--color-primary':     '#1a1208',
+      '--color-mid':         '#2a1e0e',
+      '--color-accent':      '#886E4C',
+      '--color-accent-soft': '#C7B37F',
+      '--color-bg':          '#F5F0E8',
+      '--color-border':      '#e8dfc8',
+      '--color-dot':         '#886E4C',
+      '--color-nav-active':  'rgba(136,110,76,0.12)',
+      '--color-nav-border':  'rgba(136,110,76,0.28)',
+      '--color-nav-bar':     '#886E4C',
+      '--color-grid':        'rgba(136,110,76,0.06)',
+      '--color-card-hover':  'rgba(136,110,76,0.18)',
+      '--color-glow':        'rgba(136,110,76,0.55)',
+      '--color-cognac-glow': 'rgba(199,179,127,0.5)',
+      '--color-kpi-grad1':   '#1a1208',
+      '--color-kpi-grad2':   '#2a1e0e',
+      '--color-kpi-border':  'rgba(136,110,76,0.30)',
+    }
+  },
+  // ── TEMPLATE for next client ─────────────────────────────────────────────
+  // nextclient: {
+  //   id: 'nextclient',
+  //   name: 'School Name',
+  //   mascot: 'Mascot Name',
+  //   conference: 'Conference',
+  //   colors: { primary, mid, light, accent, accentSoft, offWhite, border, cognac },
+  //   cssVars: { '--color-primary': '#...', ... }
+  // }
+};
+
+// Active theme — change this string to switch clients
+const ACTIVE_THEME = THEMES['wofford'];
+
+// Inject CSS variables into :root for <Styles/> component
+function injectThemeVars(theme) {
+  const root = document.documentElement;
+  Object.entries(theme.cssVars).forEach(([k, v]) => root.style.setProperty(k, v));
+}
+
+
 // P0 FIX: Permanent Railway URL — no longer Cloudflare tunnel
 const N8N_WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL
   || 'https://n8n-production-f9c2.up.railway.app/webhook/2e28cfe9-961f-48fb-a548-3f0306448996/chat';
@@ -946,6 +1005,159 @@ const GranularSeatPicker = ({ sectionId, onSelect, selectedSeats }) => {
 // ============================================================
 // WOFFORD VENUE DATA
 // ============================================================
+
+// ============================================================
+// PEAK SPORTS PORTFOLIO — SCHOOL VENUE DATA
+// 4 schools ranging from small (Wofford 13k) to mid-major (Akron 30k)
+// ============================================================
+const PEAK_SCHOOLS = {
+
+  wofford: {
+    id: 'wofford',
+    name: 'Wofford College',
+    mascot: 'Terriers',
+    conference: 'SoCon',
+    tier: 'Small',
+    colors: { primary:'#1a1208', accent:'#886E4C', accent2:'#C7B37F', text:'#ffffff' },
+    football: {
+      stadium: 'Gibbs Stadium',
+      subtitle: 'Mike Ayers Field · Spartanburg, SC',
+      capacity: 13000,
+      capacityLabel: '13,000',
+      opened: 1996,
+      surface: 'Grass',
+      sections: [
+        { id:'H1',  label:'H1',    zone:'home_chairback', name:'Home Chairback H1', price:27,  status:'HIGH', desc:'Home sideline · Chairback · 40-50 yd line' },
+        { id:'H2',  label:'H2',    zone:'home_chairback', name:'Home Chairback H2', price:27,  status:'MED',  desc:'Home sideline · Chairback · 40-50 yd line' },
+        { id:'H3',  label:'H3',    zone:'home_chairback', name:'Home Chairback H3', price:27,  status:'HIGH', desc:'Home sideline · Chairback · 50 yd line center' },
+        { id:'HB1', label:'HB1',   zone:'home_bleacher',  name:'Home Bleacher HB1', price:15,  status:'HIGH', desc:'Home sideline · Bleacher · 20-40 yd' },
+        { id:'HB2', label:'HB2',   zone:'home_bleacher',  name:'Home Bleacher HB2', price:15,  status:'HIGH', desc:'Home sideline · Bleacher · 20-40 yd' },
+        { id:'MR',  label:'VIP',   zone:'vip',            name:'Mungo Room',        price:85,  status:'LOW',  desc:"President's Box · Mungo Room · 50 yd · Hospitality suite" },
+        { id:'S1',  label:'VER-A', zone:'south_ez',       name:'Verandah Lot A',    price:20,  status:'MED',  desc:'South End Zone · Verandah Lot · Terrier Club donors' },
+        { id:'N1',  label:'NEZ',   zone:'north_ez',       name:'North End Zone',    price:10,  status:'HIGH', desc:'North End Zone · Video board end' },
+        { id:'V1',  label:'V1',    zone:'visitor',        name:'Visitor Side V1',   price:12,  status:'HIGH', desc:'Visitor sideline · Bleacher' },
+      ],
+      zones: {
+        home_chairback: { label:'Home Chairback', color:'#886E4C' },
+        home_bleacher:  { label:'Home Bleacher',  color:'#6b5538' },
+        vip:            { label:'Mungo Room VIP', color:'#C7B37F' },
+        south_ez:       { label:'Verandah Lot',   color:'#4a3520' },
+        north_ez:       { label:'North End Zone', color:'#2a1e0e' },
+        visitor:        { label:'Visitor Side',   color:'#3a2e1e' },
+      }
+    }
+  },
+
+  eku: {
+    id: 'eku',
+    name: 'Eastern Kentucky',
+    mascot: 'Colonels',
+    conference: 'ASUN',
+    tier: 'Small',
+    colors: { primary:'#4a0020', accent:'#8A0039', accent2:'#ffffff', text:'#ffffff' },
+    football: {
+      stadium: 'CG Bank Field at Roy Kidd Stadium',
+      subtitle: 'Richmond, KY · Est. 1969',
+      capacity: 20000,
+      capacityLabel: '20,000',
+      opened: 1969,
+      surface: 'FieldTurf',
+      sections: [
+        { id:'RC1',  label:'RC1',  zone:'reserved_chair', name:'Reserved Chairback A', price:25, status:'MED',  desc:'Home sideline · Reserved chairback · midfield' },
+        { id:'RC2',  label:'RC2',  zone:'reserved_chair', name:'Reserved Chairback B', price:25, status:'HIGH', desc:'Home sideline · Reserved chairback · 40-50 yd' },
+        { id:'RC3',  label:'RC3',  zone:'reserved_chair', name:'Reserved Chairback C', price:25, status:'MED',  desc:'Home sideline · Reserved chairback · 30-40 yd' },
+        { id:'GA1',  label:'GA-A', zone:'general',        name:'General Admission A',  price:13, status:'HIGH', desc:'Home sideline · Bleacher · General admission' },
+        { id:'GA2',  label:'GA-B', zone:'general',        name:'General Admission B',  price:13, status:'HIGH', desc:'Home sideline · Bleacher · General admission' },
+        { id:'LW',   label:'LAWN', zone:'lawn',           name:'Lawn Reserve',         price:18, status:'MED',  desc:'East end zone · Grass lawn seating · Great views' },
+        { id:'VIS',  label:'VIS',  zone:'visitor',        name:'Visitor Bleachers',    price:10, status:'HIGH', desc:'Visitor sideline · Bleacher seating' },
+        { id:'STU',  label:'STU',  zone:'student',        name:'Student Section',      price:0,  status:'HIGH', desc:'Student section · Free with EKU ID' },
+      ],
+      zones: {
+        reserved_chair: { label:'Reserved Chairback', color:'#8A0039' },
+        general:        { label:'General Admission',  color:'#6b0030' },
+        lawn:           { label:'Lawn Reserve',       color:'#4a0020' },
+        visitor:        { label:'Visitor Side',       color:'#3a2e1e' },
+        student:        { label:'Student Section',    color:'#1a1208' },
+      }
+    }
+  },
+
+  ballstate: {
+    id: 'ballstate',
+    name: 'Ball State University',
+    mascot: 'Cardinals',
+    conference: 'MAC',
+    tier: 'Mid-Major',
+    colors: { primary:'#6b0010', accent:'#BA0C2F', accent2:'#ffffff', text:'#ffffff' },
+    football: {
+      stadium: 'Scheumann Stadium',
+      subtitle: 'Muncie, IN · Est. 1967, Renovated 2007',
+      capacity: 22500,
+      capacityLabel: '22,500',
+      opened: 1967,
+      surface: 'FieldTurf',
+      sections: [
+        { id:'WS1',  label:'W1',   zone:'west_side',  name:'West Sideline 1',      price:35, status:'HIGH', desc:'Home sideline · West grandstand · 40-50 yd line' },
+        { id:'WS2',  label:'W2',   zone:'west_side',  name:'West Sideline 2',      price:35, status:'MED',  desc:'Home sideline · West grandstand · 30-40 yd' },
+        { id:'WS3',  label:'W3',   zone:'west_side',  name:'West Sideline 3',      price:30, status:'HIGH', desc:'Home sideline · West grandstand · 20-30 yd' },
+        { id:'SUB',  label:'SUITE',zone:'suite',      name:'Kozel Communications', price:95, status:'LOW',  desc:'Luxury suite · Kozel Communications Center · Catered' },
+        { id:'ES1',  label:'E1',   zone:'east_side',  name:'East Sideline 1',      price:20, status:'HIGH', desc:'Visitor sideline · East grandstand · midfield' },
+        { id:'ES2',  label:'E2',   zone:'east_side',  name:'East Sideline 2',      price:20, status:'HIGH', desc:'Visitor sideline · East grandstand' },
+        { id:'SEZ',  label:'SEZ',  zone:'south_ez',   name:'South End Zone',       price:18, status:'HIGH', desc:'South end zone · Grandstand seating' },
+        { id:'LAWN', label:'LAWN', zone:'lawn',       name:'North Lawn',           price:10, status:'MED',  desc:'North end zone · Grass lawn · Family Zone · Cardinals pillars' },
+        { id:'STU',  label:'STU',  zone:'student',    name:'Student Section',      price:0,  status:'HIGH', desc:'Student section · "The Chirp" tradition' },
+      ],
+      zones: {
+        west_side: { label:'West Sideline',  color:'#BA0C2F' },
+        suite:     { label:'Luxury Suites',  color:'#8B0020' },
+        east_side: { label:'East Sideline',  color:'#6b0010' },
+        south_ez:  { label:'South End Zone', color:'#4a0010' },
+        lawn:      { label:'North Lawn',     color:'#3a2e1e' },
+        student:   { label:'Student Section',color:'#1a1208' },
+      }
+    }
+  },
+
+  akron: {
+    id: 'akron',
+    name: 'University of Akron',
+    mascot: 'Zips',
+    conference: 'MAC',
+    tier: 'Mid-Major',
+    colors: { primary:'#021028', accent:'#041E42', accent2:'#A89968', text:'#ffffff' },
+    football: {
+      stadium: 'InfoCision Stadium — Summa Field',
+      subtitle: 'Akron, OH · Opened 2009',
+      capacity: 30000,
+      capacityLabel: '30,000',
+      opened: 2009,
+      surface: 'FieldTurf',
+      sections: [
+        { id:'WCL',  label:'CLUB', zone:'club',       name:'Huntington Club Level', price:65, status:'MED',  desc:'West side · Club level · Partially covered · 522 seats' },
+        { id:'LOG',  label:'LOGE', zone:'loge',       name:'Loge Boxes',           price:95, status:'LOW',  desc:'Open-air covered loge boxes · 38 boxes · 4 seats per box' },
+        { id:'SUI',  label:'SUITE',zone:'suite',      name:'Private Suite',        price:140,status:'LOW',  desc:'17 suites · 16 private (16 seats) + Presidential Suite (52 seats)' },
+        { id:'WP1',  label:'W1',   zone:'west_pri',   name:'West Priority 1',      price:40, status:'HIGH', desc:'West side · Priority reserved · 40-50 yd line' },
+        { id:'WP2',  label:'W2',   zone:'west_pri',   name:'West Priority 2',      price:40, status:'MED',  desc:'West side · Priority reserved · 30-40 yd' },
+        { id:'WG1',  label:'WG',   zone:'west_gen',   name:'West General',         price:20, status:'HIGH', desc:'West side · General seating · Bleacher w/ back support midfield' },
+        { id:'EG1',  label:'EG',   zone:'east_gen',   name:'East General',         price:15, status:'HIGH', desc:'East side · General admission · $15' },
+        { id:'SKN',  label:'KNOLL',zone:'knoll',      name:'South Grassy Knoll',   price:10, status:'HIGH', desc:'South end · Standing room + grassy knoll · Casual atmosphere' },
+        { id:'STU',  label:'STU',  zone:'student',    name:'Student Section',      price:0,  status:'HIGH', desc:'Student section · Free with Akron ID' },
+      ],
+      zones: {
+        club:     { label:'Club Level',       color:'#A89968' },
+        loge:     { label:'Loge Boxes',       color:'#041E42' },
+        suite:    { label:'Private Suites',   color:'#0a3060' },
+        west_pri: { label:'West Priority',    color:'#041E42' },
+        west_gen: { label:'West General',     color:'#021028' },
+        east_gen: { label:'East General',     color:'#021028' },
+        knoll:    { label:'Grassy Knoll',     color:'#1a2030' },
+        student:  { label:'Student Section',  color:'#010815' },
+      }
+    }
+  }
+};
+
+
 const WOFFORD_VENUES = {
   football: {
     id: 'football',
@@ -1066,13 +1278,30 @@ const WOFFORD_VENUES = {
 // WOFFORD TICKET HUB COMPONENT
 // ============================================================
 const WoffordTicketHub = ({ onTransaction }) => {
+  const [schoolId, setSchoolId] = React.useState('wofford');
   const [venue, setVenue] = React.useState('football');
   const [selectedSection, setSelectedSection] = React.useState(null);
   const [qty, setQty] = React.useState(2);
   const [hubState, setHubState] = React.useState('browse');
   const [filterZone, setFilterZone] = React.useState('all');
 
-  const v = WOFFORD_VENUES[venue];
+  // Active school + venue derived from state
+  const activeSchool = PEAK_SCHOOLS[schoolId] || PEAK_SCHOOLS.wofford;
+  const activeVenue = activeSchool.football; // expand when adding basketball
+  const ac = activeSchool.colors; // shorthand for colors
+
+  // Build v-compatible object from PEAK_SCHOOLS for backward compatibility
+  const v = {
+    ...WOFFORD_VENUES[venue] || WOFFORD_VENUES.football,
+    name: activeVenue.stadium,
+    subtitle: activeVenue.subtitle,
+    capacity: activeVenue.capacityLabel,
+    sport: 'Football',
+    icon: '🏈',
+    description: `Home of ${activeSchool.name} ${activeSchool.mascot} Football`,
+    sections: activeVenue.sections,
+    zones: activeVenue.zones,
+  };
   const fees = { facility: 2.50, processing: 1.50 };
 
   const filteredSections = filterZone === 'all'
@@ -1095,7 +1324,8 @@ const WoffordTicketHub = ({ onTransaction }) => {
     <div className="max-w-xl mx-auto py-8 fade-in">
       <div className="rounded-3xl overflow-hidden shadow-2xl" style={{background:'#ffffff'}}>
         {/* Success header with Wofford branding */}
-        <div className="px-8 py-10 text-center relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208 0%, #2a1e0e 100%)'}}>
+        <div className="px-8 py-10 text-center relative overflow-hidden transition-all duration-500"
+          style={{background:`linear-gradient(135deg, ${ac.primary} 0%, ${ac.accent} 100%)`}}>
           <div className="absolute inset-0 flex items-center justify-center opacity-5">
             <svg viewBox="0 0 200 200" style={{width:'300px',height:'300px'}}>
               <ellipse cx="100" cy="90" rx="68" ry="62" fill="#886E4C"/>
@@ -1156,10 +1386,11 @@ const WoffordTicketHub = ({ onTransaction }) => {
             </p>
           </div>
           {/* Wofford wordmark strip */}
-          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl" style={{background:'#1a1208'}}>
+          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl transition-all duration-500"
+            style={{background: ac.primary, border:`2px solid ${ac.accent}`}}>
             <div style={{textAlign:'right'}}>
-              <p className="futura-heading text-white" style={{fontSize:'18px',lineHeight:'1'}}>WOFFORD</p>
-              <p className="mono-label" style={{color:'#886E4C',fontSize:'9px',letterSpacing:'3px'}}>TERRIERS</p>
+              <p className="futura-heading text-white" style={{fontSize:'18px',lineHeight:'1'}}>{activeSchool.name.split(' ').slice(-1)[0].toUpperCase()}</p>
+              <p className="mono-label" style={{color: ac.accent, fontSize:'9px',letterSpacing:'3px'}}>{activeSchool.mascot.toUpperCase()}</p>
             </div>
             <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
               <ellipse cx="50" cy="50" rx="42" ry="38" fill="#886E4C"/>
@@ -1175,21 +1406,83 @@ const WoffordTicketHub = ({ onTransaction }) => {
         </div>
       </div>
 
-      {/* ── VENUE SELECTOR ── */}
-      <div className="flex gap-3 mb-6 flex-wrap">
-        {Object.values(WOFFORD_VENUES).map(vn => (
-          <button key={vn.id} onClick={() => { setVenue(vn.id); setSelectedSection(null); setFilterZone('all'); }}
-            className="flex items-center gap-3 px-5 py-3 rounded-2xl font-bold transition-all border-2"
-            style={venue === vn.id
-              ? { background:'#1a1208', color:'white', borderColor:'#886E4C', boxShadow:'0 4px 20px rgba(136,110,76,0.3)' }
-              : { background:'white', color:'#3a2e1e', borderColor:'#e8dfc8' }}>
-            <span style={{fontSize:'18px'}}>{vn.icon}</span>
-            <div className="text-left">
-              <p className="futura-heading" style={{fontSize:'15px', lineHeight:'1.1'}}>{vn.sport}</p>
-              <p className="mono-label" style={{fontSize:'8px', color: venue === vn.id ? '#C7B37F' : '#886E4C'}}>{vn.name.split(' ').slice(0,2).join(' ')}</p>
+      {/* ── SCHOOL + VENUE SELECTOR ── */}
+      <div className="flex flex-col md:flex-row gap-4 mb-6">
+
+        {/* School Dropdown */}
+        <div className="flex flex-col gap-1.5">
+          <p className="mono-label" style={{fontSize:'9px', color: activeSchool.colors.accent, letterSpacing:'2px'}}>SELECT SCHOOL</p>
+          <div className="relative">
+            <select
+              value={schoolId}
+              onChange={e => { setSchoolId(e.target.value); setVenue('football'); setSelectedSection(null); setFilterZone('all'); }}
+              className="appearance-none w-full md:w-72 px-4 py-3 pr-10 rounded-2xl font-bold text-base border-2 cursor-pointer"
+              style={{ background:'#1a1208', color:'white', borderColor: activeSchool.colors.accent,
+                       fontFamily:'Rajdhani, sans-serif', fontSize:'15px',
+                       boxShadow:`0 4px 20px ${activeSchool.colors.accent}40` }}>
+              {Object.values(PEAK_SCHOOLS).map(s => (
+                <option key={s.id} value={s.id}>
+                  {s.name} — {s.mascot} ({s.tier})
+                </option>
+              ))}
+            </select>
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+              style={{color: activeSchool.colors.accent}}>▼</div>
+          </div>
+        </div>
+
+        {/* School info strip */}
+        <div className="flex items-center gap-4 px-5 py-3 rounded-2xl border-2"
+          style={{background: activeSchool.colors.primary, borderColor: activeSchool.colors.accent,
+                  boxShadow:`0 4px 20px ${activeSchool.colors.accent}30`}}>
+          {/* Tier badge */}
+          <div className="text-center px-3 py-1.5 rounded-xl" style={{background: activeSchool.colors.accent}}>
+            <p className="futura-heading text-white" style={{fontSize:'11px', lineHeight:'1'}}>{activeSchool.tier.toUpperCase()}</p>
+            <p className="mono-label text-white/70" style={{fontSize:'8px'}}>{activeSchool.conference}</p>
+          </div>
+          <div>
+            <p className="futura-heading text-white" style={{fontSize:'16px', lineHeight:'1.1'}}>{activeSchool.name}</p>
+            <p className="mono-label" style={{color: activeSchool.colors.accent2 === '#ffffff' ? 'rgba(255,255,255,0.6)' : activeSchool.colors.accent2, fontSize:'9px'}}>
+              {activeVenue.stadium} · {activeVenue.capacityLabel} capacity
+            </p>
+          </div>
+          {/* Capacity bar visual */}
+          <div className="hidden md:block ml-auto">
+            <p className="mono-label text-white/40" style={{fontSize:'8px', marginBottom:'4px'}}>CAPACITY vs WOFFORD</p>
+            <div className="flex items-end gap-1">
+              {Object.values(PEAK_SCHOOLS).map(s => (
+                <div key={s.id} title={s.name}
+                  style={{
+                    width:'16px',
+                    height:`${Math.round((s.football.capacity / 30000) * 32)}px`,
+                    background: s.id === schoolId ? activeSchool.colors.accent : 'rgba(255,255,255,0.15)',
+                    borderRadius:'3px 3px 0 0',
+                    transition:'all 0.3s ease'
+                  }}/>
+              ))}
             </div>
-          </button>
-        ))}
+          </div>
+        </div>
+
+        {/* Sport selector pills */}
+        <div className="flex items-end gap-2 flex-wrap">
+          {['football'].map(sp => (
+            <button key={sp} onClick={() => { setVenue(sp); setSelectedSection(null); setFilterZone('all'); }}
+              className="flex items-center gap-2 px-4 py-3 rounded-2xl font-bold border-2 transition-all"
+              style={venue === sp
+                ? { background: activeSchool.colors.primary, color:'white', borderColor: activeSchool.colors.accent,
+                    boxShadow:`0 4px 16px ${activeSchool.colors.accent}40` }
+                : { background:'white', color:'#3a2e1e', borderColor:'#e8dfc8' }}>
+              <span>🏈</span>
+              <div className="text-left">
+                <p className="futura-heading" style={{fontSize:'13px', lineHeight:'1'}}>Football</p>
+                <p className="mono-label" style={{fontSize:'8px', color: venue === sp ? activeSchool.colors.accent : '#886E4C'}}>
+                  {activeVenue.stadium.split(' ').slice(0,2).join(' ')}
+                </p>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* ── ZONE FILTER PILLS ── */}
@@ -1217,7 +1510,8 @@ const WoffordTicketHub = ({ onTransaction }) => {
         {/* ── SECTION GRID ── */}
         <div className="xl:col-span-2">
           {/* Venue banner with Boss watermark */}
-          <div className="rounded-2xl mb-4 p-5 relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)', minHeight:'80px'}}>
+          <div className="rounded-2xl mb-4 p-5 relative overflow-hidden transition-all duration-500"
+            style={{background:`linear-gradient(135deg, ${ac.primary}, ${ac.accent})`, minHeight:'80px'}}>
             {/* Boss watermark */}
             <div className="absolute right-4 top-0 bottom-0 flex items-center opacity-10">
               <svg viewBox="0 0 100 100" style={{width:'80px',height:'80px'}} fill="none">
@@ -1286,7 +1580,7 @@ const WoffordTicketHub = ({ onTransaction }) => {
         <div className="sticky top-6">
           <div className="rounded-3xl overflow-hidden shadow-2xl border-2" style={{borderColor:'#e8dfc8'}}>
             {/* Panel header with Wofford branding */}
-            <div className="px-6 py-5 relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)'}}>
+            <div className="px-6 py-5 relative overflow-hidden" style={{background:`linear-gradient(135deg, ${ac.primary}, ${ac.accent})`}}>
               <div className="absolute right-0 top-0 bottom-0 opacity-8 flex items-center pr-2">
                 <svg viewBox="0 0 100 100" style={{width:'60px',height:'60px'}} fill="none">
                   <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
@@ -1299,7 +1593,7 @@ const WoffordTicketHub = ({ onTransaction }) => {
                 </svg>
               </div>
               <p className="futura-heading text-white relative z-10" style={{fontSize:'20px'}}>Order Summary</p>
-              <p className="mono-label relative z-10 mt-1" style={{color:'#C7B37F', fontSize:'9px'}}>WOFFORD TERRIERS · {v.sport.toUpperCase()}</p>
+              <p className="mono-label relative z-10 mt-1" style={{color: ac.accent2, fontSize:'9px'}}>{activeSchool.name.toUpperCase()} · {activeSchool.mascot.toUpperCase()}</p>
             </div>
 
             <div className="bg-white p-6">
@@ -1362,7 +1656,7 @@ const WoffordTicketHub = ({ onTransaction }) => {
                   {/* Purchase button */}
                   <button onClick={() => setHubState('checkout')}
                     className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95 hover:opacity-90"
-                    style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)', fontFamily:'Rajdhani, sans-serif', fontSize:'17px', letterSpacing:'0.03em', boxShadow:'0 8px 24px rgba(26,18,8,0.4)'}}>
+                    style={{background:`linear-gradient(135deg, ${ac.primary}, ${ac.accent})`, fontFamily:'Rajdhani, sans-serif', fontSize:'17px', letterSpacing:'0.03em', boxShadow:`0 8px 24px ${ac.primary}80`}}>
                     Proceed to Payment →
                   </button>
 
@@ -1380,7 +1674,7 @@ const WoffordTicketHub = ({ onTransaction }) => {
                       </div>
                       <button onClick={handlePurchase}
                         className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95"
-                        style={{background:'#886E4C', fontFamily:'Rajdhani, sans-serif', fontSize:'17px'}}>
+                        style={{background: ac.accent, fontFamily:'Rajdhani, sans-serif', fontSize:'17px'}}>
                         Confirm Purchase · ${total.toFixed(2)}
                       </button>
                     </div>
@@ -2167,6 +2461,465 @@ return (
   </div>
   </div>
 );
+};
+
+
+// ============================================================
+// WOFFORD VENUE DATA
+// ============================================================
+const WOFFORD_VENUES = {
+  football: {
+    id: 'football',
+    name: 'Gibbs Stadium',
+    subtitle: 'Mike Ayers Field · Spartanburg, SC',
+    capacity: '13,000',
+    sport: 'Football',
+    icon: '🏈',
+    color: '#886E4C',
+    description: 'Home of Wofford Terriers Football since 1996',
+    sections: [
+      // Home Sideline — Chairback (between the 40s)
+      { id:'H1', name:'Section H1', zone:'home_chairback', label:'H1', price:27, status:'HIGH', seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
+      { id:'H2', name:'Section H2', zone:'home_chairback', label:'H2', price:27, status:'MED',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
+      { id:'H3', name:'Section H3', zone:'home_chairback', label:'H3', price:27, status:'HIGH', seats:180, desc:'Home Sideline · Chairback · 50 yd line' },
+      { id:'H4', name:'Section H4', zone:'home_chairback', label:'H4', price:27, status:'MED',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
+      { id:'H5', name:'Section H5', zone:'home_chairback', label:'H5', price:27, status:'LOW',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
+      // Home Sideline — Bleachers (end zone to 40)
+      { id:'HB1', name:'Section HB1', zone:'home_bleacher', label:'HB1', price:15, status:'HIGH', seats:220, desc:'Home Sideline · Bleacher · 20-40 yd' },
+      { id:'HB2', name:'Section HB2', zone:'home_bleacher', label:'HB2', price:15, status:'HIGH', seats:220, desc:'Home Sideline · Bleacher · 20-40 yd' },
+      { id:'HB3', name:'Section HB3', zone:'home_bleacher', label:'HB3', price:15, status:'MED',  seats:220, desc:'Home Sideline · Bleacher · 5-20 yd' },
+      { id:'HB4', name:'Section HB4', zone:'home_bleacher', label:'HB4', price:15, status:'LOW',  seats:220, desc:'Home Sideline · Bleacher · 5-20 yd' },
+      // Press Box / Mungo Room (VIP)
+      { id:'MR',  name:'Mungo Room',   zone:'vip',          label:'VIP',  price:85, status:'LOW',  seats:40,  desc:'President's Box · Mungo Room · 50 yd line' },
+      // Visitor Sideline
+      { id:'V1',  name:'Section V1',   zone:'visitor',      label:'V1',   price:12, status:'HIGH', seats:200, desc:'Visitor Sideline · Bleacher · 40-50 yd' },
+      { id:'V2',  name:'Section V2',   zone:'visitor',      label:'V2',   price:12, status:'HIGH', seats:200, desc:'Visitor Sideline · Bleacher · 40-50 yd' },
+      { id:'V3',  name:'Section V3',   zone:'visitor',      label:'V3',   price:12, status:'MED',  seats:200, desc:'Visitor Sideline · Bleacher · 20-40 yd' },
+      // North End Zone
+      { id:'N1',  name:'North End Zone A', zone:'north_ez', label:'NEZ-A', price:10, status:'HIGH', seats:300, desc:'North End Zone · Video Board End' },
+      { id:'N2',  name:'North End Zone B', zone:'north_ez', label:'NEZ-B', price:10, status:'MED',  seats:300, desc:'North End Zone · Video Board End' },
+      // South End Zone (Verandah Lot)
+      { id:'S1',  name:'Verandah Lot A',   zone:'south_ez', label:'VER-A', price:20, status:'MED',  seats:280, desc:'South End Zone · Verandah Lot · Terrier Club Donors' },
+      { id:'S2',  name:'Verandah Lot B',   zone:'south_ez', label:'VER-B', price:20, status:'LOW',  seats:280, desc:'South End Zone · Verandah Lot · Premium Tailgate' },
+      // Student Section
+      { id:'STU', name:'Student Section',  zone:'student',  label:'STU',  price:0,  status:'MED',  seats:500, desc:'Student Section · Free with Wofford ID' },
+    ],
+    zones: {
+      home_chairback: { label:'Home Chairback', color:'#886E4C', desc:'Premium seats between the 40s' },
+      home_bleacher:  { label:'Home Bleacher',  color:'#6b5538', desc:'Home side, end zone to 40' },
+      vip:            { label:'Mungo Room VIP', color:'#C7B37F', desc:'President's Box hospitality' },
+      visitor:        { label:'Visitor Side',   color:'#3a2e1e', desc:'Visitor sideline seating' },
+      north_ez:       { label:'North End Zone', color:'#2a1e0e', desc:'Video board end zone' },
+      south_ez:       { label:'Verandah Lot',   color:'#4a3520', desc:'Donor tailgate end zone' },
+      student:        { label:'Student Section',color:'#1a1208', desc:'Free with Wofford ID' },
+    }
+  },
+  basketball: {
+    id: 'basketball',
+    name: 'Jerry Richardson Indoor Stadium',
+    subtitle: 'The JRIS · Spartanburg, SC',
+    capacity: '3,400',
+    sport: 'Basketball',
+    icon: '🏀',
+    color: '#886E4C',
+    description: 'Home of Wofford Terriers Basketball since 2017',
+    sections: [
+      // Courtside
+      { id:'CS1', name:'Courtside A', zone:'courtside',  label:'CS-A', price:65, status:'LOW',  seats:40,  desc:'Courtside · Chairback · Home sideline' },
+      { id:'CS2', name:'Courtside B', zone:'courtside',  label:'CS-B', price:65, status:'LOW',  seats:40,  desc:'Courtside · Chairback · Visitor sideline' },
+      // Club 51 (Lower Bowl Chairback)
+      { id:'C51A', name:'Club 51 A', zone:'club51',      label:'C51-A', price:45, status:'MED',  seats:120, desc:'Club 51 · Lower Bowl · Home sideline · Full kitchen access' },
+      { id:'C51B', name:'Club 51 B', zone:'club51',      label:'C51-B', price:45, status:'HIGH', seats:120, desc:'Club 51 · Lower Bowl · Center court' },
+      { id:'C51C', name:'Club 51 C', zone:'club51',      label:'C51-C', price:45, status:'MED',  seats:120, desc:'Club 51 · Lower Bowl · Visitor sideline' },
+      // Lower Bowl General
+      { id:'LB1', name:'Section 1',  zone:'lower_bowl',  label:'Sec 1', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Home sideline' },
+      { id:'LB2', name:'Section 2',  zone:'lower_bowl',  label:'Sec 2', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Center court' },
+      { id:'LB3', name:'Section 3',  zone:'lower_bowl',  label:'Sec 3', price:25, status:'MED',  seats:160, desc:'Lower Bowl · Visitor sideline' },
+      { id:'LB4', name:'Section 4',  zone:'lower_bowl',  label:'Sec 4', price:25, status:'MED',  seats:160, desc:'Lower Bowl · Behind basket' },
+      { id:'LB5', name:'Section 5',  zone:'lower_bowl',  label:'Sec 5', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Behind basket' },
+      // Corner Suites (open-air theater box style)
+      { id:'SUA', name:'Suite A',    zone:'suite',       label:'Suite A', price:120, status:'LOW', seats:20, desc:'Corner Suite A · Open-air · Theater box seating' },
+      { id:'SUB', name:'Suite B',    zone:'suite',       label:'Suite B', price:120, status:'LOW', seats:20, desc:'Corner Suite B · Open-air · Theater box seating' },
+      { id:'SUC', name:'Suite C',    zone:'suite',       label:'Suite C', price:120, status:'MED', seats:20, desc:'Corner Suite C · Open-air · Theater box seating' },
+      { id:'SUD', name:'Suite D',    zone:'suite',       label:'Suite D', price:120, status:'MED', seats:20, desc:'Corner Suite D · Open-air · Theater box seating' },
+      // Upper Level
+      { id:'UL1', name:'Upper Level A', zone:'upper',   label:'UL-A', price:18, status:'HIGH', seats:200, desc:'Upper Level · Sideline · Wide angle view' },
+      { id:'UL2', name:'Upper Level B', zone:'upper',   label:'UL-B', price:18, status:'HIGH', seats:200, desc:'Upper Level · Sideline' },
+      // The Boneyard (Student Section)
+      { id:'BY',  name:'The Boneyard', zone:'boneyard', label:'BONE', price:0,  status:'MED',  seats:400, desc:'The Boneyard · Student Section · Private entertainment area · Free with ID' },
+    ],
+    zones: {
+      courtside:  { label:'Courtside',     color:'#C7B37F', desc:'Best seats in the house' },
+      club51:     { label:'Club 51',       color:'#886E4C', desc:'Premium lower bowl · full kitchen' },
+      lower_bowl: { label:'Lower Bowl',    color:'#6b5538', desc:'Main floor seating' },
+      suite:      { label:'Corner Suites', color:'#4a3520', desc:'Open-air theater box suites' },
+      upper:      { label:'Upper Level',   color:'#3a2e1e', desc:'Second level sideline' },
+      boneyard:   { label:'The Boneyard',  color:'#1a1208', desc:'Student section · free with ID' },
+    }
+  },
+  volleyball: {
+    id: 'volleyball',
+    name: 'Jerry Richardson Indoor Stadium',
+    subtitle: 'Volleyball Arena · Spartanburg, SC',
+    capacity: '350',
+    sport: 'Volleyball',
+    icon: '🏐',
+    color: '#886E4C',
+    description: 'Volleyball Competition Venue at JRIS',
+    sections: [
+      { id:'VA1', name:'Section A', zone:'sideline',  label:'Sec A', price:10, status:'HIGH', seats:80,  desc:'Court sideline · Lower bowl' },
+      { id:'VA2', name:'Section B', zone:'sideline',  label:'Sec B', price:10, status:'MED',  seats:80,  desc:'Court sideline · Lower bowl' },
+      { id:'VB1', name:'Section C', zone:'end_line',  label:'Sec C', price:8,  status:'HIGH', seats:60,  desc:'End line · Behind serving' },
+      { id:'VB2', name:'Section D', zone:'end_line',  label:'Sec D', price:8,  status:'MED',  seats:60,  desc:'End line · Behind serving' },
+      { id:'VC1', name:'Premium',   zone:'premium',   label:'Prem',  price:20, status:'LOW',  seats:40,  desc:'Premium floor seats · Courtside' },
+      { id:'STU', name:'Student',   zone:'student',   label:'STU',   price:0,  status:'HIGH', seats:30,  desc:'Student Section · Free with Wofford ID' },
+    ],
+    zones: {
+      sideline: { label:'Sideline',      color:'#886E4C', desc:'Court sideline seating' },
+      end_line: { label:'End Line',      color:'#6b5538', desc:'Behind the serving line' },
+      premium:  { label:'Premium Floor', color:'#C7B37F', desc:'Courtside premium seats' },
+      student:  { label:'Student',       color:'#1a1208', desc:'Free with Wofford ID' },
+    }
+  }
+};
+
+// ============================================================
+// WOFFORD TICKET HUB COMPONENT
+// ============================================================
+const WoffordTicketHub = ({ onTransaction }) => {
+  const [venue, setVenue] = React.useState('football');
+  const [selectedSection, setSelectedSection] = React.useState(null);
+  const [qty, setQty] = React.useState(2);
+  const [hubState, setHubState] = React.useState('browse');
+  const [filterZone, setFilterZone] = React.useState('all');
+
+  const v = WOFFORD_VENUES[venue];
+  const fees = { facility: 2.50, processing: 1.50 };
+
+  const filteredSections = filterZone === 'all'
+    ? v.sections.filter(s => s.price > 0)
+    : v.sections.filter(s => s.zone === filterZone && s.price > 0);
+
+  const subtotal = selectedSection ? selectedSection.price * qty : 0;
+  const totalFees = selectedSection ? (fees.facility + fees.processing) * qty : 0;
+  const total = subtotal + totalFees;
+
+  const statusColor = s => s === 'HIGH' ? '#ef4444' : s === 'MED' ? '#f59e0b' : '#886E4C';
+  const statusLabel = s => s === 'HIGH' ? 'Selling Fast' : s === 'MED' ? 'Limited' : 'Available';
+
+  const handlePurchase = () => {
+    setHubState('success');
+    onTransaction({ fanName:'Scott Kull', campaign:'Ticket Sales', amount:total, fromTicketHub:true });
+  };
+
+  if (hubState === 'success') return (
+    <div className="max-w-xl mx-auto py-8 fade-in">
+      <div className="rounded-3xl overflow-hidden shadow-2xl" style={{background:'#ffffff'}}>
+        {/* Success header with Wofford branding */}
+        <div className="px-8 py-10 text-center relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208 0%, #2a1e0e 100%)'}}>
+          <div className="absolute inset-0 flex items-center justify-center opacity-5">
+            <svg viewBox="0 0 200 200" style={{width:'300px',height:'300px'}}>
+              <ellipse cx="100" cy="90" rx="68" ry="62" fill="#886E4C"/>
+              <ellipse cx="100" cy="94" rx="62" ry="56" fill="#000"/>
+              <ellipse cx="100" cy="78" rx="28" ry="36" fill="#fff"/>
+              <circle cx="74" cy="72" r="16" fill="#fff"/><circle cx="126" cy="72" r="16" fill="#fff"/>
+              <circle cx="76" cy="74" r="9" fill="#000"/><circle cx="128" cy="74" r="9" fill="#000"/>
+              <ellipse cx="100" cy="106" rx="22" ry="14" fill="#000"/>
+              <rect x="32" y="148" width="136" height="22" rx="11" fill="#886E4C"/>
+            </svg>
+          </div>
+          <div className="relative z-10">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:'rgba(136,110,76,0.2)', border:'2px solid #886E4C'}}>
+              <CheckCircle2 size={32} style={{color:'#C7B37F'}}/>
+            </div>
+            <p className="futura-heading text-white" style={{fontSize:'32px'}}>Purchase Complete!</p>
+            <p className="text-white/50 text-sm mt-1 mono-label" style={{fontSize:'9px'}}>GO TERRIERS 🐾</p>
+          </div>
+        </div>
+        <div className="p-8">
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            {[
+              { label:'Venue', value:v.name.split(' ').slice(0,2).join(' ') },
+              { label:'Section', value:selectedSection?.label || '—' },
+              { label:'Quantity', value:`${qty} tickets` },
+              { label:'Total Paid', value:`$${total.toFixed(2)}`, gold:true },
+            ].map((item,i) => (
+              <div key={i} className="p-4 rounded-2xl" style={{background:'#F5F0E8'}}>
+                <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{color:'#886E4C'}}>{item.label}</p>
+                <p className="futura-heading" style={{fontSize:'20px', color: item.gold ? '#886E4C' : '#1a1208'}}>{item.value}</p>
+              </div>
+            ))}
+          </div>
+          <QrCode size={80} className="mx-auto mb-6" style={{color:'#e8dfc8'}}/>
+          <p className="text-center text-xs text-slate-400 mb-6">Confirmation sent · Tickets delivered to your email</p>
+          <button onClick={() => { setHubState('browse'); setSelectedSection(null); setQty(2); }}
+            className="w-full py-4 rounded-2xl font-black text-white"
+            style={{background:'#1a1208', fontFamily:'Rajdhani, sans-serif', fontSize:'16px'}}>
+            ← Back to Tickets
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="max-w-7xl mx-auto">
+      {/* ── HEADER ── */}
+      <div className="mb-8 pb-6 border-b-2" style={{borderColor:'#e8dfc8'}}>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+          <div>
+            <p className="page-label mb-2">Wofford Terriers · Ticket Marketplace</p>
+            <h2 className="futura-heading leading-none" style={{fontSize:'clamp(36px,6vw,56px)', color:'#1a1208'}}>
+              Ticket Hub
+            </h2>
+            <p className="text-sm mt-2 font-semibold" style={{color:'#886E4C'}}>
+              {v.sport} · {v.name} · {v.capacity} capacity
+            </p>
+          </div>
+          {/* Wofford wordmark strip */}
+          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl" style={{background:'#1a1208'}}>
+            <div style={{textAlign:'right'}}>
+              <p className="futura-heading text-white" style={{fontSize:'18px',lineHeight:'1'}}>WOFFORD</p>
+              <p className="mono-label" style={{color:'#886E4C',fontSize:'9px',letterSpacing:'3px'}}>TERRIERS</p>
+            </div>
+            <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+              <ellipse cx="50" cy="50" rx="42" ry="38" fill="#886E4C"/>
+              <ellipse cx="50" cy="54" rx="36" ry="30" fill="#000"/>
+              <ellipse cx="50" cy="42" rx="18" ry="22" fill="#fff"/>
+              <circle cx="36" cy="38" r="10" fill="#fff"/>
+              <circle cx="64" cy="38" r="10" fill="#fff"/>
+              <circle cx="37" cy="39" r="5" fill="#000"/><circle cx="65" cy="39" r="5" fill="#000"/>
+              <ellipse cx="50" cy="58" rx="14" ry="9" fill="#000"/>
+              <rect x="20" y="76" width="60" height="14" rx="7" fill="#886E4C"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* ── VENUE SELECTOR ── */}
+      <div className="flex gap-3 mb-6 flex-wrap">
+        {Object.values(WOFFORD_VENUES).map(vn => (
+          <button key={vn.id} onClick={() => { setVenue(vn.id); setSelectedSection(null); setFilterZone('all'); }}
+            className="flex items-center gap-3 px-5 py-3 rounded-2xl font-bold transition-all border-2"
+            style={venue === vn.id
+              ? { background:'#1a1208', color:'white', borderColor:'#886E4C', boxShadow:'0 4px 20px rgba(136,110,76,0.3)' }
+              : { background:'white', color:'#3a2e1e', borderColor:'#e8dfc8' }}>
+            <span style={{fontSize:'18px'}}>{vn.icon}</span>
+            <div className="text-left">
+              <p className="futura-heading" style={{fontSize:'15px', lineHeight:'1.1'}}>{vn.sport}</p>
+              <p className="mono-label" style={{fontSize:'8px', color: venue === vn.id ? '#C7B37F' : '#886E4C'}}>{vn.name.split(' ').slice(0,2).join(' ')}</p>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {/* ── ZONE FILTER PILLS ── */}
+      <div className="flex gap-2 mb-6 flex-wrap">
+        <button onClick={() => setFilterZone('all')}
+          className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
+          style={filterZone === 'all'
+            ? { background:'#886E4C', color:'white' }
+            : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
+          All Sections
+        </button>
+        {Object.entries(v.zones).map(([zk, zv]) => (
+          <button key={zk} onClick={() => setFilterZone(zk)}
+            className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
+            style={filterZone === zk
+              ? { background:zv.color, color:'white' }
+              : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
+            {zv.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+
+        {/* ── SECTION GRID ── */}
+        <div className="xl:col-span-2">
+          {/* Venue banner with Boss watermark */}
+          <div className="rounded-2xl mb-4 p-5 relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)', minHeight:'80px'}}>
+            {/* Boss watermark */}
+            <div className="absolute right-4 top-0 bottom-0 flex items-center opacity-10">
+              <svg viewBox="0 0 100 100" style={{width:'80px',height:'80px'}} fill="none">
+                <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
+                <ellipse cx="50" cy="50" rx="32" ry="28" fill="#000"/>
+                <ellipse cx="50" cy="38" rx="16" ry="20" fill="#fff"/>
+                <circle cx="34" cy="34" r="10" fill="#fff"/><circle cx="66" cy="34" r="10" fill="#fff"/>
+                <circle cx="35" cy="35" r="5" fill="#000"/><circle cx="67" cy="35" r="5" fill="#000"/>
+                <ellipse cx="50" cy="54" rx="12" ry="8" fill="#000"/>
+                <rect x="18" y="72" width="64" height="12" rx="6" fill="#886E4C"/>
+              </svg>
+            </div>
+            <div className="relative z-10">
+              <p className="futura-heading text-white" style={{fontSize:'18px'}}>{v.name}</p>
+              <p className="mono-label mt-1" style={{color:'#C7B37F', fontSize:'9px'}}>{v.subtitle} · {v.description}</p>
+            </div>
+          </div>
+
+          {/* Section cards grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {filteredSections.map(sec => {
+              const zoneInfo = v.zones[sec.zone];
+              const isSelected = selectedSection?.id === sec.id;
+              return (
+                <button key={sec.id} onClick={() => setSelectedSection(isSelected ? null : sec)}
+                  className="text-left rounded-2xl border-2 transition-all overflow-hidden"
+                  style={{
+                    borderColor: isSelected ? '#886E4C' : '#e8dfc8',
+                    background: isSelected ? '#1a1208' : 'white',
+                    boxShadow: isSelected ? '0 8px 32px rgba(136,110,76,0.25)' : '0 2px 8px rgba(26,18,8,0.04)',
+                    transform: isSelected ? 'translateY(-2px)' : 'translateY(0)',
+                  }}>
+                  {/* Zone color bar */}
+                  <div className="h-1.5" style={{background: isSelected ? '#886E4C' : zoneInfo?.color || '#e8dfc8'}}/>
+                  <div className="p-4">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <div>
+                        <p className="futura-heading" style={{fontSize:'16px', color: isSelected ? 'white' : '#1a1208'}}>{sec.name}</p>
+                        <p className="text-xs font-semibold mt-0.5" style={{color: isSelected ? '#C7B37F' : '#886E4C'}}>{zoneInfo?.label}</p>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <p className="futura-heading" style={{fontSize:'22px', color: isSelected ? '#C7B37F' : '#886E4C'}}>${sec.price}</p>
+                        <p className="mono-label" style={{fontSize:'8px', color: isSelected ? 'rgba(255,255,255,0.5)' : '#94a3b8'}}>per ticket</p>
+                      </div>
+                    </div>
+                    <p className="text-xs leading-relaxed mb-3" style={{color: isSelected ? 'rgba(255,255,255,0.6)' : '#64748b'}}>{sec.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold px-2 py-1 rounded-lg" style={{
+                        background: isSelected ? 'rgba(136,110,76,0.2)' : `${statusColor(sec.status)}15`,
+                        color: isSelected ? '#C7B37F' : statusColor(sec.status)
+                      }}>
+                        {statusLabel(sec.status)}
+                      </span>
+                      {isSelected && (
+                        <span className="mono-label text-white/60" style={{fontSize:'8px'}}>✓ SELECTED</span>
+                      )}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ── ORDER PANEL ── */}
+        <div className="sticky top-6">
+          <div className="rounded-3xl overflow-hidden shadow-2xl border-2" style={{borderColor:'#e8dfc8'}}>
+            {/* Panel header with Wofford branding */}
+            <div className="px-6 py-5 relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)'}}>
+              <div className="absolute right-0 top-0 bottom-0 opacity-8 flex items-center pr-2">
+                <svg viewBox="0 0 100 100" style={{width:'60px',height:'60px'}} fill="none">
+                  <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
+                  <ellipse cx="50" cy="50" rx="32" ry="28" fill="#000"/>
+                  <ellipse cx="50" cy="38" rx="16" ry="20" fill="#fff"/>
+                  <circle cx="34" cy="34" r="10" fill="#fff"/><circle cx="66" cy="34" r="10" fill="#fff"/>
+                  <circle cx="35" cy="35" r="5" fill="#000"/><circle cx="67" cy="35" r="5" fill="#000"/>
+                  <ellipse cx="50" cy="54" rx="12" ry="8" fill="#000"/>
+                  <rect x="18" y="72" width="64" height="12" rx="6" fill="#886E4C"/>
+                </svg>
+              </div>
+              <p className="futura-heading text-white relative z-10" style={{fontSize:'20px'}}>Order Summary</p>
+              <p className="mono-label relative z-10 mt-1" style={{color:'#C7B37F', fontSize:'9px'}}>WOFFORD TERRIERS · {v.sport.toUpperCase()}</p>
+            </div>
+
+            <div className="bg-white p-6">
+              {!selectedSection ? (
+                <div className="py-10 text-center">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:'#F5F0E8'}}>
+                    <span style={{fontSize:'28px'}}>{v.icon}</span>
+                  </div>
+                  <p className="futura-heading mb-1" style={{fontSize:'18px', color:'#1a1208'}}>Select a Section</p>
+                  <p className="text-sm text-slate-400">Choose from the sections on the left</p>
+                  <p className="futura-heading mt-4" style={{fontSize:'36px', color:'#e8dfc8'}}>$0.00</p>
+                </div>
+              ) : (
+                <div className="space-y-5">
+                  {/* Selected section */}
+                  <div className="p-4 rounded-2xl" style={{background:'#F5F0E8', border:'2px solid #e8dfc8'}}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-2 h-2 rounded-full" style={{background:'#886E4C'}}/>
+                      <p className="font-black text-sm" style={{color:'#1a1208'}}>{selectedSection.name}</p>
+                    </div>
+                    <p className="text-xs text-slate-500 pl-4">{selectedSection.desc}</p>
+                  </div>
+
+                  {/* Quantity selector */}
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{color:'#886E4C'}}>Quantity</p>
+                    <div className="flex items-center gap-3">
+                      {[1,2,3,4,5,6].map(n => (
+                        <button key={n} onClick={() => setQty(n)}
+                          className="w-10 h-10 rounded-xl font-black text-sm transition-all"
+                          style={qty === n
+                            ? { background:'#1a1208', color:'white', boxShadow:'0 4px 12px rgba(26,18,8,0.3)' }
+                            : { background:'#F5F0E8', color:'#3a2e1e' }}>
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Price breakdown */}
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">{qty}x {selectedSection.label}</span>
+                      <span className="font-bold" style={{color:'#1a1208'}}>${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span className="text-slate-400">Facility fee ({qty}x)</span>
+                      <span className="text-slate-400">${(fees.facility * qty).toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span className="text-slate-400">Processing ({qty}x)</span>
+                      <span className="text-slate-400">${(fees.processing * qty).toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between items-baseline pt-3 border-t-4" style={{borderColor:'#1a1208'}}>
+                      <span className="futura-heading" style={{fontSize:'18px', color:'#1a1208'}}>Total</span>
+                      <span className="futura-heading" style={{fontSize:'32px', color:'#886E4C'}}>${total.toFixed(2)}</span>
+                    </div>
+                  </div>
+
+                  {/* Purchase button */}
+                  <button onClick={() => setHubState('checkout')}
+                    className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95 hover:opacity-90"
+                    style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)', fontFamily:'Rajdhani, sans-serif', fontSize:'17px', letterSpacing:'0.03em', boxShadow:'0 8px 24px rgba(26,18,8,0.4)'}}>
+                    Proceed to Payment →
+                  </button>
+
+                  {hubState === 'checkout' && (
+                    <div className="space-y-4 fade-in">
+                      <div className="p-4 rounded-2xl flex items-center justify-between" style={{background:'#F5F0E8'}}>
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white" style={{background:'#1a1208'}}>CC</div>
+                          <div>
+                            <p className="font-bold" style={{color:'#1a1208'}}>Primary Card</p>
+                            <p className="text-xs text-slate-400 font-mono">•••• 4242</p>
+                          </div>
+                        </div>
+                        <CheckCircle2 size={24} style={{color:'#886E4C'}}/>
+                      </div>
+                      <button onClick={handlePurchase}
+                        className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95"
+                        style={{background:'#886E4C', fontFamily:'Rajdhani, sans-serif', fontSize:'17px'}}>
+                        Confirm Purchase · ${total.toFixed(2)}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Shield */}
+              <div className="mt-4 p-3 rounded-xl flex items-center gap-2" style={{background:'#F5F0E8'}}>
+                <ShieldCheck size={16} style={{color:'#886E4C'}}/>
+                <p className="text-xs font-semibold" style={{color:'#886E4C'}}>Secure checkout · Official Wofford tickets</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 // ============================================================
