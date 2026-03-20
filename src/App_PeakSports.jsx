@@ -19,22 +19,22 @@ const N8N_WEBHOOK_URL = 'https://may-transition-pierre-calculate.trycloudflare.c
 // ============================================================
 // COLORS
 // ============================================================
-// Wofford College: Old Gold #886E4C | Khaki #C7B37F | Black #000000
 const C = {
-  green:      '#1a1208',
-  greenMid:   '#2a1e0e',
-  greenLight: '#4a3520',
-  lime:       '#886E4C',
-  limeDim:    'rgba(136,110,76,0.12)',
-  limeBright: '#C7B37F',
+  green:      '#0f2213',
+  greenMid:   '#1a3d20',
+  greenLight: '#2a6632',
+  lime:       '#5cb832',
+  limeDim:    'rgba(92,184,50,0.12)',
+  limeBright: '#72d43e',
   white:      '#ffffff',
-  offWhite:   '#F5F0E8',
-  slate:      '#3a2e1e',
-  slateLight: '#e8dfc8',
-  gold:       '#886E4C',
-  goldLight:  '#C7B37F',
-  cognac:     '#6b5538',
-  cognacDim:  'rgba(107,85,56,0.12)',
+  offWhite:   '#f4f7f2',
+  slate:      '#445544',
+  slateLight: '#dde8d8',
+  // aliases so existing code that references gold still works
+  gold:       '#5cb832',
+  goldLight:  '#72d43e',
+  cognac:     '#3a8c1e',
+  cognacDim:  'rgba(58,140,30,0.12)',
 };
 
 const MOCK_DB = {
@@ -187,54 +187,54 @@ const Styles = () => (
     .section-path:hover { filter: brightness(1.3); }
 
     .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .card-hover:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(26,18,8,0.14); }
+    .card-hover:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(15,34,19,0.14); }
 
     /* ── TYPOGRAPHY ── */
     .futura-heading { font-family: 'Rajdhani', system-ui, sans-serif !important; font-weight: 700; letter-spacing: 0.02em; }
     .mono-label { font-family: 'Space Mono', monospace !important; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
-    .page-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #886E4C; }
+    .page-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #5cb832; }
 
     /* ── SIDEBAR — deep forest, subtle grain ── */
     .sidebar-bg {
-      background-color: #120d06;
+      background-color: #0c1a0e;
       background-image:
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
-        linear-gradient(170deg, #1a1208 0%, #0d0905 100%);
+        linear-gradient(170deg, #101e12 0%, #090f0a 100%);
     }
 
     /* ── NAV ITEM ACTIVE — lime left bar ── */
     .nav-active {
-      background: rgba(136,110,76,0.12) !important;
-      border: 1px solid rgba(136,110,76,0.28) !important;
-      box-shadow: inset 3px 0 0 #886E4C;
+      background: rgba(92,184,50,0.09) !important;
+      border: 1px solid rgba(92,184,50,0.22) !important;
+      box-shadow: inset 3px 0 0 #5cb832;
     }
 
     /* ── CONTENT AREA — crisp green-tinted grid ── */
     .content-bg {
-      background-color: #F5F0E8;
+      background-color: #f4f7f2;
       background-image:
-        linear-gradient(rgba(136,110,76,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(136,110,76,0.06) 1px, transparent 1px);
+        linear-gradient(rgba(15,34,19,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,34,19,0.04) 1px, transparent 1px);
       background-size: 40px 40px;
     }
 
     /* ── DATA CARD ── */
     .data-card {
       background: #ffffff;
-      border: 1px solid #e8dfc8;
+      border: 1px solid #dde8d8;
       border-radius: 20px;
-      box-shadow: 0 2px 20px rgba(136,110,76,0.07);
+      box-shadow: 0 2px 20px rgba(15,34,19,0.05);
       transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
     .data-card:hover {
-      box-shadow: 0 6px 32px rgba(136,110,76,0.18), 0 2px 12px rgba(26,18,8,0.08);
+      box-shadow: 0 6px 32px rgba(92,184,50,0.12), 0 2px 12px rgba(15,34,19,0.07);
       transform: translateY(-2px);
     }
 
     /* ── KPI CARD DARK ── */
     .kpi-dark {
-      background: linear-gradient(145deg, #1a1208 0%, #2a1e0e 100%);
-      border: 1px solid rgba(136,110,76,0.30);
+      background: linear-gradient(145deg, #0c1a0e 0%, #132118 100%);
+      border: 1px solid rgba(92,184,50,0.25);
       box-shadow: 0 4px 28px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
       border-radius: 20px;
     }
@@ -242,15 +242,15 @@ const Styles = () => (
     /* ── STATUS DOT — lime pulse ── */
     .status-dot {
       width:8px; height:8px; border-radius:50%;
-      background:#886E4C;
-      box-shadow: 0 0 8px rgba(136,110,76,0.8);
+      background:#5cb832;
+      box-shadow: 0 0 8px rgba(92,184,50,0.8);
       animation: breathe 2.8s ease-in-out infinite;
       flex-shrink: 0;
     }
 
     /* ── GLOW TEXT ── */
-    .gold-glow { text-shadow: 0 0 28px rgba(136,110,76,0.55); }
-    .cognac-glow { text-shadow: 0 0 20px rgba(199,179,127,0.5); }
+    .gold-glow { text-shadow: 0 0 28px rgba(92,184,50,0.45); }
+    .cognac-glow { text-shadow: 0 0 20px rgba(92,184,50,0.4); }
 
     /* ── LAYOUT SHELL (Tailwind-independent — fixes md: breakpoint failures) ── */
     html, body, #root { height: 100%; margin: 0; }
@@ -392,21 +392,21 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
   const zoneLabel = zone => ({ home: 'Home Sideline', away: 'Away Sideline', north_ez: 'North End Zone', south_ez: 'South End Zone', corner: 'Corner' }[zone] || zone);
 
   return (
-    <div className="rounded-2xl overflow-hidden shadow-2xl" style={{background:'#120d06'}}>
+    <div className="rounded-2xl overflow-hidden shadow-2xl" style={{background:'#09100d'}}>
       <div className="flex items-start justify-between px-4 pt-4 pb-2 gap-2">
         <div>
           <p className="mono-label mb-0.5" style={{color:C.lime, fontSize:'8px'}}>Interactive Seating Chart</p>
           <p className="text-white font-black text-sm leading-tight" style={{fontFamily:'Rajdhani, sans-serif'}}>Select Your Section</p>
         </div>
         <div className="flex flex-col gap-1 text-right shrink-0">
-          <span className="flex items-center gap-1 justify-end"><span className="w-2.5 h-2.5 rounded-sm inline-block shrink-0" style={{background:'#2a1e0e'}}/><span className="text-white/45 text-xs">Home</span></span>
+          <span className="flex items-center gap-1 justify-end"><span className="w-2.5 h-2.5 rounded-sm inline-block shrink-0" style={{background:'#1a3d20'}}/><span className="text-white/45 text-xs">Home</span></span>
           <span className="flex items-center gap-1 justify-end"><span className="w-2.5 h-2.5 rounded-sm inline-block shrink-0" style={{background:'#1e3f6e'}}/><span className="text-white/45 text-xs">Upper</span></span>
           <span className="flex items-center gap-1 justify-end"><span className="w-2.5 h-2.5 rounded-sm inline-block bg-white/10 shrink-0"/><span className="text-white/35 text-xs">Sold</span></span>
         </div>
       </div>
 
       <svg viewBox="0 0 510 520" className="w-full" style={{display:'block'}}>
-        <rect width="510" height="520" fill="#120d06"/>
+        <rect width="510" height="520" fill="#09100d"/>
         <ellipse cx={cx} cy={cy} rx="245" ry="270" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" strokeWidth="2"/>
 
         {upperSections.map(s => (
@@ -415,7 +415,7 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
             onMouseLeave={() => setHoveredId(null)}
             style={{cursor: s.sold ? 'default' : 'pointer'}}>
             <path d={s.path} fill={zoneFill(s.zone, s.level, s.id === activeSection, s.id === hoveredId, s.sold)}
-              stroke="#120d06" strokeWidth="1.2" style={{transition:'fill 0.15s ease'}}/>
+              stroke="#09100d" strokeWidth="1.2" style={{transition:'fill 0.15s ease'}}/>
             <text x={s.lx.toFixed(1)} y={(s.ly + 3).toFixed(1)}
               fill={s.sold ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.7)'}
               fontSize="5.5" fontWeight="bold" textAnchor="middle"
@@ -429,7 +429,7 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
             onMouseLeave={() => setHoveredId(null)}
             style={{cursor: s.sold ? 'default' : 'pointer'}}>
             <path d={s.path} fill={zoneFill(s.zone, s.level, s.id === activeSection, s.id === hoveredId, s.sold)}
-              stroke="#120d06" strokeWidth="1.5" style={{transition:'fill 0.15s ease'}}/>
+              stroke="#09100d" strokeWidth="1.5" style={{transition:'fill 0.15s ease'}}/>
             <text x={s.lx.toFixed(1)} y={(s.ly + 3).toFixed(1)}
               fill={s.id === activeSection ? C.green : s.sold ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.9)'}
               fontSize="7" fontWeight="bold" textAnchor="middle"
@@ -483,7 +483,7 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
               {showSeatView && displaySec.id === activeSection && (
                 <button onClick={() => onSeatView(displaySec)}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold"
-                  style={{background:'rgba(136,110,76,0.12)', color:C.lime, border:`1px solid rgba(136,110,76,0.25)`}}>
+                  style={{background:'rgba(92,184,50,0.12)', color:C.lime, border:`1px solid rgba(92,184,50,0.25)`}}>
                   <Eye size={12}/> View
                 </button>
               )}
@@ -541,29 +541,29 @@ const SeatView = ({ section, onClose }) => {
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{display:'block'}}>
           <defs>
             <linearGradient id="sv_sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#100b04"/>
-              <stop offset="60%" stopColor="#1a1208"/>
-              <stop offset="100%" stopColor="#1a1208"/>
+              <stop offset="0%" stopColor="#04101a"/>
+              <stop offset="60%" stopColor="#0a1f18"/>
+              <stop offset="100%" stopColor="#0d2a1e"/>
             </linearGradient>
             <linearGradient id="sv_field_main" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#4a3520"/>
-              <stop offset="100%" stopColor="#6b5538"/>
+              <stop offset="0%" stopColor="#2a6632"/>
+              <stop offset="100%" stopColor="#3a8c1e"/>
             </linearGradient>
             <linearGradient id="sv_ez_left" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#1a1208"/>
-              <stop offset="100%" stopColor="#2a1e0e"/>
+              <stop offset="0%" stopColor="#0f2213"/>
+              <stop offset="100%" stopColor="#1a3d20"/>
             </linearGradient>
             <linearGradient id="sv_ez_right" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#2a1e0e"/>
-              <stop offset="100%" stopColor="#1a1208"/>
+              <stop offset="0%" stopColor="#1a3d20"/>
+              <stop offset="100%" stopColor="#0f2213"/>
             </linearGradient>
             <linearGradient id="sv_far_stands" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#071510"/>
-              <stop offset="100%" stopColor="#1a1208"/>
+              <stop offset="100%" stopColor="#0f2213"/>
             </linearGradient>
             <linearGradient id="sv_near_seats" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2a1e0e"/>
-              <stop offset="100%" stopColor="#1a1208"/>
+              <stop offset="0%" stopColor="#1a3d20"/>
+              <stop offset="100%" stopColor="#092818"/>
             </linearGradient>
             <radialGradient id="sv_glow" cx="50%" cy="40%" r="60%">
               <stop offset="0%" stopColor="rgba(255,255,220,0.10)"/>
@@ -592,7 +592,7 @@ const SeatView = ({ section, onClose }) => {
           {/* Tiered rows */}
           {[0,1,2,3,4,5,6].map(r => (
             <rect key={r} x="0" y={84+r*12} width={W} height="10"
-              fill={r%2===0 ? '#0e3d28' : '#1a1208'} opacity="0.9"/>
+              fill={r%2===0 ? '#0e3d28' : '#092818'} opacity="0.9"/>
           ))}
           {/* Far crowd dots */}
           {Array.from({length:110}).map((_,i) => (
@@ -600,7 +600,7 @@ const SeatView = ({ section, onClose }) => {
               cx={3 + i*7.2}
               cy={92 + (i%5)*9 + Math.sin(i*0.9)*3}
               r={2.5 + (i%2)*1}
-              fill={['#886E4C','#fff','#3498db','#e74c3c','#2ecc71','#e67e22'][i%6]}
+              fill={['#5cb832','#fff','#3498db','#e74c3c','#2ecc71','#e67e22'][i%6]}
               opacity="0.6"/>
           ))}
 
@@ -613,7 +613,7 @@ const SeatView = ({ section, onClose }) => {
             const xr2 = xN(0) + t2*(xF(0)-xN(0));
             return <polygon key={r}
               points={`0,${y1} ${xr1},${y1} ${xr2},${y2} 0,${y2}`}
-              fill={r%2===0?'#0e3d28':'#1a1208'} opacity="0.85"/>;
+              fill={r%2===0?'#0e3d28':'#092818'} opacity="0.85"/>;
           })}
           <polygon points={`${fR},${fY} ${W},${fY} ${W},${nY} ${nR},${nY}`} fill="#071510"/>
           {[0,1,2,3,4].map(r => {
@@ -623,7 +623,7 @@ const SeatView = ({ section, onClose }) => {
             const xl2 = xN(120) + t2*(xF(120)-xN(120));
             return <polygon key={r}
               points={`${xl1},${y1} ${W},${y1} ${W},${y2} ${xl2},${y2}`}
-              fill={r%2===0?'#0e3d28':'#1a1208'} opacity="0.85"/>;
+              fill={r%2===0?'#0e3d28':'#092818'} opacity="0.85"/>;
           })}
 
           {/* ── LEFT END ZONE ── */}
@@ -757,7 +757,7 @@ const SeatView = ({ section, onClose }) => {
                   return (
                     <rect key={si} x={sx} y={y+1.5} width={sw-3} height="11"
                       rx="2"
-                      fill={isOurs ? C.gold : ['#2a1e0e','#4a3520','#1a1208'][si%3]}
+                      fill={isOurs ? C.gold : ['#1a3d20','#2a6632','#0f2213'][si%3]}
                       opacity={isOurs ? 1 : 0.85}
                       stroke={isOurs ? 'rgba(255,255,255,0.6)' : 'none'}
                       strokeWidth={isOurs ? 1 : 0}/>
@@ -897,7 +897,7 @@ const TicketHub = ({ onTransaction }) => {
   if (hubState === 'success') return (
     <div className="max-w-xl mx-auto py-8 text-center fade-in">
       <div className="bg-white p-8 md:p-16 shadow-2xl rounded-3xl">
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{background:'rgba(136,110,76,0.10)'}}>
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{background:'rgba(15,34,19,0.08)'}}>
           <CheckCircle2 size={36} style={{color:C.greenMid}}/>
         </div>
         <h2 className="futura-heading mb-2" style={{fontSize:'clamp(28px,5vw,40px)', color:C.greenMid}}>Purchase Complete!</h2>
@@ -1011,7 +1011,7 @@ const TicketHub = ({ onTransaction }) => {
                   </button>
                 </div>
               )}
-              <div className="p-4 rounded-xl flex items-start gap-3" style={{background:'rgba(26,18,8,0.06)'}}>
+              <div className="p-4 rounded-xl flex items-start gap-3" style={{background:'rgba(15,34,19,0.06)'}}>
                 <ShieldCheck size={20} style={{color:C.greenLight}} className="shrink-0 mt-0.5"/>
                 <p className="text-sm font-semibold leading-relaxed" style={{color:C.greenLight}}>University-grade secure checkout</p>
               </div>
@@ -1078,24 +1078,24 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
         height: 'min(740px, 80vh)',
         minHeight: '520px',
         borderRadius: '48px',
-        border: '10px solid #100b04',
-        background: '#1a1208',
+        border: '10px solid #0a1208',
+        background: '#0f2213',
         overflow: 'hidden',
         boxShadow: '0 40px 80px -10px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.05)',
       }}>
       {/* Notch */}
-      <div style={{position:'absolute', top:0, left:'50%', transform:'translateX(-50%)', width:'96px', height:'20px', borderRadius:'0 0 24px 24px', background:'#180f07', zIndex:40}}/>
+      <div style={{position:'absolute', top:0, left:'50%', transform:'translateX(-50%)', width:'96px', height:'20px', borderRadius:'0 0 24px 24px', background:'#0c1a0e', zIndex:40}}/>
 
       {/* Header */}
-      <div className="pb-4 px-5 border-b border-white/5" style={{background:'rgba(26,18,8,0.97)', paddingTop:'28px'}}>
+      <div className="pb-4 px-5 border-b border-white/5" style={{background:'rgba(15,34,19,0.97)', paddingTop:'28px'}}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{background:'rgba(136,110,76,0.1)', border:'1px solid rgba(136,110,76,0.25)'}}>
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{background:'rgba(92,184,50,0.1)', border:'1px solid rgba(92,184,50,0.25)'}}>
               <Zap size={20} style={{color:C.lime}}/>
             </div>
             <div>
               <p className="futura-heading text-white" style={{fontSize:'17px', lineHeight:'1.2'}}>{CAMPAIGNS[campaign]?.title}</p>
-              <p className="mono-label mt-0.5" style={{color:'rgba(136,110,76,0.6)', fontSize:'8px'}}>{CAMPAIGNS[campaign]?.sub}</p>
+              <p className="mono-label mt-0.5" style={{color:'rgba(92,184,50,0.6)', fontSize:'8px'}}>{CAMPAIGNS[campaign]?.sub}</p>
             </div>
           </div>
           <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full mono-label ${
@@ -1109,7 +1109,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
       </div>
 
       {/* Messages */}
-      <div ref={scrollRef} className="flex-1 px-4 py-4 overflow-y-auto space-y-3" style={{background:'#F5F0E8'}}>
+      <div ref={scrollRef} className="flex-1 px-4 py-4 overflow-y-auto space-y-3" style={{background:'#f4f7f2'}}>
         {messages.map(m => (
           <div key={m.id} className={`flex msg-enter ${m.role==='user' ? 'justify-end' : 'justify-start'}`}>
             {m.role === 'ai' && (
@@ -1141,7 +1141,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
                     const price = kvMap['price'] || null;
                     const row = kvMap['row'] || null;
                     return (
-                      <div key={li} className="mb-2.5 rounded-xl overflow-hidden" style={{border:'1px solid #e8dfc8'}}>
+                      <div key={li} className="mb-2.5 rounded-xl overflow-hidden" style={{border:'1px solid #dde8d8'}}>
                         <div className="px-3 py-2" style={{background:C.greenMid}}>
                           <div className="flex items-center justify-between gap-2">
                             <span className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
@@ -1150,7 +1150,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
                             {price && <span className="mono-label shrink-0" style={{color:C.lime, fontSize:'9px'}}>{price}</span>}
                           </div>
                         </div>
-                        <div className="px-3 py-2 flex flex-wrap gap-x-3 gap-y-1" style={{background:'#F5F0E8'}}>
+                        <div className="px-3 py-2 flex flex-wrap gap-x-3 gap-y-1" style={{background:'#f4f7f2'}}>
                           {date && <span className="text-xs font-semibold text-slate-500">📅 {date}</span>}
                           {section && <span className="text-xs font-semibold text-slate-500">🎟 {section}{row ? ` · Row ${row}` : ''}</span>}
                           {!date && !section && <span className="text-xs text-slate-400">{rest}</span>}
@@ -1213,8 +1213,8 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
 
       {/* Input bar */}
       {flowState === 'chat' && (
-        <div className="px-4 py-3 border-t border-white/5" style={{background:'rgba(26,18,8,0.97)'}}>
-          <div className="flex gap-2 items-center rounded-2xl px-4 py-2.5 border" style={{background:'rgba(255,255,255,0.07)', borderColor:'rgba(136,110,76,0.2)'}}>
+        <div className="px-4 py-3 border-t border-white/5" style={{background:'rgba(15,34,19,0.97)'}}>
+          <div className="flex gap-2 items-center rounded-2xl px-4 py-2.5 border" style={{background:'rgba(255,255,255,0.07)', borderColor:'rgba(92,184,50,0.2)'}}>
             <input type="text" value={inputValue}
               onChange={e => setInputValue(e.target.value)}
               onKeyPress={e => e.key === 'Enter' && handleSend()}
@@ -1228,7 +1228,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
               <Send size={15} style={{color:C.greenMid}}/>
             </button>
           </div>
-          <p className="mono-label text-center mt-2" style={{color:'rgba(255,255,255,0.18)', fontSize:'8px'}}>Ace · Wofford Terriers</p>
+          <p className="mono-label text-center mt-2" style={{color:'rgba(255,255,255,0.18)', fontSize:'8px'}}>Ace · Peak Sports AI</p>
         </div>
       )}
     </div>
@@ -1246,7 +1246,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:115000, tickets:1016, growth:'+18%', topZone:'Club Level',    avgPrice:113, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:101000, tickets:963,  growth:'+31%', topZone:'End Zone',      avgPrice:105, primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:97200,  tickets:899,  growth:'+12%', topZone:'Upper Deck',    avgPrice:108, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:77800,  tickets:736,  growth:'+9%',  topZone:'Home Sideline', avgPrice:106, primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:77800,  tickets:736,  growth:'+9%',  topZone:'Home Sideline', avgPrice:106, primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:62200,  tickets:594,  growth:'+7%',  topZone:'Upper Deck',    avgPrice:105, primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -1265,7 +1265,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:51200, tickets:468, growth:'+22%', topZone:'Club Level',    avgPrice:109, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:46800, tickets:429, growth:'+35%', topZone:'End Zone',      avgPrice:109, primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:44100, tickets:406, growth:'+15%', topZone:'Upper Deck',    avgPrice:109, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:35200, tickets:334, growth:'+11%', topZone:'Home Sideline', avgPrice:105, primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:35200, tickets:334, growth:'+11%', topZone:'Home Sideline', avgPrice:105, primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:30100, tickets:284, growth:'+8%',  topZone:'Upper Deck',    avgPrice:106, primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -1284,7 +1284,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:35100, tickets:312, growth:'+15%', topZone:'Court Side',    avgPrice:113, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:32400, tickets:296, growth:'+27%', topZone:'Lower Bowl',    avgPrice:109, primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:30200, tickets:276, growth:'+10%', topZone:'Lower Bowl',    avgPrice:109, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:23500, tickets:214, growth:'+7%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:23500, tickets:214, growth:'+7%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:19800, tickets:180, growth:'+5%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -1303,7 +1303,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:21400, tickets:196, growth:'+12%', topZone:'Lower Bowl',    avgPrice:109, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:16400, tickets:150, growth:'+22%', topZone:'Lower Bowl',    avgPrice:109, primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:14200, tickets:130, growth:'+8%',  topZone:'Lower Bowl',    avgPrice:109, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:11200, tickets:102, growth:'+6%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:11200, tickets:102, growth:'+6%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:8800,  tickets:80,  growth:'+4%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -1322,7 +1322,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:7300,  tickets:40,  growth:'+19%', topZone:'Infield Box',   avgPrice:183, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:5400,  tickets:88,  growth:'+24%', topZone:'Infield Box',   avgPrice:61,  primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:8700,  tickets:87,  growth:'+13%', topZone:'Infield Box',   avgPrice:100, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:7900,  tickets:86,  growth:'+8%',  topZone:'Infield Box',   avgPrice:92,  primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:7900,  tickets:86,  growth:'+8%',  topZone:'Infield Box',   avgPrice:92,  primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:3500,  tickets:50,  growth:'+5%',  topZone:'Infield Box',   avgPrice:70,  primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -1342,7 +1342,7 @@ const SCHOOL_LABELS = ['Ball St.','EKU','Akron','W. Ga.','Wofford','SE La.'];
 const InsightsTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl px-4 py-3 shadow-xl text-xs" style={{background:C.green, border:`1px solid rgba(136,110,76,0.3)`}}>
+    <div className="rounded-xl px-4 py-3 shadow-xl text-xs" style={{background:C.green, border:`1px solid rgba(92,184,50,0.3)`}}>
       <p className="font-black text-white mb-2">{label}</p>
       {payload.map((p,i) => (
         <p key={i} style={{color:p.color}} className="font-semibold">{p.name}: {p.value}</p>
@@ -1372,8 +1372,8 @@ const DataInsightsTab = () => {
             <button key={key} onClick={() => setSport(key)}
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all"
               style={sport === key
-                ? { background:C.greenMid, color:'white', boxShadow:`0 4px 14px rgba(26,18,8,0.3)` }
-                : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
+                ? { background:C.greenMid, color:'white', boxShadow:`0 4px 14px rgba(15,34,19,0.3)` }
+                : { background:'#f4f7f2', color:'#445544', border:'1px solid #dde8d8' }}>
               <span>{val.icon}</span> {val.label}
             </button>
           ))}
@@ -1385,7 +1385,7 @@ const DataInsightsTab = () => {
               <span className="mono-label text-slate-400" style={{fontSize:'9px'}}>SEASON PROGRESS</span>
               <span className="mono-label font-bold" style={{color:C.greenLight, fontSize:'9px'}}>{data.season}</span>
             </div>
-            <div className="h-2 rounded-full" style={{background:'#e8dfc8'}}>
+            <div className="h-2 rounded-full" style={{background:'#dde8d8'}}>
               <div className="h-full rounded-full transition-all duration-500"
                 style={{width:`${data.progress}%`, background: data.progress === 100 ? C.lime : data.progress < 20 ? '#e07b2a' : C.greenLight}}/>
             </div>
@@ -1492,11 +1492,6 @@ const DataInsightsTab = () => {
 // ============================================================
 const CRMTab = () => {
 const contacts = [
-  // Real Wofford / Terrier Sports Properties contacts
-  { id:0,  name:'Shawn Tyler',  school:'Wofford College', title:'Director of Sales — Terrier Sports Properties', tier:'Gold', email:'shawn@terriersportsproperties.com', phone:'(864) 597-4000', lastContact:'2 days ago', status:'hot',  spend:0, tags:['Sponsor','Key Contact'] },
-  { id:98, name:'Devin Foster', school:'Wofford College', title:'Ticketing — Terrier Sports Properties',          tier:'Gold', email:'devin@terriersportsproperties.com', phone:'(864) 597-4001', lastContact:'2 days ago', status:'hot',  spend:0, tags:['Ticketing','Key Contact'] },
-  { id:99, name:'Scott Kull',   school:'Wofford College', title:'Director of Athletics — Wofford College',       tier:'Gold', email:'kullsr@wofford.edu',               phone:'(864) 597-4002', lastContact:'5 days ago', status:'warm', spend:0, tags:['Admin','Decision Maker'] },
-  // Demo contacts
   { id:1,  name:'Marcus Webb',      school:'Wofford College',              title:'Season Ticket Holder',     tier:'Gold',   email:'m.webb@email.com',    phone:'(864) 555-0142', lastContact:'14 days ago', status:'warm',    spend:1240, tags:['Alumni','Renewal Due'] },
   { id:2,  name:'Priya Nair',       school:'SE Louisiana University',      title:'Alumni · Class of 2019',   tier:'Silver', email:'p.nair@email.com',    phone:'(985) 555-0198', lastContact:'32 days ago', status:'cold',    spend:480,  tags:['Alumni','Lapsed'] },
   { id:3,  name:'Derek Fontaine',   school:'University of Akron',          title:'Premium Suite Prospect',   tier:'Prospect',email:'d.fontaine@biz.com', phone:'(330) 555-0217', lastContact:'5 days ago',  status:'hot',     spend:0,    tags:['Suite','New Lead'] },
@@ -1525,7 +1520,7 @@ const [editMode, setEditMode]               = React.useState(false);
 const [editedEmail, setEditedEmail]         = React.useState('');
 
 const statusColor = s => ({ hot:'#ef4444', warm:'#f59e0b', cold:'#64748b' }[s] || '#64748b');
-const tierColor   = t => ({ Gold:'#886E4C', Silver:'#94a3b8', Bronze:'#e07b2a', Prospect:'#3b82f6' }[t] || '#64748b');
+const tierColor   = t => ({ Gold:'#5cb832', Silver:'#94a3b8', Bronze:'#e07b2a', Prospect:'#3b82f6' }[t] || '#64748b');
 
 const filteredContacts = filterStatus === 'all' ? contacts : filterStatus === 'movers' ? contacts.filter(c => c.tags.includes('New Mover')) : contacts.filter(c => c.status === filterStatus);
 
@@ -1581,7 +1576,7 @@ Write a compelling 3-4 paragraph email. Include a subject line at the top format
 };
 
 return (
-  <div className="fade-in -mx-5 md:-mx-10 -mt-5 md:-mt-10 px-5 md:px-12 pt-8 md:pt-12 pb-12 min-h-screen" style={{background:'#1a1208'}}>
+  <div className="fade-in -mx-5 md:-mx-10 -mt-5 md:-mt-10 px-5 md:px-12 pt-8 md:pt-12 pb-12 min-h-screen" style={{background:'#0f2213'}}>
   <div className="space-y-8 max-w-7xl mx-auto">
     <div>
       <p className="page-label mb-2">Pillar 3</p>
@@ -1604,9 +1599,9 @@ return (
 
     <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
       {/* Contact list — left panel */}
-      <div className="xl:col-span-2 bg-white rounded-3xl border-2 overflow-hidden shadow-sm" style={{borderColor:'#d4c4a0'}}>
+      <div className="xl:col-span-2 bg-white rounded-3xl border-2 overflow-hidden shadow-sm" style={{borderColor:'#c8dac8'}}>
         {/* List header */}
-        <div className="px-6 py-5 border-b flex items-center justify-between" style={{borderColor:'#d4c4a0'}}>
+        <div className="px-6 py-5 border-b flex items-center justify-between" style={{borderColor:'#c8dac8'}}>
           <div>
             <h3 className="text-lg font-black" style={{color:C.green}}>Contacts</h3>
             <p className="text-xs text-slate-400 font-semibold">{filteredContacts.length} of {contacts.length} shown</p>
@@ -1617,7 +1612,7 @@ return (
                 className="px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition-all"
                 style={filterStatus === s
                   ? { background: s==='all' ? C.green : s==='movers' ? '#0891b2' : statusColor(s), color:'white' }
-                  : { background:'#F5ECD8', color:'#4a3520' }}>
+                  : { background:'#eef3ee', color:'#4a6741' }}>
                 {s === 'movers' ? '📍 Movers' : s}
               </button>
             ))}
@@ -1630,7 +1625,7 @@ return (
               onClick={() => generateEmail(contact)}
               className="px-6 py-4 border-b cursor-pointer transition-all"
               style={{
-                borderColor:'#d4c4a0',
+                borderColor:'#c8dac8',
                 background: selectedContact?.id === contact.id ? '#e4ede4' : 'white',
                 borderLeft: selectedContact?.id === contact.id ? `4px solid ${C.gold}` : '4px solid transparent'
               }}>
@@ -1656,7 +1651,7 @@ return (
               <div className="flex flex-wrap gap-1.5 mt-2.5">
                 {contact.tags.map(tag => (
                   <span key={tag} className="text-xs px-2 py-0.5 rounded-lg font-semibold"
-                    style={{background:'#ede3cc', color:'#4a3520'}}>{tag}</span>
+                    style={{background:'#e4ede4', color:'#3a5c38'}}>{tag}</span>
                 ))}
               </div>
               <p className="text-xs text-slate-400 mt-2">Last contact: {contact.lastContact}
@@ -1670,8 +1665,8 @@ return (
       {/* Email composer — right panel */}
       <div className="xl:col-span-3 flex flex-col gap-5">
         {!selectedContact && !emailLoading && (
-          <div className="bg-white rounded-3xl border-2 flex flex-col items-center justify-center text-center p-16 shadow-sm" style={{borderColor:'#d4c4a0', minHeight:'400px'}}>
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5" style={{background:'rgba(136,110,76,0.10)'}}>
+          <div className="bg-white rounded-3xl border-2 flex flex-col items-center justify-center text-center p-16 shadow-sm" style={{borderColor:'#c8dac8', minHeight:'400px'}}>
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5" style={{background:'rgba(15,34,19,0.08)'}}>
               <Mail size={28} style={{color:C.green}}/>
             </div>
             <p className="text-xl font-black mb-2" style={{color:C.green}}>Select a Contact</p>
@@ -1680,8 +1675,8 @@ return (
         )}
 
         {emailLoading && (
-          <div className="bg-white rounded-3xl border-2 flex flex-col items-center justify-center text-center p-16 shadow-sm" style={{borderColor:'#d4c4a0', minHeight:'400px'}}>
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 animate-pulse" style={{background:'rgba(136,110,76,0.12)'}}>
+          <div className="bg-white rounded-3xl border-2 flex flex-col items-center justify-center text-center p-16 shadow-sm" style={{borderColor:'#c8dac8', minHeight:'400px'}}>
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 animate-pulse" style={{background:'rgba(92,184,50,0.12)'}}>
               <Sparkles size={28} style={{color:C.gold}}/>
             </div>
             <p className="text-xl font-black mb-2" style={{color:C.green}}>Drafting for {selectedContact?.name}...</p>
@@ -1692,7 +1687,7 @@ return (
         {selectedContact && generatedEmail && !emailLoading && (
           <>
             {/* Contact detail bar */}
-            <div className="bg-white rounded-2xl border-2 px-4 md:px-6 py-4 shadow-sm" style={{borderColor:'#d4c4a0'}}>
+            <div className="bg-white rounded-2xl border-2 px-4 md:px-6 py-4 shadow-sm" style={{borderColor:'#c8dac8'}}>
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black shrink-0 text-sm" style={{background:C.greenMid}}>
                   {selectedContact.name.split(' ').map(n=>n[0]).join('')}
@@ -1709,8 +1704,8 @@ return (
             </div>
 
             {/* Email body */}
-            <div className="bg-white rounded-3xl border-2 overflow-hidden shadow-sm flex flex-col" style={{borderColor:'#d4c4a0'}}>
-              <div className="px-6 py-4 border-b flex items-center justify-between" style={{borderColor:'#d4c4a0', background:'#F5ECD8'}}>
+            <div className="bg-white rounded-3xl border-2 overflow-hidden shadow-sm flex flex-col" style={{borderColor:'#c8dac8'}}>
+              <div className="px-6 py-4 border-b flex items-center justify-between" style={{borderColor:'#c8dac8', background:'#eef3ee'}}>
                 <div className="flex items-center gap-2">
                   <Sparkles size={16} style={{color:C.gold}}/>
                   <span className="text-sm font-black" style={{color:C.green}}>AI-Drafted · {campaigns.find(c=>c.id===crmCampaign)?.label}</span>
@@ -1735,10 +1730,10 @@ return (
               )}
 
               {/* Action bar */}
-              <div className="px-4 md:px-6 py-4 border-t flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3" style={{borderColor:'#d4c4a0', background:'#F5ECD8'}}>
+              <div className="px-4 md:px-6 py-4 border-t flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3" style={{borderColor:'#c8dac8', background:'#eef3ee'}}>
                 <button onClick={() => generateEmail(selectedContact)}
                   className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all border-2"
-                  style={{background:'#F5ECD8', color:'#4a3520', borderColor:'#d4c4a0'}}>
+                  style={{background:'#eef3ee', color:'#3a5c38', borderColor:'#c8dac8'}}>
                   <RefreshCw size={14}/> Regenerate
                 </button>
                 <div className="flex items-center gap-3 justify-end">
@@ -1773,7 +1768,7 @@ return (
         { label:'Emails Drafted',   value:'∞',   sub:'AI-powered' },
         { label:'Avg Response Rate',value:'34%', sub:'Industry avg: 21%', gold:true },
       ].map((s,i) => (
-        <div key={i} className="bg-white rounded-2xl border-2 p-6 shadow-sm" style={{borderColor:'#d4c4a0'}}>
+        <div key={i} className="bg-white rounded-2xl border-2 p-6 shadow-sm" style={{borderColor:'#c8dac8'}}>
           <p className="text-xs text-slate-400 font-semibold mb-1">{s.label}</p>
           <p className="text-3xl font-black" style={{color: s.gold ? C.gold : C.green}}>{s.value}</p>
           <p className="text-xs text-slate-400 font-semibold mt-1">{s.sub}</p>
@@ -1818,19 +1813,19 @@ export default function App() {
         <div className="flex md:flex-col items-center md:items-start gap-3 px-4 md:px-7 py-3 md:pt-8 md:pb-7" style={{borderBottom:'1px solid rgba(255,255,255,0.06)'}}>
           <div className="flex items-center gap-3 flex-shrink-0">
             <div className="relative w-9 h-9 md:w-11 md:h-11 flex items-center justify-center flex-shrink-0">
-              <div className="absolute inset-0 rounded-xl" style={{border:'1px solid rgba(136,110,76,0.35)', background:'rgba(136,110,76,0.08)'}}/>
+              <div className="absolute inset-0 rounded-xl" style={{border:'1px solid rgba(92,184,50,0.35)', background:'rgba(92,184,50,0.08)'}}/>
               <Zap size={16} style={{color:C.lime, position:'relative'}}/>
             </div>
             <div>
               <h1 className="futura-heading text-white" style={{fontSize:'22px', lineHeight:'1.1'}}>
                 Ace<span style={{color:C.limeBright}}>.</span><span style={{color:C.lime}}>ai</span>
               </h1>
-              <p className="mono-label text-white/25" style={{fontSize:'8px'}}>Wofford Terriers · SoCon</p>
+              <p className="mono-label text-white/25" style={{fontSize:'8px'}}>Ticketing Intelligence</p>
             </div>
           </div>
-          <div className="hidden md:block w-full mt-4 px-3 py-2.5 rounded-lg" style={{background:'rgba(136,110,76,0.05)', border:'1px solid rgba(136,110,76,0.15)'}}>
+          <div className="hidden md:block w-full mt-4 px-3 py-2.5 rounded-lg" style={{background:'rgba(92,184,50,0.05)', border:'1px solid rgba(92,184,50,0.15)'}}>
             <p className="mono-label text-white/25" style={{fontSize:'8px', marginBottom:'2px'}}>Powered By</p>
-            <p className="futura-heading text-white/70" style={{fontSize:'13px'}}>Wofford College</p>
+            <p className="futura-heading text-white/70" style={{fontSize:'13px'}}>Peak Sports MGMT</p>
           </div>
         </div>
 
@@ -1855,7 +1850,7 @@ export default function App() {
 
         {/* System status — desktop only */}
         <div className="sys-status-block">
-          <div className="p-4 rounded-xl" style={{background:'rgba(136,110,76,0.04)', border:'1px solid rgba(136,110,76,0.1)'}}>
+          <div className="p-4 rounded-xl" style={{background:'rgba(92,184,50,0.04)', border:'1px solid rgba(92,184,50,0.1)'}}>
             <div className="flex items-center gap-2.5 mb-2">
               <div className="status-dot"/>
               <span className="futura-heading text-white/45" style={{fontSize:'13px'}}>All Systems Nominal</span>
@@ -1888,12 +1883,12 @@ export default function App() {
                         border: activeCampaign === c ? `2px solid ${C.greenMid}` : `2px solid ${C.slateLight}`,
                         background: activeCampaign === c ? C.greenMid : 'white',
                         color: activeCampaign === c ? 'white' : C.slate,
-                        boxShadow: activeCampaign === c ? '0 8px 32px rgba(26,18,8,0.25)' : 'none',
+                        boxShadow: activeCampaign === c ? '0 8px 32px rgba(15,34,19,0.25)' : 'none',
                         cursor:'pointer', transition:'all 0.2s ease',
                       }}>
                       <div className="flex items-center gap-4">
                         <div className="w-11 h-11 rounded-xl flex items-center justify-center"
-                          style={activeCampaign === c ? { background:'rgba(136,110,76,0.15)' } : { background:C.offWhite }}>
+                          style={activeCampaign === c ? { background:'rgba(92,184,50,0.15)' } : { background:C.offWhite }}>
                           <span style={activeCampaign === c ? {color:C.lime} : {color:C.greenLight}}>{CAMPAIGNS[c].icon}</span>
                         </div>
                         <div>
@@ -1947,8 +1942,8 @@ export default function App() {
               { school:'SE La.',     tickets:198, revenue:17200 },
             ];
             const zoneData = [
-              { zone:'Home Sideline', sales:892, revenue:89200, fill:'#2a1e0e' },
-              { zone:'Club Level',    sales:156, revenue:35880, fill:'#886E4C' },
+              { zone:'Home Sideline', sales:892, revenue:89200, fill:'#1a3d20' },
+              { zone:'Club Level',    sales:156, revenue:35880, fill:'#5cb832' },
               { zone:'End Zones',     sales:634, revenue:28530, fill:'#1e6b44' },
               { zone:'Upper Deck',    sales:1102, revenue:38570, fill:'#1e3f6e' },
               { zone:'Away Side',     sales:420, revenue:31500, fill:'#2d6a4f' },
@@ -1962,7 +1957,7 @@ export default function App() {
             const CustomTooltip = ({ active, payload, label }) => {
               if (!active || !payload?.length) return null;
               return (
-                <div className="rounded-xl px-4 py-3 shadow-xl text-sm" style={{background:C.green, border:`1px solid rgba(136,110,76,0.3)`}}>
+                <div className="rounded-xl px-4 py-3 shadow-xl text-sm" style={{background:C.green, border:`1px solid rgba(92,184,50,0.3)`}}>
                   <p className="font-black text-white mb-1">{label}</p>
                   {payload.map((p,i) => (
                     <p key={i} style={{color:p.color || C.gold}} className="font-semibold">
@@ -1991,7 +1986,7 @@ export default function App() {
                       <p className="mono-label mb-2" style={{color: k.dark ? 'rgba(255,255,255,0.35)' : '#94a3b8'}}>{k.label}</p>
                       <p className={`futura-heading leading-none ${k.dark ? 'gold-glow' : ''} ${k.cognac ? 'cognac-glow' : ''}`}
                         style={{fontSize:'clamp(22px,4vw,36px)', color: k.dark ? C.gold : k.cognac ? C.cognac : C.greenMid}}>{k.value}</p>
-                      <p className="mono-label mt-2 md:mt-3" style={{color: k.dark ? 'rgba(136,110,76,0.6)' : '#94a3b8'}}>{k.sub}</p>
+                      <p className="mono-label mt-2 md:mt-3" style={{color: k.dark ? 'rgba(92,184,50,0.6)' : '#94a3b8'}}>{k.sub}</p>
                     </div>
                   ))}
                 </div>
@@ -2081,7 +2076,7 @@ export default function App() {
                           {zoneData.map((z,i) => <Cell key={i} fill={z.fill}/>)}
                         </Pie>
                         <Tooltip formatter={(v,n)=>[v.toLocaleString()+' tickets', n]}
-                          contentStyle={{background:C.green, border:`1px solid rgba(136,110,76,0.3)`, borderRadius:12, color:'white', fontSize:12, fontWeight:700}}/>
+                          contentStyle={{background:C.green, border:`1px solid rgba(92,184,50,0.3)`, borderRadius:12, color:'white', fontSize:12, fontWeight:700}}/>
                       </PieChart>
                     </ResponsiveContainer>
                     <div className="space-y-3">
@@ -2197,15 +2192,15 @@ export default function App() {
                 {/* AFTER */}
                 <div className="rounded-2xl overflow-hidden border-2" style={{borderColor:C.lime}}>
                   <div className="px-6 py-4 flex items-center gap-3" style={{background:C.greenMid, borderBottom:`2px solid ${C.lime}`}}>
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{background:'rgba(136,110,76,0.2)'}}>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{background:'rgba(92,184,50,0.2)'}}>
                       <span style={{fontSize:'16px'}}>⚡</span>
                     </div>
                     <div>
                       <p className="futura-heading text-white" style={{fontSize:'16px'}}>After — Ace Automated</p>
-                      <p className="mono-label" style={{fontSize:'8px', color:'rgba(136,110,76,0.7)'}}>How it works with Simply Genius</p>
+                      <p className="mono-label" style={{fontSize:'8px', color:'rgba(92,184,50,0.7)'}}>How it works with Simply Genius</p>
                     </div>
                   </div>
-                  <div className="p-6 space-y-4" style={{background:'#F5F0E8'}}>
+                  <div className="p-6 space-y-4" style={{background:'#f4f7f2'}}>
                     {[
                       { step:'1', title:'Contacts sync automatically', detail:'Ace pulls from your CRM, filters by school, status, and campaign type', time:'0 min', auto:true },
                       { step:'2', title:'AI reads every profile', detail:'Purchase history, last contact date, spend, tags — all processed instantly', time:'0 min', auto:true },
@@ -2214,13 +2209,13 @@ export default function App() {
                       { step:'5', title:'Follow-ups queued automatically', detail:'Ace tracks replies and stages follow-ups based on response — or no response', time:'0 min', auto:true },
                     ].map((s,i) => (
                       <div key={i} className="flex gap-3 items-start">
-                        <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5" style={{background:'rgba(136,110,76,0.2)', color:C.greenMid}}>{s.step}</div>
+                        <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5" style={{background:'rgba(92,184,50,0.2)', color:C.greenMid}}>{s.step}</div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between gap-2">
                             <p className="futura-heading" style={{fontSize:'14px', color:C.greenMid}}>{s.title}</p>
-                            <span className="mono-label flex-shrink-0 px-2 py-0.5 rounded-lg" style={{background:'rgba(136,110,76,0.15)', color:C.greenMid, fontSize:'8px'}}>{s.time}</span>
+                            <span className="mono-label flex-shrink-0 px-2 py-0.5 rounded-lg" style={{background:'rgba(92,184,50,0.15)', color:C.greenMid, fontSize:'8px'}}>{s.time}</span>
                           </div>
-                          <p className="text-xs mt-0.5 leading-relaxed" style={{color:'#3a2e1e'}}>{s.detail}</p>
+                          <p className="text-xs mt-0.5 leading-relaxed" style={{color:'#445544'}}>{s.detail}</p>
                         </div>
                       </div>
                     ))}
@@ -2229,14 +2224,14 @@ export default function App() {
                         <span className="futura-heading" style={{fontSize:'14px', color:C.greenMid}}>Total time per campaign</span>
                         <span className="futura-heading" style={{fontSize:'22px', color:C.lime}}>~5 min</span>
                       </div>
-                      <p className="text-xs mt-1" style={{color:'#3a2e1e'}}>Rep reviews drafts · Ace handles everything else</p>
+                      <p className="text-xs mt-1" style={{color:'#445544'}}>Rep reviews drafts · Ace handles everything else</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* ROI callout */}
-              <div className="rounded-2xl p-6 md:p-8" style={{background:`linear-gradient(145deg, #180f07, #2a1e0e)`, border:'1px solid rgba(136,110,76,0.12)'}}>
+              <div className="rounded-2xl p-6 md:p-8" style={{background:`linear-gradient(145deg, #0c1a0e, #132118)`, border:'1px solid rgba(92,184,50,0.12)'}}>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                   {[
                     { label:'Time saved per rep', value:'~9 hrs/wk', sub:'Per school per campaign cycle' },
@@ -2246,7 +2241,7 @@ export default function App() {
                     <div key={i}>
                       <p className="mono-label mb-2" style={{color:'rgba(255,255,255,0.35)', fontSize:'9px'}}>{s.label}</p>
                       <p className="futura-heading" style={{fontSize:'clamp(24px,3vw,36px)', color:C.lime}}>{s.value}</p>
-                      <p className="mono-label mt-1" style={{color:'rgba(136,110,76,0.5)', fontSize:'8px'}}>{s.sub}</p>
+                      <p className="mono-label mt-1" style={{color:'rgba(92,184,50,0.5)', fontSize:'8px'}}>{s.sub}</p>
                     </div>
                   ))}
                 </div>
