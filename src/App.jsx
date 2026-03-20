@@ -68,7 +68,7 @@ const CAMPAIGNS = {
     title: "Ticket Sales",
     sub: "Live inventory · Real-time pricing",
     icon: <span style={{fontSize:'20px'}}>🐾</span>,
-    initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🏈 Big game this Saturday. I noticed you were in Sec ${fan.lastPurchase.section} last time — want me to check what's available nearby?`,
+    initial: (fan) => `Woof! Hey ${fan.name.split(' ')[0]}! 🐾 Boss here — your Wofford Terriers ticket rep. Next home game at Gibbs Stadium is coming up fast. Want me to find you something near Sec ${fan.lastPurchase.section}?`,
     systemPrompt: (fan) => `You are Ace, an expert ticket sales rep for Peak Sports MGMT at a mid-major college athletics program. Your goal is to sell tickets — season plans, single-game tickets, flex plans, and group packages.
 
 Fan profile: ${fan.name}, loyalty tier: ${fan.loyaltyTier}, last seat: Section ${fan.lastPurchase.section} Row ${fan.lastPurchase.row}.
@@ -79,7 +79,7 @@ Use the inventory database tool to find available seats. Suggest options near th
     title: "Sponsorship Sales",
     sub: "Corporate partners · Package builder",
     icon: <Trophy size={20} />,
-    initial: (fan) => `Hi ${fan.name.split(' ')[0]}! I'm reaching out about sponsorship opportunities for the upcoming season. We have openings across digital signage, in-game promotions, and hospitality packages. What budget range are you working with?`,
+    initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🏆 Boss here from Terrier Sports Properties. We have some strong sponsorship openings for Wofford athletics this season — football at Gibbs and basketball at JRIS. What's your primary goal — visibility, leads, or hospitality?`,
     systemPrompt: (fan) => `You are Ace, an expert sponsorship sales rep for Peak Sports MGMT. Your goal is to sell corporate sponsorship packages to local businesses, regional brands, and corporate partners.
 
 Contact: ${fan.name}, tier: ${fan.loyaltyTier}.
@@ -102,7 +102,7 @@ CRITICAL INSTRUCTIONS:
     title: "Hospitality & Suites",
     sub: "VIP access · Priority booking",
     icon: <Star size={20} />,
-    initial: (fan) => `Good afternoon ${fan.name.split(' ')[0]}. We're opening Club Level suites for the next home stand. As a ${fan.loyaltyTier} member, you have priority access.`,
+    initial: (fan) => `Good afternoon ${fan.name.split(' ')[0]}. The Mungo Room at Gibbs Stadium and Club 51 at JRIS are both open for the upcoming season. As a ${fan.loyaltyTier} member you have priority. Football or basketball first?`,
     systemPrompt: (fan) => `You are Ace, a premium hospitality sales rep for Peak Sports MGMT. Your goal is to sell Club Level suites and VIP hospitality experiences.
 
 Contact: ${fan.name}, loyalty tier: ${fan.loyaltyTier} — they have priority access.
@@ -113,7 +113,7 @@ Suite packages include all-inclusive food and beverage, private seating for 10-2
     title: "Alumni Outreach",
     sub: "Class reunion · Group seating",
     icon: <Users size={20} />,
-    initial: (fan) => `Hi ${fan.name.split(' ')[0]}! 🎓 We have a reunion block reserved for your class. Ready to lock in your pass?`,
+    initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🎓 Once a Terrier, always a Terrier. We're building out alumni sections for Wofford home games this season — Gibbs Stadium in the fall, JRIS in the winter. What year did you graduate?`,
     systemPrompt: (fan) => `You are Ace, an alumni relations and group sales rep for Peak Sports MGMT. Your goal is to sell group ticket packages and alumni reunion blocks.
 
 Contact: ${fan.name}, loyalty tier: ${fan.loyaltyTier}.
@@ -1440,13 +1440,13 @@ const DataInsightsTab = () => {
 const CRMTab = () => {
 const contacts = [
   { id:1,  name:'Marcus Webb',      school:'Wofford College',              title:'Season Ticket Holder',     tier:'Gold',   email:'m.webb@email.com',    phone:'(864) 555-0142', lastContact:'14 days ago', status:'warm',    spend:1240, tags:['Alumni','Renewal Due'] },
-  { id:2,  name:'Priya Nair',       school:'SE Louisiana University',      title:'Alumni · Class of 2019',   tier:'Silver', email:'p.nair@email.com',    phone:'(985) 555-0198', lastContact:'32 days ago', status:'cold',    spend:480,  tags:['Alumni','Lapsed'] },
-  { id:3,  name:'Derek Fontaine',   school:'University of Akron',          title:'Premium Suite Prospect',   tier:'Prospect',email:'d.fontaine@biz.com', phone:'(330) 555-0217', lastContact:'5 days ago',  status:'hot',     spend:0,    tags:['Suite','New Lead'] },
-  { id:4,  name:'Sandra Liu',       school:'Ball State University',        title:'Corporate Sponsor',        tier:'Gold',   email:'s.liu@corp.com',      phone:'(765) 555-0089', lastContact:'7 days ago',  status:'warm',    spend:3800, tags:['Sponsor','Renewal'] },
-  { id:5,  name:'James Okafor',     school:'Eastern Kentucky University',  title:'Group Sales Lead',         tier:'Silver', email:'j.okafor@email.com',  phone:'(859) 555-0334', lastContact:'21 days ago', status:'cold',    spend:620,  tags:['Group','Lapsed'] },
-  { id:6,  name:'Tori Blanchard',   school:'University of West Georgia',   title:'Parent · Student Athlete', tier:'Bronze', email:'t.blanchard@email.com',phone:'(678) 555-0411', lastContact:'60 days ago', status:'cold',    spend:190,  tags:['Parent','At Risk'] },
+  // { id:2,  name:'Priya Nair',       school:'SE Louisiana University',      title:'Alumni · Class of 2019',   tier:'Silver', email:'p.nair@email.com',    phone:'(985) 555-0198', lastContact:'32 days ago', status:'cold',    spend:480,  tags:['Alumni','Lapsed'] },
+  // { id:3,  name:'Derek Fontaine',   school:'University of Akron',          title:'Premium Suite Prospect',   tier:'Prospect',email:'d.fontaine@biz.com', phone:'(330) 555-0217', lastContact:'5 days ago',  status:'hot',     spend:0,    tags:['Suite','New Lead'] },
+  // { id:4,  name:'Sandra Liu',       school:'Ball State University',        title:'Corporate Sponsor',        tier:'Gold',   email:'s.liu@corp.com',      phone:'(765) 555-0089', lastContact:'7 days ago',  status:'warm',    spend:3800, tags:['Sponsor','Renewal'] },
+  // { id:5,  name:'James Okafor',     school:'Eastern Kentucky University',  title:'Group Sales Lead',         tier:'Silver', email:'j.okafor@email.com',  phone:'(859) 555-0334', lastContact:'21 days ago', status:'cold',    spend:620,  tags:['Group','Lapsed'] },
+  // { id:6,  name:'Tori Blanchard',   school:'University of West Georgia',   title:'Parent · Student Athlete', tier:'Bronze', email:'t.blanchard@email.com',phone:'(678) 555-0411', lastContact:'60 days ago', status:'cold',    spend:190,  tags:['Parent','At Risk'] },
   { id:7,  name:'Chris Alvarez',    school:'Wofford College',              title:'Local Business Owner',     tier:'Prospect',email:'c.alvarez@biz.com',  phone:'(864) 555-0556', lastContact:'2 days ago',  status:'hot',     spend:0,    tags:['Sponsor','New Lead'] },
-  { id:8,  name:'Nkechi Obi',       school:'SE Louisiana University',      title:'Alumni · Donor',           tier:'Gold',   email:'n.obi@email.com',     phone:'(985) 555-0677', lastContact:'10 days ago', status:'warm',    spend:2100, tags:['Alumni','VIP'] },
+  // { id:8,  name:'Nkechi Obi',       school:'SE Louisiana University',      title:'Alumni · Donor',           tier:'Gold',   email:'n.obi@email.com',     phone:'(985) 555-0677', lastContact:'10 days ago', status:'warm',    spend:2100, tags:['Alumni','VIP'] },
 ];
 
 const campaigns = [
@@ -1941,9 +1941,9 @@ export default function App() {
                 {/* KPI row */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                   {[
-                    { label:'Ticket Revenue',      value:`$${(148100 + totalTicketRevenue).toLocaleString()}`, sub:'All schools · YTD', dark:true },
-                    { label:'Sponsorship Revenue', value:'$188,000',  sub:'Packages closed · YTD', dark:true },
-                    { label:'Tickets Sold',        value:(1640 + ticketTransactions.length).toLocaleString(), sub:'+18% vs last season' },
+                    { label:'Ticket Revenue',      value:`${(74700 + totalTicketRevenue).toLocaleString()}`, sub:'Wofford Terriers · YTD', dark:true },
+                    { label:'Sponsorship Revenue', value:'$48,500',   sub:'Wofford · Packages closed', dark:true },
+                    { label:'Tickets Sold',        value:(745 + ticketTransactions.length).toLocaleString(),  sub:'+22% vs last season' },
                     { label:'Conversion Rate',     value:'44.2%',     sub:'Lead → purchase', cognac:true },
                   ].map((k,i) => (
                     <div key={i} className={`p-4 md:p-7 ${k.dark ? 'kpi-dark' : 'data-card'}`}>
@@ -1961,7 +1961,7 @@ export default function App() {
                     <TrendingUp size={22} style={{color:C.gold}}/>
                     <div>
                       <h3 className="futura-heading" style={{fontSize:'22px', color:C.greenMid}}>Revenue Over Time</h3>
-                      <p className="mono-label text-slate-400">Ticket Sales vs Sponsorship · all 6 schools · YTD</p>
+                      <p className="mono-label text-slate-400">Ticket Sales vs Sponsorship · Wofford Terriers · YTD</p>
                     </div>
                   </div>
                   <ResponsiveContainer width="100%" height={260}>
@@ -1984,8 +1984,8 @@ export default function App() {
                     <div className="flex items-center gap-3 mb-6">
                       <Users size={22} style={{color:C.gold}}/>
                       <div>
-                        <h3 className="futura-heading" style={{fontSize:'22px', color:C.greenMid}}>Tickets by School</h3>
-                        <p className="mono-label text-slate-400">Total sold per program</p>
+                        <h3 className="futura-heading" style={{fontSize:'22px', color:C.greenMid}}>Tickets by Sport</h3>
+                        <p className="mono-label text-slate-400">Wofford Terriers · Tickets sold per sport</p>
                       </div>
                     </div>
                     <ResponsiveContainer width="100%" height={220}>
