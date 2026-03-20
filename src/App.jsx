@@ -1731,6 +1731,124 @@ return (
 // ============================================================
 // MAIN APP
 // ============================================================
+
+const SCHOOL_LIBRARY = {
+  wofford:        { id:'wofford',        name:'Wofford College',             short:'Wofford',       mascot:'Terriers',     mascotName:'Boss',            conference:'SoCon',     location:'Spartanburg, SC', tier:'Small',     colors:{ primary:'#1a1208', accent:'#886E4C', accent2:'#C7B37F', bg:'#F5F0E8', border:'#e8dfc8' }, agent:{ name:'Shawn Tyler',    email:'shawn@terriersportsproperties.com', title:'Director of Sales'           }, venue:{ football:'Gibbs Stadium',        capacity:'13,000', basketball:'Jerry Richardson Indoor Stadium', bCap:'3,400'  }, sponsors:['Hub City Tap House','Beacon Drive-In','Spartanburg Regional Medical','R.J. Rockers Brewing'],      emoji:'🐾' },
+  eku:            { id:'eku',            name:'Eastern Kentucky',            short:'EKU',           mascot:'Colonels',     mascotName:'Colonel',         conference:'ASUN',      location:'Richmond, KY',    tier:'Small',     colors:{ primary:'#3d0018', accent:'#8A0039', accent2:'#ffffff', bg:'#FFF5F8', border:'#f0d0da' }, agent:{ name:'Hunter Ellis',   email:'hellis@ekusports.com',              title:'Director Ticket Sales'       }, venue:{ football:'Roy Kidd Stadium',     capacity:'20,000', basketball:'McBrayer Arena',                  bCap:'6,500'  }, sponsors:["Mango's Restaurant","Rick's White Light Diner",'Eastern Kentucky Power','Jerzees Bar & Grill'], emoji:'⚔️' },
+  ballstate:      { id:'ballstate',      name:'Ball State University',       short:'Ball State',    mascot:'Cardinals',    mascotName:'Charlie Cardinal',conference:'MAC',       location:'Muncie, IN',      tier:'Mid-Major', colors:{ primary:'#4a0010', accent:'#BA0C2F', accent2:'#ffffff', bg:'#FFF5F6', border:'#f0d0d4' }, agent:{ name:'Kyle Teegardin', email:'kteegardin@peaksportsmgmt.com',    title:'Regional Sales Director'     }, venue:{ football:'Scheumann Stadium',    capacity:'22,500', basketball:'Worthen Arena',                   bCap:'11,500' }, sponsors:['Elm Street Brewing','Muncie Power Products','IU Health Ball Memorial',"Vera Mae's Bistro"],     emoji:'🔴' },
+  akron:          { id:'akron',          name:'University of Akron',         short:'Akron',         mascot:'Zips',         mascotName:'Zippy',           conference:'MAC',       location:'Akron, OH',       tier:'Mid-Major', colors:{ primary:'#010e24', accent:'#041E42', accent2:'#A89968', bg:'#F5F6FA', border:'#d0d4e8' }, agent:{ name:'Zach Vos',       email:'zvos@peaksportsmgmt.com',           title:'VP Revenue Generation'       }, venue:{ football:'InfoCision Stadium',   capacity:'30,000', basketball:'Rhodes Arena',                    bCap:'5,500'  }, sponsors:['Goodyear Tire','FirstEnergy',"Swenson's Drive-In",'Akron Children's Hospital'],               emoji:'🦘' },
+  westgeorgia:    { id:'westgeorgia',    name:'Univ. of West Georgia',       short:'West Georgia',  mascot:'Wolves',       mascotName:'Wolfie',          conference:'ASUN',      location:'Carrollton, GA',  tier:'Small',     colors:{ primary:'#0a1a38', accent:'#003087', accent2:'#C8A951', bg:'#F5F7FF', border:'#d0d8f0' }, agent:{ name:'Katie Moore',    email:'kmoore@peaksportsmgmt.com',         title:'Sr. Director Revenue Ops'    }, venue:{ football:'University Stadium',   capacity:'11,000', basketball:'Coliseum',                        bCap:'4,200'  }, sponsors:['TrueCore Federal Credit Union','Southwire','Georgia Primary Bank','Fork in the Road'],          emoji:'🐺' },
+  selouisiana:    { id:'selouisiana',    name:'SE Louisiana University',     short:'SE Louisiana',  mascot:'Lions',        mascotName:'Leo',             conference:'Southland', location:'Hammond, LA',     tier:'Small',     colors:{ primary:'#1a0a00', accent:'#006341', accent2:'#FFD100', bg:'#F5FFF9', border:'#c8eedd' }, agent:{ name:'Greyson Allen',  email:'gallen@peaksportsmgmt.com',         title:'Chief of Staff'              }, venue:{ football:'Strawberry Stadium',   capacity:'16,000', basketball:'University Center',               bCap:'7,500'  }, sponsors:['Smoothie King','City Pork',"Raising Cane's",'Hammond Brewing Co.'],                             emoji:'🦁' },
+  lindenwood:     { id:'lindenwood',     name:'Lindenwood University',       short:'Lindenwood',    mascot:'Lions',        mascotName:'Louie',           conference:'OVC',       location:'St. Charles, MO', tier:'Small',     colors:{ primary:'#1a0a08', accent:'#8B0000', accent2:'#FFD700', bg:'#FFF5F5', border:'#f0d0d0' }, agent:{ name:'Kyle Teegardin', email:'kteegardin@peaksportsmgmt.com',    title:'Regional Sales Director'     }, venue:{ football:'Hunter Stadium',       capacity:'5,000',  basketball:'Hyland Arena',                    bCap:'3,500'  }, sponsors:['World Wide Technology','Brown Shoe Company','St. Charles Toyota','Lewis Rice LLC'],              emoji:'🦁' },
+  easternillinois:{ id:'easternillinois',name:'Eastern Illinois University', short:'Eastern IL',    mascot:'Panthers',     mascotName:'Billy',           conference:'OVC',       location:'Charleston, IL',  tier:'Small',     colors:{ primary:'#001F5B', accent:'#004B8D', accent2:'#A89A6F', bg:'#F5F7FF', border:'#d0d8f0' }, agent:{ name:'Greyson Allen',  email:'gallen@peaksportsmgmt.com',         title:'Chief of Staff'              }, venue:{ football:"O'Brien Field",        capacity:'10,000', basketball:'Groniger Arena',                  bCap:'5,300'  }, sponsors:['First Mid Bank','Checkered Flag Sports Bar','Sarah Bush Lincoln Health'],                        emoji:'🐾' },
+  centralarkansas: { id:'centralarkansas',name:'Central Arkansas',          short:'UCA',           mascot:'Bears',        mascotName:'Sugar Bear',      conference:'Southland', location:'Conway, AR',      tier:'Small',     colors:{ primary:'#1a0830', accent:'#4B0082', accent2:'#A89A6F', bg:'#F8F5FF', border:'#e0d0f0' }, agent:{ name:'Zach Vos',       email:'zvos@peaksportsmgmt.com',           title:'VP Revenue Generation'       }, venue:{ football:'Estes Stadium',        capacity:'11,000', basketball:'Farris Center',                   bCap:'7,200'  }, sponsors:['Acxiom','Snap-on Tools','Conway Regional Health','Bear State Financial'],                        emoji:'🐻' },
+  northerncolorado:{ id:'northerncolorado',name:'Northern Colorado',        short:'UNC Bears',     mascot:'Bears',        mascotName:'Klawz',           conference:'Big Sky',   location:'Greeley, CO',     tier:'Small',     colors:{ primary:'#001a2e', accent:'#013C65', accent2:'#F4BC00', bg:'#F5F9FF', border:'#c8dcf0' }, agent:{ name:'Katie Moore',    email:'kmoore@peaksportsmgmt.com',         title:'Sr. Director Revenue Ops'    }, venue:{ football:'Nottingham Field',     capacity:'8,500',  basketball:'Bank of Colorado Arena',          bCap:'4,500'  }, sponsors:['Aims Community College','Scheels Sports','Banner Health','Greeley Stampede'],                    emoji:'🐻' },
+  southernutah:   { id:'southernutah',   name:'Southern Utah University',   short:'SUU',           mascot:'Thunderbirds', mascotName:'Thunder',         conference:'WAC',       location:'Cedar City, UT',  tier:'Small',     colors:{ primary:'#1a0808', accent:'#CC0000', accent2:'#ffffff', bg:'#FFF5F5', border:'#f0d0d0' }, agent:{ name:'Shawn Tyler',    email:'shawn@terriersportsproperties.com', title:'Director of Sales'           }, venue:{ football:'Eccles Coliseum',      capacity:'11,500', basketball:'America First Event Center',       bCap:'5,300'  }, sponsors:['Utah Shakespeare Festival','Zions Bank','IHC Health','Cedar City Ford'],                         emoji:'⚡' },
+  utahtech:       { id:'utahtech',       name:'Utah Tech University',       short:'Utah Tech',     mascot:'Trailblazers', mascotName:'Blaze',           conference:'WAC',       location:'St. George, UT',  tier:'Small',     colors:{ primary:'#0a1a08', accent:'#1B5E20', accent2:'#FF6F00', bg:'#F5FFF5', border:'#c8eec8' }, agent:{ name:'Hunter Ellis',   email:'hellis@ekusports.com',              title:'Director Ticket Sales'       }, venue:{ football:'Greater Zion Stadium', capacity:'10,000', basketball:'Burns Arena',                     bCap:'5,000'  }, sponsors:['Sunroc Corporation','Red Cliffs Mall','Dixie Regional Medical','Zions Bank'],                    emoji:'🔥' },
+};
+
+// Membership tiers
+const MEMBERSHIP_TIERS = {
+  standard: { id:'standard', label:'Standard',        color:'#94a3b8', bg:'#f8fafc', price:0,   perks:['General admission access','Standard pricing','Mobile ticketing'],                                                                              sections:['general','bleacher','visitor'],                                      discount:0    },
+  gold:     { id:'gold',     label:'Gold Member',     color:'#d97706', bg:'#fffbeb', price:99,  perks:['Priority ticket access','10% discount on all tickets','Exclusive Gold sections','Free parking (select games)'],                               sections:['general','bleacher','visitor','home_chairback','home_bleacher'],     discount:0.10 },
+  platinum: { id:'platinum', label:'Platinum Member', color:'#7c3aed', bg:'#faf5ff', price:249, perks:['Early presale access (48 hrs)','20% discount on all tickets','Club & VIP sections unlocked','Complimentary parking','In-seat food delivery'], sections:['all'],                                                               discount:0.20 },
+  alumni:   { id:'alumni',   label:'Alumni Member',   color:'#886E4C', bg:'#fdf8f0', price:149, perks:['Alumni reunion section access','15% loyalty discount','Exclusive alumni events','Legacy pricing locked in'],                                   sections:['general','bleacher','home_chairback','south_ez','alumni'],           discount:0.15 },
+};
+
+// Bundle deals
+const BUNDLE_DEALS = [
+  { minQty:2,  label:'Pair Deal',    discount:0,    badge:null,             msg:'' },
+  { minQty:4,  label:'Group of 4',  discount:0.10, badge:'10% OFF',        msg:'Save 10% — perfect for families!' },
+  { minQty:6,  label:'Group of 6+', discount:0.15, badge:'15% OFF',        msg:'Group discount applied automatically!' },
+  { minQty:10, label:'Group of 10+',discount:0.20, badge:'20% OFF + PERKS',msg:'Best value! 20% off + group check-in lane.' },
+];
+const getBundleDeal = (qty) => { const d = BUNDLE_DEALS.filter(b => qty >= b.minQty); return d.length ? d[d.length-1] : BUNDLE_DEALS[0]; };
+
+
+
+const SchoolGallery = ({ activeId, onSelect }) => {
+  const [search, setSearch] = React.useState('');
+  const [expanded, setExpanded] = React.useState(false);
+  const schools = Object.values(SCHOOL_LIBRARY);
+  const filtered = search ? schools.filter(s =>
+    s.name.toLowerCase().includes(search.toLowerCase()) ||
+    s.conference.toLowerCase().includes(search.toLowerCase()) ||
+    s.location.toLowerCase().includes(search.toLowerCase())
+  ) : schools;
+  const activeSchool = SCHOOL_LIBRARY[activeId] || SCHOOL_LIBRARY.wofford;
+
+  return (
+    <div style={{background:'#ffffff', borderBottom:'2px solid #e8dfc8', padding:'10px 16px'}}>
+      {/* Top row: label + active school + toggle */}
+      <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', gap:8}}>
+        <div style={{display:'flex', alignItems:'center', gap:8, minWidth:0}}>
+          <div style={{width:8, height:8, borderRadius:'50%', background:'#886E4C', flexShrink:0}}/>
+          <span style={{fontFamily:"'Space Mono',monospace", fontSize:11, letterSpacing:'0.1em', textTransform:'uppercase', color:'#886E4C', flexShrink:0}}>Demo</span>
+          {/* Active school chip */}
+          <div style={{display:'flex', alignItems:'center', gap:6, padding:'4px 10px', borderRadius:20, background:activeSchool.colors.primary, flexShrink:0}}>
+            <span style={{fontSize:14}}>{activeSchool.emoji}</span>
+            <span style={{fontFamily:"'Rajdhani',sans-serif", fontWeight:700, fontSize:13, color:'white', whiteSpace:'nowrap'}}>{activeSchool.short}</span>
+            <span style={{fontFamily:"'Space Mono',monospace", fontSize:10, color:activeSchool.colors.accent2, opacity:0.8}}>{activeSchool.conference}</span>
+          </div>
+        </div>
+        {/* Toggle button — min 44px touch target */}
+        <button
+          type="button"
+          onClick={() => setExpanded(e => !e)}
+          style={{minWidth:44, minHeight:44, padding:'0 12px', borderRadius:10, border:'1px solid #e8dfc8', background:'#F5F0E8', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:4, flexShrink:0}}
+        >
+          <span style={{fontFamily:"'Space Mono',monospace", fontSize:10, color:'#886E4C'}}>Switch</span>
+          <span style={{color:'#886E4C', fontSize:12}}>{expanded ? '▲' : '▼'}</span>
+        </button>
+      </div>
+
+      {/* Expanded panel */}
+      {expanded && (
+        <div style={{marginTop:10}}>
+          {/* Search */}
+          <div style={{position:'relative', marginBottom:10}}>
+            <input
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="Search schools, conference, city..."
+              style={{width:'100%', boxSizing:'border-box', padding:'10px 12px 10px 34px', borderRadius:10, border:'1px solid #e8dfc8', fontSize:14, fontFamily:'Arial', outline:'none', background:'#F5F0E8'}}
+            />
+            <span style={{position:'absolute', left:10, top:'50%', transform:'translateY(-50%)', fontSize:14}}>🔍</span>
+          </div>
+          {/* School cards — horizontal scroll with momentum */}
+          <div style={{display:'flex', gap:8, overflowX:'auto', paddingBottom:6, WebkitOverflowScrolling:'touch', msOverflowStyle:'none', scrollbarWidth:'none'}}>
+            {filtered.map(school => {
+              const active = school.id === activeId;
+              return (
+                <button
+                  key={school.id}
+                  type="button"
+                  onClick={() => { onSelect(school.id); setExpanded(false); setSearch(''); }}
+                  style={{
+                    flexShrink:0, display:'flex', alignItems:'center', gap:8,
+                    padding:'10px 16px', minHeight:48, borderRadius:12, border:'2px solid',
+                    borderColor: active ? school.colors.accent : '#e8dfc8',
+                    background: active ? school.colors.primary : 'white',
+                    cursor:'pointer', transition:'all 0.2s ease',
+                    boxShadow: active ? '0 4px 16px rgba(0,0,0,0.15)' : 'none',
+                  }}>
+                  <span style={{fontSize:18}}>{school.emoji}</span>
+                  <div style={{textAlign:'left'}}>
+                    <p style={{margin:0, fontFamily:"'Rajdhani',sans-serif", fontWeight:700, fontSize:14, color: active ? 'white' : '#1a1208', lineHeight:1.2}}>{school.short}</p>
+                    <p style={{margin:0, fontFamily:"'Space Mono',monospace", fontSize:10, color: active ? school.colors.accent2 : '#94a3b8'}}>{school.conference} · {school.tier}</p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+          <p style={{margin:'6px 0 0 0', fontFamily:"'Space Mono',monospace", fontSize:10, color:'#94a3b8', textAlign:'right'}}>{filtered.length} of {schools.length} schools</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('mobile');
   const [activeCampaign, setActiveCampaign] = useState('TICKETING');
