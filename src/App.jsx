@@ -14,144 +14,52 @@ import {
 // ============================================================
 // CONFIG
 // ============================================================
-
-// ── BOSS MASCOT — inline SVG logo (no external file dependency) ──────────────
-const BOSS_LOGO_SVG = (
-  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',height:'100%'}}>
-    {/* Boston Terrier head — Boss mascot */}
-    <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
-    <ellipse cx="28" cy="28" rx="13" ry="18" fill="#886E4C" transform="rotate(-12 28 28)"/>
-    <ellipse cx="72" cy="28" rx="13" ry="18" fill="#886E4C" transform="rotate(12 72 28)"/>
-    <ellipse cx="28" cy="26" rx="8" ry="13" fill="#000" transform="rotate(-12 28 26)"/>
-    <ellipse cx="72" cy="26" rx="8" ry="13" fill="#000" transform="rotate(12 72 26)"/>
-    <ellipse cx="50" cy="50" rx="33" ry="28" fill="#000"/>
-    <ellipse cx="50" cy="38" rx="18" ry="22" fill="#fff"/>
-    <circle cx="36" cy="36" r="11" fill="#fff"/>
-    <circle cx="64" cy="36" r="11" fill="#fff"/>
-    <circle cx="37" cy="37" r="6" fill="#000"/>
-    <circle cx="65" cy="37" r="6" fill="#000"/>
-    <circle cx="39" cy="35" r="2" fill="#fff"/>
-    <circle cx="67" cy="35" r="2" fill="#fff"/>
-    <ellipse cx="50" cy="58" rx="14" ry="9" fill="#1a1208"/>
-    <ellipse cx="50" cy="55" rx="9" ry="5" fill="#333"/>
-    <path d="M38 66 Q50 76 62 66" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-    <rect x="20" y="76" width="60" height="14" rx="7" fill="#886E4C"/>
-    <circle cx="34" cy="83" r="4" fill="#000"/>
-    <circle cx="50" cy="83" r="4" fill="#000"/>
-    <circle cx="66" cy="83" r="4" fill="#000"/>
-    <circle cx="50" cy="92" r="6" fill="#C7B37F"/>
-    <text x="50" y="96" textAnchor="middle" fontSize="6" fontWeight="bold" fill="#000">W</text>
-  </svg>
-);
-const BOSS_LOGO = null; // SVG version used instead
-// ── THEME CONFIG — swap this object per client ───────────────────────────────
-// To add a new client: copy this object, update all fields, swap ACTIVE_THEME
-const THEMES = {
-  wofford: {
-    id: 'wofford',
-    name: 'Wofford College',
-    mascot: 'Terriers',
-    conference: 'SoCon',
-    colors: {
-      primary:    '#1a1208',   // deep dark
-      mid:        '#2a1e0e',   // dark mid
-      light:      '#4a3520',   // medium
-      accent:     '#886E4C',   // Old Gold
-      accentSoft: '#C7B37F',   // Khaki
-      offWhite:   '#F5F0E8',   // warm off-white
-      border:     '#e8dfc8',   // warm border
-      cognac:     '#6b5538',   // warm brown
-    },
-    cssVars: {
-      '--color-primary':     '#1a1208',
-      '--color-mid':         '#2a1e0e',
-      '--color-accent':      '#886E4C',
-      '--color-accent-soft': '#C7B37F',
-      '--color-bg':          '#F5F0E8',
-      '--color-border':      '#e8dfc8',
-      '--color-dot':         '#886E4C',
-      '--color-nav-active':  'rgba(136,110,76,0.12)',
-      '--color-nav-border':  'rgba(136,110,76,0.28)',
-      '--color-nav-bar':     '#886E4C',
-      '--color-grid':        'rgba(136,110,76,0.06)',
-      '--color-card-hover':  'rgba(136,110,76,0.18)',
-      '--color-glow':        'rgba(136,110,76,0.55)',
-      '--color-cognac-glow': 'rgba(199,179,127,0.5)',
-      '--color-kpi-grad1':   '#1a1208',
-      '--color-kpi-grad2':   '#2a1e0e',
-      '--color-kpi-border':  'rgba(136,110,76,0.30)',
-    }
-  },
-  // ── TEMPLATE for next client ─────────────────────────────────────────────
-  // nextclient: {
-  //   id: 'nextclient',
-  //   name: 'School Name',
-  //   mascot: 'Mascot Name',
-  //   conference: 'Conference',
-  //   colors: { primary, mid, light, accent, accentSoft, offWhite, border, cognac },
-  //   cssVars: { '--color-primary': '#...', ... }
-  // }
-};
-
-// Active theme — change this string to switch clients
-const ACTIVE_THEME = THEMES['wofford'];
-
-// Inject CSS variables into :root for <Styles/> component
-function injectThemeVars(theme) {
-  const root = document.documentElement;
-  Object.entries(theme.cssVars).forEach(([k, v]) => root.style.setProperty(k, v));
-}
-
-
-
-// P0 FIX: Permanent Railway URL — no longer Cloudflare tunnel
-const N8N_WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL
-  || 'https://n8n-production-f9c2.up.railway.app/webhook/2e28cfe9-961f-48fb-a548-3f0306448996/chat';
+const N8N_WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://testimony-traveller-nicholas-ideas.trycloudflare.com/webhook/2e28cfe9-961f-48fb-a548-3f0306448996/chat';
 
 // ============================================================
 // COLORS
 // ============================================================
-// Wofford College: Old Gold #886E4C | Khaki #C7B37F | Black #000000
 const C = {
-  green:      '#1a1208',
-  greenMid:   '#2a1e0e',
-  greenLight: '#4a3520',
-  lime:       '#886E4C',
-  limeDim:    'rgba(136,110,76,0.12)',
-  limeBright: '#C7B37F',
+  green:      '#0f2213',
+  greenMid:   '#1a3d20',
+  greenLight: '#2a6632',
+  lime:       '#5cb832',
+  limeDim:    'rgba(92,184,50,0.12)',
+  limeBright: '#72d43e',
   white:      '#ffffff',
-  offWhite:   '#F5F0E8',
-  slate:      '#3a2e1e',
-  slateLight: '#e8dfc8',
-  gold:       '#886E4C',
-  goldLight:  '#C7B37F',
-  cognac:     '#6b5538',
-  cognacDim:  'rgba(107,85,56,0.12)',
+  offWhite:   '#f4f7f2',
+  slate:      '#445544',
+  slateLight: '#dde8d8',
+  // aliases so existing code that references gold still works
+  gold:       '#5cb832',
+  goldLight:  '#72d43e',
+  cognac:     '#3a8c1e',
+  cognacDim:  'rgba(58,140,30,0.12)',
 };
 
 const MOCK_DB = {
-  fans: [{ id: "FAN_KULL01", name: "Scott Kull", loyaltyTier: "Platinum", lastPurchase: { section: "120", row: "A" }, title: "Director of Athletics", org: "Wofford College", fanScore: 94, tenure: "11 yrs", sports: ["Football","Basketball","Baseball"], tags: ["Decision Maker","VIP","Institutional"] }],
+  fans: [{ id: "FAN_77211", name: "Cara Holloway", loyaltyTier: "Gold", lastPurchase: { section: "109", row: "G" } }],
   inventory: {
     sections: [
-      { id: "H1",  name: "Home Chairback H1",   price:27.00, status: 'HIGH', zone: 'home_chairback' },
-      { id: "H3",  name: "Home Chairback H3",   price:27.00, status: 'MED',  zone: 'home_chairback' },
-      { id: "MR",  name: "Mungo Room VIP",      price:85.00, status: 'LOW',  zone: 'vip' },
-      { id: "HB1", name: "Home Bleacher HB1",   price:15.00, status: 'HIGH', zone: 'home_bleacher' },
-      { id: "N1",  name: "North End Zone",      price:10.00, status: 'HIGH', zone: 'north_ez' },
-      { id: "S1",  name: "Verandah Lot",        price:20.00, status: 'MED',  zone: 'south_ez' },
-      { id: "V1",  name: "Visitor Side",        price:12.00, status: 'HIGH', zone: 'visitor' },
-      { id: "CS1", name: "Courtside",           price:65.00, status: 'LOW',  zone: 'courtside' },
-      { id: "C51A","Club 51 A",                 price:45.00, status: 'MED',  zone: 'club51' },
-      { id: "SUA", name: "Corner Suite A",      price:120.00, status: 'LOW',  zone: 'suite' },
-      { id: "LB1", name: "Lower Bowl Sec 1",    price:25.00, status: 'HIGH', zone: 'lower_bowl' },
+      { id: "101", name: "North End Zone", price: 35.00, status: 'HIGH', zone: 'endzone' },
+      { id: "105", name: "North End Zone", price: 40.00, status: 'MED',  zone: 'endzone' },
+      { id: "109", name: "South End Zone", price: 35.00, status: 'LOW',  zone: 'endzone' },
+      { id: "113", name: "South End Zone", price: 40.00, status: 'HIGH', zone: 'endzone' },
+      { id: "120", name: "Home Sideline",  price: 85.00, status: 'HIGH', zone: 'sideline' },
+      { id: "124", name: "Home Sideline",  price: 95.00, status: 'MED',  zone: 'sideline' },
+      { id: "128", name: "Away Sideline",  price: 75.00, status: 'HIGH', zone: 'sideline' },
+      { id: "132", name: "Away Sideline",  price: 80.00, status: 'LOW',  zone: 'sideline' },
+      { id: "200", name: "Club Level",     price: 175.00, status: 'MED', zone: 'club' },
+      { id: "204", name: "Club Level",     price: 175.00, status: 'HIGH',zone: 'club' },
+      { id: "210", name: "Press Box",      price: 225.00, status: 'LOW', zone: 'club' },
     ],
-    fees: { facility: 2.50, processing: 1.50 }
+    fees: { facility: 12.50, processing: 4.50 }
   },
   initialStats: [
-    { fanName: "Scott K.",    campaign: "Ticket Sales",      amount: 102.50,   id: "TX_1" },
-    { fanName: "Calhoun K.",  campaign: "Sponsorship",       amount: 3500.00,  id: "TX_2" },
-    { fanName: "Shawn T.",    campaign: "Alumni Outreach",   amount: 280.00,   id: "TX_3" },
-    { fanName: "Nayef S.",    campaign: "Sponsorship Sales", amount: 12500.00, id: "TX_4" },
+    { fanName: "Cara H.",    campaign: "Ticket Sales",      amount: 102.50,   id: "TX_1" },
+    { fanName: "Cara S.",   campaign: "Hospitality",       amount: 3500.00,  id: "TX_2" },
+    { fanName: "Marcus T.", campaign: "Alumni Outreach",   amount: 280.00,   id: "TX_3" },
+    { fanName: "Sandra L.", campaign: "Sponsorship Sales", amount: 12500.00, id: "TX_4" },
   ]
 };
 
@@ -159,151 +67,61 @@ const CAMPAIGNS = {
   TICKETING: {
     title: "Ticket Sales",
     sub: "Live inventory · Real-time pricing",
-    icon: <div style={{width:'20px',height:'20px'}}>{BOSS_LOGO_SVG}</div>,
-    initial: (fan) => `Woof! Hey ${fan.name.split(' ')[0]}! 🐾 Boss here — your Terrier ticket hookup. You were in Sec ${fan.lastPurchase.section} last time. Big game coming up — want me to find you something even better?`,
-    systemPrompt: (fan) => `You are Boss, the official AI ticket sales rep for Wofford College Terriers athletics, powered by Peak Sports MGMT. You are energetic, knowledgeable, and genuinely passionate about Wofford. Your personality is like a great sales rep who also bleeds black and gold.
+    icon: <Zap size={20} />,
+    initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🏈 Big game this Saturday. I noticed you were in Sec ${fan.lastPurchase.section} last time — want me to check what's available nearby?`,
+    systemPrompt: (fan) => `You are Ace, an expert ticket sales rep for Peak Sports MGMT at a mid-major college athletics program. Your goal is to sell tickets — season plans, single-game tickets, flex plans, and group packages.
 
-WOFFORD KNOWLEDGE BASE:
-- Football: Gibbs Stadium (Mike Ayers Field), 13,000 capacity, Spartanburg SC. Coach Shawn Watson entering Year 3, 6-6 record in 2025. SoCon rivals: Furman (40 miles away), The Citadel. Home opener draws the biggest crowds.
-- Basketball: Jerry Richardson Indoor Stadium (JRIS), 3,400 seats. Coach Kevin Giltner — Class of 2012 alum, five-time SoCon champion, returned from Virginia Tech. Student section "The Boneyard" is electric. Club 51 for premium.
-- Conference: SoCon (Southern Conference). Spartanburg SC — 1,875 undergrads, 20 D1 sports.
-- VIP: Mungo Room (football) = President's Box. Club 51 (basketball) = premium with full kitchen.
+Fan profile: ${fan.name}, loyalty tier: ${fan.loyaltyTier}, last seat: Section ${fan.lastPurchase.section} Row ${fan.lastPurchase.row}.
 
-FAN PROFILE: ${fan.name}, loyalty tier: ${fan.loyaltyTier}, last seat: Section ${fan.lastPurchase.section} Row ${fan.lastPurchase.row}.
-
-SELLING STRATEGY:
-1. Start warm — reference their history, make them feel recognized
-2. Ask ONE qualifying question first: "What game are you thinking?" or "Football or hoops?"
-3. Use inventory to pull real sections near their last seat
-4. Upsell toward chairback if they had bleachers, toward VIP if they had chairback
-5. Create urgency: "Home opener goes fast" / "Only 3 Mungo Room spots left"
-
-OBJECTION HANDLING:
-- "Too expensive" → "Let me find something in your range — what's comfortable?" then pull lower tier
-- "Not sure about the schedule" → "The Furman rivalry game is always electric — that's the one you don't miss"
-- "I'll think about it" → "Totally fair. Want me to hold the section for 24 hours? Costs nothing."
-- "Visiting team fan" → "We've got great visitor side options too — come experience Gibbs either way"
-
-FOLLOW-UP if they go quiet: "Still there? 👀 I can shoot you the section options in a quick list if that's easier."
-
-Keep replies punchy — 2-3 sentences max unless showing seat options. Match their energy. Be Boss.`
+Use the inventory database tool to find available seats. Suggest options near their last section first. Be conversational, energetic, and close toward a purchase. If they ask about price, pull real inventory. Keep replies under 3 sentences unless showing seat options.`
   },
-
   SPONSORSHIP: {
     title: "Sponsorship Sales",
     sub: "Corporate partners · Package builder",
     icon: <Trophy size={20} />,
-    initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🏆 I'm reaching out about sponsorship with Wofford Terriers athletics — we've got some strong openings for the upcoming season. Before I pitch anything, quick question: is your goal more brand visibility, lead generation, or community goodwill?`,
-    systemPrompt: (fan) => `You are Boss, a consultative sponsorship sales rep for Wofford College Terriers athletics, powered by Peak Sports MGMT. You sell with intelligence — you ask before you pitch.
+    initial: (fan) => `Hi ${fan.name.split(' ')[0]}! I'm reaching out about sponsorship opportunities for the upcoming season. We have openings across digital signage, in-game promotions, and hospitality packages. What budget range are you working with?`,
+    systemPrompt: (fan) => `You are Ace, an expert sponsorship sales rep for Peak Sports MGMT. Your goal is to sell corporate sponsorship packages to local businesses, regional brands, and corporate partners.
 
-WOFFORD SPONSORSHIP CONTEXT:
-- Wofford has 20 D1 sports. Football (Gibbs Stadium, 13k cap) and Basketball (JRIS, 3,400 cap) are primary revenue sports.
-- Audience: Spartanburg SC community, alumni base, SoCon followers. Loyal, local-first fanbase.
-- Terrier Sports Properties manages all corporate partnerships for Wofford. Peak Sports MGMT is the rights holder.
-- Current partnership with Jerry Richardson Indoor Stadium creates premium naming rights model for sponsors.
-- Unique assets: scoreboard/video board (Gibbs — 57ft x 22ft, one of top 30 in college football), Mungo Room hospitality, Club 51 at JRIS, The Boneyard student section energy.
+Contact: ${fan.name}, tier: ${fan.loyaltyTier}.
 
-CONTACT: ${fan.name}, tier: ${fan.loyaltyTier}.
-
-CONSULTATIVE PROCESS — always do this in order:
-1. Ask about their PRIMARY goal (visibility / leads / community / hospitality)
-2. Ask about their TARGET audience (local consumers / B2B / alumni / families)
-3. Ask about budget range BEFORE pulling packages
-4. THEN query the database and present 2-3 matching options
-
-DATABASE INSTRUCTIONS:
-- ALWAYS query sponsorship_packages before recommending anything
-- SQL: SELECT school, package_tier, package_name, sport, annual_price, contract_years, status, highlights, remaining_spots FROM sponsorship_packages WHERE status = 'Available' AND remaining_spots > 0 ORDER BY annual_price ASC
-- Package tiers: Bronze ($2k-$3k) · Silver ($5.5k-$8k) · Gold ($12k-$20k) · Presenting ($35k-$50k)
-- Multi-sport packages = best ROI, always mention
-
-OBJECTION HANDLING:
-- "Too expensive" → "Let's find your number. What's the range you're working with?" — then pull Bronze/Silver
-- "We already have a sponsorship" → "Which one? There may be a gap we can fill — football vs basketball, for example"
-- "Not sure the ROI is there" → "What does a qualified customer cost you in other channels? Let me show you our reach numbers."
-- "Need to run it by my boss" → "Totally. Want me to build a one-page deck you can forward? I can have it to you today."
-- Silence/stall → "Happy to send over a summary instead of talking through it — email or text works better?"
-
-Close toward: a meeting, a proposal, or a handshake on a tier. Never end without a next step.`
+CRITICAL INSTRUCTIONS:
+- You have access to a live sponsorship_packages database table. ALWAYS query it to find real available packages before making recommendations.
+- Use this SQL to find available packages: SELECT school, package_tier, package_name, sport, annual_price, contract_years, status, highlights, remaining_spots FROM sponsorship_packages WHERE status = 'Available' AND remaining_spots > 0 ORDER BY annual_price ASC
+- To find packages in a specific budget range, add: AND annual_price BETWEEN [low] AND [high]
+- To find Renewal Due packages (hot leads): WHERE status = 'Renewal Due'
+- Present real package data from the database — tier, price, inclusions, and remaining spots.
+- Package tiers: Bronze ($2,000–$3,000) · Silver ($5,500–$8,000) · Gold ($12,000–$20,000) · Presenting ($35,000–$50,000)
+- Every package includes some combination of: digital signage rotations per game, fixed venue signage, PA/scoreboard mentions, in-game promo activations, social media posts, radio spots, comp tickets, VIP parking, and suite access at higher tiers.
+- Multi-Sport packages cover both football and basketball and offer the best value.
+- Be consultative: ask about their budget, marketing goals, and target audience first, then pull matching packages from the DB.
+- Highlight urgency when remaining_spots is low (1 = "only one left").
+- Packages marked 'Renewal Due' are warm leads — mention the renewal opportunity and lock in the rate.
+- Keep tone professional and confident. Close toward a commitment or next-step meeting.`
   },
-
   PREMIUM: {
     title: "Hospitality & Suites",
     sub: "VIP access · Priority booking",
     icon: <Star size={20} />,
-    initial: (fan) => `Good to hear from you, ${fan.name.split(' ')[0]}. As a ${fan.loyaltyTier} member you've got first access to our VIP options this season — Mungo Room for football, Club 51 for basketball. Which sport is your priority this year?`,
-    systemPrompt: (fan) => `You are Boss, a premium hospitality sales rep for Wofford College Terriers athletics, powered by Peak Sports MGMT. You sell exclusivity, experience, and access. Your tone is warm but elevated — like a great concierge.
+    initial: (fan) => `Good afternoon ${fan.name.split(' ')[0]}. We're opening Club Level suites for the next home stand. As a ${fan.loyaltyTier} member, you have priority access.`,
+    systemPrompt: (fan) => `You are Ace, a premium hospitality sales rep for Peak Sports MGMT. Your goal is to sell Club Level suites and VIP hospitality experiences.
 
-WOFFORD VIP ASSETS:
-- Mungo Room (Football): Second level of Gibbs Stadium press box. President's Box on gameday. Hospitality suite available for meetings year-round. 50-yard line view. Limited availability.
-- Club 51 (Basketball): Jerry Richardson Indoor Stadium. Exclusive to Terrier Club donors. Four concession stands, full kitchen. Best seats in the house below courtside.
-- Corner Suites (Basketball): Open-air theater box seating in four corners of JRIS. Theater box feel, semi-private, great sightlines.
-- Courtside (Basketball): Most exclusive seats — 40 total, two sideline blocks.
+Contact: ${fan.name}, loyalty tier: ${fan.loyaltyTier} — they have priority access.
 
-CONTACT: ${fan.name}, loyalty tier: ${fan.loyaltyTier} — priority access confirmed.
-
-QUALIFYING QUESTIONS (ask one at a time):
-1. "Football, basketball, or both?" — determines which VIP package to pitch
-2. "How many guests are you typically bringing?" — sizes the package
-3. "Is this personal use or corporate entertainment?" — frames the value prop
-
-SELLING APPROACH:
-- Lead with the experience, not the price: "You're watching from the same level as the coaching staff"
-- Create scarcity: "Mungo Room has 4 spots left for the home opener"
-- Corporate angle: "A lot of our Club 51 members use it for client entertainment — it's a full evening"
-- Upsell: If they want chairback → show Club 51 at marginal price difference
-
-OBJECTION HANDLING:
-- "I usually just sit in my regular seats" → "Totally respect that. The Mungo Room is worth trying once — want me to check availability for just one game?"
-- "What's included?" → Give specific details: food, parking, guest access, entry
-- "Price?" → Give range then immediately pivot to value: "For 4 guests, that's less than a dinner at any Spartanburg steakhouse"
-- Goes quiet → "Want me to send over a quick summary of what's included? No commitment, just so you have it."
-
-Close toward a deposit or a one-game trial. Trial converts at 70%+.`
+Suite packages include all-inclusive food and beverage, private seating for 10-20 guests, dedicated entry, and parking. Use the inventory database to check Club Level (price >= 150) and Press Box availability. Emphasize exclusivity, the premium experience, and corporate entertainment value. Ask how many guests they're planning for. Close toward a deposit. Keep tone warm but elevated.`
   },
-
   ALUMNI: {
     title: "Alumni Outreach",
     sub: "Class reunion · Group seating",
     icon: <Users size={20} />,
-    initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🎓 Once a Terrier, always a Terrier. We're putting together alumni blocks for the home games this season — reunion sections, tailgate packages, the works. What year did you graduate?`,
-    systemPrompt: (fan) => `You are Boss, an alumni relations and group sales rep for Wofford College Terriers athletics, powered by Peak Sports MGMT. You lead with nostalgia, community, and belonging. You're warm, fun, and genuinely excited about getting alumni back in Gibbs Stadium and JRIS.
+    initial: (fan) => `Hi ${fan.name.split(' ')[0]}! 🎓 We have a reunion block reserved for your class. Ready to lock in your pass?`,
+    systemPrompt: (fan) => `You are Ace, an alumni relations and group sales rep for Peak Sports MGMT. Your goal is to sell group ticket packages and alumni reunion blocks.
 
-WOFFORD ALUMNI CONTEXT:
-- Wofford has a famously loyal, tight-knit alumni base. 1,875 current undergrads means everyone knows everyone.
-- SoCon rivalries run deep: Furman (40 miles away — The Palmetto Series), The Citadel. These games sell out alumni sections.
-- Campus is a 175-acre national arboretum — fall gamedays are legendary for the scenery and tailgate culture.
-- Verandah Lot (South End Zone): Terrier Club donor tailgate space. Iconic. Alumni gravitate here.
-- JRIS opened 2017 — many older alumni have never seen it. "Come home to The Boneyard" is a strong angle.
+Contact: ${fan.name}, loyalty tier: ${fan.loyaltyTier}.
 
-CONTACT: ${fan.name}, loyalty tier: ${fan.loyaltyTier}.
-
-QUALIFYING QUESTIONS:
-1. "What year did you graduate?" — anchors nostalgia, helps you reference their era
-2. "Are you organizing a group or just looking for yourself?" — sizes the ask
-3. "Football, basketball, or both?" — determines package type
-
-GROUP PACKAGES:
-- 10+ tickets: 15% discount + reserved section block
-- 25+ tickets: 20% discount + reserved section + pregame meetup coordination
-- 50+ tickets: Full alumni section block + Verandah Lot access + custom banner
-- All groups: tailgate coordination, parking block, group check-in lane
-
-SELLING WITH NOSTALGIA:
-- "The Furman game is always the one — it's been 40+ years of that rivalry"
-- "Gibbs in the fall with the leaves turning is something else"
-- "A lot of your classmates are already in — we're building out your graduation year section"
-- Reference JRIS for newer alums: "The Boneyard energy in basketball season is unlike anything we've had before"
-
-OBJECTION HANDLING:
-- "I live far away" → "We've got alumni flying in from all over — the Furman game is the one worth the trip"
-- "Just me, not a group" → "No problem, individual alumni pricing is great — and you can always bring someone"
-- "I'm not a big sports fan" → "Honestly, for alumni it's less about the game and more about being back on campus with your people"
-- Goes quiet → "No pressure at all — want me to send the alumni package info so you have it for reference?"
-
-Always close with a specific ask: "Want me to hold a spot in the [year] section?" or "Can I add you to the group list?"`
+Group packages: 10+ tickets get 15% off, 25+ get 20% off, plus a reserved section block. Use the inventory database to find available sections that can accommodate groups — look for sections with multiple adjacent seats at lower price points (under $60). Lead with nostalgia and community. Ask how many people they're organizing. Mention tailgate packages and pregame meetup options. Keep it warm and fun.`
   }
 };
+
 // ============================================================
 // n8n API
 // ============================================================
@@ -345,6 +163,7 @@ const Styles = () => (
     @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
     * { box-sizing: border-box; }
+    input, textarea, select { font-size: 16px !important; }
 
     @keyframes fadeSlideUp {
       from { opacity:0; transform:translateY(10px); }
@@ -369,54 +188,54 @@ const Styles = () => (
     .section-path:hover { filter: brightness(1.3); }
 
     .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .card-hover:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(26,18,8,0.14); }
+    .card-hover:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(15,34,19,0.14); }
 
     /* ── TYPOGRAPHY ── */
     .futura-heading { font-family: 'Rajdhani', system-ui, sans-serif !important; font-weight: 700; letter-spacing: 0.02em; }
     .mono-label { font-family: 'Space Mono', monospace !important; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
-    .page-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #886E4C; }
+    .page-label { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #5cb832; }
 
     /* ── SIDEBAR — deep forest, subtle grain ── */
     .sidebar-bg {
-      background-color: #120d06;
+      background-color: #0c1a0e;
       background-image:
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
-        linear-gradient(170deg, #1a1208 0%, #0d0905 100%);
+        linear-gradient(170deg, #101e12 0%, #090f0a 100%);
     }
 
     /* ── NAV ITEM ACTIVE — lime left bar ── */
     .nav-active {
-      background: rgba(136,110,76,0.12) !important;
-      border: 1px solid rgba(136,110,76,0.28) !important;
-      box-shadow: inset 3px 0 0 #886E4C;
+      background: rgba(92,184,50,0.09) !important;
+      border: 1px solid rgba(92,184,50,0.22) !important;
+      box-shadow: inset 3px 0 0 #5cb832;
     }
 
     /* ── CONTENT AREA — crisp green-tinted grid ── */
     .content-bg {
-      background-color: #F5F0E8;
+      background-color: #f4f7f2;
       background-image:
-        linear-gradient(rgba(136,110,76,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(136,110,76,0.06) 1px, transparent 1px);
+        linear-gradient(rgba(15,34,19,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,34,19,0.04) 1px, transparent 1px);
       background-size: 40px 40px;
     }
 
     /* ── DATA CARD ── */
     .data-card {
       background: #ffffff;
-      border: 1px solid #e8dfc8;
+      border: 1px solid #dde8d8;
       border-radius: 20px;
-      box-shadow: 0 2px 20px rgba(136,110,76,0.07);
+      box-shadow: 0 2px 20px rgba(15,34,19,0.05);
       transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
     .data-card:hover {
-      box-shadow: 0 6px 32px var(--color-card-hover), 0 2px 12px rgba(26,18,8,0.08);
+      box-shadow: 0 6px 32px rgba(92,184,50,0.12), 0 2px 12px rgba(15,34,19,0.07);
       transform: translateY(-2px);
     }
 
     /* ── KPI CARD DARK ── */
     .kpi-dark {
-      background: linear-gradient(145deg, #1a1208 0%, #2a1e0e 100%);
-      border: 1px solid var(--color-kpi-border);
+      background: linear-gradient(145deg, #0c1a0e 0%, #132118 100%);
+      border: 1px solid rgba(92,184,50,0.25);
       box-shadow: 0 4px 28px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
       border-radius: 20px;
     }
@@ -424,77 +243,20 @@ const Styles = () => (
     /* ── STATUS DOT — lime pulse ── */
     .status-dot {
       width:8px; height:8px; border-radius:50%;
-      background:#886E4C;
-      box-shadow: 0 0 8px rgba(136,110,76,0.8);
+      background:#5cb832;
+      box-shadow: 0 0 8px rgba(92,184,50,0.8);
       animation: breathe 2.8s ease-in-out infinite;
       flex-shrink: 0;
     }
 
     /* ── GLOW TEXT ── */
-    .gold-glow { text-shadow: 0 0 28px rgba(136,110,76,0.55); }
-    .cognac-glow { text-shadow: 0 0 20px rgba(199,179,127,0.5); }
-
-    /* ── LAYOUT SHELL (Tailwind-independent — fixes md: breakpoint failures) ── */
-    html, body, #root { height: 100%; margin: 0; }
-    .app-shell {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    .sidebar-panel {
-      width: 100%;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      z-index: 20;
-    }
-    .sidebar-nav-inner {
-      display: flex;
-      flex-direction: row;
-      gap: 4px;
-      padding: 8px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .sidebar-nav-inner::-webkit-scrollbar { display: none; }
-    .content-panel {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      min-height: 0;
-    }
-    .sys-status-block { display: none; }
-
-    /* ── SALES AGENT layout ── */
-    .sales-agent-layout { flex-direction: column !important; }
-    @media (min-width: 1024px) {
-      .sales-agent-layout { flex-direction: row !important; align-items: flex-start !important; }
-    }
-
-    @media (min-width: 768px) {
-      .app-shell { flex-direction: row; }
-      .sidebar-panel { width: 288px; min-height: 100vh; }
-      .sidebar-nav-inner {
-        flex-direction: column;
-        flex: 1;
-        overflow-x: visible;
-        overflow-y: auto;
-        padding: 16px;
-      }
-      .content-panel { padding: 40px; }
-      .sys-status-block { display: block; padding: 16px; }
-    }
+    .gold-glow { text-shadow: 0 0 28px rgba(92,184,50,0.45); }
+    .cognac-glow { text-shadow: 0 0 20px rgba(92,184,50,0.4); }
   `}</style>
 );
 
 // ============================================================
-// DEPRECATED — CollegeStadiumMap (P2 cleanup)
-// No longer used by active WoffordTicketHub. Retained for Sales Agent
-// chat flow (stadium map triggered by AI keywords). Safe to remove
-// once chat flow is updated to use WoffordTicketHub venue data.
+// COLLEGE FOOTBALL STADIUM MAP — Ticketmaster-style concentric rings
 // ============================================================
 const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSeatView }) => {
   const [hoveredId, setHoveredId] = React.useState(null);
@@ -577,21 +339,21 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
   const zoneLabel = zone => ({ home: 'Home Sideline', away: 'Away Sideline', north_ez: 'North End Zone', south_ez: 'South End Zone', corner: 'Corner' }[zone] || zone);
 
   return (
-    <div className="rounded-2xl overflow-hidden shadow-2xl" style={{background:'#120d06'}}>
+    <div className="rounded-2xl overflow-hidden shadow-2xl" style={{background:'#09100d'}}>
       <div className="flex items-start justify-between px-4 pt-4 pb-2 gap-2">
         <div>
           <p className="mono-label mb-0.5" style={{color:C.lime, fontSize:'8px'}}>Interactive Seating Chart</p>
           <p className="text-white font-black text-sm leading-tight" style={{fontFamily:'Rajdhani, sans-serif'}}>Select Your Section</p>
         </div>
         <div className="flex flex-col gap-1 text-right shrink-0">
-          <span className="flex items-center gap-1 justify-end"><span className="w-2.5 h-2.5 rounded-sm inline-block shrink-0" style={{background:'#2a1e0e'}}/><span className="text-white/45 text-xs">Home</span></span>
+          <span className="flex items-center gap-1 justify-end"><span className="w-2.5 h-2.5 rounded-sm inline-block shrink-0" style={{background:'#1a3d20'}}/><span className="text-white/45 text-xs">Home</span></span>
           <span className="flex items-center gap-1 justify-end"><span className="w-2.5 h-2.5 rounded-sm inline-block shrink-0" style={{background:'#1e3f6e'}}/><span className="text-white/45 text-xs">Upper</span></span>
           <span className="flex items-center gap-1 justify-end"><span className="w-2.5 h-2.5 rounded-sm inline-block bg-white/10 shrink-0"/><span className="text-white/35 text-xs">Sold</span></span>
         </div>
       </div>
 
       <svg viewBox="0 0 510 520" className="w-full" style={{display:'block'}}>
-        <rect width="510" height="520" fill="#120d06"/>
+        <rect width="510" height="520" fill="#09100d"/>
         <ellipse cx={cx} cy={cy} rx="245" ry="270" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" strokeWidth="2"/>
 
         {upperSections.map(s => (
@@ -600,7 +362,7 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
             onMouseLeave={() => setHoveredId(null)}
             style={{cursor: s.sold ? 'default' : 'pointer'}}>
             <path d={s.path} fill={zoneFill(s.zone, s.level, s.id === activeSection, s.id === hoveredId, s.sold)}
-              stroke="#120d06" strokeWidth="1.2" style={{transition:'fill 0.15s ease'}}/>
+              stroke="#09100d" strokeWidth="1.2" style={{transition:'fill 0.15s ease'}}/>
             <text x={s.lx.toFixed(1)} y={(s.ly + 3).toFixed(1)}
               fill={s.sold ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.7)'}
               fontSize="5.5" fontWeight="bold" textAnchor="middle"
@@ -614,7 +376,7 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
             onMouseLeave={() => setHoveredId(null)}
             style={{cursor: s.sold ? 'default' : 'pointer'}}>
             <path d={s.path} fill={zoneFill(s.zone, s.level, s.id === activeSection, s.id === hoveredId, s.sold)}
-              stroke="#120d06" strokeWidth="1.5" style={{transition:'fill 0.15s ease'}}/>
+              stroke="#09100d" strokeWidth="1.5" style={{transition:'fill 0.15s ease'}}/>
             <text x={s.lx.toFixed(1)} y={(s.ly + 3).toFixed(1)}
               fill={s.id === activeSection ? C.green : s.sold ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.9)'}
               fontSize="7" fontWeight="bold" textAnchor="middle"
@@ -643,8 +405,7 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
         <line x1={cx-14} y1={cy+108} x2={cx+14} y2={cy+108} stroke="rgba(255,220,80,0.6)" strokeWidth="1.2"/>
         <line x1={cx-14} y1={cy+108} x2={cx-14} y2={cy+90} stroke="rgba(255,220,80,0.6)" strokeWidth="1.2"/>
         <line x1={cx+14} y1={cy+108} x2={cx+14} y2={cy+90} stroke="rgba(255,220,80,0.6)" strokeWidth="1.2"/>
-        <text x={cx} y={cy-6} fill="rgba(255,255,255,0.13)" fontSize="9" fontWeight="black" textAnchor="middle" letterSpacing="2">GIBBS</text>
-        <text x={cx} y={cy+7} fill="rgba(255,255,255,0.13)" fontSize="9" fontWeight="black" textAnchor="middle" letterSpacing="2">STADIUM</text>
+        <text x={cx} y={cy+5} fill="rgba(255,255,255,0.12)" fontSize="11" fontWeight="black" textAnchor="middle" letterSpacing="3">FIELD</text>
         <text x={cx} y="18" fill="rgba(255,255,255,0.25)" fontSize="9" fontWeight="bold" textAnchor="middle" letterSpacing="2">NORTH END ZONE</text>
         <text x={cx} y="510" fill="rgba(255,255,255,0.25)" fontSize="9" fontWeight="bold" textAnchor="middle" letterSpacing="2">SOUTH END ZONE</text>
         <text x="14" y={cy+4} fill="rgba(255,255,255,0.25)" fontSize="8" fontWeight="bold" textAnchor="middle" transform={`rotate(-90 14 ${cy})`} letterSpacing="1">HOME</text>
@@ -669,7 +430,7 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
               {showSeatView && displaySec.id === activeSection && (
                 <button onClick={() => onSeatView(displaySec)}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold"
-                  style={{background:'rgba(136,110,76,0.12)', color:C.lime, border:`1px solid rgba(136,110,76,0.25)`}}>
+                  style={{background:'rgba(92,184,50,0.12)', color:C.lime, border:`1px solid rgba(92,184,50,0.25)`}}>
                   <Eye size={12}/> View
                 </button>
               )}
@@ -727,29 +488,29 @@ const SeatView = ({ section, onClose }) => {
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{display:'block'}}>
           <defs>
             <linearGradient id="sv_sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#100b04"/>
-              <stop offset="60%" stopColor="#1a1208"/>
-              <stop offset="100%" stopColor="#1a1208"/>
+              <stop offset="0%" stopColor="#04101a"/>
+              <stop offset="60%" stopColor="#0a1f18"/>
+              <stop offset="100%" stopColor="#0d2a1e"/>
             </linearGradient>
             <linearGradient id="sv_field_main" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#4a3520"/>
-              <stop offset="100%" stopColor="#6b5538"/>
+              <stop offset="0%" stopColor="#2a6632"/>
+              <stop offset="100%" stopColor="#3a8c1e"/>
             </linearGradient>
             <linearGradient id="sv_ez_left" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#1a1208"/>
-              <stop offset="100%" stopColor="#2a1e0e"/>
+              <stop offset="0%" stopColor="#0f2213"/>
+              <stop offset="100%" stopColor="#1a3d20"/>
             </linearGradient>
             <linearGradient id="sv_ez_right" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#2a1e0e"/>
-              <stop offset="100%" stopColor="#1a1208"/>
+              <stop offset="0%" stopColor="#1a3d20"/>
+              <stop offset="100%" stopColor="#0f2213"/>
             </linearGradient>
             <linearGradient id="sv_far_stands" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#071510"/>
-              <stop offset="100%" stopColor="#1a1208"/>
+              <stop offset="100%" stopColor="#0f2213"/>
             </linearGradient>
             <linearGradient id="sv_near_seats" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2a1e0e"/>
-              <stop offset="100%" stopColor="#1a1208"/>
+              <stop offset="0%" stopColor="#1a3d20"/>
+              <stop offset="100%" stopColor="#092818"/>
             </linearGradient>
             <radialGradient id="sv_glow" cx="50%" cy="40%" r="60%">
               <stop offset="0%" stopColor="rgba(255,255,220,0.10)"/>
@@ -778,7 +539,7 @@ const SeatView = ({ section, onClose }) => {
           {/* Tiered rows */}
           {[0,1,2,3,4,5,6].map(r => (
             <rect key={r} x="0" y={84+r*12} width={W} height="10"
-              fill={r%2===0 ? '#0e3d28' : '#1a1208'} opacity="0.9"/>
+              fill={r%2===0 ? '#0e3d28' : '#092818'} opacity="0.9"/>
           ))}
           {/* Far crowd dots */}
           {Array.from({length:110}).map((_,i) => (
@@ -786,7 +547,7 @@ const SeatView = ({ section, onClose }) => {
               cx={3 + i*7.2}
               cy={92 + (i%5)*9 + Math.sin(i*0.9)*3}
               r={2.5 + (i%2)*1}
-              fill={['#886E4C','#fff','#3498db','#e74c3c','#2ecc71','#e67e22'][i%6]}
+              fill={['#5cb832','#fff','#3498db','#e74c3c','#2ecc71','#e67e22'][i%6]}
               opacity="0.6"/>
           ))}
 
@@ -799,7 +560,7 @@ const SeatView = ({ section, onClose }) => {
             const xr2 = xN(0) + t2*(xF(0)-xN(0));
             return <polygon key={r}
               points={`0,${y1} ${xr1},${y1} ${xr2},${y2} 0,${y2}`}
-              fill={r%2===0?'#0e3d28':'#1a1208'} opacity="0.85"/>;
+              fill={r%2===0?'#0e3d28':'#092818'} opacity="0.85"/>;
           })}
           <polygon points={`${fR},${fY} ${W},${fY} ${W},${nY} ${nR},${nY}`} fill="#071510"/>
           {[0,1,2,3,4].map(r => {
@@ -809,7 +570,7 @@ const SeatView = ({ section, onClose }) => {
             const xl2 = xN(120) + t2*(xF(120)-xN(120));
             return <polygon key={r}
               points={`${xl1},${y1} ${W},${y1} ${W},${y2} ${xl2},${y2}`}
-              fill={r%2===0?'#0e3d28':'#1a1208'} opacity="0.85"/>;
+              fill={r%2===0?'#0e3d28':'#092818'} opacity="0.85"/>;
           })}
 
           {/* ── LEFT END ZONE ── */}
@@ -943,7 +704,7 @@ const SeatView = ({ section, onClose }) => {
                   return (
                     <rect key={si} x={sx} y={y+1.5} width={sw-3} height="11"
                       rx="2"
-                      fill={isOurs ? C.gold : ['#2a1e0e','#4a3520','#1a1208'][si%3]}
+                      fill={isOurs ? C.gold : ['#1a3d20','#2a6632','#0f2213'][si%3]}
                       opacity={isOurs ? 1 : 0.85}
                       stroke={isOurs ? 'rgba(255,255,255,0.6)' : 'none'}
                       strokeWidth={isOurs ? 1 : 0}/>
@@ -999,8 +760,7 @@ const SeatView = ({ section, onClose }) => {
 
 
 // ============================================================
-// DEPRECATED — GranularSeatPicker (P2 cleanup)
-// No longer used by active WoffordTicketHub. Safe to remove.
+// SEAT PICKER
 // ============================================================
 const GranularSeatPicker = ({ sectionId, onSelect, selectedSeats }) => {
   const rows = ['A','B','C','D','E','F','G','H'];
@@ -1060,691 +820,147 @@ const GranularSeatPicker = ({ sectionId, onSelect, selectedSeats }) => {
   );
 };
 
-
 // ============================================================
-// WOFFORD VENUE DATA
+// TICKET HUB
 // ============================================================
-
-// ============================================================
-// PEAK SPORTS PORTFOLIO — SCHOOL VENUE DATA
-// 4 schools ranging from small (Wofford 13k) to mid-major (Akron 30k)
-// ============================================================
-const PEAK_SCHOOLS = {
-
-  wofford: {
-    id: 'wofford',
-    name: 'Wofford College',
-    mascot: 'Terriers',
-    conference: 'SoCon',
-    tier: 'Small',
-    colors: { primary:'#1a1208', accent:'#886E4C', accent2:'#C7B37F', text:'#ffffff' },
-    football: {
-      stadium: 'Gibbs Stadium',
-      subtitle: 'Mike Ayers Field · Spartanburg, SC',
-      capacity: 13000,
-      capacityLabel: '13,000',
-      opened: 1996,
-      surface: 'Grass',
-      sections: [
-        { id:'H1',  label:'H1',    zone:'home_chairback', name:'Home Chairback H1', price:27,  status:'HIGH', desc:'Home sideline · Chairback · 40-50 yd line' },
-        { id:'H2',  label:'H2',    zone:'home_chairback', name:'Home Chairback H2', price:27,  status:'MED',  desc:'Home sideline · Chairback · 40-50 yd line' },
-        { id:'H3',  label:'H3',    zone:'home_chairback', name:'Home Chairback H3', price:27,  status:'HIGH', desc:'Home sideline · Chairback · 50 yd line center' },
-        { id:'HB1', label:'HB1',   zone:'home_bleacher',  name:'Home Bleacher HB1', price:15,  status:'HIGH', desc:'Home sideline · Bleacher · 20-40 yd' },
-        { id:'HB2', label:'HB2',   zone:'home_bleacher',  name:'Home Bleacher HB2', price:15,  status:'HIGH', desc:'Home sideline · Bleacher · 20-40 yd' },
-        { id:'MR',  label:'VIP',   zone:'vip',            name:'Mungo Room',        price:85,  status:'LOW',  desc:"President's Box · Mungo Room · 50 yd · Hospitality suite" },
-        { id:'S1',  label:'VER-A', zone:'south_ez',       name:'Verandah Lot A',    price:20,  status:'MED',  desc:'South End Zone · Verandah Lot · Terrier Club donors' },
-        { id:'N1',  label:'NEZ',   zone:'north_ez',       name:'North End Zone',    price:10,  status:'HIGH', desc:'North End Zone · Video board end' },
-        { id:'V1',  label:'V1',    zone:'visitor',        name:'Visitor Side V1',   price:12,  status:'HIGH', desc:'Visitor sideline · Bleacher' },
-      ],
-      zones: {
-        home_chairback: { label:'Home Chairback', color:'#886E4C' },
-        home_bleacher:  { label:'Home Bleacher',  color:'#6b5538' },
-        vip:            { label:'Mungo Room VIP', color:'#C7B37F' },
-        south_ez:       { label:'Verandah Lot',   color:'#4a3520' },
-        north_ez:       { label:'North End Zone', color:'#2a1e0e' },
-        visitor:        { label:'Visitor Side',   color:'#3a2e1e' },
-      }
-    }
-  },
-
-  eku: {
-    id: 'eku',
-    name: 'Eastern Kentucky',
-    mascot: 'Colonels',
-    conference: 'ASUN',
-    tier: 'Small',
-    colors: { primary:'#4a0020', accent:'#8A0039', accent2:'#ffffff', text:'#ffffff' },
-    football: {
-      stadium: 'CG Bank Field at Roy Kidd Stadium',
-      subtitle: 'Richmond, KY · Est. 1969',
-      capacity: 20000,
-      capacityLabel: '20,000',
-      opened: 1969,
-      surface: 'FieldTurf',
-      sections: [
-        { id:'RC1',  label:'RC1',  zone:'reserved_chair', name:'Reserved Chairback A', price:25, status:'MED',  desc:'Home sideline · Reserved chairback · midfield' },
-        { id:'RC2',  label:'RC2',  zone:'reserved_chair', name:'Reserved Chairback B', price:25, status:'HIGH', desc:'Home sideline · Reserved chairback · 40-50 yd' },
-        { id:'RC3',  label:'RC3',  zone:'reserved_chair', name:'Reserved Chairback C', price:25, status:'MED',  desc:'Home sideline · Reserved chairback · 30-40 yd' },
-        { id:'GA1',  label:'GA-A', zone:'general',        name:'General Admission A',  price:13, status:'HIGH', desc:'Home sideline · Bleacher · General admission' },
-        { id:'GA2',  label:'GA-B', zone:'general',        name:'General Admission B',  price:13, status:'HIGH', desc:'Home sideline · Bleacher · General admission' },
-        { id:'LW',   label:'LAWN', zone:'lawn',           name:'Lawn Reserve',         price:18, status:'MED',  desc:'East end zone · Grass lawn seating · Great views' },
-        { id:'VIS',  label:'VIS',  zone:'visitor',        name:'Visitor Bleachers',    price:10, status:'HIGH', desc:'Visitor sideline · Bleacher seating' },
-        { id:'STU',  label:'STU',  zone:'student',        name:'Student Section',      price:0,  status:'HIGH', desc:'Student section · Free with EKU ID' },
-      ],
-      zones: {
-        reserved_chair: { label:'Reserved Chairback', color:'#8A0039' },
-        general:        { label:'General Admission',  color:'#6b0030' },
-        lawn:           { label:'Lawn Reserve',       color:'#4a0020' },
-        visitor:        { label:'Visitor Side',       color:'#3a2e1e' },
-        student:        { label:'Student Section',    color:'#1a1208' },
-      }
-    }
-  },
-
-  ballstate: {
-    id: 'ballstate',
-    name: 'Ball State University',
-    mascot: 'Cardinals',
-    conference: 'MAC',
-    tier: 'Mid-Major',
-    colors: { primary:'#6b0010', accent:'#BA0C2F', accent2:'#ffffff', text:'#ffffff' },
-    football: {
-      stadium: 'Scheumann Stadium',
-      subtitle: 'Muncie, IN · Est. 1967, Renovated 2007',
-      capacity: 22500,
-      capacityLabel: '22,500',
-      opened: 1967,
-      surface: 'FieldTurf',
-      sections: [
-        { id:'WS1',  label:'W1',   zone:'west_side',  name:'West Sideline 1',      price:35, status:'HIGH', desc:'Home sideline · West grandstand · 40-50 yd line' },
-        { id:'WS2',  label:'W2',   zone:'west_side',  name:'West Sideline 2',      price:35, status:'MED',  desc:'Home sideline · West grandstand · 30-40 yd' },
-        { id:'WS3',  label:'W3',   zone:'west_side',  name:'West Sideline 3',      price:30, status:'HIGH', desc:'Home sideline · West grandstand · 20-30 yd' },
-        { id:'SUB',  label:'SUITE',zone:'suite',      name:'Kozel Communications', price:95, status:'LOW',  desc:'Luxury suite · Kozel Communications Center · Catered' },
-        { id:'ES1',  label:'E1',   zone:'east_side',  name:'East Sideline 1',      price:20, status:'HIGH', desc:'Visitor sideline · East grandstand · midfield' },
-        { id:'ES2',  label:'E2',   zone:'east_side',  name:'East Sideline 2',      price:20, status:'HIGH', desc:'Visitor sideline · East grandstand' },
-        { id:'SEZ',  label:'SEZ',  zone:'south_ez',   name:'South End Zone',       price:18, status:'HIGH', desc:'South end zone · Grandstand seating' },
-        { id:'LAWN', label:'LAWN', zone:'lawn',       name:'North Lawn',           price:10, status:'MED',  desc:'North end zone · Grass lawn · Family Zone · Cardinals pillars' },
-        { id:'STU',  label:'STU',  zone:'student',    name:'Student Section',      price:0,  status:'HIGH', desc:'Student section · "The Chirp" tradition' },
-      ],
-      zones: {
-        west_side: { label:'West Sideline',  color:'#BA0C2F' },
-        suite:     { label:'Luxury Suites',  color:'#8B0020' },
-        east_side: { label:'East Sideline',  color:'#6b0010' },
-        south_ez:  { label:'South End Zone', color:'#4a0010' },
-        lawn:      { label:'North Lawn',     color:'#3a2e1e' },
-        student:   { label:'Student Section',color:'#1a1208' },
-      }
-    }
-  },
-
-  akron: {
-    id: 'akron',
-    name: 'University of Akron',
-    mascot: 'Zips',
-    conference: 'MAC',
-    tier: 'Mid-Major',
-    colors: { primary:'#021028', accent:'#041E42', accent2:'#A89968', text:'#ffffff' },
-    football: {
-      stadium: 'InfoCision Stadium — Summa Field',
-      subtitle: 'Akron, OH · Opened 2009',
-      capacity: 30000,
-      capacityLabel: '30,000',
-      opened: 2009,
-      surface: 'FieldTurf',
-      sections: [
-        { id:'WCL',  label:'CLUB', zone:'club',       name:'Huntington Club Level', price:65, status:'MED',  desc:'West side · Club level · Partially covered · 522 seats' },
-        { id:'LOG',  label:'LOGE', zone:'loge',       name:'Loge Boxes',           price:95, status:'LOW',  desc:'Open-air covered loge boxes · 38 boxes · 4 seats per box' },
-        { id:'SUI',  label:'SUITE',zone:'suite',      name:'Private Suite',        price:140,status:'LOW',  desc:'17 suites · 16 private (16 seats) + Presidential Suite (52 seats)' },
-        { id:'WP1',  label:'W1',   zone:'west_pri',   name:'West Priority 1',      price:40, status:'HIGH', desc:'West side · Priority reserved · 40-50 yd line' },
-        { id:'WP2',  label:'W2',   zone:'west_pri',   name:'West Priority 2',      price:40, status:'MED',  desc:'West side · Priority reserved · 30-40 yd' },
-        { id:'WG1',  label:'WG',   zone:'west_gen',   name:'West General',         price:20, status:'HIGH', desc:'West side · General seating · Bleacher w/ back support midfield' },
-        { id:'EG1',  label:'EG',   zone:'east_gen',   name:'East General',         price:15, status:'HIGH', desc:'East side · General admission · $15' },
-        { id:'SKN',  label:'KNOLL',zone:'knoll',      name:'South Grassy Knoll',   price:10, status:'HIGH', desc:'South end · Standing room + grassy knoll · Casual atmosphere' },
-        { id:'STU',  label:'STU',  zone:'student',    name:'Student Section',      price:0,  status:'HIGH', desc:'Student section · Free with Akron ID' },
-      ],
-      zones: {
-        club:     { label:'Club Level',       color:'#A89968' },
-        loge:     { label:'Loge Boxes',       color:'#041E42' },
-        suite:    { label:'Private Suites',   color:'#0a3060' },
-        west_pri: { label:'West Priority',    color:'#041E42' },
-        west_gen: { label:'West General',     color:'#021028' },
-        east_gen: { label:'East General',     color:'#021028' },
-        knoll:    { label:'Grassy Knoll',     color:'#1a2030' },
-        student:  { label:'Student Section',  color:'#010815' },
-      }
-    }
-  }
-};
-
-
-const WOFFORD_VENUES = {
-  football: {
-    id: 'football',
-    name: 'Gibbs Stadium',
-    subtitle: 'Mike Ayers Field · Spartanburg, SC',
-    capacity: '13,000',
-    sport: 'Football',
-    icon: '🏈',
-    color: '#886E4C',
-    description: 'Home of Wofford Terriers Football since 1996',
-    sections: [
-      // Home Sideline — Chairback (between the 40s)
-      { id:'H1', name:'Section H1', zone:'home_chairback', label:'H1', price:27, status:'HIGH', seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
-      { id:'H2', name:'Section H2', zone:'home_chairback', label:'H2', price:27, status:'MED',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
-      { id:'H3', name:'Section H3', zone:'home_chairback', label:'H3', price:27, status:'HIGH', seats:180, desc:'Home Sideline · Chairback · 50 yd line' },
-      { id:'H4', name:'Section H4', zone:'home_chairback', label:'H4', price:27, status:'MED',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
-      { id:'H5', name:'Section H5', zone:'home_chairback', label:'H5', price:27, status:'LOW',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
-      // Home Sideline — Bleachers (end zone to 40)
-      { id:'HB1', name:'Section HB1', zone:'home_bleacher', label:'HB1', price:15, status:'HIGH', seats:220, desc:'Home Sideline · Bleacher · 20-40 yd' },
-      { id:'HB2', name:'Section HB2', zone:'home_bleacher', label:'HB2', price:15, status:'HIGH', seats:220, desc:'Home Sideline · Bleacher · 20-40 yd' },
-      { id:'HB3', name:'Section HB3', zone:'home_bleacher', label:'HB3', price:15, status:'MED',  seats:220, desc:'Home Sideline · Bleacher · 5-20 yd' },
-      { id:'HB4', name:'Section HB4', zone:'home_bleacher', label:'HB4', price:15, status:'LOW',  seats:220, desc:'Home Sideline · Bleacher · 5-20 yd' },
-      // Press Box / Mungo Room (VIP)
-      { id:'MR',  name:'Mungo Room',   zone:'vip',          label:'VIP',  price:85, status:'LOW',  seats:40,  desc:'President's Box · Mungo Room · 50 yd line' },
-      // Visitor Sideline
-      { id:'V1',  name:'Section V1',   zone:'visitor',      label:'V1',   price:12, status:'HIGH', seats:200, desc:'Visitor Sideline · Bleacher · 40-50 yd' },
-      { id:'V2',  name:'Section V2',   zone:'visitor',      label:'V2',   price:12, status:'HIGH', seats:200, desc:'Visitor Sideline · Bleacher · 40-50 yd' },
-      { id:'V3',  name:'Section V3',   zone:'visitor',      label:'V3',   price:12, status:'MED',  seats:200, desc:'Visitor Sideline · Bleacher · 20-40 yd' },
-      // North End Zone
-      { id:'N1',  name:'North End Zone A', zone:'north_ez', label:'NEZ-A', price:10, status:'HIGH', seats:300, desc:'North End Zone · Video Board End' },
-      { id:'N2',  name:'North End Zone B', zone:'north_ez', label:'NEZ-B', price:10, status:'MED',  seats:300, desc:'North End Zone · Video Board End' },
-      // South End Zone (Verandah Lot)
-      { id:'S1',  name:'Verandah Lot A',   zone:'south_ez', label:'VER-A', price:20, status:'MED',  seats:280, desc:'South End Zone · Verandah Lot · Terrier Club Donors' },
-      { id:'S2',  name:'Verandah Lot B',   zone:'south_ez', label:'VER-B', price:20, status:'LOW',  seats:280, desc:'South End Zone · Verandah Lot · Premium Tailgate' },
-      // Student Section
-      { id:'STU', name:'Student Section',  zone:'student',  label:'STU',  price:0,  status:'MED',  seats:500, desc:'Student Section · Free with Wofford ID' },
-    ],
-    zones: {
-      home_chairback: { label:'Home Chairback', color:'#886E4C', desc:'Premium seats between the 40s' },
-      home_bleacher:  { label:'Home Bleacher',  color:'#6b5538', desc:'Home side, end zone to 40' },
-      vip:            { label:'Mungo Room VIP', color:'#C7B37F', desc:'President's Box hospitality' },
-      visitor:        { label:'Visitor Side',   color:'#3a2e1e', desc:'Visitor sideline seating' },
-      north_ez:       { label:'North End Zone', color:'#2a1e0e', desc:'Video board end zone' },
-      south_ez:       { label:'Verandah Lot',   color:'#4a3520', desc:'Donor tailgate end zone' },
-      student:        { label:'Student Section',color:'#1a1208', desc:'Free with Wofford ID' },
-    }
-  },
-  basketball: {
-    id: 'basketball',
-    name: 'Jerry Richardson Indoor Stadium',
-    subtitle: 'The JRIS · Spartanburg, SC',
-    capacity: '3,400',
-    sport: 'Basketball',
-    icon: '🏀',
-    color: '#886E4C',
-    description: 'Home of Wofford Terriers Basketball since 2017',
-    sections: [
-      // Courtside
-      { id:'CS1', name:'Courtside A', zone:'courtside',  label:'CS-A', price:65, status:'LOW',  seats:40,  desc:'Courtside · Chairback · Home sideline' },
-      { id:'CS2', name:'Courtside B', zone:'courtside',  label:'CS-B', price:65, status:'LOW',  seats:40,  desc:'Courtside · Chairback · Visitor sideline' },
-      // Club 51 (Lower Bowl Chairback)
-      { id:'C51A', name:'Club 51 A', zone:'club51',      label:'C51-A', price:45, status:'MED',  seats:120, desc:'Club 51 · Lower Bowl · Home sideline · Full kitchen access' },
-      { id:'C51B', name:'Club 51 B', zone:'club51',      label:'C51-B', price:45, status:'HIGH', seats:120, desc:'Club 51 · Lower Bowl · Center court' },
-      { id:'C51C', name:'Club 51 C', zone:'club51',      label:'C51-C', price:45, status:'MED',  seats:120, desc:'Club 51 · Lower Bowl · Visitor sideline' },
-      // Lower Bowl General
-      { id:'LB1', name:'Section 1',  zone:'lower_bowl',  label:'Sec 1', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Home sideline' },
-      { id:'LB2', name:'Section 2',  zone:'lower_bowl',  label:'Sec 2', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Center court' },
-      { id:'LB3', name:'Section 3',  zone:'lower_bowl',  label:'Sec 3', price:25, status:'MED',  seats:160, desc:'Lower Bowl · Visitor sideline' },
-      { id:'LB4', name:'Section 4',  zone:'lower_bowl',  label:'Sec 4', price:25, status:'MED',  seats:160, desc:'Lower Bowl · Behind basket' },
-      { id:'LB5', name:'Section 5',  zone:'lower_bowl',  label:'Sec 5', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Behind basket' },
-      // Corner Suites (open-air theater box style)
-      { id:'SUA', name:'Suite A',    zone:'suite',       label:'Suite A', price:120, status:'LOW', seats:20, desc:'Corner Suite A · Open-air · Theater box seating' },
-      { id:'SUB', name:'Suite B',    zone:'suite',       label:'Suite B', price:120, status:'LOW', seats:20, desc:'Corner Suite B · Open-air · Theater box seating' },
-      { id:'SUC', name:'Suite C',    zone:'suite',       label:'Suite C', price:120, status:'MED', seats:20, desc:'Corner Suite C · Open-air · Theater box seating' },
-      { id:'SUD', name:'Suite D',    zone:'suite',       label:'Suite D', price:120, status:'MED', seats:20, desc:'Corner Suite D · Open-air · Theater box seating' },
-      // Upper Level
-      { id:'UL1', name:'Upper Level A', zone:'upper',   label:'UL-A', price:18, status:'HIGH', seats:200, desc:'Upper Level · Sideline · Wide angle view' },
-      { id:'UL2', name:'Upper Level B', zone:'upper',   label:'UL-B', price:18, status:'HIGH', seats:200, desc:'Upper Level · Sideline' },
-      // The Boneyard (Student Section)
-      { id:'BY',  name:'The Boneyard', zone:'boneyard', label:'BONE', price:0,  status:'MED',  seats:400, desc:'The Boneyard · Student Section · Private entertainment area · Free with ID' },
-    ],
-    zones: {
-      courtside:  { label:'Courtside',     color:'#C7B37F', desc:'Best seats in the house' },
-      club51:     { label:'Club 51',       color:'#886E4C', desc:'Premium lower bowl · full kitchen' },
-      lower_bowl: { label:'Lower Bowl',    color:'#6b5538', desc:'Main floor seating' },
-      suite:      { label:'Corner Suites', color:'#4a3520', desc:'Open-air theater box suites' },
-      upper:      { label:'Upper Level',   color:'#3a2e1e', desc:'Second level sideline' },
-      boneyard:   { label:'The Boneyard',  color:'#1a1208', desc:'Student section · free with ID' },
-    }
-  },
-  volleyball: {
-    id: 'volleyball',
-    name: 'Jerry Richardson Indoor Stadium',
-    subtitle: 'Volleyball Arena · Spartanburg, SC',
-    capacity: '350',
-    sport: 'Volleyball',
-    icon: '🏐',
-    color: '#886E4C',
-    description: 'Volleyball Competition Venue at JRIS',
-    sections: [
-      { id:'VA1', name:'Section A', zone:'sideline',  label:'Sec A', price:10, status:'HIGH', seats:80,  desc:'Court sideline · Lower bowl' },
-      { id:'VA2', name:'Section B', zone:'sideline',  label:'Sec B', price:10, status:'MED',  seats:80,  desc:'Court sideline · Lower bowl' },
-      { id:'VB1', name:'Section C', zone:'end_line',  label:'Sec C', price:8,  status:'HIGH', seats:60,  desc:'End line · Behind serving' },
-      { id:'VB2', name:'Section D', zone:'end_line',  label:'Sec D', price:8,  status:'MED',  seats:60,  desc:'End line · Behind serving' },
-      { id:'VC1', name:'Premium',   zone:'premium',   label:'Prem',  price:20, status:'LOW',  seats:40,  desc:'Premium floor seats · Courtside' },
-      { id:'STU', name:'Student',   zone:'student',   label:'STU',   price:0,  status:'HIGH', seats:30,  desc:'Student Section · Free with Wofford ID' },
-    ],
-    zones: {
-      sideline: { label:'Sideline',      color:'#886E4C', desc:'Court sideline seating' },
-      end_line: { label:'End Line',      color:'#6b5538', desc:'Behind the serving line' },
-      premium:  { label:'Premium Floor', color:'#C7B37F', desc:'Courtside premium seats' },
-      student:  { label:'Student',       color:'#1a1208', desc:'Free with Wofford ID' },
-    }
-  }
-};
-
-// ============================================================
-// WOFFORD TICKET HUB COMPONENT
-// ============================================================
-const WoffordTicketHub = ({ onTransaction }) => {
-  const [schoolId, setSchoolId] = React.useState('wofford');
-  const [venue, setVenue] = React.useState('football');
-  const [selectedSection, setSelectedSection] = React.useState(null);
-  const [qty, setQty] = React.useState(2);
-  const [hubState, setHubState] = React.useState('browse');
-  const [filterZone, setFilterZone] = React.useState('all');
-
-  // Active school + venue derived from state
-  const activeSchool = PEAK_SCHOOLS[schoolId] || PEAK_SCHOOLS.wofford;
-  const activeVenue = activeSchool.football; // expand when adding basketball
-  const ac = activeSchool.colors; // shorthand for colors
-
-  // Build v-compatible object from PEAK_SCHOOLS for backward compatibility
-  const v = {
-    ...WOFFORD_VENUES[venue] || WOFFORD_VENUES.football,
-    name: activeVenue.stadium,
-    subtitle: activeVenue.subtitle,
-    capacity: activeVenue.capacityLabel,
-    sport: 'Football',
-    icon: '🏈',
-    description: `Home of ${activeSchool.name} ${activeSchool.mascot} Football`,
-    sections: activeVenue.sections,
-    zones: activeVenue.zones,
-  };
-  const fees = { facility: 2.50, processing: 1.50 };
-
-  const filteredSections = filterZone === 'all'
-    ? v.sections.filter(s => s.price > 0)
-    : v.sections.filter(s => s.zone === filterZone && s.price > 0);
-
-  const subtotal = selectedSection ? selectedSection.price * qty : 0;
-  const totalFees = selectedSection ? (fees.facility + fees.processing) * qty : 0;
-  const total = subtotal + totalFees;
-
-  const statusColor = s => s === 'HIGH' ? '#ef4444' : s === 'MED' ? '#f59e0b' : '#886E4C';
-  const statusLabel = s => s === 'HIGH' ? 'Selling Fast' : s === 'MED' ? 'Limited' : 'Available';
+const TicketHub = ({ onTransaction }) => {
+  const [hubState, setHubState] = useState('select');
+  const [selectedSection, setSelectedSection] = useState(null);
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [seatViewSection, setSeatViewSection] = useState(null);
+  const sectionDetails = selectedSection
+    ? { price: selectedSection.price || MOCK_DB.inventory.sections.find(s => s.id === selectedSection.id)?.price || 0 }
+    : { price: 0 };
+  const hasSelection = selectedSeats.length > 0;
+  const subtotal = hasSelection ? sectionDetails.price * selectedSeats.length : 0;
+  const total = subtotal + (hasSelection ? MOCK_DB.inventory.fees.facility + MOCK_DB.inventory.fees.processing : 0);
 
   const handlePurchase = () => {
+    if (!hasSelection) return;
     setHubState('success');
-    onTransaction({ fanName:'Scott Kull', campaign:'Ticket Sales', amount:total, fromTicketHub:true });
+    onTransaction({ fanName: "Cara Holloway", campaign: "Direct Purchase", amount: total, fromTicketHub: true });
   };
 
   if (hubState === 'success') return (
-    <div className="max-w-xl mx-auto py-8 fade-in">
-      <div className="rounded-3xl overflow-hidden shadow-2xl" style={{background:'#ffffff'}}>
-        {/* Success header with Wofford branding */}
-        <div className="px-8 py-10 text-center relative overflow-hidden transition-all duration-500"
-          style={{background:`linear-gradient(135deg, ${ac.primary} 0%, ${ac.accent} 100%)`}}>
-          <div className="absolute inset-0 flex items-center justify-center opacity-5">
-            <svg viewBox="0 0 200 200" style={{width:'300px',height:'300px'}}>
-              <ellipse cx="100" cy="90" rx="68" ry="62" fill="#886E4C"/>
-              <ellipse cx="100" cy="94" rx="62" ry="56" fill="#000"/>
-              <ellipse cx="100" cy="78" rx="28" ry="36" fill="#fff"/>
-              <circle cx="74" cy="72" r="16" fill="#fff"/><circle cx="126" cy="72" r="16" fill="#fff"/>
-              <circle cx="76" cy="74" r="9" fill="#000"/><circle cx="128" cy="74" r="9" fill="#000"/>
-              <ellipse cx="100" cy="106" rx="22" ry="14" fill="#000"/>
-              <rect x="32" y="148" width="136" height="22" rx="11" fill="#886E4C"/>
-            </svg>
+    <div className="max-w-xl mx-auto py-8 text-center fade-in">
+      <div className="bg-white p-8 md:p-16 shadow-2xl rounded-3xl">
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{background:'rgba(15,34,19,0.08)'}}>
+          <CheckCircle2 size={36} style={{color:C.greenMid}}/>
+        </div>
+        <h2 className="futura-heading mb-2" style={{fontSize:'clamp(28px,5vw,40px)', color:C.greenMid}}>Purchase Complete!</h2>
+        <p className="text-slate-400 text-sm mb-8">Confirmation #AUTH-992-WEB · Tickets sent to your email</p>
+        <div className="grid grid-cols-2 gap-3 mb-8">
+          <div className="p-4 md:p-6 rounded-2xl" style={{background:C.offWhite}}>
+            <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-1">Section</p>
+            <p className="futura-heading" style={{fontSize:'clamp(22px,5vw,32px)', color:C.greenMid}}>{selectedSection?.id}</p>
           </div>
-          <div className="relative z-10">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:'rgba(136,110,76,0.2)', border:'2px solid #886E4C'}}>
-              <CheckCircle2 size={32} style={{color:'#C7B37F'}}/>
-            </div>
-            <p className="futura-heading text-white" style={{fontSize:'32px'}}>Purchase Complete!</p>
-            <p className="text-white/50 text-sm mt-1 mono-label" style={{fontSize:'9px'}}>GO TERRIERS 🐾</p>
+          <div className="p-4 md:p-6 rounded-2xl" style={{background:C.offWhite}}>
+            <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-1">Total Paid</p>
+            <p className="futura-heading" style={{fontSize:'clamp(22px,5vw,32px)', color:C.gold}}>${total.toFixed(2)}</p>
           </div>
         </div>
-        <div className="p-8">
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            {[
-              { label:'Venue', value:v.name.split(' ').slice(0,2).join(' ') },
-              { label:'Section', value:selectedSection?.label || '—' },
-              { label:'Quantity', value:`${qty} tickets` },
-              { label:'Total Paid', value:`$${total.toFixed(2)}`, gold:true },
-            ].map((item,i) => (
-              <div key={i} className="p-4 rounded-2xl" style={{background:'#F5F0E8'}}>
-                <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{color:'#886E4C'}}>{item.label}</p>
-                <p className="futura-heading" style={{fontSize:'20px', color: item.gold ? '#886E4C' : '#1a1208'}}>{item.value}</p>
-              </div>
-            ))}
-          </div>
-          <QrCode size={80} className="mx-auto mb-6" style={{color:'#e8dfc8'}}/>
-          <p className="text-center text-xs text-slate-400 mb-6">Confirmation sent · Tickets delivered to your email</p>
-          <button onClick={() => { setHubState('browse'); setSelectedSection(null); setQty(2); }}
-            className="w-full py-4 rounded-2xl font-black text-white"
-            style={{background:'#1a1208', fontFamily:'Rajdhani, sans-serif', fontSize:'16px'}}>
-            ← Back to Tickets
-          </button>
-        </div>
+        <QrCode size={100} className="mx-auto mb-8 text-slate-200"/>
+        <button onClick={() => { setHubState('select'); setSelectedSection(null); setSelectedSeats([]); }}
+          className="font-bold text-sm hover:underline" style={{color:C.greenMid}}>← Back to marketplace</button>
       </div>
     </div>
   );
 
   return (
     <div className="max-w-7xl mx-auto">
-      {/* ── HEADER ── */}
-      <div className="mb-8 pb-6 border-b-2" style={{borderColor:'#e8dfc8'}}>
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-          <div>
-            <p className="page-label mb-2">Wofford Terriers · Ticket Marketplace</p>
-            <h2 className="futura-heading leading-none" style={{fontSize:'clamp(36px,6vw,56px)', color:'#1a1208'}}>
-              Ticket Hub
-            </h2>
-            <p className="text-sm mt-2 font-semibold" style={{color:'#886E4C'}}>
-              {v.sport} · {v.name} · {v.capacity} capacity
-            </p>
-          </div>
-          {/* Wofford wordmark strip */}
-          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl transition-all duration-500"
-            style={{background: ac.primary, border:`2px solid ${ac.accent}`}}>
-            <div style={{textAlign:'right'}}>
-              <p className="futura-heading text-white" style={{fontSize:'18px',lineHeight:'1'}}>{activeSchool.name.split(' ').slice(-1)[0].toUpperCase()}</p>
-              <p className="mono-label" style={{color: ac.accent, fontSize:'9px',letterSpacing:'3px'}}>{activeSchool.mascot.toUpperCase()}</p>
-            </div>
-            <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-              <ellipse cx="50" cy="50" rx="42" ry="38" fill="#886E4C"/>
-              <ellipse cx="50" cy="54" rx="36" ry="30" fill="#000"/>
-              <ellipse cx="50" cy="42" rx="18" ry="22" fill="#fff"/>
-              <circle cx="36" cy="38" r="10" fill="#fff"/>
-              <circle cx="64" cy="38" r="10" fill="#fff"/>
-              <circle cx="37" cy="39" r="5" fill="#000"/><circle cx="65" cy="39" r="5" fill="#000"/>
-              <ellipse cx="50" cy="58" rx="14" ry="9" fill="#000"/>
-              <rect x="20" y="76" width="60" height="14" rx="7" fill="#886E4C"/>
-            </svg>
-          </div>
+      {seatViewSection && <SeatView section={seatViewSection} onClose={() => setSeatViewSection(null)}/>}
+
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 mb-8 pb-6 border-b-2" style={{borderColor:C.slateLight}}>
+        <div>
+          <p className="page-label mb-2">Marketplace</p>
+          <h2 className="futura-heading leading-none" style={{fontSize:'clamp(36px, 6vw, 56px)', color:C.greenMid}}>Ticket Hub</h2>
         </div>
-      </div>
-
-      {/* ── SCHOOL + VENUE SELECTOR ── */}
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
-
-        {/* School Dropdown */}
-        <div className="flex flex-col gap-1.5">
-          <p className="mono-label" style={{fontSize:'9px', color: activeSchool.colors.accent, letterSpacing:'2px'}}>SELECT SCHOOL</p>
-          <div className="relative">
-            <select
-              value={schoolId}
-              onChange={e => { setSchoolId(e.target.value); setVenue('football'); setSelectedSection(null); setFilterZone('all'); }}
-              className="appearance-none w-full md:w-72 px-4 py-3 pr-10 rounded-2xl font-bold text-base border-2 cursor-pointer"
-              style={{ background:'#1a1208', color:'white', borderColor: activeSchool.colors.accent,
-                       fontFamily:'Rajdhani, sans-serif', fontSize:'15px',
-                       boxShadow:`0 4px 20px ${activeSchool.colors.accent}40` }}>
-              {Object.values(PEAK_SCHOOLS).map(s => (
-                <option key={s.id} value={s.id}>
-                  {s.name} — {s.mascot} ({s.tier})
-                </option>
-              ))}
-            </select>
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
-              style={{color: activeSchool.colors.accent}}>▼</div>
-          </div>
-        </div>
-
-        {/* School info strip */}
-        <div className="flex items-center gap-4 px-5 py-3 rounded-2xl border-2"
-          style={{background: activeSchool.colors.primary, borderColor: activeSchool.colors.accent,
-                  boxShadow:`0 4px 20px ${activeSchool.colors.accent}30`}}>
-          {/* Tier badge */}
-          <div className="text-center px-3 py-1.5 rounded-xl" style={{background: activeSchool.colors.accent}}>
-            <p className="futura-heading text-white" style={{fontSize:'11px', lineHeight:'1'}}>{activeSchool.tier.toUpperCase()}</p>
-            <p className="mono-label text-white/70" style={{fontSize:'8px'}}>{activeSchool.conference}</p>
-          </div>
-          <div>
-            <p className="futura-heading text-white" style={{fontSize:'16px', lineHeight:'1.1'}}>{activeSchool.name}</p>
-            <p className="mono-label" style={{color: activeSchool.colors.accent2 === '#ffffff' ? 'rgba(255,255,255,0.6)' : activeSchool.colors.accent2, fontSize:'9px'}}>
-              {activeVenue.stadium} · {activeVenue.capacityLabel} capacity
-            </p>
-          </div>
-          {/* Capacity bar visual */}
-          <div className="hidden md:block ml-auto">
-            <p className="mono-label text-white/40" style={{fontSize:'8px', marginBottom:'4px'}}>CAPACITY vs WOFFORD</p>
-            <div className="flex items-end gap-1">
-              {Object.values(PEAK_SCHOOLS).map(s => (
-                <div key={s.id} title={s.name}
-                  style={{
-                    width:'16px',
-                    height:`${Math.round((s.football.capacity / 30000) * 32)}px`,
-                    background: s.id === schoolId ? activeSchool.colors.accent : 'rgba(255,255,255,0.15)',
-                    borderRadius:'3px 3px 0 0',
-                    transition:'all 0.3s ease'
-                  }}/>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Sport selector pills */}
-        <div className="flex items-end gap-2 flex-wrap">
-          {['football'].map(sp => (
-            <button key={sp} onClick={() => { setVenue(sp); setSelectedSection(null); setFilterZone('all'); }}
-              className="flex items-center gap-2 px-4 py-3 rounded-2xl font-bold border-2 transition-all"
-              style={venue === sp
-                ? { background: activeSchool.colors.primary, color:'white', borderColor: activeSchool.colors.accent,
-                    boxShadow:`0 4px 16px ${activeSchool.colors.accent}40` }
-                : { background:'white', color:'#3a2e1e', borderColor:'#e8dfc8' }}>
-              <span>🏈</span>
-              <div className="text-left">
-                <p className="futura-heading" style={{fontSize:'13px', lineHeight:'1'}}>Football</p>
-                <p className="mono-label" style={{fontSize:'8px', color: venue === sp ? activeSchool.colors.accent : '#886E4C'}}>
-                  {activeVenue.stadium.split(' ').slice(0,2).join(' ')}
-                </p>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* ── ZONE FILTER PILLS ── */}
-      <div className="flex gap-2 mb-6 flex-wrap">
-        <button onClick={() => setFilterZone('all')}
-          className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
-          style={filterZone === 'all'
-            ? { background:'#886E4C', color:'white' }
-            : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
-          All Sections
-        </button>
-        {Object.entries(v.zones).map(([zk, zv]) => (
-          <button key={zk} onClick={() => setFilterZone(zk)}
-            className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
-            style={filterZone === zk
-              ? { background:zv.color, color:'white' }
-              : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
-            {zv.label}
+        {hubState === 'checkout' && (
+          <button onClick={() => setHubState('select')} className="flex items-center gap-2 font-semibold text-base hover:opacity-70 transition-opacity pb-2" style={{color:C.slate}}>
+            <ArrowLeft size={18}/> Back to map
           </button>
-        ))}
+        )}
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+      {/* UNIFIED LAYOUT — map + picker + cart equal width */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 items-start">
 
-        {/* ── SECTION GRID ── */}
-        <div className="xl:col-span-2">
-          {/* Venue banner with Boss watermark */}
-          <div className="rounded-2xl mb-4 p-5 relative overflow-hidden transition-all duration-500"
-            style={{background:`linear-gradient(135deg, ${ac.primary}, ${ac.accent})`, minHeight:'80px'}}>
-            {/* Boss watermark */}
-            <div className="absolute right-4 top-0 bottom-0 flex items-center opacity-10">
-              <svg viewBox="0 0 100 100" style={{width:'80px',height:'80px'}} fill="none">
-                <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
-                <ellipse cx="50" cy="50" rx="32" ry="28" fill="#000"/>
-                <ellipse cx="50" cy="38" rx="16" ry="20" fill="#fff"/>
-                <circle cx="34" cy="34" r="10" fill="#fff"/><circle cx="66" cy="34" r="10" fill="#fff"/>
-                <circle cx="35" cy="35" r="5" fill="#000"/><circle cx="67" cy="35" r="5" fill="#000"/>
-                <ellipse cx="50" cy="54" rx="12" ry="8" fill="#000"/>
-                <rect x="18" y="72" width="64" height="12" rx="6" fill="#886E4C"/>
-              </svg>
-            </div>
-            <div className="relative z-10">
-              <p className="futura-heading text-white" style={{fontSize:'18px'}}>{v.name}</p>
-              <p className="mono-label mt-1" style={{color:'#C7B37F', fontSize:'9px'}}>{v.subtitle} · {v.description}</p>
-            </div>
-          </div>
-
-          {/* Section cards grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {filteredSections.map(sec => {
-              const zoneInfo = v.zones[sec.zone];
-              const isSelected = selectedSection?.id === sec.id;
-              return (
-                <button key={sec.id} onClick={() => setSelectedSection(isSelected ? null : sec)}
-                  className="text-left rounded-2xl border-2 transition-all overflow-hidden"
-                  style={{
-                    borderColor: isSelected ? '#886E4C' : '#e8dfc8',
-                    background: isSelected ? '#1a1208' : 'white',
-                    boxShadow: isSelected ? '0 8px 32px rgba(136,110,76,0.25)' : '0 2px 8px rgba(26,18,8,0.04)',
-                    transform: isSelected ? 'translateY(-2px)' : 'translateY(0)',
-                  }}>
-                  {/* Zone color bar */}
-                  <div className="h-1.5" style={{background: isSelected ? '#886E4C' : zoneInfo?.color || '#e8dfc8'}}/>
-                  <div className="p-4">
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <div>
-                        <p className="futura-heading" style={{fontSize:'16px', color: isSelected ? 'white' : '#1a1208'}}>{sec.name}</p>
-                        <p className="text-xs font-semibold mt-0.5" style={{color: isSelected ? '#C7B37F' : '#886E4C'}}>{zoneInfo?.label}</p>
-                      </div>
-                      <div className="text-right shrink-0">
-                        <p className="futura-heading" style={{fontSize:'22px', color: isSelected ? '#C7B37F' : '#886E4C'}}>${sec.price}</p>
-                        <p className="mono-label" style={{fontSize:'8px', color: isSelected ? 'rgba(255,255,255,0.5)' : '#94a3b8'}}>per ticket</p>
-                      </div>
-                    </div>
-                    <p className="text-xs leading-relaxed mb-3" style={{color: isSelected ? 'rgba(255,255,255,0.6)' : '#64748b'}}>{sec.desc}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold px-2 py-1 rounded-lg" style={{
-                        background: isSelected ? 'rgba(136,110,76,0.2)' : `${statusColor(sec.status)}15`,
-                        color: isSelected ? '#C7B37F' : statusColor(sec.status)
-                      }}>
-                        {statusLabel(sec.status)}
-                      </span>
-                      {isSelected && (
-                        <span className="mono-label text-white/60" style={{fontSize:'8px'}}>✓ SELECTED</span>
-                      )}
-                    </div>
+        {/* Left: Map + Seat Picker stacked tight */}
+        <div className="min-w-0 space-y-4">
+          {hubState === 'select' ? (
+            <>
+              <CollegeStadiumMap
+                onSelectSection={(s) => { setSelectedSection(s); setSelectedSeats([]); }}
+                activeSection={selectedSection?.id}
+                onSeatView={(s) => setSeatViewSection(s)}
+                showSeatView={true}
+              />
+              {selectedSection && (
+                <GranularSeatPicker
+                  sectionId={selectedSection.id}
+                  onSelect={setSelectedSeats}
+                  selectedSeats={selectedSeats}
+                />
+              )}
+            </>
+          ) : (
+            <div className="bg-white p-10 rounded-3xl shadow-sm border" style={{borderColor:C.slateLight}}>
+              <h3 className="text-3xl font-black mb-8 pb-6 border-b" style={{color:C.green, borderColor:C.slateLight}}>Payment Details</h3>
+              <div className="p-8 rounded-2xl flex items-center justify-between" style={{background:C.offWhite}}>
+                <div className="flex items-center gap-5">
+                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-black text-lg" style={{background:C.green}}>CC</div>
+                  <div>
+                    <p className="font-bold text-lg text-slate-900">Primary Card</p>
+                    <p className="text-base text-slate-400 font-mono">•••• 4242</p>
                   </div>
-                </button>
-              );
-            })}
-          </div>
+                </div>
+                <CheckCircle2 size={32} style={{color:C.greenLight}}/>
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* ── ORDER PANEL ── */}
-        <div className="sticky top-6">
-          <div className="rounded-3xl overflow-hidden shadow-2xl border-2" style={{borderColor:'#e8dfc8'}}>
-            {/* Panel header with Wofford branding */}
-            <div className="px-6 py-5 relative overflow-hidden" style={{background:`linear-gradient(135deg, ${ac.primary}, ${ac.accent})`}}>
-              <div className="absolute right-0 top-0 bottom-0 opacity-8 flex items-center pr-2">
-                <svg viewBox="0 0 100 100" style={{width:'60px',height:'60px'}} fill="none">
-                  <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
-                  <ellipse cx="50" cy="50" rx="32" ry="28" fill="#000"/>
-                  <ellipse cx="50" cy="38" rx="16" ry="20" fill="#fff"/>
-                  <circle cx="34" cy="34" r="10" fill="#fff"/><circle cx="66" cy="34" r="10" fill="#fff"/>
-                  <circle cx="35" cy="35" r="5" fill="#000"/><circle cx="67" cy="35" r="5" fill="#000"/>
-                  <ellipse cx="50" cy="54" rx="12" ry="8" fill="#000"/>
-                  <rect x="18" y="72" width="64" height="12" rx="6" fill="#886E4C"/>
-                </svg>
+        {/* Right: Sticky cart */}
+        <div className="w-full">
+          <div className="sticky top-6 rounded-3xl overflow-hidden shadow-2xl border" style={{borderColor:C.slateLight}}>
+            <div className="px-7 py-6 text-white" style={{background:C.green}}>
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-black">Order Summary</h3>
+                {hasSelection && <span className="text-sm font-bold px-3 py-1 rounded-full" style={{background:C.gold, color:C.green}}>{selectedSeats.length} seats</span>}
               </div>
-              <p className="futura-heading text-white relative z-10" style={{fontSize:'20px'}}>Order Summary</p>
-              <p className="mono-label relative z-10 mt-1" style={{color: ac.accent2, fontSize:'9px'}}>{activeSchool.name.toUpperCase()} · {activeSchool.mascot.toUpperCase()}</p>
             </div>
-
-            <div className="bg-white p-6">
-              {!selectedSection ? (
-                <div className="py-10 text-center">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:'#F5F0E8'}}>
-                    <span style={{fontSize:'28px'}}>{v.icon}</span>
-                  </div>
-                  <p className="futura-heading mb-1" style={{fontSize:'18px', color:'#1a1208'}}>Select a Section</p>
-                  <p className="text-sm text-slate-400">Choose from the sections on the left</p>
-                  <p className="futura-heading mt-4" style={{fontSize:'36px', color:'#e8dfc8'}}>$0.00</p>
+            <div className="bg-white p-7 space-y-6">
+              {!hasSelection ? (
+                <div className="py-14 text-center space-y-4">
+                  <MousePointer2 className="mx-auto" size={44} style={{color:C.slateLight}}/>
+                  <p className="text-base text-slate-400 font-semibold">Select a section, then pick your seats</p>
+                  <p className="text-6xl font-black" style={{color:C.slateLight}}>$0.00</p>
                 </div>
               ) : (
                 <div className="space-y-5">
-                  {/* Selected section */}
-                  <div className="p-4 rounded-2xl" style={{background:'#F5F0E8', border:'2px solid #e8dfc8'}}>
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="w-2 h-2 rounded-full" style={{background:'#886E4C'}}/>
-                      <p className="font-black text-sm" style={{color:'#1a1208'}}>{selectedSection.name}</p>
-                    </div>
-                    <p className="text-xs text-slate-500 pl-4">{selectedSection.desc}</p>
+                  <div className="pb-5 border-b" style={{borderColor:C.slateLight}}>
+                    <p className="text-2xl font-black" style={{color:C.green}}>Section {selectedSection?.id}</p>
+                    <p className="text-sm font-semibold mt-1" style={{color:C.greenLight}}>{selectedSeats.length} seats selected · {selectedSeats.join(', ')}</p>
                   </div>
-
-                  {/* Quantity selector */}
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{color:'#886E4C'}}>Quantity</p>
-                    <div className="flex items-center gap-3">
-                      {[1,2,3,4,5,6].map(n => (
-                        <button key={n} onClick={() => setQty(n)}
-                          className="w-10 h-10 rounded-xl font-black text-sm transition-all"
-                          style={qty === n
-                            ? { background:'#1a1208', color:'white', boxShadow:'0 4px 12px rgba(26,18,8,0.3)' }
-                            : { background:'#F5F0E8', color:'#3a2e1e' }}>
-                          {n}
-                        </button>
-                      ))}
-                    </div>
+                  <div className="space-y-3 text-base">
+                    <div className="flex justify-between"><span className="text-slate-500">Base price</span><span className="font-bold text-slate-900">${subtotal.toFixed(2)}</span></div>
+                    <div className="flex justify-between"><span className="text-slate-400">Facility fee</span><span className="text-slate-400">$12.50</span></div>
+                    <div className="flex justify-between"><span className="text-slate-400">Processing</span><span className="text-slate-400">$4.50</span></div>
                   </div>
-
-                  {/* Price breakdown */}
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">{qty}x {selectedSection.label}</span>
-                      <span className="font-bold" style={{color:'#1a1208'}}>${subtotal.toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-slate-400">Facility fee ({qty}x)</span>
-                      <span className="text-slate-400">${(fees.facility * qty).toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-slate-400">Processing ({qty}x)</span>
-                      <span className="text-slate-400">${(fees.processing * qty).toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between items-baseline pt-3 border-t-4" style={{borderColor:'#1a1208'}}>
-                      <span className="futura-heading" style={{fontSize:'18px', color:'#1a1208'}}>Total</span>
-                      <span className="futura-heading" style={{fontSize:'32px', color:'#886E4C'}}>${total.toFixed(2)}</span>
-                    </div>
+                  <div className="flex justify-between items-baseline pt-4 border-t-4" style={{borderColor:C.green}}>
+                    <span className="text-xl font-black" style={{color:C.green}}>Total</span>
+                    <span className="text-4xl font-black" style={{color:C.gold}}>${total.toFixed(2)}</span>
                   </div>
-
-                  {/* Purchase button */}
-                  <button onClick={() => setHubState('checkout')}
-                    className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95 hover:opacity-90"
-                    style={{background:`linear-gradient(135deg, ${ac.primary}, ${ac.accent})`, fontFamily:'Rajdhani, sans-serif', fontSize:'17px', letterSpacing:'0.03em', boxShadow:`0 8px 24px ${ac.primary}80`}}>
-                    Proceed to Payment →
+                  <button onClick={() => hubState === 'select' ? setHubState('checkout') : handlePurchase()}
+                    className="w-full py-5 rounded-2xl font-black text-xl shadow-lg transition-all active:scale-95 hover:opacity-90"
+                    style={{background:C.green, color:'white'}}>
+                    {hubState === 'select' ? 'Proceed to Payment →' : 'Confirm Purchase'}
                   </button>
-
-                  {hubState === 'checkout' && (
-                    <div className="space-y-4 fade-in">
-                      <div className="p-4 rounded-2xl flex items-center justify-between" style={{background:'#F5F0E8'}}>
-                        <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white" style={{background:'#1a1208'}}>CC</div>
-                          <div>
-                            <p className="font-bold" style={{color:'#1a1208'}}>Primary Card</p>
-                            <p className="text-xs text-slate-400 font-mono">•••• 4242</p>
-                          </div>
-                        </div>
-                        <CheckCircle2 size={24} style={{color:'#886E4C'}}/>
-                      </div>
-                      <button onClick={handlePurchase}
-                        className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95"
-                        style={{background: ac.accent, fontFamily:'Rajdhani, sans-serif', fontSize:'17px'}}>
-                        Confirm Purchase · ${total.toFixed(2)}
-                      </button>
-                    </div>
-                  )}
                 </div>
               )}
-
-              {/* Shield */}
-              <div className="mt-4 p-3 rounded-xl flex items-center gap-2" style={{background:'#F5F0E8'}}>
-                <ShieldCheck size={16} style={{color:'#886E4C'}}/>
-                <p className="text-xs font-semibold" style={{color:'#886E4C'}}>Secure checkout · Official Wofford tickets</p>
+              <div className="p-4 rounded-xl flex items-start gap-3" style={{background:'rgba(15,34,19,0.06)'}}>
+                <ShieldCheck size={20} style={{color:C.greenLight}} className="shrink-0 mt-0.5"/>
+                <p className="text-sm font-semibold leading-relaxed" style={{color:C.greenLight}}>University-grade secure checkout</p>
               </div>
             </div>
           </div>
@@ -1803,30 +1019,30 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
   };
 
   return (
-    <div className="relative w-full flex flex-col shrink-0"
+    <div className="relative flex flex-col shrink-0"
       style={{
+        width: '360px',
         maxWidth: '360px',
         height: 'min(740px, 80vh)',
         minHeight: '520px',
         borderRadius: '48px',
-        border: '10px solid #100b04',
-        background: '#1a1208',
+        border: '10px solid #0a1208',
+        background: '#0f2213',
         overflow: 'hidden',
         boxShadow: '0 40px 80px -10px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.05)',
       }}>
-      {/* Notch */}
-      <div style={{position:'absolute', top:0, left:'50%', transform:'translateX(-50%)', width:'96px', height:'20px', borderRadius:'0 0 24px 24px', background:'#180f07', zIndex:40}}/>
+      <div style={{position:'absolute', top:0, left:'50%', transform:'translateX(-50%)', width:'96px', height:'20px', borderRadius:'0 0 24px 24px', background:'#0a1208', zIndex:40}}/>
 
       {/* Header */}
-      <div className="pb-4 px-5 border-b border-white/5" style={{background:'rgba(26,18,8,0.97)', paddingTop:'28px'}}>
+      <div className="pt-7 pb-4 px-5 border-b border-white/5" style={{background:'rgba(15,34,19,0.97)'}}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{background:'rgba(136,110,76,0.1)', border:'1px solid rgba(136,110,76,0.25)'}}>
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{background:'rgba(92,184,50,0.1)', border:'1px solid rgba(92,184,50,0.25)'}}>
               <Zap size={20} style={{color:C.lime}}/>
             </div>
             <div>
               <p className="futura-heading text-white" style={{fontSize:'17px', lineHeight:'1.2'}}>{CAMPAIGNS[campaign]?.title}</p>
-              <p className="mono-label mt-0.5" style={{color:'rgba(136,110,76,0.6)', fontSize:'8px'}}>{CAMPAIGNS[campaign]?.sub}</p>
+              <p className="mono-label mt-0.5" style={{color:'rgba(92,184,50,0.6)', fontSize:'8px'}}>{CAMPAIGNS[campaign]?.sub}</p>
             </div>
           </div>
           <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full mono-label ${
@@ -1840,12 +1056,12 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
       </div>
 
       {/* Messages */}
-      <div ref={scrollRef} className="flex-1 px-4 py-4 overflow-y-auto space-y-3" style={{background:'#F5F0E8'}}>
+      <div ref={scrollRef} className="flex-1 px-4 py-4 overflow-y-auto space-y-3" style={{background:'#f4f7f2'}}>
         {messages.map(m => (
           <div key={m.id} className={`flex msg-enter ${m.role==='user' ? 'justify-end' : 'justify-start'}`}>
             {m.role === 'ai' && (
-              <div className="w-8 h-8 rounded-xl flex items-center justify-center mr-2 shrink-0 mt-1 shadow-md overflow-hidden" style={{background:C.greenMid}}>
-                <div style={{width:'24px',height:'24px'}}>{BOSS_LOGO_SVG}</div>
+              <div className="w-8 h-8 rounded-xl flex items-center justify-center mr-2 shrink-0 mt-1 shadow-md" style={{background:C.greenMid}}>
+                <Zap size={13} style={{color:C.lime}}/>
               </div>
             )}
             <div className="max-w-[88%] px-4 py-3 rounded-2xl shadow-sm text-sm leading-relaxed"
@@ -1872,7 +1088,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
                     const price = kvMap['price'] || null;
                     const row = kvMap['row'] || null;
                     return (
-                      <div key={li} className="mb-2.5 rounded-xl overflow-hidden" style={{border:'1px solid #e8dfc8'}}>
+                      <div key={li} className="mb-2.5 rounded-xl overflow-hidden" style={{border:'1px solid #dde8d8'}}>
                         <div className="px-3 py-2" style={{background:C.greenMid}}>
                           <div className="flex items-center justify-between gap-2">
                             <span className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
@@ -1881,7 +1097,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
                             {price && <span className="mono-label shrink-0" style={{color:C.lime, fontSize:'9px'}}>{price}</span>}
                           </div>
                         </div>
-                        <div className="px-3 py-2 flex flex-wrap gap-x-3 gap-y-1" style={{background:'#F5F0E8'}}>
+                        <div className="px-3 py-2 flex flex-wrap gap-x-3 gap-y-1" style={{background:'#f4f7f2'}}>
                           {date && <span className="text-xs font-semibold text-slate-500">📅 {date}</span>}
                           {section && <span className="text-xs font-semibold text-slate-500">🎟 {section}{row ? ` · Row ${row}` : ''}</span>}
                           {!date && !section && <span className="text-xs text-slate-400">{rest}</span>}
@@ -1902,8 +1118,8 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
         ))}
         {isTyping && (
           <div className="flex items-end gap-2">
-            <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-md overflow-hidden" style={{background:C.greenMid}}>
-              <img src={BOSS_LOGO} alt="Boss" style={{width:'28px',height:'28px',objectFit:'contain'}} />
+            <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-md" style={{background:C.greenMid}}>
+              <Zap size={13} style={{color:C.lime}}/>
             </div>
             <div className="px-4 py-3 rounded-2xl shadow-sm bg-white flex gap-1.5 items-center" style={{borderTopLeftRadius:'4px'}}>
               <div className="w-2 h-2 rounded-full dot-1" style={{background:C.lime}}/>
@@ -1944,12 +1160,12 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
 
       {/* Input bar */}
       {flowState === 'chat' && (
-        <div className="px-4 py-3 border-t border-white/5" style={{background:'rgba(26,18,8,0.97)'}}>
-          <div className="flex gap-2 items-center rounded-2xl px-4 py-2.5 border" style={{background:'rgba(255,255,255,0.07)', borderColor:'rgba(136,110,76,0.2)'}}>
+        <div className="px-4 py-3 border-t border-white/5" style={{background:'rgba(15,34,19,0.97)'}}>
+          <div className="flex gap-2 items-center rounded-2xl px-4 py-2.5 border" style={{background:'rgba(255,255,255,0.07)', borderColor:'rgba(92,184,50,0.2)'}}>
             <input type="text" value={inputValue}
               onChange={e => setInputValue(e.target.value)}
               onKeyPress={e => e.key === 'Enter' && handleSend()}
-              placeholder="Message Boss..."
+              placeholder="Message Ace..."
               className="flex-1 bg-transparent text-sm text-white outline-none"
               style={{fontFamily:'Rajdhani, sans-serif', fontWeight:600, letterSpacing:'0.02em'}}
             />
@@ -1959,7 +1175,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
               <Send size={15} style={{color:C.greenMid}}/>
             </button>
           </div>
-          <p className="mono-label text-center mt-2" style={{color:'rgba(255,255,255,0.18)', fontSize:'8px'}}>Boss · Wofford Terriers</p>
+          <p className="mono-label text-center mt-2" style={{color:'rgba(255,255,255,0.18)', fontSize:'8px'}}>Ace · Peak Sports AI</p>
         </div>
       )}
     </div>
@@ -1977,7 +1193,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:115000, tickets:1016, growth:'+18%', topZone:'Club Level',    avgPrice:113, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:101000, tickets:963,  growth:'+31%', topZone:'End Zone',      avgPrice:105, primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:97200,  tickets:899,  growth:'+12%', topZone:'Upper Deck',    avgPrice:108, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:77800,  tickets:736,  growth:'+9%',  topZone:'Home Sideline', avgPrice:106, primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:77800,  tickets:736,  growth:'+9%',  topZone:'Home Sideline', avgPrice:106, primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:62200,  tickets:594,  growth:'+7%',  topZone:'Upper Deck',    avgPrice:105, primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -1996,7 +1212,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:51200, tickets:468, growth:'+22%', topZone:'Club Level',    avgPrice:109, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:46800, tickets:429, growth:'+35%', topZone:'End Zone',      avgPrice:109, primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:44100, tickets:406, growth:'+15%', topZone:'Upper Deck',    avgPrice:109, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:35200, tickets:334, growth:'+11%', topZone:'Home Sideline', avgPrice:105, primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:35200, tickets:334, growth:'+11%', topZone:'Home Sideline', avgPrice:105, primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:30100, tickets:284, growth:'+8%',  topZone:'Upper Deck',    avgPrice:106, primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -2015,7 +1231,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:35100, tickets:312, growth:'+15%', topZone:'Court Side',    avgPrice:113, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:32400, tickets:296, growth:'+27%', topZone:'Lower Bowl',    avgPrice:109, primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:30200, tickets:276, growth:'+10%', topZone:'Lower Bowl',    avgPrice:109, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:23500, tickets:214, growth:'+7%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:23500, tickets:214, growth:'+7%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:19800, tickets:180, growth:'+5%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -2034,7 +1250,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:21400, tickets:196, growth:'+12%', topZone:'Lower Bowl',    avgPrice:109, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:16400, tickets:150, growth:'+22%', topZone:'Lower Bowl',    avgPrice:109, primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:14200, tickets:130, growth:'+8%',  topZone:'Lower Bowl',    avgPrice:109, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:11200, tickets:102, growth:'+6%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:11200, tickets:102, growth:'+6%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:8800,  tickets:80,  growth:'+4%',  topZone:'Lower Bowl',    avgPrice:110, primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -2053,7 +1269,7 @@ const SPORT_DATA = {
       { school:'Eastern Kentucky University', mascot:'Colonels',  conf:'ASUN',     revenue:7300,  tickets:40,  growth:'+19%', topZone:'Infield Box',   avgPrice:183, primary:'#8A0039', secondary:'#ffffff' },
       { school:'University of Akron',         mascot:'Zips',      conf:'MAC',      revenue:5400,  tickets:88,  growth:'+24%', topZone:'Infield Box',   avgPrice:61,  primary:'#041E42', secondary:'#A89968' },
       { school:'University of West Georgia',  mascot:'Wolves',    conf:'ASUN',     revenue:8700,  tickets:87,  growth:'+13%', topZone:'Infield Box',   avgPrice:100, primary:'#003DA5', secondary:'#E4002B' },
-      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:7900,  tickets:86,  growth:'+8%',  topZone:'Infield Box',   avgPrice:92,  primary:'#886E4C', secondary:'#000000' },
+      { school:'Wofford College',             mascot:'Terriers',  conf:'SoCon',    revenue:7900,  tickets:86,  growth:'+8%',  topZone:'Infield Box',   avgPrice:92,  primary:'#4a3b28', secondary:'#886E4C' },
       { school:'SE Louisiana University',     mascot:'Lions',     conf:'Southland',revenue:3500,  tickets:50,  growth:'+5%',  topZone:'Infield Box',   avgPrice:70,  primary:'#007843', secondary:'#C8A035' },
     ],
     trend: [
@@ -2073,7 +1289,7 @@ const SCHOOL_LABELS = ['Ball St.','EKU','Akron','W. Ga.','Wofford','SE La.'];
 const InsightsTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl px-4 py-3 shadow-xl text-xs" style={{background:C.green, border:`1px solid rgba(136,110,76,0.3)`}}>
+    <div className="rounded-xl px-4 py-3 shadow-xl text-xs" style={{background:C.green, border:`1px solid rgba(92,184,50,0.3)`}}>
       <p className="font-black text-white mb-2">{label}</p>
       {payload.map((p,i) => (
         <p key={i} style={{color:p.color}} className="font-semibold">{p.name}: {p.value}</p>
@@ -2103,8 +1319,8 @@ const DataInsightsTab = () => {
             <button key={key} onClick={() => setSport(key)}
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all"
               style={sport === key
-                ? { background:C.greenMid, color:'white', boxShadow:`0 4px 14px rgba(26,18,8,0.3)` }
-                : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
+                ? { background:C.greenMid, color:'white', boxShadow:`0 4px 14px rgba(15,34,19,0.3)` }
+                : { background:'#f4f7f2', color:'#445544', border:'1px solid #dde8d8' }}>
               <span>{val.icon}</span> {val.label}
             </button>
           ))}
@@ -2116,7 +1332,7 @@ const DataInsightsTab = () => {
               <span className="mono-label text-slate-400" style={{fontSize:'9px'}}>SEASON PROGRESS</span>
               <span className="mono-label font-bold" style={{color:C.greenLight, fontSize:'9px'}}>{data.season}</span>
             </div>
-            <div className="h-2 rounded-full" style={{background:'#e8dfc8'}}>
+            <div className="h-2 rounded-full" style={{background:'#dde8d8'}}>
               <div className="h-full rounded-full transition-all duration-500"
                 style={{width:`${data.progress}%`, background: data.progress === 100 ? C.lime : data.progress < 20 ? '#e07b2a' : C.greenLight}}/>
             </div>
@@ -2223,22 +1439,14 @@ const DataInsightsTab = () => {
 // ============================================================
 const CRMTab = () => {
 const contacts = [
-
-  // ── ADMINISTRATION ────────────────────────────────────────────────────────
-  { id:1,  name:'Nayef Samhat',               school:'Wofford College', title:'President',                        tier:'Platinum', email:'samhatnr@wofford.edu',    phone:'(864) 597-4010', lastContact:'5 days ago',  status:'hot',  spend:0, tags:['Administration','Transitioning','Time-Sensitive'],    notes:'President since 2013. Leading $470M Drive for 5 campaign. Stepping down end of 2025-26 year. Prime outreach window.' },
-  { id:2,  name:'Christopher A.P. Carpenter', school:'Wofford College', title:'Board of Trustees Chairman',       tier:'Platinum', email:'carpenter@wofford.edu',   phone:'(864) 597-4011', lastContact:'12 days ago', status:'warm', spend:0, tags:['Administration','Alumni','Board','Decision Maker'],    notes:"Class of 1990 alumnus. Overseeing search for Wofford's 12th president." },
-  { id:3,  name:'Timothy Schmitz',            school:'Wofford College', title:'Willimon Family Provost',          tier:'Gold',     email:'schmitzta@wofford.edu',   phone:'(864) 597-4012', lastContact:'18 days ago', status:'warm', spend:0, tags:['Administration','Academic','Long-Tenured'],            notes:'At Wofford since 2000. Key academic decision-maker.' },
-  { id:4,  name:'Calhoun L. Kennedy Jr.',     school:'Wofford College', title:'VP for Philanthropy & Engagement', tier:'Gold',     email:'kennedycl@wofford.edu',   phone:'(864) 597-4013', lastContact:'8 days ago',  status:'hot',  spend:0, tags:['Administration','Philanthropy','Sponsorship','Drive for 5'], notes:'Primary contact for sponsorships and the $470M Drive for 5 campaign.' },
-
-  // ── ATHLETICS ─────────────────────────────────────────────────────────────
-  { id:5,  name:'Shawn Watson',               school:'Wofford College', title:'Head Football Coach',              tier:'Gold',     email:'watsonsc@wofford.edu',    phone:'(864) 597-4020', lastContact:'3 days ago',  status:'hot',  spend:0, tags:['Athletics','Football','Coach','Year 3'],                notes:'Entering 3rd season. 6-6 record in 2025. Gibbs Stadium demand tied to team performance.' },
-  { id:6,  name:'Kevin Giltner',              school:'Wofford College', title:"Head Men's Basketball Coach",      tier:'Gold',     email:'giltnerkj@wofford.edu',   phone:'(864) 597-4021', lastContact:'6 days ago',  status:'hot',  spend:0, tags:['Athletics','Basketball','Coach','Alumni','New Hire'],   notes:'Class of 2012 Wofford grad. Five-time SoCon champion. Returned from Virginia Tech. High fan energy.' },
-
-  // ── TERRIER SPORTS PROPERTIES ─────────────────────────────────────────────
-  { id:7,  name:'Shawn Tyler',                school:'Wofford College', title:'Director of Sales — Terrier Sports Properties',  tier:'Gold',     email:'shawn@terriersportsproperties.com', phone:'(864) 597-4000', lastContact:'2 days ago',  status:'hot',  spend:0, tags:['Sponsor','Key Contact','Peak Sports'] },
-  { id:8,  name:'Devin Foster',               school:'Wofford College', title:'Ticketing — Terrier Sports Properties',           tier:'Gold',     email:'devin@terriersportsproperties.com', phone:'(864) 597-4001', lastContact:'2 days ago',  status:'hot',  spend:0, tags:['Ticketing','Key Contact','Peak Sports'] },
-  { id:9,  name:'Scott Kull',                 school:'Wofford College', title:'Director of Athletics',            tier:'Platinum', email:'kullsr@wofford.edu',      phone:'(864) 597-4002', lastContact:'5 days ago',  status:'warm', spend:0, tags:['Admin','Decision Maker','VIP','Institutional'] },
-
+  { id:1,  name:'Marcus Webb',      school:'Wofford College',              title:'Season Ticket Holder',     tier:'Gold',   email:'m.webb@email.com',    phone:'(864) 555-0142', lastContact:'14 days ago', status:'warm',    spend:1240, tags:['Alumni','Renewal Due'] },
+  { id:2,  name:'Priya Nair',       school:'SE Louisiana University',      title:'Alumni · Class of 2019',   tier:'Silver', email:'p.nair@email.com',    phone:'(985) 555-0198', lastContact:'32 days ago', status:'cold',    spend:480,  tags:['Alumni','Lapsed'] },
+  { id:3,  name:'Derek Fontaine',   school:'University of Akron',          title:'Premium Suite Prospect',   tier:'Prospect',email:'d.fontaine@biz.com', phone:'(330) 555-0217', lastContact:'5 days ago',  status:'hot',     spend:0,    tags:['Suite','New Lead'] },
+  { id:4,  name:'Sandra Liu',       school:'Ball State University',        title:'Corporate Sponsor',        tier:'Gold',   email:'s.liu@corp.com',      phone:'(765) 555-0089', lastContact:'7 days ago',  status:'warm',    spend:3800, tags:['Sponsor','Renewal'] },
+  { id:5,  name:'James Okafor',     school:'Eastern Kentucky University',  title:'Group Sales Lead',         tier:'Silver', email:'j.okafor@email.com',  phone:'(859) 555-0334', lastContact:'21 days ago', status:'cold',    spend:620,  tags:['Group','Lapsed'] },
+  { id:6,  name:'Tori Blanchard',   school:'University of West Georgia',   title:'Parent · Student Athlete', tier:'Bronze', email:'t.blanchard@email.com',phone:'(678) 555-0411', lastContact:'60 days ago', status:'cold',    spend:190,  tags:['Parent','At Risk'] },
+  { id:7,  name:'Chris Alvarez',    school:'Wofford College',              title:'Local Business Owner',     tier:'Prospect',email:'c.alvarez@biz.com',  phone:'(864) 555-0556', lastContact:'2 days ago',  status:'hot',     spend:0,    tags:['Sponsor','New Lead'] },
+  { id:8,  name:'Nkechi Obi',       school:'SE Louisiana University',      title:'Alumni · Donor',           tier:'Gold',   email:'n.obi@email.com',     phone:'(985) 555-0677', lastContact:'10 days ago', status:'warm',    spend:2100, tags:['Alumni','VIP'] },
 ];
 
 const campaigns = [
@@ -2259,12 +1467,9 @@ const [editMode, setEditMode]               = React.useState(false);
 const [editedEmail, setEditedEmail]         = React.useState('');
 
 const statusColor = s => ({ hot:'#ef4444', warm:'#f59e0b', cold:'#64748b' }[s] || '#64748b');
-const tierColor   = t => ({ Gold:'#886E4C', Silver:'#94a3b8', Bronze:'#e07b2a', Prospect:'#3b82f6' }[t] || '#64748b');
+const tierColor   = t => ({ Gold:'#5cb832', Silver:'#94a3b8', Bronze:'#e07b2a', Prospect:'#3b82f6' }[t] || '#64748b');
 
-const filteredContacts = filterStatus === 'all' ? contacts
-    : filterStatus === 'admin' ? contacts.filter(c => c.tags.includes('Administration') || c.tags.includes('Admin'))
-    : filterStatus === 'athletics' ? contacts.filter(c => c.tags.includes('Athletics') || c.tags.includes('Coach'))
-    : contacts.filter(c => c.status === filterStatus);
+const filteredContacts = filterStatus === 'all' ? contacts : contacts.filter(c => c.status === filterStatus);
 
 const generateEmail = async (contact) => {
   setSelectedContact(contact);
@@ -2318,7 +1523,7 @@ Write a compelling 3-4 paragraph email. Include a subject line at the top format
 };
 
 return (
-  <div className="fade-in -mx-5 md:-mx-10 -mt-5 md:-mt-10 px-5 md:px-12 pt-8 md:pt-12 pb-12 min-h-screen" style={{background:'#1a1208'}}>
+  <div className="fade-in -mx-5 md:-mx-10 -mt-5 md:-mt-10 px-5 md:px-12 pt-8 md:pt-12 pb-12 min-h-screen" style={{background:'#0f2213'}}>
   <div className="space-y-8 max-w-7xl mx-auto">
     <div>
       <p className="page-label mb-2">Pillar 3</p>
@@ -2341,21 +1546,21 @@ return (
 
     <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
       {/* Contact list — left panel */}
-      <div className="xl:col-span-2 bg-white rounded-3xl border-2 overflow-hidden shadow-sm" style={{borderColor:'#d4c4a0'}}>
+      <div className="xl:col-span-2 bg-white rounded-3xl border-2 overflow-hidden shadow-sm" style={{borderColor:'#c8dac8'}}>
         {/* List header */}
-        <div className="px-6 py-5 border-b flex items-center justify-between" style={{borderColor:'#d4c4a0'}}>
+        <div className="px-6 py-5 border-b flex items-center justify-between" style={{borderColor:'#c8dac8'}}>
           <div>
             <h3 className="text-lg font-black" style={{color:C.green}}>Contacts</h3>
             <p className="text-xs text-slate-400 font-semibold">{filteredContacts.length} of {contacts.length} shown</p>
           </div>
           <div className="flex gap-2">
-            {['all','hot','warm','cold','admin','athletics'].map(s => (
+            {['all','hot','warm','cold'].map(s => (
               <button key={s} onClick={() => setFilterStatus(s)}
                 className="px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition-all"
                 style={filterStatus === s
-                  ? { background: s==='all' ? C.green : s==='movers' ? '#0891b2' : statusColor(s), color:'white' }
-                  : { background:'#F5ECD8', color:'#4a3520' }}>
-                {s === 'movers' ? '📍 Movers' : s}
+                  ? { background: s==='all' ? C.green : statusColor(s), color:'white' }
+                  : { background:'#eef3ee', color:'#4a6741' }}>
+                {s}
               </button>
             ))}
           </div>
@@ -2367,7 +1572,7 @@ return (
               onClick={() => generateEmail(contact)}
               className="px-6 py-4 border-b cursor-pointer transition-all"
               style={{
-                borderColor:'#d4c4a0',
+                borderColor:'#c8dac8',
                 background: selectedContact?.id === contact.id ? '#e4ede4' : 'white',
                 borderLeft: selectedContact?.id === contact.id ? `4px solid ${C.gold}` : '4px solid transparent'
               }}>
@@ -2393,7 +1598,7 @@ return (
               <div className="flex flex-wrap gap-1.5 mt-2.5">
                 {contact.tags.map(tag => (
                   <span key={tag} className="text-xs px-2 py-0.5 rounded-lg font-semibold"
-                    style={{background:'#ede3cc', color:'#4a3520'}}>{tag}</span>
+                    style={{background:'#e4ede4', color:'#3a5c38'}}>{tag}</span>
                 ))}
               </div>
               <p className="text-xs text-slate-400 mt-2">Last contact: {contact.lastContact}
@@ -2407,8 +1612,8 @@ return (
       {/* Email composer — right panel */}
       <div className="xl:col-span-3 flex flex-col gap-5">
         {!selectedContact && !emailLoading && (
-          <div className="bg-white rounded-3xl border-2 flex flex-col items-center justify-center text-center p-16 shadow-sm" style={{borderColor:'#d4c4a0', minHeight:'400px'}}>
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5" style={{background:'rgba(136,110,76,0.10)'}}>
+          <div className="bg-white rounded-3xl border-2 flex flex-col items-center justify-center text-center p-16 shadow-sm" style={{borderColor:'#c8dac8', minHeight:'400px'}}>
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5" style={{background:'rgba(15,34,19,0.08)'}}>
               <Mail size={28} style={{color:C.green}}/>
             </div>
             <p className="text-xl font-black mb-2" style={{color:C.green}}>Select a Contact</p>
@@ -2417,19 +1622,19 @@ return (
         )}
 
         {emailLoading && (
-          <div className="bg-white rounded-3xl border-2 flex flex-col items-center justify-center text-center p-16 shadow-sm" style={{borderColor:'#d4c4a0', minHeight:'400px'}}>
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 animate-pulse" style={{background:'rgba(136,110,76,0.12)'}}>
+          <div className="bg-white rounded-3xl border-2 flex flex-col items-center justify-center text-center p-16 shadow-sm" style={{borderColor:'#c8dac8', minHeight:'400px'}}>
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 animate-pulse" style={{background:'rgba(92,184,50,0.12)'}}>
               <Sparkles size={28} style={{color:C.gold}}/>
             </div>
             <p className="text-xl font-black mb-2" style={{color:C.green}}>Drafting for {selectedContact?.name}...</p>
-            <p className="text-slate-400 text-sm font-semibold">Boss is personalizing based on their history</p>
+            <p className="text-slate-400 text-sm font-semibold">Ace is personalizing based on their history</p>
           </div>
         )}
 
         {selectedContact && generatedEmail && !emailLoading && (
           <>
             {/* Contact detail bar */}
-            <div className="bg-white rounded-2xl border-2 px-4 md:px-6 py-4 shadow-sm" style={{borderColor:'#d4c4a0'}}>
+            <div className="bg-white rounded-2xl border-2 px-4 md:px-6 py-4 shadow-sm" style={{borderColor:'#c8dac8'}}>
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black shrink-0 text-sm" style={{background:C.greenMid}}>
                   {selectedContact.name.split(' ').map(n=>n[0]).join('')}
@@ -2446,11 +1651,11 @@ return (
             </div>
 
             {/* Email body */}
-            <div className="bg-white rounded-3xl border-2 overflow-hidden shadow-sm flex flex-col" style={{borderColor:'#d4c4a0'}}>
-              <div className="px-6 py-4 border-b flex items-center justify-between" style={{borderColor:'#d4c4a0', background:'#F5ECD8'}}>
+            <div className="bg-white rounded-3xl border-2 overflow-hidden shadow-sm flex flex-col" style={{borderColor:'#c8dac8'}}>
+              <div className="px-6 py-4 border-b flex items-center justify-between" style={{borderColor:'#c8dac8', background:'#eef3ee'}}>
                 <div className="flex items-center gap-2">
                   <Sparkles size={16} style={{color:C.gold}}/>
-                  <span className="text-sm font-black" style={{color:C.green}}>Boss-Drafted · {campaigns.find(c=>c.id===crmCampaign)?.label}</span>
+                  <span className="text-sm font-black" style={{color:C.green}}>AI-Drafted · {campaigns.find(c=>c.id===crmCampaign)?.label}</span>
                 </div>
                 <button onClick={() => { setEditMode(!editMode); setEditedEmail(generatedEmail); }}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
@@ -2472,10 +1677,10 @@ return (
               )}
 
               {/* Action bar */}
-              <div className="px-4 md:px-6 py-4 border-t flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3" style={{borderColor:'#d4c4a0', background:'#F5ECD8'}}>
+              <div className="px-4 md:px-6 py-4 border-t flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3" style={{borderColor:'#c8dac8', background:'#eef3ee'}}>
                 <button onClick={() => generateEmail(selectedContact)}
                   className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all border-2"
-                  style={{background:'#F5ECD8', color:'#4a3520', borderColor:'#d4c4a0'}}>
+                  style={{background:'#eef3ee', color:'#3a5c38', borderColor:'#c8dac8'}}>
                   <RefreshCw size={14}/> Regenerate
                 </button>
                 <div className="flex items-center gap-3 justify-end">
@@ -2505,12 +1710,12 @@ return (
     {/* CRM stats footer */}
     <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
       {[
-        { label:'Contacts',         value:'9',   sub:'Wofford roster' },
-        { label:'Hot Leads',        value:'5',   sub:'Ready to close', gold:true },
+        { label:'Contacts',         value:'8',   sub:'In this demo' },
+        { label:'Hot Leads',        value:'2',   sub:'Ready to close', gold:true },
         { label:'Emails Drafted',   value:'∞',   sub:'AI-powered' },
         { label:'Avg Response Rate',value:'34%', sub:'Industry avg: 21%', gold:true },
       ].map((s,i) => (
-        <div key={i} className="bg-white rounded-2xl border-2 p-6 shadow-sm" style={{borderColor:'#d4c4a0'}}>
+        <div key={i} className="bg-white rounded-2xl border-2 p-6 shadow-sm" style={{borderColor:'#c8dac8'}}>
           <p className="text-xs text-slate-400 font-semibold mb-1">{s.label}</p>
           <p className="text-3xl font-black" style={{color: s.gold ? C.gold : C.green}}>{s.value}</p>
           <p className="text-xs text-slate-400 font-semibold mt-1">{s.sub}</p>
@@ -2522,356 +1727,10 @@ return (
 );
 };
 
-
-// ============================================================
-// WOFFORD VENUE DATA
-// ============================================================
-
-// ============================================================
-// WOFFORD TICKET HUB COMPONENT
-// ============================================================
-const WoffordTicketHub = ({ onTransaction }) => {
-  const [venue, setVenue] = React.useState('football');
-  const [selectedSection, setSelectedSection] = React.useState(null);
-  const [qty, setQty] = React.useState(2);
-  const [hubState, setHubState] = React.useState('browse');
-  const [filterZone, setFilterZone] = React.useState('all');
-
-  const v = WOFFORD_VENUES[venue];
-  const fees = { facility: 2.50, processing: 1.50 };
-
-  const filteredSections = filterZone === 'all'
-    ? v.sections.filter(s => s.price > 0)
-    : v.sections.filter(s => s.zone === filterZone && s.price > 0);
-
-  const subtotal = selectedSection ? selectedSection.price * qty : 0;
-  const totalFees = selectedSection ? (fees.facility + fees.processing) * qty : 0;
-  const total = subtotal + totalFees;
-
-  const statusColor = s => s === 'HIGH' ? '#ef4444' : s === 'MED' ? '#f59e0b' : '#886E4C';
-  const statusLabel = s => s === 'HIGH' ? 'Selling Fast' : s === 'MED' ? 'Limited' : 'Available';
-
-  const handlePurchase = () => {
-    setHubState('success');
-    onTransaction({ fanName:'Scott Kull', campaign:'Ticket Sales', amount:total, fromTicketHub:true });
-  };
-
-  if (hubState === 'success') return (
-    <div className="max-w-xl mx-auto py-8 fade-in">
-      <div className="rounded-3xl overflow-hidden shadow-2xl" style={{background:'#ffffff'}}>
-        {/* Success header with Wofford branding */}
-        <div className="px-8 py-10 text-center relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208 0%, #2a1e0e 100%)'}}>
-          <div className="absolute inset-0 flex items-center justify-center opacity-5">
-            <svg viewBox="0 0 200 200" style={{width:'300px',height:'300px'}}>
-              <ellipse cx="100" cy="90" rx="68" ry="62" fill="#886E4C"/>
-              <ellipse cx="100" cy="94" rx="62" ry="56" fill="#000"/>
-              <ellipse cx="100" cy="78" rx="28" ry="36" fill="#fff"/>
-              <circle cx="74" cy="72" r="16" fill="#fff"/><circle cx="126" cy="72" r="16" fill="#fff"/>
-              <circle cx="76" cy="74" r="9" fill="#000"/><circle cx="128" cy="74" r="9" fill="#000"/>
-              <ellipse cx="100" cy="106" rx="22" ry="14" fill="#000"/>
-              <rect x="32" y="148" width="136" height="22" rx="11" fill="#886E4C"/>
-            </svg>
-          </div>
-          <div className="relative z-10">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:'rgba(136,110,76,0.2)', border:'2px solid #886E4C'}}>
-              <CheckCircle2 size={32} style={{color:'#C7B37F'}}/>
-            </div>
-            <p className="futura-heading text-white" style={{fontSize:'32px'}}>Purchase Complete!</p>
-            <p className="text-white/50 text-sm mt-1 mono-label" style={{fontSize:'9px'}}>GO TERRIERS 🐾</p>
-          </div>
-        </div>
-        <div className="p-8">
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            {[
-              { label:'Venue', value:v.name.split(' ').slice(0,2).join(' ') },
-              { label:'Section', value:selectedSection?.label || '—' },
-              { label:'Quantity', value:`${qty} tickets` },
-              { label:'Total Paid', value:`$${total.toFixed(2)}`, gold:true },
-            ].map((item,i) => (
-              <div key={i} className="p-4 rounded-2xl" style={{background:'#F5F0E8'}}>
-                <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{color:'#886E4C'}}>{item.label}</p>
-                <p className="futura-heading" style={{fontSize:'20px', color: item.gold ? '#886E4C' : '#1a1208'}}>{item.value}</p>
-              </div>
-            ))}
-          </div>
-          <QrCode size={80} className="mx-auto mb-6" style={{color:'#e8dfc8'}}/>
-          <p className="text-center text-xs text-slate-400 mb-6">Confirmation sent · Tickets delivered to your email</p>
-          <button onClick={() => { setHubState('browse'); setSelectedSection(null); setQty(2); }}
-            className="w-full py-4 rounded-2xl font-black text-white"
-            style={{background:'#1a1208', fontFamily:'Rajdhani, sans-serif', fontSize:'16px'}}>
-            ← Back to Tickets
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="max-w-7xl mx-auto">
-      {/* ── HEADER ── */}
-      <div className="mb-8 pb-6 border-b-2" style={{borderColor:'#e8dfc8'}}>
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-          <div>
-            <p className="page-label mb-2">Wofford Terriers · Ticket Marketplace</p>
-            <h2 className="futura-heading leading-none" style={{fontSize:'clamp(36px,6vw,56px)', color:'#1a1208'}}>
-              Ticket Hub
-            </h2>
-            <p className="text-sm mt-2 font-semibold" style={{color:'#886E4C'}}>
-              {v.sport} · {v.name} · {v.capacity} capacity
-            </p>
-          </div>
-          {/* Wofford wordmark strip */}
-          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl" style={{background:'#1a1208'}}>
-            <div style={{textAlign:'right'}}>
-              <p className="futura-heading text-white" style={{fontSize:'18px',lineHeight:'1'}}>WOFFORD</p>
-              <p className="mono-label" style={{color:'#886E4C',fontSize:'9px',letterSpacing:'3px'}}>TERRIERS</p>
-            </div>
-            <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
-              <ellipse cx="50" cy="50" rx="42" ry="38" fill="#886E4C"/>
-              <ellipse cx="50" cy="54" rx="36" ry="30" fill="#000"/>
-              <ellipse cx="50" cy="42" rx="18" ry="22" fill="#fff"/>
-              <circle cx="36" cy="38" r="10" fill="#fff"/>
-              <circle cx="64" cy="38" r="10" fill="#fff"/>
-              <circle cx="37" cy="39" r="5" fill="#000"/><circle cx="65" cy="39" r="5" fill="#000"/>
-              <ellipse cx="50" cy="58" rx="14" ry="9" fill="#000"/>
-              <rect x="20" y="76" width="60" height="14" rx="7" fill="#886E4C"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      {/* ── VENUE SELECTOR ── */}
-      <div className="flex gap-3 mb-6 flex-wrap">
-        {Object.values(WOFFORD_VENUES).map(vn => (
-          <button key={vn.id} onClick={() => { setVenue(vn.id); setSelectedSection(null); setFilterZone('all'); }}
-            className="flex items-center gap-3 px-5 py-3 rounded-2xl font-bold transition-all border-2"
-            style={venue === vn.id
-              ? { background:'#1a1208', color:'white', borderColor:'#886E4C', boxShadow:'0 4px 20px rgba(136,110,76,0.3)' }
-              : { background:'white', color:'#3a2e1e', borderColor:'#e8dfc8' }}>
-            <span style={{fontSize:'18px'}}>{vn.icon}</span>
-            <div className="text-left">
-              <p className="futura-heading" style={{fontSize:'15px', lineHeight:'1.1'}}>{vn.sport}</p>
-              <p className="mono-label" style={{fontSize:'8px', color: venue === vn.id ? '#C7B37F' : '#886E4C'}}>{vn.name.split(' ').slice(0,2).join(' ')}</p>
-            </div>
-          </button>
-        ))}
-      </div>
-
-      {/* ── ZONE FILTER PILLS ── */}
-      <div className="flex gap-2 mb-6 flex-wrap">
-        <button onClick={() => setFilterZone('all')}
-          className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
-          style={filterZone === 'all'
-            ? { background:'#886E4C', color:'white' }
-            : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
-          All Sections
-        </button>
-        {Object.entries(v.zones).map(([zk, zv]) => (
-          <button key={zk} onClick={() => setFilterZone(zk)}
-            className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
-            style={filterZone === zk
-              ? { background:zv.color, color:'white' }
-              : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
-            {zv.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
-
-        {/* ── SECTION GRID ── */}
-        <div className="xl:col-span-2">
-          {/* Venue banner with Boss watermark */}
-          <div className="rounded-2xl mb-4 p-5 relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)', minHeight:'80px'}}>
-            {/* Boss watermark */}
-            <div className="absolute right-4 top-0 bottom-0 flex items-center opacity-10">
-              <svg viewBox="0 0 100 100" style={{width:'80px',height:'80px'}} fill="none">
-                <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
-                <ellipse cx="50" cy="50" rx="32" ry="28" fill="#000"/>
-                <ellipse cx="50" cy="38" rx="16" ry="20" fill="#fff"/>
-                <circle cx="34" cy="34" r="10" fill="#fff"/><circle cx="66" cy="34" r="10" fill="#fff"/>
-                <circle cx="35" cy="35" r="5" fill="#000"/><circle cx="67" cy="35" r="5" fill="#000"/>
-                <ellipse cx="50" cy="54" rx="12" ry="8" fill="#000"/>
-                <rect x="18" y="72" width="64" height="12" rx="6" fill="#886E4C"/>
-              </svg>
-            </div>
-            <div className="relative z-10">
-              <p className="futura-heading text-white" style={{fontSize:'18px'}}>{v.name}</p>
-              <p className="mono-label mt-1" style={{color:'#C7B37F', fontSize:'9px'}}>{v.subtitle} · {v.description}</p>
-            </div>
-          </div>
-
-          {/* Section cards grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {filteredSections.map(sec => {
-              const zoneInfo = v.zones[sec.zone];
-              const isSelected = selectedSection?.id === sec.id;
-              return (
-                <button key={sec.id} onClick={() => setSelectedSection(isSelected ? null : sec)}
-                  className="text-left rounded-2xl border-2 transition-all overflow-hidden"
-                  style={{
-                    borderColor: isSelected ? '#886E4C' : '#e8dfc8',
-                    background: isSelected ? '#1a1208' : 'white',
-                    boxShadow: isSelected ? '0 8px 32px rgba(136,110,76,0.25)' : '0 2px 8px rgba(26,18,8,0.04)',
-                    transform: isSelected ? 'translateY(-2px)' : 'translateY(0)',
-                  }}>
-                  {/* Zone color bar */}
-                  <div className="h-1.5" style={{background: isSelected ? '#886E4C' : zoneInfo?.color || '#e8dfc8'}}/>
-                  <div className="p-4">
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <div>
-                        <p className="futura-heading" style={{fontSize:'16px', color: isSelected ? 'white' : '#1a1208'}}>{sec.name}</p>
-                        <p className="text-xs font-semibold mt-0.5" style={{color: isSelected ? '#C7B37F' : '#886E4C'}}>{zoneInfo?.label}</p>
-                      </div>
-                      <div className="text-right shrink-0">
-                        <p className="futura-heading" style={{fontSize:'22px', color: isSelected ? '#C7B37F' : '#886E4C'}}>${sec.price}</p>
-                        <p className="mono-label" style={{fontSize:'8px', color: isSelected ? 'rgba(255,255,255,0.5)' : '#94a3b8'}}>per ticket</p>
-                      </div>
-                    </div>
-                    <p className="text-xs leading-relaxed mb-3" style={{color: isSelected ? 'rgba(255,255,255,0.6)' : '#64748b'}}>{sec.desc}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold px-2 py-1 rounded-lg" style={{
-                        background: isSelected ? 'rgba(136,110,76,0.2)' : `${statusColor(sec.status)}15`,
-                        color: isSelected ? '#C7B37F' : statusColor(sec.status)
-                      }}>
-                        {statusLabel(sec.status)}
-                      </span>
-                      {isSelected && (
-                        <span className="mono-label text-white/60" style={{fontSize:'8px'}}>✓ SELECTED</span>
-                      )}
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* ── ORDER PANEL ── */}
-        <div className="sticky top-6">
-          <div className="rounded-3xl overflow-hidden shadow-2xl border-2" style={{borderColor:'#e8dfc8'}}>
-            {/* Panel header with Wofford branding */}
-            <div className="px-6 py-5 relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)'}}>
-              <div className="absolute right-0 top-0 bottom-0 opacity-8 flex items-center pr-2">
-                <svg viewBox="0 0 100 100" style={{width:'60px',height:'60px'}} fill="none">
-                  <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
-                  <ellipse cx="50" cy="50" rx="32" ry="28" fill="#000"/>
-                  <ellipse cx="50" cy="38" rx="16" ry="20" fill="#fff"/>
-                  <circle cx="34" cy="34" r="10" fill="#fff"/><circle cx="66" cy="34" r="10" fill="#fff"/>
-                  <circle cx="35" cy="35" r="5" fill="#000"/><circle cx="67" cy="35" r="5" fill="#000"/>
-                  <ellipse cx="50" cy="54" rx="12" ry="8" fill="#000"/>
-                  <rect x="18" y="72" width="64" height="12" rx="6" fill="#886E4C"/>
-                </svg>
-              </div>
-              <p className="futura-heading text-white relative z-10" style={{fontSize:'20px'}}>Order Summary</p>
-              <p className="mono-label relative z-10 mt-1" style={{color:'#C7B37F', fontSize:'9px'}}>WOFFORD TERRIERS · {v.sport.toUpperCase()}</p>
-            </div>
-
-            <div className="bg-white p-6">
-              {!selectedSection ? (
-                <div className="py-10 text-center">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:'#F5F0E8'}}>
-                    <span style={{fontSize:'28px'}}>{v.icon}</span>
-                  </div>
-                  <p className="futura-heading mb-1" style={{fontSize:'18px', color:'#1a1208'}}>Select a Section</p>
-                  <p className="text-sm text-slate-400">Choose from the sections on the left</p>
-                  <p className="futura-heading mt-4" style={{fontSize:'36px', color:'#e8dfc8'}}>$0.00</p>
-                </div>
-              ) : (
-                <div className="space-y-5">
-                  {/* Selected section */}
-                  <div className="p-4 rounded-2xl" style={{background:'#F5F0E8', border:'2px solid #e8dfc8'}}>
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="w-2 h-2 rounded-full" style={{background:'#886E4C'}}/>
-                      <p className="font-black text-sm" style={{color:'#1a1208'}}>{selectedSection.name}</p>
-                    </div>
-                    <p className="text-xs text-slate-500 pl-4">{selectedSection.desc}</p>
-                  </div>
-
-                  {/* Quantity selector */}
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{color:'#886E4C'}}>Quantity</p>
-                    <div className="flex items-center gap-3">
-                      {[1,2,3,4,5,6].map(n => (
-                        <button key={n} onClick={() => setQty(n)}
-                          className="w-10 h-10 rounded-xl font-black text-sm transition-all"
-                          style={qty === n
-                            ? { background:'#1a1208', color:'white', boxShadow:'0 4px 12px rgba(26,18,8,0.3)' }
-                            : { background:'#F5F0E8', color:'#3a2e1e' }}>
-                          {n}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Price breakdown */}
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-slate-500">{qty}x {selectedSection.label}</span>
-                      <span className="font-bold" style={{color:'#1a1208'}}>${subtotal.toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-slate-400">Facility fee ({qty}x)</span>
-                      <span className="text-slate-400">${(fees.facility * qty).toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-slate-400">Processing ({qty}x)</span>
-                      <span className="text-slate-400">${(fees.processing * qty).toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between items-baseline pt-3 border-t-4" style={{borderColor:'#1a1208'}}>
-                      <span className="futura-heading" style={{fontSize:'18px', color:'#1a1208'}}>Total</span>
-                      <span className="futura-heading" style={{fontSize:'32px', color:'#886E4C'}}>${total.toFixed(2)}</span>
-                    </div>
-                  </div>
-
-                  {/* Purchase button */}
-                  <button onClick={() => setHubState('checkout')}
-                    className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95 hover:opacity-90"
-                    style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)', fontFamily:'Rajdhani, sans-serif', fontSize:'17px', letterSpacing:'0.03em', boxShadow:'0 8px 24px rgba(26,18,8,0.4)'}}>
-                    Proceed to Payment →
-                  </button>
-
-                  {hubState === 'checkout' && (
-                    <div className="space-y-4 fade-in">
-                      <div className="p-4 rounded-2xl flex items-center justify-between" style={{background:'#F5F0E8'}}>
-                        <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white" style={{background:'#1a1208'}}>CC</div>
-                          <div>
-                            <p className="font-bold" style={{color:'#1a1208'}}>Primary Card</p>
-                            <p className="text-xs text-slate-400 font-mono">•••• 4242</p>
-                          </div>
-                        </div>
-                        <CheckCircle2 size={24} style={{color:'#886E4C'}}/>
-                      </div>
-                      <button onClick={handlePurchase}
-                        className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95"
-                        style={{background:'#886E4C', fontFamily:'Rajdhani, sans-serif', fontSize:'17px'}}>
-                        Confirm Purchase · ${total.toFixed(2)}
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Shield */}
-              <div className="mt-4 p-3 rounded-xl flex items-center gap-2" style={{background:'#F5F0E8'}}>
-                <ShieldCheck size={16} style={{color:'#886E4C'}}/>
-                <p className="text-xs font-semibold" style={{color:'#886E4C'}}>Secure checkout · Official Wofford tickets</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 // ============================================================
 // MAIN APP
 // ============================================================
 export default function App() {
-  // Inject CSS custom properties for active theme on mount
-  React.useEffect(() => { injectThemeVars(ACTIVE_THEME); }, []);
   const [activeTab, setActiveTab] = useState('mobile');
   const [activeCampaign, setActiveCampaign] = useState('TICKETING');
   const [localTransactions, setLocalTransactions] = useState([...MOCK_DB.initialStats]);
@@ -2887,184 +1746,144 @@ export default function App() {
     { id:'crm',      label:'CRM Outreach',   sub:'AI Emails · Leads', icon:<Mail size={22}/> },
     { id:'dash',     label:'Analytics',      sub:'Performance',      icon:<TrendingUp size={22}/> },
     { id:'insights', label:'Data Insights',  sub:'Trends · Schools', icon:<BarChart2 size={22}/> },
-    { id:'arch',     label:'How It Works',   sub:'Manual vs Automated', icon:<Network size={22}/> },
+    { id:'arch',     label:'Tech Stack',     sub:'Infrastructure',   icon:<Network size={22}/> },
   ];
 
   return (
-    <div className="app-shell content-bg" style={{position:'relative'}}>
+    <div className="content-bg" style={{minHeight:'100vh', display:'flex', flexDirection:'column', overflowX:'hidden'}}>
       <Styles/>
-      
-      {/* Wofford Boss Mascot — full app watermark */}
-      <div style={{
-        position:'fixed', bottom:0, right:0,
-        width:'420px', height:'420px',
-        pointerEvents:'none', zIndex:0,
-        opacity:0.04, userSelect:'none',
-        overflow:'hidden',
-      }}>
-        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',height:'100%'}}>
-          {/* Boston Terrier head — simplified Boss mascot */}
-          {/* Skull */}
-          <ellipse cx="100" cy="90" rx="68" ry="62" fill="#886E4C"/>
-          {/* Ears */}
-          <ellipse cx="44" cy="52" rx="20" ry="28" fill="#886E4C" transform="rotate(-15 44 52)"/>
-          <ellipse cx="156" cy="52" rx="20" ry="28" fill="#886E4C" transform="rotate(15 156 52)"/>
-          <ellipse cx="44" cy="50" rx="12" ry="20" fill="#000" transform="rotate(-15 44 50)"/>
-          <ellipse cx="156" cy="50" rx="12" ry="20" fill="#000" transform="rotate(15 156 50)"/>
-          {/* Face */}
-          <ellipse cx="100" cy="94" rx="62" ry="56" fill="#000"/>
-          {/* White blaze */}
-          <ellipse cx="100" cy="78" rx="28" ry="36" fill="#fff"/>
-          {/* Eyes */}
-          <circle cx="74" cy="72" r="16" fill="#fff"/>
-          <circle cx="126" cy="72" r="16" fill="#fff"/>
-          <circle cx="76" cy="74" r="9" fill="#000"/>
-          <circle cx="128" cy="74" r="9" fill="#000"/>
-          <circle cx="78" cy="72" r="3" fill="#fff"/>
-          <circle cx="130" cy="72" r="3" fill="#fff"/>
-          {/* Nose */}
-          <ellipse cx="100" cy="106" rx="22" ry="14" fill="#000"/>
-          <ellipse cx="100" cy="103" rx="14" ry="8" fill="#333"/>
-          {/* Mouth */}
-          <path d="M82 118 Q100 132 118 118" stroke="#000" strokeWidth="3" fill="none"/>
-          {/* Collar */}
-          <rect x="32" y="148" width="136" height="22" rx="11" fill="#886E4C"/>
-          <circle cx="60" cy="159" r="5" fill="#000"/>
-          <circle cx="80" cy="159" r="5" fill="#000"/>
-          <circle cx="100" cy="159" r="5" fill="#000"/>
-          <circle cx="120" cy="159" r="5" fill="#000"/>
-          <circle cx="140" cy="159" r="5" fill="#000"/>
-          {/* Collar tag */}
-          <circle cx="100" cy="172" r="9" fill="#C7B37F"/>
-          <text x="100" y="177" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#000">W</text>
-        </svg>
-      </div>
+      <style>{`
+        @media (min-width: 768px) {
+          .app-outer { flex-direction: row !important; overflow: hidden !important; height: 100vh !important; }
+          .app-sidebar { width: 272px !important; min-width: 272px !important; height: 100vh !important; position: sticky !important; top: 0 !important; overflow-y: auto !important; }
+          .app-nav { flex-direction: column !important; overflow-x: visible !important; padding: 16px !important; flex: 1 !important; }
+          .app-nav-dot { display: block !important; }
+          .app-content { padding: 40px !important; overflow-y: auto !important; }
+          .app-footer { display: flex !important; }
+        }
+        .app-outer { overflow-x: hidden; }
+        .app-content { overflow-x: hidden; }
+      `}</style>
+      <div className="app-outer" style={{display:'flex', flexDirection:'column', flex:1, minHeight:'100vh'}}>
 
       {/* ── SIDEBAR ── */}
-      <div className="sidebar-panel text-white sidebar-bg">
+      <div className="app-sidebar sidebar-bg" style={{width:'100%', color:'white', display:'flex', flexDirection:'column', flexShrink:0, zIndex:20}}>
 
-        {/* Logo + brand — compact row on mobile, stacked on desktop */}
-        <div className="flex md:flex-col items-center md:items-start gap-3 px-4 md:px-7 py-3 md:pt-8 md:pb-7" style={{borderBottom:'1px solid rgba(255,255,255,0.06)'}}>
-          <div className="flex items-center gap-3 flex-shrink-0">
-            <div className="relative w-9 h-9 md:w-11 md:h-11 flex items-center justify-center flex-shrink-0">
-              <div className="absolute inset-0 rounded-xl" style={{border:'1px solid rgba(136,110,76,0.35)', background:'rgba(136,110,76,0.08)'}}/>
-              <div style={{width:'20px',height:'20px',position:'relative'}}>{BOSS_LOGO_SVG}</div>
-            </div>
-            <div>
-              <h1 className="futura-heading text-white" style={{fontSize:'22px', lineHeight:'1.1'}}>
-                Boss<span style={{color:C.limeBright}}>.</span><span style={{color:C.lime}}>ai</span>
-              </h1>
-              <div style={{display:'flex',alignItems:'center',gap:'6px',marginTop:'4px'}}>
-                <svg width="14" height="14" viewBox="0 0 100 100" fill="none">
-                  <ellipse cx="50" cy="54" rx="38" ry="30" fill="#886E4C" opacity="0.9"/>
-                  <circle cx="35" cy="40" r="14" fill="#000" />
-                  <circle cx="65" cy="40" r="14" fill="#000" />
-                  <circle cx="35" cy="40" r="7" fill="#fff" opacity="0.9"/>
-                  <circle cx="65" cy="40" r="7" fill="#fff" opacity="0.9"/>
-                  <ellipse cx="50" cy="62" rx="14" ry="10" fill="#000" opacity="0.8"/>
-                </svg>
-                <span style={{fontFamily:"'Space Mono',monospace",fontSize:'8px',letterSpacing:'2px',color:'rgba(199,179,127,0.7)',textTransform:'uppercase'}}>Terriers</span>
-              </div>
-              <p className="mono-label text-white/25" style={{fontSize:'8px'}}>Wofford Terriers · SoCon · Go Terriers 🐾</p>
-            </div>
-          </div>
-          <div className="hidden md:block w-full mt-4 px-3 py-2.5 rounded-lg" style={{background:'rgba(136,110,76,0.05)', border:'1px solid rgba(136,110,76,0.15)'}}>
-            <p className="mono-label text-white/25" style={{fontSize:'8px', marginBottom:'2px'}}>Powered By</p>
-            <p className="futura-heading text-white/70" style={{fontSize:'13px'}}>Wofford College</p>
+        {/* Logo */}
+        <div style={{padding:'20px 28px', borderBottom:'1px solid rgba(255,255,255,0.06)', display:'flex', alignItems:'center', gap:'12px'}}>
+          <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAEUAT4DASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAAAAIDBAcBBggFCf/EAFAQAAIBAwIDBQIJCQIMBAcAAAECAwAEEQUSBiExBxMiQVEyYQgUIzU2cXSBshVCUnJzkaGxwdHwGCQzNDdTVWKSotLhFheCwiVDRGNkdZT/xAAaAQEAAgMBAAAAAAAAAAAAAAAAAQUCAwQG/8QAMREAAgICAAQEAwgDAQEAAAAAAAECAwQRBRIhMRMyQVEiM3EUFTVCYYGRsSNSoSRi/9oADAMBAAIRAxEAPwDkn9Jgdwz0rLhVQAjdu/hWWZVmLRLmMmhlLuCxCioOUI357Wx05GkR4MhG7Bz1pWxACV546CkqoLAkAGpA/IiqAFO5j50zv7zwuPEOmKcmAiwitksOo8qJkSFU8WXPOoIRkgFMt0HUUpt6QAyDkenupCxuWEwOVHUUl5WkYkklen1UAoSYiLBQR6026PEgkAB3USSZAWMYB8qf7xkUeAEehqQESqsHfNycdM0xcK78ywx7qclBcc+RHPHlWbaNHV2Y42jIFAItyohZGJx6UpI90e5lyPI1iMd2jSFd2elAeQkIxIQ+QoDMuYyrIuBQq+LC8s+dZw7junPh8iaBJ1X9HpigMTFFGN2WHnSI3fvFkJzRsyNw6edLO1YRnHuxUAxLvlm3AhPqp6OdndA6AEea+dNyLG+1gWUGnI3IXKLzHTNSB6ZUlJA8I86bnAiHdwgYPVqaZ5WYsQPfik7sghclR60IFRyCMOsylifZNJYuEC7yfUU5KxAXIBUiiNI9hcMWPpQkbkCsUycE9alWdpNNeJDCjSE9FQZr2eDeDNW4iuR3UDCDzkI5VeHDnCHDvBVib2/eNpgObydfqFcWTnV0fD3l7I023xr+pU9z2ea5BpX5VMeI8ZMO3mB+/wDpWjTxo168ZVowDg8sYro+w7RtKvdVbT5oO7tG8KSHGDWvdqHZul7C+qaDEpd/GyoParmpzrIz5MiOt9jTVlbepFJzQxxFSHD+hNYeJnG5WA8zmlXFpLbyGC5Ro3XIwfIismKTuOn31anWNwx5QuGwPSlrnaRJ7I5CkxspBj55WiQhxtVuYOTUgVKjrCrKFJI+/FMl1VCighyedKkmdpEKdByFOMcziXuwQo5gChIgISmGxnHSlREnasYAXzFOQyp3vfCMMDywR0pMjlW7xEAGckChAiXdIxTOMHFJVVj5Mcn3VmSR23OiYz1OKTEPCGJz9dQSZkDAgpkK3l607GrKMHco91ZSVumwE+VAuNilSAx3c81JAxEsZhYksvupJjym/cSop3aMAhlz6ViVX9kbQvXlQkY3KuCDzpSPnwkZJpTKshVMBcU/Da7mzkKV58/OoGxnajyYOcKKSFIkDkbueAKXcOA47oDrzpwbdodTnHWpAkse7KggE9RSRGphKofH6GnESFnGH5k8zSZVxNuQc+lCBEkiAjCjIHPFEbM0ZI8Xv9KziPaUAJc9aciVUte6YbZCT99CRFvgvsfq3U+lZXMJdcb18jWZJU2iILiTzPupbSoIQgHMUIG9rquF5qfWsEgJudSGFOCRRBhMknoKbJZiBKP3UAmRWiId2yD5UlG28yuc09sO0qvjJ9fKm9rqxDrzHpQkzcqsaB9x2tSDtkYBQdg6k0E95hGB2jypcqlRiLofKoAjmXx1jHSlwGQucDlSCHEIUDAp2ABoyveFWHvoGDYXCAkE9aaMbpIMsArelOrIoba67j5EVsvB3BOrcT3aFImgtgecjDlWM7I1rmk9IhyUVtngWmnXFzcCKIM7n2VUZq2ez/srd8Xmt4ij5Ns8vvrdNG4b4a4J04XV8Y2nC82k5kn3VqPGHaDealutdMzbW3TI6n7xVVLJuy3y460vc4LcpvpA23XuK9E4WtPiWlRxy3CrtAQch94qq9d1zUdZuWmvZ2YE8lB5CvNYlmLMSzHqT50V2Y2FXR17v3OPv3DpzHI1vXZ/xxLpbrp+psZLNuQY8ytaL9xP1CsciK3X0QvhyzQLd424A07iuJNQ0yREkYA7lxg1pGodkmvW8TSwzJIAPZLAVH0DizWdFh7i0nBjzyV+YFbNofabqQ1FF1VIWtWOG2LgiqxVZuOtQaaX8m+GROK0UzqWnXOnXjwzr3cgJ3A1FEY2kAhd3nXRHaBwdp/FWmDU9LKd6V3Bl8/dVCaxpt1p1w1pcxlJFbGSOtd2JlxyI+zXdHfVcrF0IcZVV7tRnafarO8o+Y/Fn2qUYmTAGCD1IpqcrE3dRnIPtHzrqNoSRgMdshAbngGpG147fDqR6E+dMQjnuYeEDlmnmmea3MUh5j2akDaOioQzEg+nSsRRqQVY4Gcim1UlNoX2OuaWGMgDBDyGDQCBvWXwsSAak7oyxGwZ6kkURS7cSd0OR6EdazK0cr78FCeoFARyu1/lBgKPLzNIKl4jMpIwcY91LJYqGk5nPKsHvM7VUlT+jUEoUsQDK7NnIzypQ3yyN4vABjlRMygxqAQc4IrKkx3GMYUjlQgYaErklqft49ts+8EL501KHV95IIz51Ksp0jDJcjdG1ARG2bCIwfdTwWTaAMAtyOfKnozAjF1UiPPhzTV7J3hBHgFAOJ3SKI4QWl/OJpq3mHxjvJULsOSik2x8bNkAAdfWhDudlX2vLFSDD5ZzuUBj7ulJC5lKnqBTkoZgVPIrzJptS7EKuA3qagAhCMCPaB5ClCQmfBRt3mKzDGviaQHI6MOlI+MOshUoNx88VJI7ADJKTGwUHrmsh2V2Y4YU3Go7zarhR1NJcNIPkjzFQQJkz3mcgYrMYaTJQnd6mnWCCDupB8ofMU3BE+5UBPL0oSLlIwoU5x1pyx0+51G7WKxhklckAqgzW0cG9n+q8QT52mCDrvI61dGkaHwxwHpwmnKd/t5ljlia4cnOhU+WPWXsjntyI1/U1PgTspiTutQ1zaQFzsJ5Ctn4l400nh21+IaNHHLMowNo8K/eK0/jHjy/1dmt7Em2tOgxyJH1itMJLMWYkk9Sa0QwrMiXPkv9ivsslY+pP1rWNQ1i5NxfTs5JyFzyFeeSAOdTtG0nU9ZvUstLs5bmdzgKi/1rpXse+DSztFqnGrnaMMtqhwfvPMGrSMVFaiuhNVM7XqKOe+H+DuItcsbi/sNPkNpbpvkmdSFx9dQdB0TU9d1ZNL0q1e5uXbbhQSBzxk19E9c4QsRwLe8PaJaw2izQ92uxAPMdcfVXkdknZXoHAWn/AOLwJPfyHdLcOMnPuzzFZHb9ge0t/U0Hsb+Dxomj6IbniqFb7ULmPxI3SIH0I8+dVP25dgWqcLzzavw3G95phJYxqPFGPcB5V2xSZo45o2jlRXRhgqwyDQ654lcocuj5ePp2pICX066UDqTGeVReRr6cT8McPTxSRSaLYFXUhvkFzz+6uSfhGdhlxw5PccScNRNLpzMXlgUZMYoV92FKuPMupVfAHF8+hXS21wTJZSHDKfzffW4doHCFhxXpA1LTWUy7dyMvn7jVRHqQQQRyIPlW28A8Xz6FdLb3LGSyc4ZT+bVZl4klLxqekl/05IScHtFZ6pY3enXjWV3G0TKeWeWajPBuiLxjLA+Kugu0fhGy4q0canpRQzBdykefuqgr+zvbCeS1mBjkQ4YGujEyo5Ed+q7otKrVYtojhXmKksFCryHrStpaIrgCTPLFPR7Vsu8xvY8uXlUeVh4eZDY54rrNo6ykxhSVDDqfWkRh4gxZcqemKYkMm4Nz2k+dPy74kVydyGoA1C0kcxcjIPQGlbmEjd4Bz5jFO95G8e4DBHrTW8yPkDby86AHACHYd3nTsW5UGBgkdaaeF9yneBUtpg6bYI+Sr4iaEECQybjkdPOlwQyzy7cknGc08gLqFRd3PLU9C/xeYocAuMA0GyPOjEhDzVepFIfu2cRoS1ODKEqTltxOKxBHh2cDBHOgGN5ikKsC6DyHlTwR5vlCMIKyqF3cthUxzNNK7gAAnGeQ9aEmZE2kFT06+lIZgr94mVelTSNGjRFcs4ofns3J4vSgDe0yEN4T5n1pDIVddxJz6UpgTEZM9OgFOxbkj75gGI8qAZkeRYigAIapBaMRpGyjvPWlFQ1v3hXPngVG3944LjawoB0RoYmGcMelNLHMOTKV+qsyszyIig/dW88D8BavxDNFNcKYLXPtEczWFlsK4803pGMpKK2zUNG0y91a4SCzgkmlJwABnFXTwJ2W29okeoa54mTmY29kVs9lYcM8B6WGfuzMo9xYn+daDxfx1qWtO0Nuxt7XyC8ifvqrd9+Y+WnpH3OG3KcukTceJ+O9N0WE2GiRxySqNoZfZWqr1bUr3Vbpri+neVyeWT0qIeZJJJJ6k0V3Y2HXjr4e/ucgUUUV1Em79nXaXq/AsUi6PY2jSP1lcndVgWvwouOIgqyabYSAdSXfJqiKKG2N9kFqLOjLT4Vmvq/+MaJaFfcW/tr1bb4WUoQC40BC3ntDf21y9RQzWXavU6ztvhYaW0gE2iTovmQv/evUtPhTcKyITNY3KHPTb/3rjisYHoKGf2233O4IPhM8AOVDm5TI58hy/jUv/CB7NNRtpILi5JiYbWSTGCP31wptX9Efuo2r6Chl9vsLL7cdM4KGqflrgzUYpILliZLZSPAfcB99VrWBy8zWaHJOXM96Nt4A4vuNBuhbXDGSyc4ZT+bW09onBdhxXpg1bSWUTEZ3L+d7jVU1tvAHF9xoV0Le4YyWUhwynntqsysWSl49Pm/siE3B7RWWo2lxplw9jcDYyNg7vWouxVPjBOR1roPtB4M07inSvyrpmwyldwK+dUHqVldWV21ndRshU4GRXRi5UciO13XdFpVarFtEdkLgsxwi9PfRkvsXngnoaTJ3iqVPReeKch+URQBhj5+ldRtFTRs/hG1Qv8aRGyAnvASfdTl1AUQMJQceQPOmoPGSW8Ax50IF20ancJCx+/pSYpxbMzJ4lJxikLJJJyjwD9VIlUhlfYwwfEPWhI8skm4v7Bflim7lS0oZ2I5cjTsrb0ReQXPTzrC8pclGZEGcUBIh7h4gJSVl8mzypkKqTbVk3MeR58qQx3SB1HPPJaXJkANgKfP1oQDZZmQHljmaZa3ZSeZ2gZzSjjYd7YX1BpcUpiO1iGRhj6qAaC+wzZbngGsO7BmLA5HQ1llMRKlwQeYrEUcj7dx8JPWhJmIKZeZOzFKMbOMruxnmKUY3R9qgMPKlS3bKpbYA2MYAoDEts8KALOGDdefSmlUnwsR7jS1G6Lmx3H39KQ4LSKBk88cqA2rs90N+INdgthETHCwZ2A9OdXbxzxInCmnQ6fpyJ8YZcAD80etQeyjQYuGuGn1S8Cq7oXyevTIquOKtVk1nW7i9ZiUZjsB9Kp+VZuTp+SP9lZkWc8tLsiHqV9d6jctcXkzSyE/nHOKj0VlFZ3CIrOx6ADJq4SUVpGgxRg7d2Dj1re+Duzy91Irdalm3t+oXzP3V6Pa3pmn6RolnaWUAjAY5PmeQrjefU7lVHq2RsrOiij85R7xXaDbLDs2421DTIdSsNCuri1nUNG6JkEUm57N+PbcAvwtqBz6J/wB67n7BLRY+yPh3vFR99kjDKit5NvbnrBEfrQULSGBGUU9nzUn4J4xgIE3DWoJnplB/bUWfhriOA4m0W8jJ6ZWvpk1nZt7VpAfrjFNvpmnP7dhat9cS/wBlCXw5ejPmPNpepwvsmsJ0b0K1GlilhbbLGyN6EV9O5NC0aRtz6XZsffCv9lMycM8PyNufR7En9gv9lDH7uf8AsfMfI9/7qNwr6W3HA/Cs8m+TRLPd7olH9KgT9mXBM0pkfQ7fceuBihj93S9z5w7h61jcvrX0Rm7Hez6WQu+gx5PXDEVBk7B+zKRy7aBzPXEzUMfu+z3R8/QQelZrq/tw+Drp0WiPqvBcJimt1LPblid69Tgnz5VynPDLbzyW88bRyxsVdGGCCKHNbTKp6kbVwBxfcaDcrbXDGSxc4ZSfZrbO0Lg6w4o0wavpW1ptuQV8+XSqmrbOAeL59Cuhb3DGSykOGU89tVuViSUvHo6S/s1wk4PaKxvLW5srqW0uYHWRTggjpTDKsKk94BkV0H2gcIWXE+lnVdHMffFdwK45+41Quo2MllctDcxsrxnDBq34uVHIjtd13RZ1WqxbRCt8NJ4mJHXrTksbyPlSNo5ACsbg2SkZ29Mild2yR5VuZPnXUbR3uY3IaJwpPUGm2aSV2UgDZ7utYkUPMSQyn3HFJBnjiZOXdsebY5igMtC0nic7doyKQTsDMz5yMDFZUEoWO4xgYJBrMcsfdlCAV8jQDcIcJ3z8gD4aeeVZJ49xAXln302WKA9340HUVlV3vG5XAJxQC5VgkTYjAHPTNJt42aOTCM20Up0kgunbu8gqOgpqC4mhZmiIOeqkZoBMBQEu4JUH91SUMYJl3YiNMwrGX8eQrnmKe720WQQEExn30DGGkK8wcqDkU8xVogxTmabWJSxVGyw5j0xS5LecKMe1+jQCfk4wS2dx6c63Hsk4afWOIUNxAxhjIZienXpWnwJJPNHCI8lmx0510X2c6XFwnwc2oXhUSbO8b664s/IdVXw930Rpvs5IEPte1pbHT4dCs2ClgN+PICqpFTte1GXVdVnvJmLFmO36vKoNbMPH8CpR9fUqyRplo9/fw2kZAaVgoJ8udXbwjwLpmjRrNOi3N11LMMgfVVVdnMPf8X2iYzgFv3EV0IeRxVVxjInGSri9LQZgcgAOg6VWHbq47u0j88n+Qqz6qnt3cC7so/P/ALVX8LW8qJBWVA9pf1hRWVBaRFHUsAP3168k+jXYf/oj4Y//AF8dbnWn9ikbxdk/DUbjDLYICK3Ch6SvyL6BRRRQzCiiigCiiigCiiigMMAylWGQeRFc0fCX7Dl1COfirhaALdjLXFug9v3j3866YrDqrqVYBlIwQaGq2qNseWR8tJY5IZXimRkkQ4ZSOYNJq/PhocK6Rw/xdp19plusD38LSzBRgFt2KoOhQ21uubizfeyLWr2HWF0suXtpPzT5V5/wgLC1j1eydVWIOspcjluI2Y/maR2V/S+3/v51I+ETIU1bTABkHvc/8lVLio8QWvVGzG+YVZDIi2EscYBwSc1CileRfCRgVMLQxykqMq3JgKjSpGXPd5Vfrq1LFDzzd45Zl2rjCn1qOHHiUtyPTNP3BidVA5NnOPdSVhUAygjaPI0JGreWRImjGNmcnIp23ZTGw7vOelNh03bwQB5il3RcRrJEy4zyAFADxDAMDDvM+IdcCsuTLGYolO8DJNKkYssbBNjH2jTMbCOdmTJGPWgJEhaMhXcFto5GmhbMVaZ2CKOYHrSrkokYdmy7efpSUkDphgzehB5UAFUeUI3J8cvfSyhMir3XiHuqPKXPORSreRpRd1AKEso6n1oNGBu74rEcuKHlmIYSZ3nlkeVPSWhZe9ibaAMkedbdwDwNqHEl9HNKjR2akHfj2vqrCyyNceaT0iJSUVtkvse4ak1rVo5LhcQ253Elfarfe2PW1SOLQrVgAozLt/lWwX9/onAmii0t0T4xtwqL1Jx1NUzqt9PqWoTXtwcyStuNVeOpZd/jSXwrsVd1niS36Eaiiirg1m5dj0Pe8WLJj2EarybqaqHsLg3avdTMOQUgfuq3a8pxeW8lr2SMWFVF26yBtWtEHVV/pVu1oPabwhqGvXcd3ZOnyYwVY8zyrVw2yFeQpTekCmqXbf51B+0X+dejq/D2r6Vlr20dEH52OVefajN3AB1Mq/zr10ZxmtxezI+kXZN/o20D7GlbRWsdlCsvZxoKsCCLNMg1s9ZHpIeVBRRRQyMMwVSzHAAyTWuycccKxyNG+s2qspwQXHKva1b5qu/2D/hNfMviZ3/8Tal43/y5/ONDlych060u59IoOLOHJow8esWhU/8A3RT8PEOiTNti1S0Zj5CUV8x+8k/1kn/Ea9PhW6uouIrAR3Mq5mGcMedDlXEH/qfThSGUMpyDzBrNQeHyToViSck28f4RU6hZrqFFFFCTkn4efz5w99lf8dcz10x8PP584e+yv+OuZ6FDl/OkbV2V/S+3/v51I+EWFF/p7E+LEoA+5Kj9lf0vt/7+dO/CNONU0zIP/wA3/wBlVU/xCP0Mcb5hVcRRELPGxJ5daRCiSyNvDKB050sZLBMgKfX1p6SRoSEkUYxywKtCyIsm5kVxgbugxzFIZw0qoDtGMHNOkHvVeUjYPIcqbMivuSFPETyNCR1YPAXYYXp9dNyJtIEWW9B6UqV3dFVsoU/jTkaRzQEBtjjqSfKhBiQLBt3nx9cVhHRmITA38udNzKHi8EgkK007xsE7sHvs425oSkSZ4VFoJFYM24gr6U0rsLbu1AyOfSn12ojeBgWGNpOcmkWciCVlkXDY5LQgQMiD5UjOefuogDPcKsI3IPIDOaeispbi4EeCzyHCqKuHsy7NBAU1TW0wE8Sow5D31oyMmuiPNNmE7IwW2eL2b9n1xq063+pI0Vt12nlkVYfFfFWm8LWI0zSUja4C7RtAwledx3x5FaRNpWhkblG1pVPT3CqslkeWVpZWLuxyzHqar68ezMkrL+kfRFbZa7H1HtRvbnULt7m7laSRjnmelR6KctYJrq4S3to2llc4VV6mrdJRX6GA3RVscIdm8C2bT60N0siHamPZyK0bjThq64d1BkdS1s5+TkxyxXJVnU22OuL6kbN47C4P8TvLj/eA/gasytF7Foe64ZkfH+UcH+db1XmeIS5smbICmL+8t7C1e6uZAkaDJJNI1S/tdMsnu7yVY40GeZ6+6qO464uu+ILto0do7NThUB5H31OFhTyZey9wO8f8Yz6/ctbwgJZofCMc2++tZ075ytP26fiFMU/p3znafaE/EK9ZTTCmChBdDJH0q7PfoTpH2Za92vC7PfoTpH2Za92tp6SHlQUUUUMiNq3zVd/sH/Ca+ZXE30m1P7Qa+murfNV3+wf8Jr5lcTfSbU/tBoVnEfynn16HDX0j0/8AbivPr0OGvpHp/wC3FCtXc+mHD3zDYfZo/wAIqdUHh75hsPs0f4RU6h6RdgooooSck/Dz+fOHvsr/AI65nrpj4efz5w99lf8AHXM9Chy/nSNq7K/pfb/386lfCHG/VtNTkOUvX/0VF7K/pfb/AN/OnfhG5XVdNkB8pR+Cqqf4hH6GON8wq8BYc/nnz91NpiTIYlmzke4URjcCz5Kty5U4NsQCowxjqatCxEyCHO0EnyJzypESp3bRRoWfOQwNNyIUAROYPWnERlj3Z246GhImDLbgxBPQ+6m7oFJAQ2V88U4ArMysdjYyD603MgVd5OR0oPUVN3HchkBUn303aShQ3g8XkxpcTuseNm5D5+lOxvEdyGMnIoSZ7xRPHJkMRzA99SLayu9W1GNbKAvcMQMBeX31DitjJJhWww5ha6G7NNCseH+FU1e+jQT7SzMRz91cuXkrHhvW2+xqtsVa2M8AcDWmg235V1vu+/VcncRhfqrx+PuO5b4vp2ksY7Ucmcci1eVxxxlea/cNDCzQ2SnAQH2vrrVa5sfDlOXjZHWXt7FZKbm9sCSSSSST1JoorZeCeEbziK4D/wCTtFPjkPnVhbbCqLlN6RieXoOjX2tXq21nEzZPifHIffV18GcHWHD8IdlWa7I8TkZwfdXraBotjotmtvZQquB4mxzJr0a8xm8SnkfDHpH+yAqBr2lWmsadJZ3SAhhgNjmKn0VWxk4va7g8fhHRzoejpYlgxUnn99Sta1Wz0ixe7vJQiqOQzzP3VOrxdV4cs9VuxPqLPMi+zFnwj7q2KUZ2c1r+oKg4q1zV+LNSKW9vObYHEaKpwR761u9tZ7K4NvcpskAyVrpOx06wslC2tpFEB02riqE7QH38V3Z3Z54/ia9Fw7MjbLw4R1FIk8GpWjAHWrAHobqL8QqLUrRfnvT/ALVF+MVbkrufTDhJVThqwVRgCEYFepXmcK/Ryw/YivToelj2QUUUUJI2rfNV3+wf8Jr5lcTfSbU/tBr6a6t81Xf7B/wmvmVxN9JtT+0GhWcR/KefXocNfSPT/wBuK8+vQ4a+ken/ALcUK1dz6YcPfMNh9mj/AAip1QeHvmGw+zR/hFTqHpF2CiiihJyT8PP584e+yv8AjrmeumPh5/PnD32V/wAdcz0KHL+dI2rsr+l9v/fzqR8IlS+qaaoYdJcjH6lR+yv6X2/9/OpXwhkH5V06TByFlA/5Kqp/iEfoY43zCrGbYwWMBgBgmkxwW8wOZMNnJ50iJAil5D1PSpVnsUlnjwhHKrUsSEj925YkPu6Vh5XEuZEIGOlJuYDFIrnO1hkc6kL3jlUwNxGBkVBI00aCIOzZLNyp10jJWKY7VI8PvNRt0iz91IuBnnSgQ8vdgEP+bmgHVHPuYcA55g8+VYeZzkFQSvLIHWmxHmXDttk86WBhghQsvuoDYuy7QG1viqJGBeKMh5B5YzVu9r2qrYaTb6JbMFZwNwHkBSOxPQ7bSNAfV5E2mVdzFv0a0DjHVX1fX7i6ZsqG2r9Q5VUr/wBOZ/8AMP7K7JnzT17HjgYGKzRRVuaAr2+FuJ9R4enDWz7oSfHGTyNeXc2V3bRpJPbuiOMqxHIimK1yhC2OpdUQdBcKcW6Zr0C93KI7jHijblz91bCeVcwWtxPazrPbStHIpyCpxW72nabrEGnrA0aSTKMd4VzmqDJ4PJS3T2BdIBPQU1JPBFnvZ40x+kwFUTf8fcR3f/1KxfqLj+teHd6vql0cz387euHNRDgtj80kiNHQF5xJolopM2oRZHkGBNTNLvodRthc24fuz0LLjNU52c8Iz65eLf3+/wCJxnPj/PNXVBDFbwrDCgSNBhVHlXFmUVUPki9v1AuuceL3D8S3pU5HesP4mujXYKhY9AM1zZxEQ2vXzDoZ3/ma7uCL45P9CUQKm8PgNxDpinobyEH/AIxUKp3Dv0j0v7bD+MV6MyXc+mujxrFpdvGgwqoAKl1H0z/MIf1BUih6RdgooooSM30TTWU8K+1JGyj6yMVxzrPwZeOLvWLy7jmsgk0pdczjp+6uzKKGm6iNuuY4p/wXOO/9fY//ANA/sqVo/wAGTji01a1upJrIpFIGbE46fursyihpWDUiNpUD2umWts+N0UKoceoAFSaKKHYFFFFAck/Dz+fOHvsr/jrmeumPh5/PnD32V/x1zPQocv50jauyv6X2/wDfzqZ8IbLappqKOe2U/gqH2V/S+3/v51K+EO7Jq+mDHJhKM+nsVVT/ABCP0Mcf5hUpkVmBcHKNipUu5SHLAqw5Ypkw7y2wc/P31mNowcSnGBjGatCxF3ts4lRpXwuBimJJjJKq5wyeyaecq1r3febmU9fSk28SSRsxYYUUIEkd8+ZRtZfZ95ollGdpQKw86RIwZtuwhQKbEQ2tLuyR0oSKy28xqdzOMZ9K9zgzSpdQ163sQC2XBY48s14YO+MTHwuDy99XR2DaAEgl1y5UkkHaWHQDNc2XeqanMwtnyRbNl7Sb+LQOEk0q1ISSZdgA8h61TXvPWtm7StYOr8SzbGzDASiVrNa+H0Oqlb7vqyqCvT4V059V162tFBILhm+oGvMq1exPRdsU2rzJzPhjyPIjn/Ktmbf4FLn6g3670XTrvTUsLm2SSJECjIqseLuzWe133ekOZYhzMZ6ge6repM/+byfqmvK4+ZbRLcWQcwSI8cjRupDqSCPfQI5T0ic/dVn9nPD8F/rmpahewCSJZmCAjlncc1Y0OlaZCPk7C3++NT/Sr3I4tGmXJy7ZOznKLTr+X2LOZvqWtj4M4K1DVtTUXsElvaocuWXGRV3mC0iUt8XgQDzEYFOx7NgaNQFIyMDFcVvGZyi1GOhsbsbWCytY7a3QJGgwAKeooqlbbe2QInBaF1XqVIFVHfdm2q3N7cXTzxxo8jNnd0BNW3dSiC2lnIyI1LEeuKpHjLjnVdVnktYHNtboxXCnBP3irThivcn4XT3YPG4h0a10lzEuorcyg4IQggU3wfCLjivSoicZu4j+5xXlsSzFmJYnqScmvZ4F+mek/ao/xCvTwi0tSe2ZR7o+l1gu2ziX0Wn6as/81j/Vp2sz0yCiiigCiiigCiiigCiiigCvO4k1rT9A0mbU9TuEgt4VLFmOKb4p1/TOG9Im1TVblIIIlJJJ5n6q4c7e+17UeP8AVXs7OV4NGhYiNFODJ5ZPr5cjQ58jIjSv1InwhO0o9o3FSTQQiOxsg0VufNlznJ++q0ooAJICgknkAKFHObnJyZtXZX9L7f8Av51I+EUN2pacPLEv/srY+y3hVrFBrupHu2xmNScYHvrS+2rV7PWOILWK3bJgDgnPI52/9JqnjNW5/NDqktGzGXx7K+ikLlYozyA50xeoFk9g5qTgRzEJhGHM/VTjTRMo34PPrVuWGzzxFhiobAb+NPbCIl8ip6Z60m+Uyy94hxjmKW4bulccmPLNCdiEuZZHMHdhS3LNYlXuMHBxnxe+sRJI7Ebgc9T6U+sq/F2hOG255etAPaLpk2rapBZQEkSMMYHTNdDa9cJwpwEkCkLM8YQfeMGtH7DNBivLw6qYSqReEZHnyOaX2u60NQ1sWULZhtxjl61U5H/pyo0+kerOHJnt8ppJLMSzHLHrRRRVucw9Y2z3l7DaxjLSNgCujuHrCPTNHt7OMAbEGceZqp+xvRfj2stqEq5jtxlc+vSrn+qvN8ZyOaaqXoYsKTMpeF0HVhisLLE0jRrIrOoyyg5IpdUvYHn6DpsemWbQoBlpGdvvOa9Cio2q3sWnafNezsAkS7ufnWTcpy/Vg1PtG182lxZ6RbSYmnlXfg8wMitxtl2W0afoqBVC2t/NrvHUF3MxOZhtHoAav9vaNd+dQseEIevdgxRRRVcCHrhK6LesOogbH7q5qnJa4lJ6lz/Ouj+KW28O3xzj5Jv5Vze/+Uf9Y16Hga+GbJRive7OoWuOOdIiU4PxlD+5hXg1s3ZX/pC0f9uv4hV6ZQ8yPpJbLtgRfQU5SYv8mv1Uqh6UKKKKAbu5e4tZp8Z7tGfH1DNcz6n8KiCz1O5szocrdzIUzjr/ABrpPVvmq7/YP+E18yuJvpNqf2g0OHMunVrlOkJvhYXHeHutBXZ5bgc/zpH+Fhef7Bj/AHH+2uYqKFf9ru9zpGX4V2ulz3eh2m3yzuz/ADpP+FbxB/sSz/5v7a5wooR9qu/2N/7WO1jiXtEkjTUnW2s4+lvETtJ9TmtAoooaZScnuTD+dWZ2bcGJ3a61rEeEHOONh/GmezbgwTqus6su2FecaNyzTXavx4tsTo2lOAwTDFeg91VOTkTvn4FH7smEHN6Qjtb49HdPpGjy4ceFyp6D0qoGuNzGR3zL5586VPLHKvezk9+eeSetNRwrJIvh5kZJzXdj48KIckSxhBQWkKJZiGYZZvL3VKu44Yo493iJHQeVMKVMp7hvEnr504g3SEzDaxGfWt5kQ3LGPk23yIp4Duo1EpyOoFM3EatMSpyfOlS7kaMSHcrYAFCTEKFpCwTwE+tS7CwjlmURHdOzYC/fTVtmIM+dqZ9mt37F9C/KvFIvZATBBz6ciedarrVVW5v0IlLlTZa1gqcIdn5djtl7r97YqlbmZ7i4knc5aRi2frNWJ2z6yJLqLR4G8EQzIB61XFcfDamoO2XeXUqm9vbCsqpd1RRkscD6zWK2Ts40dtX4khUrmKHxsT05c67rbFXBzfoQW72d6SNJ4agjK4llG9/XnUTjzjK10G3a3gYS3rjkoPs/XUPtB42t9FgOn6aVkuiNuQeSVTV3cTXdw9xcSNJI5ySTVBh4Esmbuu7P/oLU7GL661G+1S6u5WkkdQeZ6eI1ZVVZ2De3qP6g/nVp1xcTSWTJL9P6ICqq7ZuINzrots/Ic5cH+FWDxTq0WjaNPeSMAQpCD1Nc7393Nf3st5OxaSVtxzXVwjF55+LLsv7JR7fZxF3vFlqvoCf3V0E3U1RnZDFv4wiY9Fjf+VXkax4zLd6X6BhRRRVSQeNxuwXha9JOBsP8q51PtE++ug+0VwnB94x6Y/oa57XpmvScEX+KT/UlGa2jsmjeXtG0dEGW79Tj7xWr1uXYl/pR0b9p/UVdGdfmR9G4wQgB9KzRRQ9IFFFFARtW+arv9g/4TXzK4m+k2p/aDX011b5qu/2D/hNfMrib6Tan9oNCs4j+U8+n7ezvLgZt7WSUeqimDVx9jvdJwxNK8aMVfOSufKuXMyXj186WyrKp/I+sf7MuP3CspousuwUaZcZPuFWhddq3DcF09uUlLoxU4t+WRSF7WeG97KySrj/8euNZeY10q/6bfBs9iuP/AA7rn+zZ/wB1bj2fcCyzS/lHWojHDGcrGw64p+57ZNJS47u3szIv6TJivH4o7XJLywe00+17l3yC4JGKwnbm3Lk5OXfqSqJt60Te1Ljz4vE2kaMduwYZ06KPSqgu5vjAExyZCdzMepNPS3IctvJO9txJ86aklzhSvMDw4HlVhjY0KIcsTthBQWkNSL3hSbZ06D31JEGY+/74K46rWRIpgAKbc9aYEcKPuV2YefKugzGo17y4y67M+dTYVZFKlg/PIJ9KYDqykFsgdKI4ZLh+bYAHKgI0pEbYVcK3PNKumaTY23Cp0pPetNKAw5BeVKnPeIqr1U0JHcvcNE7DIJChR5muhuAdNt+FeCWvHwrOhkJPvGQKp3st0F9Z4jiQsTDEd7cvMEVaXbHqwtNPt9Et3wSBvx6YGKqs9u6yGPH16v6HJlT0lFFZ6tey6jqU97KSWlcnn5VFooq1SUVpHIFbNonEK6DoMsNgAb255O/6A6VrNFYWVRsWpdiBU0kk0rSzOXkY5LE9aTRRWwktHsG9vUf1B/OrS+vlXOnDPEmpcPSSNYPgSgBx61sr9p+qvZSwNaxb3XaJNxyPfXn87h111znHsyBHa5xD+UdVGnW75gg64PU+f8q0WlSu0sryucs7FifeaTV1j0xprUI+gN97E4t/EEsnLwIf5Vc1VN2FRj49eyHHQY/catrB9K8xxZ7yX+xBiiiiq4Gr9qMgTg26BHtH+hqg09kfVV6drshThORQPaYf1qi19kfVXp+DL/A/qSjNbl2Igt2paMFGT3n9RWm1vvwe/wDS9o3/AK/5Vbmypbmj6I0UUUPRhRRRQEbVvmq7/YP+E18yuJvpNqf2g19NdW+arv8AYP8AhNfMrib6Tan9oNCs4j+U881cPZGM8IXI/wB7+lU8auHsj+iFz+t/Sqzi3yP3RVlHarBENSuszYfv2wMe81GeF55D3rhWXko9ffT2vWz/AJTudoBYTNls+81HWIsypLMVJ86sIeVFquw1LYmMKS+456in4LcyMzYHh6jNPbYrZTGT3ik5zTL7g4ktmKoww3KshsW5t5gFYYKedMPcCIOIYd3o3pSkh2SHxZQ8yTWWn2Hu4h8kebGgGkmlEStOdwJ5CpEs0cihViCKBz99NXUSoVkzuBGRjypMczONxXAU5+ugEC276J5N3dqh/fWEuHACKpwBypV1ILgArHsbzUHrUiFnvIljjhVTH1OetCSEMRqd64AORTSZYvKDtAHIetSI4nfe8xyPSsPC3LBCofKhOy++xDRrXS9Fa8llh+MTkM2WGRT3FvZ/PrepSajDqCszjkpBIH8aoyLUr+zVFtLuSFDywrVsGncf8WWsaRJeu6KehbqKqZ4WRG121z6s5LKHJ72bJqHZ1xDak93Gs4/3SBXhXug6vZki4sZVx6DP8q9+27YdTtxGlzZxMR7W0kk1s+l9q+k3m34zayRoR4mYCp8bOr80FL6Gh0TRVMkcsftxOv1qaRkVdcWucB6y5jlFnux1c86xJwXwhqil7N0z+lHjFSuKKPzINGDjJd0UtRVpX3ZXESWstQPuViMV4F92b6/bk92sc48tmSa6IcRxp9pGOzTKK9W+4b1yyybjTp1A/wB2vLlSSE4mjaP9YV1xnGflewYorAIPQ5rNZEkiyvryybdaXEkJPXaxGa9/T+O+IrPAW6WRR+muTWsUVqnTXZ5opkFkWHateIAt3ZB/VhgVsFh2n6LOQs8TxN5nP/aqXorjnwrGn6a+g0Wt2ncSaVqnDaxWF0JHLjK4+uqoHSgADpWa6cbGjjw5IsBW69hl7baf2paTeXkqwwJu3O3Qcq0qiugyhLlkmfSCTtJ4LjUs2uW+B18VQz2t8AjP/wAeh5e41868n9I/vrGB/c0O/wC8J+x9CX7bezdGKtxAmR1+Taos/bx2bxvtGthveI2/sr5/7F9KNi+lDH7ws9kd3a18IDs9+JTwxakZGkiZRhD1IPurh7W50utbvbqLnHLKWX6qhbF9KVQ57siV2uYDVxdkXLhG5/W/pVOmrh7I/ohc/rf0qs4t8j90aCitXaRtVvBkn5diMfWajXFvJIiO/JgOa1OvnWPWLkquD3zFv+I01NMtxM5jOOf8asIeVFpsjpFPIgToAOgPlS5Z2hRI4xyHtCnrctCwkB3ydCPKo96k5vN7LgNz2+6sgR3lNxKSo2xjmR60SzKQFCZXHT0p+5hVFSWFRjGW+usFRLD3luniHtGhkFspI2gbY+tZklil+SdNmw5X30rvIlRShYOF58upphtlwwJJ3+fLpQgTNKFu1cA7QMdKlwRbSZUkIV+dNyRsIAy8yjefnWHd2UHHdj099AEBAXvAASOZBpsxytMTOfC48AzSj3QkJlJVl6YGc0QMJFkMpwMeHPlQkZhgYs3fsVVTyp62SRQZw52Ic49aCJGi/TKcwD0NZhY3EwRvkx5r5UDY2+9bkTwJ3mfXlg1KmnaN0kY7R+cg5g1HkmmhmaIAKPLBzS7dTOSz4VB6nmTQMkXEphKSwNyk5HB5ilrql/ZRE29zMD1z3hFedFA7SuynAXmB5GlTZZFlZj3anDqKhpPuRo2TSOO+KLNO6F+cLzwy7v41tFh2warAipcQLOR1I5ZquZ4zIQLUjYVGWPI0wiOqnYQWHmeVaLMSmzzRRjKuMu6L107tc0W5CreWndk+0Su/H8K9aHibgbWEUsITuOMtGFrm5DOJCFBw3I1KiiSC5SKblG/THOuSXCqe8W1+5rljQOh7jhXgzU2+SliDnpsmH9DXlXvZZbSZNjqHPyXGf61S0t/dWlz3lncSQYGBsNe9pPGHEGmxGRNWmnduiu1Y/Y8mv5dv8mp43szbb/s0163BaIxyr5eIZrX73hrXLMnvrCTA81BNeppHa5q8OEuIo3PqQc/xNbTa9renvaq15aSljyPMYp4udX5oqRrdE0VfJDPGSJIJUx+khFIq6l4o4I1NU+NtZ73wNr9aVNwvwXqhC27RKzdO6wKn7zcPm1tGtxku6KToq2L/ALLLN8mzv9noGNeDe9mOtxHNvLHKv1Gt8OJY0/za+pjs0Wit1i7M+InXJMS+4g1Kj7LdXJG+5iA8+RrN5+MvzobNAoqyI+yq6Oe8v0Hp1qRH2UR4Bk1RQfMZP9la3xPFX5hsq+sZHrVuRdldgDl78sPcakR9mWiIvylxIT6hhWt8Wx/Rv+AU3ketZq6v/LzheEb5GlwBzyRikpwxwPDktLEf1iKj72p9E/4J6lL1cXZH9Ebn9b+lS/yXwFAoLmzx6sKktr/CGlafLb2d9ZwKRnYmRXHmZbya+SMH39ieWXsc6aq0ja1dyui7TM4C595qP3aiXu8gBue7307qE8M2oTuhyDKxyB15msPCJhuGERegzV7HsiyHYEeON3EgYpzIz503De/GZ+9mUg7SoFO2Vuq2M86b2bdg4XJHKo0EUrpkg4PMsfIVkCUkAlxbRSH5TmSfKkRoljM1kj7snJNNGVYyI7U7hjxE8smmzG80mQMPjGT5UCFyPIs+1UBGcDBrIZIbkNIo59cc6XErD5FP8qBksawI4zE5LHvM8yRQDNzMY7oPktH5Cn5+6dVld9m7otNRCKPxyeM+S+WakMkBAluolZiMKvoKAjNFIYwWjU8+uedR7hxyDAg9MAc6lzXKCBBAzb19RiookLSh3BMxPL0/fQyQ5FI4VYwpXPLcOtLkiAUvncR1NJkleHky7yep8hSC0u7EYOxuuRihAI5cCUgL3XMZPWnHMU8yzezHyDKOn10xIQr9xOvI891KRGjBRE3Rt5mhIp5d+Y4G2p+6kRiTvdrHIPX3058XiKkMxVl5kDnypsyCGQGPLKvPn50A+6nu8Bir+XvpiRh3Y3OyuTg8ulSrjc8COpAcnwjPQ03BGs6mKRd0vmfShCC0kbY+QBsGVY9TSJbWd0715snyBIpb/Kp3e0KydGJxmnO5jZQhuC7n6qDZC3eFRt3N0NSo4kJ7tB8v1Oen76GeNI+7jiHeDzPnSjIqoImOJD+cKARcxMEUk73bl9VOQlxEquBgdOdNXW6IgRc19aGSSONJ2YlW6+lCB64+Lu4Cu0k3qRjFOWGoXNncbZbiUL+adx5VH7lUIZDhm6MPKkXatNMqSqFA8xzqH1JRs+i8acTQCQxarJCi9GMSNn/iU07F2l8ckll144H5ptYef/JWvWiILbDSZQ/mmkGGKQHuyFVfurVLHpl5op/sjFxi+6Nxl7SuL/iqyflpgW9LWLl/y1GXtH46C7hrZc+Y+Kw/9FanIsxs+5wqc/XrT9q7Rsm0A8iG51j9ko/0X8Ix8OK9DZP/ADK4yck/lkn/AHfi0X/TS7rtI4jljTbqrI7DmPi8f/TWoS/JSsVGDWEhUgvcuSSMr51ksepdor+EZckfY2BuJuI5256o+7qThQD/AAqNccSa27Ik99KFXqVI5140EgVCGHh8vWkFmbxDlt5AVmq4LskFFHr3mrapcvk39w0eOXjIrzIpbuaTfJcSbB1+UNOW7gg5BxglsetRWCyrmMlR5jFZaRKJklyWb5OaVgPLceVM3LXBACyOQRzJPOs6bGTerEvJApO4+dP3jKkrbPazhlqdDsxkQEWYMB3n84nlikgStGGKE7fUVmQXFthlb5JueAacmup5IVEXhUDoD1oCdpl9PYwvOsStvBDRk8jnzqKL15mG5AkX+r8qjNPLJGFI2jI60SKHlVmbp50BmaP/ABoEbkVuYCjOKkYHehWYkYwDWLK4kWSUSxqQVO0k0lWAtmdiN4bpmgFXLbgIj4SvIEedNliEKlAUxzz1qVDHFNAJcDcOf3VAlkklkZ0jyqjbQIxAveMAhJUnH1CnLmVludhG/auATWbSPuozcRnmeRU09bKgVpJlBdj5c6E7FfF4hFnbzHSmYsLHOQozs60UUIQ2eenAHzY5rLyubJTuxt5DFFFB6jrxpLbxtIoZv0j1pd2xSMomFXaOQoooQQHJMO4cmPLI60sxK9qzcwR5jzoooZ+w9aKJrJy/WPmpHlWI8pEsqMVcsQSPMUUUIEMO8tWDeRJBp+3t4UsnmVAJFHJvOiigYvSFSZpGlRXIHnXnno+efiOM/XRRUBeoPI/gXccVKZmPd27HdF+iaKKklg42TtEpOzHIU1alpGO8lsHzooqCCaYo3WTwBdo5YryRJITs3nGaKKliJKZmljTexasAFJF2sQD1HrRRQEicAyM2Bmm7gYCk+L66KKEIi3JMc4ZT18j0qTajvmIk54HL3UUVBL7C7UnEn1c/fTKAd02ABkjpRRUkDkRZY2UMcA0ysrG8RzgkjnnzoooSO3RPfHnhSfZ8qdulECQtHyJWiihAqxiW7uAs+WAXlSWiRruWMjwpnGKKKAjLI5vArNuCjAB8qVcxIH3eZoooS+4tspHGiEqGGTihGeNW2u2D1FFFCBFuxYFT0z0qXOghVTGSuRzooqQf/9k=" alt="Peak Sports" style={{width:'44px', height:'44px', borderRadius:'10px', objectFit:'contain', flexShrink:0}}/>
+          <div>
+            <h1 className="futura-heading" style={{fontSize:'22px', lineHeight:'1.1', color:'white', margin:0}}>
+              Ace<span style={{color:C.limeBright}}>.</span><span style={{color:C.lime}}>ai</span>
+            </h1>
+            <p className="mono-label" style={{fontSize:'8px', color:'rgba(255,255,255,0.25)', margin:0}}>Ticketing Intelligence</p>
           </div>
         </div>
 
-        {/* Nav — horizontal scroll on mobile, vertical list on desktop */}
-        <nav className="sidebar-nav-inner" style={{WebkitOverflowScrolling:'touch', scrollbarWidth:'none'}}>
-          {navItems.map(item => (
-            <button key={item.id} onClick={() => setActiveTab(item.id)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-left flex-shrink-0 ${activeTab === item.id ? 'nav-active' : ''}`}
-              style={activeTab !== item.id
-                ? { color:'rgba(255,255,255,0.38)', border:'1px solid transparent' }
-                : { color:'white' }}>
-              <span className="flex-shrink-0" style={activeTab === item.id ? {color:C.lime} : {color:'rgba(255,255,255,0.28)'}}>
-                {React.cloneElement(item.icon, {size:18})}
-              </span>
-              <span className="futura-heading whitespace-nowrap" style={{fontSize:'14px'}}>{item.label}</span>
-              {activeTab === item.id && (
-                <div className="hidden md:block ml-auto flex-shrink-0" style={{width:'5px',height:'5px',borderRadius:'50%',background:C.lime,boxShadow:`0 0 8px ${C.lime}`}}/>
-              )}
-            </button>
-          ))}
+        {/* Nav */}
+        <nav className="app-nav" style={{display:'flex', flexDirection:'row', gap:'4px', padding:'6px 8px', overflowX:'auto', scrollbarWidth:'none', WebkitOverflowScrolling:'touch'}}>
+          {navItems.map(item => {
+            const isActive = activeTab === item.id;
+            return (
+              <button key={item.id} onClick={() => setActiveTab(item.id)}
+                style={{display:'flex', alignItems:'center', gap:'10px', padding:'9px 13px', borderRadius:'12px', textAlign:'left', cursor:'pointer', flexShrink:0, background: isActive ? 'rgba(92,184,50,0.09)' : 'transparent', border: isActive ? '1px solid rgba(92,184,50,0.22)' : '1px solid transparent', boxShadow: isActive ? 'inset 3px 0 0 #5cb832' : 'none', color: isActive ? 'white' : 'rgba(255,255,255,0.38)', transition:'all 0.18s ease'}}>
+                <span style={{flexShrink:0, display:'flex', color: isActive ? C.lime : 'rgba(255,255,255,0.28)'}}>
+                  {React.cloneElement(item.icon, {size:16})}
+                </span>
+                <span className="futura-heading" style={{fontSize:'13px', whiteSpace:'nowrap'}}>{item.label}</span>
+                {isActive && <div className="app-nav-dot" style={{display:'none', marginLeft:'auto', flexShrink:0, width:'5px', height:'5px', borderRadius:'50%', background:C.lime, boxShadow:`0 0 8px ${C.lime}`}}/>}
+              </button>
+            );
+          })}
         </nav>
-
-        {/* System status — desktop only */}
-        <div className="sys-status-block">
-          <div className="p-4 rounded-xl" style={{background:'rgba(136,110,76,0.04)', border:'1px solid rgba(136,110,76,0.1)'}}>
-            <div className="flex items-center gap-2.5 mb-2">
-              <div className="status-dot"/>
-              <span className="futura-heading text-white/45" style={{fontSize:'13px'}}>All Systems Nominal</span>
-            </div>
-            <p className="mono-label" style={{fontSize:'9px', color:'rgba(255,255,255,0.18)'}}>v2.5.0 · SECURE · LIVE DATA</p>
-          </div>
-        </div>
       </div>
 
       {/* CONTENT */}
-      <div className="content-panel">
-        <div className="max-w-7xl mx-auto">
+      <div className="app-content" style={{flex:1, padding:'16px', minWidth:0}}>
+        <div style={{maxWidth:'1280px', margin:'0 auto'}}>
 
           {/* SALES AGENT */}
           {activeTab === 'mobile' && (
-            <div className="fade-in sales-agent-layout" style={{display:'flex', flexDirection:'column', gap:'40px', alignItems:'center', justifyContent:'center'}}>
-              <div style={{width:'100%', maxWidth:'420px', display:'flex', flexDirection:'column', gap:'24px'}}>
-                <div>
-                  <p className="page-label mb-2">Sales Agent</p>
-                  <h2 className="futura-heading leading-tight" style={{fontSize:'clamp(34px, 5vw, 48px)', color:C.greenMid}}>Choose a<br/>Campaign</h2>
-                  <p className="text-slate-500 text-base mt-3">Select a campaign type to see Ace in action with live data</p>
-                </div>
-                <div style={{display:'flex', flexDirection:'column', gap:'12px'}}>
-                  {Object.keys(CAMPAIGNS).map(c => (
-                    <button key={c} onClick={() => setActiveCampaign(c)}
-                      className="card-hover"
-                      style={{
-                        display:'flex', alignItems:'center', justifyContent:'space-between',
-                        width:'100%', padding:'20px', borderRadius:'16px', textAlign:'left',
-                        border: activeCampaign === c ? `2px solid ${C.greenMid}` : `2px solid ${C.slateLight}`,
-                        background: activeCampaign === c ? C.greenMid : 'white',
-                        color: activeCampaign === c ? 'white' : C.slate,
-                        boxShadow: activeCampaign === c ? '0 8px 32px rgba(26,18,8,0.25)' : 'none',
-                        cursor:'pointer', transition:'all 0.2s ease',
-                      }}>
-                      <div className="flex items-center gap-4">
-                        <div className="w-11 h-11 rounded-xl flex items-center justify-center"
-                          style={activeCampaign === c ? { background:'rgba(136,110,76,0.15)' } : { background:C.offWhite }}>
-                          <span style={activeCampaign === c ? {color:C.lime} : {color:C.greenLight}}>{CAMPAIGNS[c].icon}</span>
-                        </div>
-                        <div>
-                          <span className="futura-heading block leading-tight" style={{fontSize:'17px'}}>{CAMPAIGNS[c].title}</span>
-                          <span className="text-sm mt-0.5 block" style={{color: activeCampaign === c ? 'rgba(255,255,255,0.55)' : '#94a3b8'}}>{CAMPAIGNS[c].sub}</span>
-                        </div>
-                      </div>
-                      <ChevronRight size={20} style={{color: activeCampaign === c ? C.lime : '#cbd5e1'}}/>
-                    </button>
-                  ))}
-                </div>
+            <div className="fade-in" style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'40px'}}>
+              {/* Two-col on wide screens */}
+              <div style={{display:'flex', flexDirection:'row', flexWrap:'wrap', gap:'40px', alignItems:'flex-start', justifyContent:'center', width:'100%'}}>
 
-                {/* Fan card */}
-                <div className="p-5 rounded-2xl border-2 data-card">
-                  <p className="mono-label mb-3" style={{color:C.greenLight}}>Active Fan Profile</p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-black text-base" style={{background:C.greenMid}}>SK</div>
-                    <div>
-                      <p className="futura-heading text-slate-900" style={{fontSize:'16px'}}>Scott Kull</p>
-                      <p className="text-sm text-slate-400 flex items-center gap-1.5"><span style={{color:C.lime}}>★</span> Platinum · Dir. of Athletics</p>
+                {/* LEFT COLUMN — campaigns + fan card */}
+                <div style={{flex:'1 1 340px', maxWidth:'420px', minWidth:'280px', display:'flex', flexDirection:'column', gap:'24px'}}>
+                  <div>
+                    <p className="page-label" style={{marginBottom:'8px'}}>Sales Agent</p>
+                    <h2 className="futura-heading" style={{fontSize:'clamp(34px, 5vw, 48px)', color:C.greenMid, lineHeight:'1.1', margin:'0 0 12px'}}>Choose a<br/>Campaign</h2>
+                    <p style={{color:'#64748b', fontSize:'15px', margin:0}}>Select a campaign type to see Ace in action with live data</p>
+                  </div>
+
+                  {/* Campaign cards — vertical stack, explicit block layout */}
+                  <div style={{display:'flex', flexDirection:'column', gap:'12px'}}>
+                    {Object.keys(CAMPAIGNS).map(c => {
+                      const isActive = activeCampaign === c;
+                      return (
+                        <button key={c} onClick={() => setActiveCampaign(c)}
+                          style={{
+                            display:'flex', alignItems:'center', justifyContent:'space-between',
+                            width:'100%', padding:'18px 20px', borderRadius:'16px',
+                            textAlign:'left', cursor:'pointer',
+                            border: isActive ? `2px solid ${C.greenMid}` : `2px solid ${C.slateLight}`,
+                            background: isActive ? C.greenMid : 'white',
+                            color: isActive ? 'white' : C.slate,
+                            boxShadow: isActive ? '0 8px 32px rgba(15,34,19,0.25)' : '0 2px 8px rgba(15,34,19,0.04)',
+                            transition:'all 0.2s ease',
+                          }}>
+                          <div style={{display:'flex', alignItems:'center', gap:'16px'}}>
+                            <div style={{
+                              width:'44px', height:'44px', borderRadius:'12px',
+                              display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0,
+                              background: isActive ? 'rgba(92,184,50,0.15)' : C.offWhite,
+                            }}>
+                              <span style={{color: isActive ? C.lime : C.greenLight, display:'flex'}}>{CAMPAIGNS[c].icon}</span>
+                            </div>
+                            <div>
+                              <span className="futura-heading" style={{display:'block', fontSize:'17px', lineHeight:'1.2'}}>{CAMPAIGNS[c].title}</span>
+                              <span style={{display:'block', fontSize:'13px', marginTop:'3px', color: isActive ? 'rgba(255,255,255,0.55)' : '#94a3b8'}}>{CAMPAIGNS[c].sub}</span>
+                            </div>
+                          </div>
+                          <ChevronRight size={20} style={{color: isActive ? C.lime : '#cbd5e1', flexShrink:0}}/>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Fan profile card */}
+                  <div style={{
+                    padding:'20px', borderRadius:'16px',
+                    background:'white', border:`2px solid ${C.slateLight}`,
+                    boxShadow:'0 2px 20px rgba(15,34,19,0.05)',
+                  }}>
+                    <p className="mono-label" style={{color:C.greenLight, marginBottom:'12px'}}>Active Fan Profile</p>
+                    <div style={{display:'flex', alignItems:'center', gap:'16px'}}>
+                      <div style={{
+                        width:'44px', height:'44px', borderRadius:'50%',
+                        display:'flex', alignItems:'center', justifyContent:'center',
+                        background:C.greenMid, color:'white', fontWeight:900, fontSize:'15px', flexShrink:0,
+                      }}>WH</div>
+                      <div>
+                        <p className="futura-heading" style={{fontSize:'16px', color:'#0f172a', margin:0}}> Cara Holloway</p>
+                        <p style={{fontSize:'13px', color:'#94a3b8', margin:'3px 0 0', display:'flex', alignItems:'center', gap:'6px'}}>
+                          <span style={{color:C.lime}}>★</span> Gold Member · Sec 109
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <MobileDemo campaign={activeCampaign} currentFan={MOCK_DB.fans[0]} onTransaction={addTransaction}/>
+                {/* RIGHT COLUMN — phone mockup */}
+                <div style={{flexShrink:0}}>
+                  <MobileDemo campaign={activeCampaign} currentFan={MOCK_DB.fans[0]} onTransaction={addTransaction}/>
+                </div>
+              </div>
             </div>
           )}
 
           {/* TICKET HUB */}
-          {activeTab === 'store' && <div className="fade-in"><WoffordTicketHub onTransaction={addTransaction}/></div>}
+          {activeTab === 'store' && <div className="fade-in"><TicketHub onTransaction={addTransaction}/></div>}
 
           {/* ANALYTICS */}
           {activeTab === 'dash' && (() => {
@@ -3087,8 +1906,8 @@ export default function App() {
               { school:'SE La.',     tickets:198, revenue:17200 },
             ];
             const zoneData = [
-              { zone:'Home Sideline', sales:892, revenue:89200, fill:'#2a1e0e' },
-              { zone:'Club Level',    sales:156, revenue:35880, fill:'#886E4C' },
+              { zone:'Home Sideline', sales:892, revenue:89200, fill:'#1a3d20' },
+              { zone:'Club Level',    sales:156, revenue:35880, fill:'#5cb832' },
               { zone:'End Zones',     sales:634, revenue:28530, fill:'#1e6b44' },
               { zone:'Upper Deck',    sales:1102, revenue:38570, fill:'#1e3f6e' },
               { zone:'Away Side',     sales:420, revenue:31500, fill:'#2d6a4f' },
@@ -3102,7 +1921,7 @@ export default function App() {
             const CustomTooltip = ({ active, payload, label }) => {
               if (!active || !payload?.length) return null;
               return (
-                <div className="rounded-xl px-4 py-3 shadow-xl text-sm" style={{background:C.green, border:`1px solid rgba(136,110,76,0.3)`}}>
+                <div className="rounded-xl px-4 py-3 shadow-xl text-sm" style={{background:C.green, border:`1px solid rgba(92,184,50,0.3)`}}>
                   <p className="font-black text-white mb-1">{label}</p>
                   {payload.map((p,i) => (
                     <p key={i} style={{color:p.color || C.gold}} className="font-semibold">
@@ -3131,7 +1950,7 @@ export default function App() {
                       <p className="mono-label mb-2" style={{color: k.dark ? 'rgba(255,255,255,0.35)' : '#94a3b8'}}>{k.label}</p>
                       <p className={`futura-heading leading-none ${k.dark ? 'gold-glow' : ''} ${k.cognac ? 'cognac-glow' : ''}`}
                         style={{fontSize:'clamp(22px,4vw,36px)', color: k.dark ? C.gold : k.cognac ? C.cognac : C.greenMid}}>{k.value}</p>
-                      <p className="mono-label mt-2 md:mt-3" style={{color: k.dark ? 'rgba(136,110,76,0.6)' : '#94a3b8'}}>{k.sub}</p>
+                      <p className="mono-label mt-2 md:mt-3" style={{color: k.dark ? 'rgba(92,184,50,0.6)' : '#94a3b8'}}>{k.sub}</p>
                     </div>
                   ))}
                 </div>
@@ -3221,7 +2040,7 @@ export default function App() {
                           {zoneData.map((z,i) => <Cell key={i} fill={z.fill}/>)}
                         </Pie>
                         <Tooltip formatter={(v,n)=>[v.toLocaleString()+' tickets', n]}
-                          contentStyle={{background:C.green, border:`1px solid rgba(136,110,76,0.3)`, borderRadius:12, color:'white', fontSize:12, fontWeight:700}}/>
+                          contentStyle={{background:C.green, border:`1px solid rgba(92,184,50,0.3)`, borderRadius:12, color:'white', fontSize:12, fontWeight:700}}/>
                       </PieChart>
                     </ResponsiveContainer>
                     <div className="space-y-3">
@@ -3283,138 +2102,104 @@ export default function App() {
           {/* CRM OUTREACH */}
           {activeTab === 'crm' && <CRMTab />}
 
-          {/* HOW IT WORKS */}
+          {/* TECH STACK */}
           {activeTab === 'arch' && (
             <div className="max-w-5xl fade-in space-y-8">
               <div>
-                <p className="page-label mb-2">How It Works</p>
-                <h3 className="futura-heading" style={{fontSize:'clamp(32px,5vw,52px)', color:C.greenMid}}>Manual vs Automated</h3>
-                <p className="text-slate-500 text-sm mt-2 max-w-xl">See exactly what changes when AI handles the outreach — same outcome, a fraction of the effort.</p>
+                <p className="page-label mb-2">Infrastructure</p>
+                <h3 className="futura-heading" style={{fontSize:'clamp(32px,5vw,52px)', color:C.greenMid}}>Tech Stack</h3>
+                <p className="text-slate-500 text-sm mt-2 max-w-xl">Purpose-built for collegiate athletics revenue ops — every layer chosen for speed, reliability, and zero vendor lock-in.</p>
               </div>
 
-              {/* Before / After comparison */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* BEFORE */}
-                <div className="rounded-2xl overflow-hidden border-2" style={{borderColor:'#e2e8f0'}}>
-                  <div className="px-6 py-4 flex items-center gap-3" style={{background:'#f8fafc', borderBottom:'2px solid #e2e8f0'}}>
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{background:'#fee2e2'}}>
-                      <span style={{fontSize:'16px'}}>😓</span>
+              {/* Core stack cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  {
+                    icon: <Zap size={22}/>,
+                    label: 'AI Engine',
+                    name: 'OpenAI GPT-4o',
+                    desc: 'Powers Ace — live inventory queries, personalized CRM drafts, and fan-facing conversation in real time.',
+                    color: C.lime,
+                    tag: 'Live'
+                  },
+                  {
+                    icon: <Network size={22}/>,
+                    label: 'Workflow Automation',
+                    name: 'n8n (Self-Hosted)',
+                    desc: 'Orchestrates every AI call, database query, and webhook. No SaaS dependency — runs on your infrastructure.',
+                    color: '#e07b2a',
+                    tag: 'Self-Hosted'
+                  },
+                  {
+                    icon: <Database size={22}/>,
+                    label: 'Inventory Database',
+                    name: 'PostgreSQL',
+                    desc: 'Real seat-level inventory for all 6 partner schools — section, row, price, availability, event data.',
+                    color: '#3b82f6',
+                    tag: 'Live Data'
+                  },
+                  {
+                    icon: <Activity size={22}/>,
+                    label: 'Frontend',
+                    name: 'React + Vite',
+                    desc: 'Lightning-fast SPA. Mobile-first, no page reloads. Deployable to any CDN or white-labeled per school.',
+                    color: C.greenLight,
+                    tag: 'This App'
+                  },
+                  {
+                    icon: <TrendingUp size={22}/>,
+                    label: 'Secure Tunnel',
+                    name: 'Cloudflare Tunnel',
+                    desc: 'Exposes the platform publicly without open firewall ports. Zero-trust access, DDoS protection included.',
+                    color: '#f59e0b',
+                    tag: 'Active'
+                  },
+                  {
+                    icon: <Trophy size={22}/>,
+                    label: 'Deployment',
+                    name: 'Docker + Local',
+                    desc: 'Entire stack runs containerized. Can be migrated to AWS, Azure, or school-managed cloud with one command.',
+                    color: '#8b5cf6',
+                    tag: 'Portable'
+                  },
+                ].map((s,i) => (
+                  <div key={i} className="data-card p-5 space-y-3" style={{borderTop:`3px solid ${s.color}`}}>
+                    <div className="flex items-center justify-between">
+                      <span style={{color:s.color}}>{s.icon}</span>
+                      <span className="mono-label px-2 py-1 rounded-lg" style={{background:`${s.color}18`, color:s.color, fontSize:'8px'}}>{s.tag}</span>
                     </div>
                     <div>
-                      <p className="futura-heading" style={{fontSize:'16px', color:'#1e293b'}}>Before — Manual Process</p>
-                      <p className="mono-label text-slate-400" style={{fontSize:'8px'}}>How reps work today</p>
+                      <p className="mono-label text-slate-400 mb-0.5" style={{fontSize:'9px'}}>{s.label}</p>
+                      <p className="futura-heading" style={{fontSize:'18px', color:C.greenMid}}>{s.name}</p>
                     </div>
+                    <p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p>
                   </div>
-                  <div className="p-6 space-y-4" style={{background:'white'}}>
-                    {[
-                      { step:'1', title:'Pull contact list', detail:'Export CSV from CRM, filter manually by school and status', time:'45 min', pain:true },
-                      { step:'2', title:'Research each contact', detail:'Check purchase history, last contact, notes in spreadsheet', time:'2 hrs', pain:true },
-                      { step:'3', title:'Write each email', detail:'Draft one by one, copy-paste template, tweak manually', time:'3 hrs', pain:true },
-                      { step:'4', title:'Send & log', detail:'Send from inbox, manually log each send in CRM', time:'1 hr', pain:true },
-                      { step:'5', title:'Follow up', detail:'Remember who didn't reply, write follow-ups manually", time:'2 hrs', pain:true },
-                    ].map((s,i) => (
-                      <div key={i} className="flex gap-3 items-start">
-                        <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5" style={{background:'#fee2e2', color:'#dc2626'}}>{s.step}</div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-2">
-                            <p className="futura-heading text-slate-800" style={{fontSize:'14px'}}>{s.title}</p>
-                            <span className="mono-label flex-shrink-0 px-2 py-0.5 rounded-lg" style={{background:'#fee2e2', color:'#dc2626', fontSize:'8px'}}>{s.time}</span>
-                          </div>
-                          <p className="text-xs text-slate-400 mt-0.5 leading-relaxed">{s.detail}</p>
-                        </div>
-                      </div>
-                    ))}
-                    <div className="mt-4 pt-4 border-t-2 border-dashed" style={{borderColor:'#e2e8f0'}}>
-                      <div className="flex items-center justify-between">
-                        <span className="futura-heading text-slate-600" style={{fontSize:'14px'}}>Total time per campaign</span>
-                        <span className="futura-heading" style={{fontSize:'22px', color:'#dc2626'}}>~9 hrs</span>
-                      </div>
-                      <p className="text-xs text-slate-400 mt-1">Per school · per rep · per week</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* AFTER */}
-                <div className="rounded-2xl overflow-hidden border-2" style={{borderColor:C.lime}}>
-                  <div className="px-6 py-4 flex items-center gap-3" style={{background:C.greenMid, borderBottom:`2px solid ${C.lime}`}}>
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{background:'rgba(136,110,76,0.2)'}}>
-                      <span style={{fontSize:'16px'}}>⚡</span>
-                    </div>
-                    <div>
-                      <p className="futura-heading text-white" style={{fontSize:'16px'}}>After — Boss Automated</p>
-                      <p className="mono-label" style={{fontSize:'8px', color:'rgba(136,110,76,0.7)'}}>How it works with Simple Genius</p>
-                    </div>
-                  </div>
-                  <div className="p-6 space-y-4" style={{background:'#F5F0E8'}}>
-                    {[
-                      { step:'1', title:'Contacts sync automatically', detail:'Ace pulls from your CRM, filters by school, status, and campaign type', time:'0 min', auto:true },
-                      { step:'2', title:'AI reads every profile', detail:'Purchase history, last contact date, spend, tags — all processed instantly', time:'0 min', auto:true },
-                      { step:'3', title:'Emails drafted in seconds', detail:'Personalized for every contact — name, school, history, campaign tone', time:'2 sec', auto:true },
-                      { step:'4', title:'Rep reviews & approves', detail:'One click to approve. Rep stays in control — nothing sends without sign-off', time:'5 min', auto:true },
-                      { step:'5', title:'Follow-ups queued automatically', detail:'Ace tracks replies and stages follow-ups based on response — or no response', time:'0 min', auto:true },
-                    ].map((s,i) => (
-                      <div key={i} className="flex gap-3 items-start">
-                        <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5" style={{background:'rgba(136,110,76,0.2)', color:C.greenMid}}>{s.step}</div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-2">
-                            <p className="futura-heading" style={{fontSize:'14px', color:C.greenMid}}>{s.title}</p>
-                            <span className="mono-label flex-shrink-0 px-2 py-0.5 rounded-lg" style={{background:'rgba(136,110,76,0.15)', color:C.greenMid, fontSize:'8px'}}>{s.time}</span>
-                          </div>
-                          <p className="text-xs mt-0.5 leading-relaxed" style={{color:'#3a2e1e'}}>{s.detail}</p>
-                        </div>
-                      </div>
-                    ))}
-                    <div className="mt-4 pt-4 border-t-2 border-dashed" style={{borderColor:C.lime}}>
-                      <div className="flex items-center justify-between">
-                        <span className="futura-heading" style={{fontSize:'14px', color:C.greenMid}}>Total time per campaign</span>
-                        <span className="futura-heading" style={{fontSize:'22px', color:C.lime}}>~5 min</span>
-                      </div>
-                      <p className="text-xs mt-1" style={{color:'#3a2e1e'}}>Rep reviews drafts · Ace handles everything else</p>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              {/* ROI callout */}
-              <div className="rounded-2xl p-6 md:p-8" style={{background:`linear-gradient(145deg, #180f07, #2a1e0e)`, border:'1px solid rgba(136,110,76,0.12)'}}>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                  {[
-                    { label:'Time saved per rep', value:'~9 hrs/wk', sub:'Per school per campaign cycle' },
-                    { label:'Emails personalized', value:'100%', sub:'Every contact, every time' },
-                    { label:'Rep stays in control', value:'Always', sub:'Review & approve before send' },
-                  ].map((s,i) => (
-                    <div key={i}>
-                      <p className="mono-label mb-2" style={{color:'rgba(255,255,255,0.35)', fontSize:'9px'}}>{s.label}</p>
-                      <p className="futura-heading" style={{fontSize:'clamp(24px,3vw,36px)', color:C.lime}}>{s.value}</p>
-                      <p className="mono-label mt-1" style={{color:'rgba(136,110,76,0.5)', fontSize:'8px'}}>{s.sub}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Flow diagram */}
-              <div className="data-card p-6 md:p-8">
+              {/* Architecture flow */}
+              <div className="rounded-2xl p-5 md:p-8" style={{background:`linear-gradient(145deg, #0c1a0e, #132118)`, border:'1px solid rgba(92,184,50,0.12)'}}>
                 <div className="flex items-center gap-3 mb-6">
-                  <Network size={20} style={{color:C.gold}}/>
-                  <p className="futura-heading" style={{fontSize:'20px', color:C.greenMid}}>The Automation Chain</p>
+                  <Activity size={18} style={{color:C.lime}}/>
+                  <p className="futura-heading text-white" style={{fontSize:'20px'}}>How It All Connects</p>
                 </div>
                 <div className="flex flex-col md:flex-row items-stretch gap-3">
                   {[
-                    { step:'01', label:'CRM Data', sub:'Contacts, history, status', icon:<Database size={16}/>, color:C.greenMid },
-                    { step:'02', label:'Boss AI', sub:'Reads profile, drafts email', icon:<Zap size={16}/>, color:C.lime },
-                    { step:'03', label:'Rep Reviews', sub:'Approve, edit, or skip', icon:<Users size={16}/>, color:'#3b82f6' },
-                    { step:'04', label:'Email Sends', sub:'Logged back to CRM', icon:<Mail size={16}/>, color:'#e07b2a' },
-                    { step:'05', label:'Results Tracked', sub:'Opens, replies, revenue', icon:<TrendingUp size={16}/>, color:'#8b5cf6' },
+                    { step:'01', label:'Fan or Rep', sub:'Sends a message', icon:<Users size={16}/> },
+                    { step:'02', label:'n8n Agent', sub:'Routes & orchestrates', icon:<Network size={16}/> },
+                    { step:'03', label:'GPT-4o', sub:'Reasons + responds', icon:<Zap size={16}/> },
+                    { step:'04', label:'PostgreSQL', sub:'Live inventory query', icon:<Database size={16}/> },
+                    { step:'05', label:'React UI', sub:'Renders result', icon:<Activity size={16}/> },
                   ].map((s, i, arr) => (
                     <React.Fragment key={i}>
-                      <div className="flex-1 rounded-xl p-4 text-center border" style={{borderColor:C.slateLight}}>
-                        <p className="mono-label mb-2" style={{color:s.color, fontSize:'8px'}}>{s.step}</p>
-                        <div className="flex justify-center mb-2" style={{color:s.color}}>{s.icon}</div>
-                        <p className="futura-heading" style={{fontSize:'13px', color:C.greenMid}}>{s.label}</p>
-                        <p className="mt-1" style={{fontSize:'10px', color:'#94a3b8'}}>{s.sub}</p>
+                      <div className="flex-1 rounded-xl p-4 text-center" style={{background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.07)'}}>
+                        <p className="mono-label mb-2" style={{color:C.lime, fontSize:'8px'}}>{s.step}</p>
+                        <div className="flex justify-center mb-2" style={{color:'rgba(255,255,255,0.5)'}}>{s.icon}</div>
+                        <p className="futura-heading text-white" style={{fontSize:'14px'}}>{s.label}</p>
+                        <p className="text-white/35 mt-1" style={{fontSize:'10px'}}>{s.sub}</p>
                       </div>
                       {i < arr.length - 1 && (
-                        <div className="hidden md:flex items-center justify-center flex-shrink-0" style={{color:'#cbd5e1'}}>
+                        <div className="hidden md:flex items-center justify-center text-white/20 shrink-0">
                           <ChevronRight size={18}/>
                         </div>
                       )}
@@ -3422,12 +2207,61 @@ export default function App() {
                   ))}
                 </div>
               </div>
+
+              {/* Three pillars + system status */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="data-card p-5 space-y-4">
+                  <p className="futura-heading" style={{fontSize:'18px', color:C.greenMid}}>Three Revenue Pillars</p>
+                  {[
+                    { label:'Sales Agent (Ace)', sub:'AI chat → live DB → ticket sale', color:C.lime },
+                    { label:'Ticket Hub', sub:'Interactive map → seat picker → checkout', color:'#3b82f6' },
+                    { label:'CRM Outreach', sub:'Contact data → AI draft → rep approves → sends', color:'#e07b2a' },
+                  ].map((p,i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-2 h-2 rounded-full mt-1.5 shrink-0" style={{background:p.color}}/>
+                      <div>
+                        <p className="futura-heading" style={{fontSize:'15px', color:C.greenMid}}>{p.label}</p>
+                        <p className="text-xs text-slate-400 mt-0.5">{p.sub}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="rounded-2xl p-5" style={{background:`linear-gradient(145deg, #0c1a0e, #132118)`, border:'1px solid rgba(92,184,50,0.12)'}}>
+                  <p className="mono-label mb-4" style={{color:C.lime, fontSize:'9px', letterSpacing:'0.14em'}}>SYSTEM STATUS</p>
+                  <div className="space-y-3">
+                    {[
+                      { label:'AI Agent (n8n)',     value:'Online',   ok:true },
+                      { label:'PostgreSQL DB',       value:'Connected',ok:true },
+                      { label:'Cloudflare Tunnel',   value:'Active',   ok:true },
+                      { label:'Avg Response Time',   value:'~1.2s',    ok:true },
+                      { label:'Seats in Inventory',  value:'2,400+',   ok:true },
+                    ].map((s,i) => (
+                      <div key={i} className="flex items-center justify-between">
+                        <span className="text-white/45 text-xs font-semibold">{s.label}</span>
+                        <span className="flex items-center gap-1.5 mono-label" style={{color: s.ok ? C.lime : '#ef4444', fontSize:'10px'}}>
+                          <span className="w-1.5 h-1.5 rounded-full" style={{background: s.ok ? C.lime : '#ef4444'}}/>
+                          {s.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
             </div>
           )}
 
-          )}
-
         </div>
+      </div>
+      {/* Footer accent */}
+      <div className="app-footer" style={{display:"none", alignItems:"center", justifyContent:"space-between", padding:"6px 24px", borderTop:"1px solid rgba(15,34,19,0.08)", background:"rgba(244,247,242,0.8)"}}>
+        <div className="flex items-center gap-1.5">
+          <div className="status-dot" style={{width:'6px', height:'6px'}}/>
+          <span className="mono-label" style={{fontSize:'8px', color:'#94a3b8'}}>All Systems Nominal · v2.5.0</span>
+        </div>
+        <span className="mono-label" style={{fontSize:'8px', color:'#b8c8b8'}}>Powered by <span style={{color:'#5cb832'}}>Peak Sports MGMT</span></span>
+      </div>
       </div>
     </div>
   );
