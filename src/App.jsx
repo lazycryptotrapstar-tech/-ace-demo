@@ -838,7 +838,7 @@ const TicketHub = ({ onTransaction }) => {
   const handlePurchase = () => {
     if (!hasSelection) return;
     setHubState('success');
-    onTransaction({ fanName: "Cara Holloway", campaign: "Direct Purchase", amount: total, fromTicketHub: true });
+    onTransaction({ fanName: "Scott Kull", campaign: "Direct Purchase", amount: total, fromTicketHub: true });
   };
 
   if (hubState === 'success') return (
@@ -1439,14 +1439,15 @@ const DataInsightsTab = () => {
 // ============================================================
 const CRMTab = () => {
 const contacts = [
-  { id:1,  name:'Marcus Webb',      school:'Wofford College',              title:'Season Ticket Holder',     tier:'Gold',   email:'m.webb@email.com',    phone:'(864) 555-0142', lastContact:'14 days ago', status:'warm',    spend:1240, tags:['Alumni','Renewal Due'] },
-  // { id:2,  name:'Priya Nair',       school:'SE Louisiana University',      title:'Alumni · Class of 2019',   tier:'Silver', email:'p.nair@email.com',    phone:'(985) 555-0198', lastContact:'32 days ago', status:'cold',    spend:480,  tags:['Alumni','Lapsed'] },
-  // { id:3,  name:'Derek Fontaine',   school:'University of Akron',          title:'Premium Suite Prospect',   tier:'Prospect',email:'d.fontaine@biz.com', phone:'(330) 555-0217', lastContact:'5 days ago',  status:'hot',     spend:0,    tags:['Suite','New Lead'] },
-  // { id:4,  name:'Sandra Liu',       school:'Ball State University',        title:'Corporate Sponsor',        tier:'Gold',   email:'s.liu@corp.com',      phone:'(765) 555-0089', lastContact:'7 days ago',  status:'warm',    spend:3800, tags:['Sponsor','Renewal'] },
-  // { id:5,  name:'James Okafor',     school:'Eastern Kentucky University',  title:'Group Sales Lead',         tier:'Silver', email:'j.okafor@email.com',  phone:'(859) 555-0334', lastContact:'21 days ago', status:'cold',    spend:620,  tags:['Group','Lapsed'] },
-  // { id:6,  name:'Tori Blanchard',   school:'University of West Georgia',   title:'Parent · Student Athlete', tier:'Bronze', email:'t.blanchard@email.com',phone:'(678) 555-0411', lastContact:'60 days ago', status:'cold',    spend:190,  tags:['Parent','At Risk'] },
-  { id:7,  name:'Chris Alvarez',    school:'Wofford College',              title:'Local Business Owner',     tier:'Prospect',email:'c.alvarez@biz.com',  phone:'(864) 555-0556', lastContact:'2 days ago',  status:'hot',     spend:0,    tags:['Sponsor','New Lead'] },
-  // { id:8,  name:'Nkechi Obi',       school:'SE Louisiana University',      title:'Alumni · Donor',           tier:'Gold',   email:'n.obi@email.com',     phone:'(985) 555-0677', lastContact:'10 days ago', status:'warm',    spend:2100, tags:['Alumni','VIP'] },
+  { id:1,  name:'Nayef Samhat',               school:'Wofford College', title:'President',                              tier:'Platinum', email:'samhatnr@wofford.edu',              phone:'(864) 597-4010', lastContact:'5 days ago',  status:'hot',  spend:0, tags:['Administration','Transitioning'] },
+  { id:2,  name:'Christopher A.P. Carpenter', school:'Wofford College', title:'Board of Trustees Chairman',             tier:'Platinum', email:'carpenter@wofford.edu',             phone:'(864) 597-4011', lastContact:'12 days ago', status:'warm', spend:0, tags:['Administration','Alumni','Board'] },
+  { id:3,  name:'Timothy Schmitz',            school:'Wofford College', title:'Willimon Family Provost',                tier:'Gold',     email:'schmitzta@wofford.edu',             phone:'(864) 597-4012', lastContact:'18 days ago', status:'warm', spend:0, tags:['Administration','Academic'] },
+  { id:4,  name:'Calhoun L. Kennedy Jr.',     school:'Wofford College', title:'VP Philanthropy & Engagement',           tier:'Gold',     email:'kennedycl@wofford.edu',             phone:'(864) 597-4013', lastContact:'8 days ago',  status:'hot',  spend:0, tags:['Administration','Sponsorship'] },
+  { id:5,  name:'Shawn Watson',               school:'Wofford College', title:'Head Football Coach',                    tier:'Gold',     email:'watsonsc@wofford.edu',              phone:'(864) 597-4020', lastContact:'3 days ago',  status:'hot',  spend:0, tags:['Athletics','Football'] },
+  { id:6,  name:'Kevin Giltner',              school:'Wofford College', title:"Head Basketball Coach",                  tier:'Gold',     email:'giltnerkj@wofford.edu',             phone:'(864) 597-4021', lastContact:'6 days ago',  status:'hot',  spend:0, tags:['Athletics','Basketball'] },
+  { id:7,  name:'Shawn Tyler',                school:'Wofford College', title:'Director of Sales — TSP',           tier:'Gold',     email:'shawn@terriersportsproperties.com', phone:'(864) 597-4000', lastContact:'2 days ago',  status:'hot',  spend:0, tags:['Sponsor','Key Contact'] },
+  { id:8,  name:'Devin Foster',               school:'Wofford College', title:'Ticketing — TSP',                   tier:'Gold',     email:'devin@terriersportsproperties.com', phone:'(864) 597-4001', lastContact:'2 days ago',  status:'hot',  spend:0, tags:['Ticketing','Key Contact'] },
+  { id:9,  name:'Scott Kull',                 school:'Wofford College', title:'Director of Athletics',                  tier:'Platinum', email:'kullsr@wofford.edu',               phone:'(864) 597-4002', lastContact:'5 days ago',  status:'warm', spend:0, tags:['Admin','Decision Maker','VIP'] },
 ];
 
 const campaigns = [
@@ -1710,8 +1711,8 @@ return (
     {/* CRM stats footer */}
     <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
       {[
-        { label:'Contacts',         value:'8',   sub:'In this demo' },
-        { label:'Hot Leads',        value:'2',   sub:'Ready to close', gold:true },
+        { label:'Contacts',         value:'9',   sub:'Wofford roster' },
+        { label:'Hot Leads',        value:'5',   sub:'Ready to close', gold:true },
         { label:'Emails Drafted',   value:'∞',   sub:'AI-powered' },
         { label:'Avg Response Rate',value:'34%', sub:'Industry avg: 21%', gold:true },
       ].map((s,i) => (
@@ -1863,11 +1864,11 @@ export default function App() {
                         width:'44px', height:'44px', borderRadius:'50%',
                         display:'flex', alignItems:'center', justifyContent:'center',
                         background:C.greenMid, color:'white', fontWeight:900, fontSize:'15px', flexShrink:0,
-                      }}>WH</div>
+                      }}>SK</div>
                       <div>
-                        <p className="futura-heading" style={{fontSize:'16px', color:'#0f172a', margin:0}}> Cara Holloway</p>
+                        <p className="futura-heading" style={{fontSize:'16px', color:'#0f172a', margin:0}}> Scott Kull</p>
                         <p style={{fontSize:'13px', color:'#94a3b8', margin:'3px 0 0', display:'flex', alignItems:'center', gap:'6px'}}>
-                          <span style={{color:C.lime}}>★</span> Gold Member · Sec 109
+                          <span style={{color:C.lime}}>★</span> Platinum · Dir. of Athletics
                         </p>
                       </div>
                     </div>
