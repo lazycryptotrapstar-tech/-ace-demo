@@ -38,7 +38,7 @@ const C = {
 };
 
 const MOCK_DB = {
-  fans: [{ id: "FAN_77211", name: "Cara Holloway", loyaltyTier: "Gold", lastPurchase: { section: "109", row: "G" } }],
+  fans: [{ id: "FAN_KULL01", name: "Scott Kull", loyaltyTier: "Platinum", lastPurchase: { section: "120", row: "A" }, title: "Director of Athletics", org: "Wofford College" }],
   inventory: {
     sections: [
       { id: "101", name: "North End Zone", price: 35.00, status: 'HIGH', zone: 'endzone' },
@@ -1745,7 +1745,7 @@ export default function App() {
     { id:'store',    label:'Ticket Hub',     sub:'Marketplace',      icon:<ShoppingCart size={22}/> },
     { id:'crm',      label:'CRM Outreach',   sub:'AI Emails · Leads', icon:<Mail size={22}/> },
     { id:'dash',     label:'Analytics',      sub:'Performance',      icon:<TrendingUp size={22}/> },
-    { id:'insights', label:'Data Insights',  sub:'Trends · Schools', icon:<BarChart2 size={22}/> },
+    { id:'insights', label:'AI Productivity', sub:'AI vs Manual', icon:<BarChart2 size={22}/> },
     { id:'arch',     label:'Tech Stack',     sub:'Infrastructure',   icon:<Network size={22}/> },
   ];
 
@@ -2097,7 +2097,7 @@ export default function App() {
           })()}
 
           {/* DATA INSIGHTS */}
-          {activeTab === 'insights' && <DataInsightsTab />}
+          {activeTab === 'insights' && <ProductivityTab />}
 
           {/* CRM OUTREACH */}
           {activeTab === 'crm' && <CRMTab />}
