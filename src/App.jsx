@@ -14,6 +14,9 @@ import {
 // ============================================================
 // CONFIG
 // ============================================================
+// Boss mascot logo (Wofford Terriers)
+const BOSS_LOGO = "data:image/png;base64,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";
+
 const N8N_WEBHOOK_URL = 'https://may-transition-pierre-calculate.trycloudflare.com/webhook/2e28cfe9-961f-48fb-a548-3f0306448996/chat';
 
 // ============================================================
@@ -67,9 +70,9 @@ const CAMPAIGNS = {
   TICKETING: {
     title: "Ticket Sales",
     sub: "Live inventory · Real-time pricing",
-    icon: <Zap size={20} />,
+    icon: <img src={BOSS_LOGO} alt="Boss" style={{width:'20px',height:'20px',objectFit:'contain'}} />,
     initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🏈 Big game this Saturday. I noticed you were in Sec ${fan.lastPurchase.section} last time — want me to check what's available nearby?`,
-    systemPrompt: (fan) => `You are Ace, an expert ticket sales rep for Peak Sports MGMT at a mid-major college athletics program. Your goal is to sell tickets — season plans, single-game tickets, flex plans, and group packages.
+    systemPrompt: (fan) => `You are Boss, an expert ticket sales rep for Peak Sports MGMT at a mid-major college athletics program. Your goal is to sell tickets — season plans, single-game tickets, flex plans, and group packages.
 
 Fan profile: ${fan.name}, loyalty tier: ${fan.loyaltyTier}, last seat: Section ${fan.lastPurchase.section} Row ${fan.lastPurchase.row}.
 
@@ -80,7 +83,7 @@ Use the inventory database tool to find available seats. Suggest options near th
     sub: "Corporate partners · Package builder",
     icon: <Trophy size={20} />,
     initial: (fan) => `Hi ${fan.name.split(' ')[0]}! I'm reaching out about sponsorship opportunities for the upcoming season. We have openings across digital signage, in-game promotions, and hospitality packages. What budget range are you working with?`,
-    systemPrompt: (fan) => `You are Ace, an expert sponsorship sales rep for Peak Sports MGMT. Your goal is to sell corporate sponsorship packages to local businesses, regional brands, and corporate partners.
+    systemPrompt: (fan) => `You are Boss, an expert sponsorship sales rep for Peak Sports MGMT. Your goal is to sell corporate sponsorship packages to local businesses, regional brands, and corporate partners.
 
 Contact: ${fan.name}, tier: ${fan.loyaltyTier}.
 
@@ -103,7 +106,7 @@ CRITICAL INSTRUCTIONS:
     sub: "VIP access · Priority booking",
     icon: <Star size={20} />,
     initial: (fan) => `Good afternoon ${fan.name.split(' ')[0]}. We're opening Club Level suites for the next home stand. As a ${fan.loyaltyTier} member, you have priority access.`,
-    systemPrompt: (fan) => `You are Ace, a premium hospitality sales rep for Peak Sports MGMT. Your goal is to sell Club Level suites and VIP hospitality experiences.
+    systemPrompt: (fan) => `You are Boss, a premium hospitality sales rep for Peak Sports MGMT. Your goal is to sell Club Level suites and VIP hospitality experiences.
 
 Contact: ${fan.name}, loyalty tier: ${fan.loyaltyTier} — they have priority access.
 
@@ -114,7 +117,7 @@ Suite packages include all-inclusive food and beverage, private seating for 10-2
     sub: "Class reunion · Group seating",
     icon: <Users size={20} />,
     initial: (fan) => `Hi ${fan.name.split(' ')[0]}! 🎓 We have a reunion block reserved for your class. Ready to lock in your pass?`,
-    systemPrompt: (fan) => `You are Ace, an alumni relations and group sales rep for Peak Sports MGMT. Your goal is to sell group ticket packages and alumni reunion blocks.
+    systemPrompt: (fan) => `You are Boss, an alumni relations and group sales rep for Peak Sports MGMT. Your goal is to sell group ticket packages and alumni reunion blocks.
 
 Contact: ${fan.name}, loyalty tier: ${fan.loyaltyTier}.
 
@@ -1114,8 +1117,8 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
         {messages.map(m => (
           <div key={m.id} className={`flex msg-enter ${m.role==='user' ? 'justify-end' : 'justify-start'}`}>
             {m.role === 'ai' && (
-              <div className="w-8 h-8 rounded-xl flex items-center justify-center mr-2 shrink-0 mt-1 shadow-md" style={{background:C.greenMid}}>
-                <Zap size={13} style={{color:C.lime}}/>
+              <div className="w-8 h-8 rounded-xl flex items-center justify-center mr-2 shrink-0 mt-1 shadow-md overflow-hidden" style={{background:C.greenMid}}>
+                <img src={BOSS_LOGO} alt="Boss" style={{width:'28px',height:'28px',objectFit:'contain'}} />
               </div>
             )}
             <div className="max-w-[88%] px-4 py-3 rounded-2xl shadow-sm text-sm leading-relaxed"
@@ -1172,8 +1175,8 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
         ))}
         {isTyping && (
           <div className="flex items-end gap-2">
-            <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-md" style={{background:C.greenMid}}>
-              <Zap size={13} style={{color:C.lime}}/>
+            <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-md overflow-hidden" style={{background:C.greenMid}}>
+              <img src={BOSS_LOGO} alt="Boss" style={{width:'28px',height:'28px',objectFit:'contain'}} />
             </div>
             <div className="px-4 py-3 rounded-2xl shadow-sm bg-white flex gap-1.5 items-center" style={{borderTopLeftRadius:'4px'}}>
               <div className="w-2 h-2 rounded-full dot-1" style={{background:C.lime}}/>
@@ -1219,7 +1222,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
             <input type="text" value={inputValue}
               onChange={e => setInputValue(e.target.value)}
               onKeyPress={e => e.key === 'Enter' && handleSend()}
-              placeholder="Message Ace..."
+              placeholder="Message Boss..."
               className="flex-1 bg-transparent text-sm text-white outline-none"
               style={{fontFamily:'Rajdhani, sans-serif', fontWeight:600, letterSpacing:'0.02em'}}
             />
@@ -1229,7 +1232,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
               <Send size={15} style={{color:C.greenMid}}/>
             </button>
           </div>
-          <p className="mono-label text-center mt-2" style={{color:'rgba(255,255,255,0.18)', fontSize:'8px'}}>Ace · Wofford Terriers</p>
+          <p className="mono-label text-center mt-2" style={{color:'rgba(255,255,255,0.18)', fontSize:'8px'}}>Boss · Wofford Terriers</p>
         </div>
       )}
     </div>
@@ -1692,7 +1695,7 @@ return (
               <Sparkles size={28} style={{color:C.gold}}/>
             </div>
             <p className="text-xl font-black mb-2" style={{color:C.green}}>Drafting for {selectedContact?.name}...</p>
-            <p className="text-slate-400 text-sm font-semibold">Ace is personalizing based on their history</p>
+            <p className="text-slate-400 text-sm font-semibold">Boss is personalizing based on their history</p>
           </div>
         )}
 
@@ -1720,7 +1723,7 @@ return (
               <div className="px-6 py-4 border-b flex items-center justify-between" style={{borderColor:'#d4c4a0', background:'#F5ECD8'}}>
                 <div className="flex items-center gap-2">
                   <Sparkles size={16} style={{color:C.gold}}/>
-                  <span className="text-sm font-black" style={{color:C.green}}>AI-Drafted · {campaigns.find(c=>c.id===crmCampaign)?.label}</span>
+                  <span className="text-sm font-black" style={{color:C.green}}>Boss-Drafted · {campaigns.find(c=>c.id===crmCampaign)?.label}</span>
                 </div>
                 <button onClick={() => { setEditMode(!editMode); setEditedEmail(generatedEmail); }}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
@@ -1872,11 +1875,11 @@ export default function App() {
           <div className="flex items-center gap-3 flex-shrink-0">
             <div className="relative w-9 h-9 md:w-11 md:h-11 flex items-center justify-center flex-shrink-0">
               <div className="absolute inset-0 rounded-xl" style={{border:'1px solid rgba(136,110,76,0.35)', background:'rgba(136,110,76,0.08)'}}/>
-              <Zap size={16} style={{color:C.lime, position:'relative'}}/>
+              <img src={BOSS_LOGO} alt="Boss" style={{width:'20px',height:'20px',objectFit:'contain',position:'relative',filter:'drop-shadow(0 0 3px rgba(136,110,76,0.6))'}} />
             </div>
             <div>
               <h1 className="futura-heading text-white" style={{fontSize:'22px', lineHeight:'1.1'}}>
-                Ace<span style={{color:C.limeBright}}>.</span><span style={{color:C.lime}}>ai</span>
+                Boss<span style={{color:C.limeBright}}>.</span><span style={{color:C.lime}}>ai</span>
               </h1>
               <div style={{display:'flex',alignItems:'center',gap:'6px',marginTop:'4px'}}>
                 <svg width="14" height="14" viewBox="0 0 100 100" fill="none">
@@ -2265,8 +2268,8 @@ export default function App() {
                       <span style={{fontSize:'16px'}}>⚡</span>
                     </div>
                     <div>
-                      <p className="futura-heading text-white" style={{fontSize:'16px'}}>After — Ace Automated</p>
-                      <p className="mono-label" style={{fontSize:'8px', color:'rgba(136,110,76,0.7)'}}>How it works with Simply Genius</p>
+                      <p className="futura-heading text-white" style={{fontSize:'16px'}}>After — Boss Automated</p>
+                      <p className="mono-label" style={{fontSize:'8px', color:'rgba(136,110,76,0.7)'}}>How it works with Simple Genius</p>
                     </div>
                   </div>
                   <div className="p-6 space-y-4" style={{background:'#F5F0E8'}}>
@@ -2325,7 +2328,7 @@ export default function App() {
                 <div className="flex flex-col md:flex-row items-stretch gap-3">
                   {[
                     { step:'01', label:'CRM Data', sub:'Contacts, history, status', icon:<Database size={16}/>, color:C.greenMid },
-                    { step:'02', label:'Ace AI', sub:'Reads profile, drafts email', icon:<Zap size={16}/>, color:C.lime },
+                    { step:'02', label:'Boss AI', sub:'Reads profile, drafts email', icon:<Zap size={16}/>, color:C.lime },
                     { step:'03', label:'Rep Reviews', sub:'Approve, edit, or skip', icon:<Users size={16}/>, color:'#3b82f6' },
                     { step:'04', label:'Email Sends', sub:'Logged back to CRM', icon:<Mail size={16}/>, color:'#e07b2a' },
                     { step:'05', label:'Results Tracked', sub:'Opens, replies, revenue', icon:<TrendingUp size={16}/>, color:'#8b5cf6' },
