@@ -38,7 +38,7 @@ const C = {
 };
 
 const MOCK_DB = {
-  fans: [{ id: "FAN_77211", name: "Cara Holloway", loyaltyTier: "Gold", lastPurchase: { section: "109", row: "G" } }],
+  fans: [{ id: "FAN_KULL01", name: "Scott Kull", loyaltyTier: "Platinum", lastPurchase: { section: "120", row: "A" }, title: "Director of Athletics", org: "Wofford College", fanScore: 94, tenure: "11 yrs", sports: ["Football","Basketball","Baseball"], tags: ["Decision Maker","VIP","Institutional"] }],
   inventory: {
     sections: [
       { id: "101", name: "North End Zone", price: 35.00, status: 'HIGH', zone: 'endzone' },
@@ -458,7 +458,8 @@ const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSea
         <line x1={cx-14} y1={cy+108} x2={cx+14} y2={cy+108} stroke="rgba(255,220,80,0.6)" strokeWidth="1.2"/>
         <line x1={cx-14} y1={cy+108} x2={cx-14} y2={cy+90} stroke="rgba(255,220,80,0.6)" strokeWidth="1.2"/>
         <line x1={cx+14} y1={cy+108} x2={cx+14} y2={cy+90} stroke="rgba(255,220,80,0.6)" strokeWidth="1.2"/>
-        <text x={cx} y={cy+5} fill="rgba(255,255,255,0.12)" fontSize="11" fontWeight="black" textAnchor="middle" letterSpacing="3">FIELD</text>
+        <text x={cx} y={cy-6} fill="rgba(255,255,255,0.13)" fontSize="9" fontWeight="black" textAnchor="middle" letterSpacing="2">GIBBS</text>
+        <text x={cx} y={cy+7} fill="rgba(255,255,255,0.13)" fontSize="9" fontWeight="black" textAnchor="middle" letterSpacing="2">STADIUM</text>
         <text x={cx} y="18" fill="rgba(255,255,255,0.25)" fontSize="9" fontWeight="bold" textAnchor="middle" letterSpacing="2">NORTH END ZONE</text>
         <text x={cx} y="510" fill="rgba(255,255,255,0.25)" fontSize="9" fontWeight="bold" textAnchor="middle" letterSpacing="2">SOUTH END ZONE</text>
         <text x="14" y={cy+4} fill="rgba(255,255,255,0.25)" fontSize="8" fontWeight="bold" textAnchor="middle" transform={`rotate(-90 14 ${cy})`} letterSpacing="1">HOME</text>
@@ -1492,19 +1493,136 @@ const DataInsightsTab = () => {
 // ============================================================
 const CRMTab = () => {
 const contacts = [
-  // Real Wofford / Terrier Sports Properties contacts
-  { id:0,  name:'Shawn Tyler',  school:'Wofford College', title:'Director of Sales — Terrier Sports Properties', tier:'Gold', email:'shawn@terriersportsproperties.com', phone:'(864) 597-4000', lastContact:'2 days ago', status:'hot',  spend:0, tags:['Sponsor','Key Contact'] },
-  { id:98, name:'Devin Foster', school:'Wofford College', title:'Ticketing — Terrier Sports Properties',          tier:'Gold', email:'devin@terriersportsproperties.com', phone:'(864) 597-4001', lastContact:'2 days ago', status:'hot',  spend:0, tags:['Ticketing','Key Contact'] },
-  { id:99, name:'Scott Kull',   school:'Wofford College', title:'Director of Athletics — Wofford College',       tier:'Gold', email:'kullsr@wofford.edu',               phone:'(864) 597-4002', lastContact:'5 days ago', status:'warm', spend:0, tags:['Admin','Decision Maker'] },
-  // Demo contacts
-  { id:1,  name:'Marcus Webb',      school:'Wofford College',              title:'Season Ticket Holder',     tier:'Gold',   email:'m.webb@email.com',    phone:'(864) 555-0142', lastContact:'14 days ago', status:'warm',    spend:1240, tags:['Alumni','Renewal Due'] },
-  { id:2,  name:'Priya Nair',       school:'SE Louisiana University',      title:'Alumni · Class of 2019',   tier:'Silver', email:'p.nair@email.com',    phone:'(985) 555-0198', lastContact:'32 days ago', status:'cold',    spend:480,  tags:['Alumni','Lapsed'] },
-  { id:3,  name:'Derek Fontaine',   school:'University of Akron',          title:'Premium Suite Prospect',   tier:'Prospect',email:'d.fontaine@biz.com', phone:'(330) 555-0217', lastContact:'5 days ago',  status:'hot',     spend:0,    tags:['Suite','New Lead'] },
-  { id:4,  name:'Sandra Liu',       school:'Ball State University',        title:'Corporate Sponsor',        tier:'Gold',   email:'s.liu@corp.com',      phone:'(765) 555-0089', lastContact:'7 days ago',  status:'warm',    spend:3800, tags:['Sponsor','Renewal'] },
-  { id:5,  name:'James Okafor',     school:'Eastern Kentucky University',  title:'Group Sales Lead',         tier:'Silver', email:'j.okafor@email.com',  phone:'(859) 555-0334', lastContact:'21 days ago', status:'cold',    spend:620,  tags:['Group','Lapsed'] },
-  { id:6,  name:'Tori Blanchard',   school:'University of West Georgia',   title:'Parent · Student Athlete', tier:'Bronze', email:'t.blanchard@email.com',phone:'(678) 555-0411', lastContact:'60 days ago', status:'cold',    spend:190,  tags:['Parent','At Risk'] },
-  { id:7,  name:'Chris Alvarez',    school:'Wofford College',              title:'Local Business Owner',     tier:'Prospect',email:'c.alvarez@biz.com',  phone:'(864) 555-0556', lastContact:'2 days ago',  status:'hot',     spend:0,    tags:['Sponsor','New Lead'] },
-  { id:8,  name:'Nkechi Obi',       school:'SE Louisiana University',      title:'Alumni · Donor',           tier:'Gold',   email:'n.obi@email.com',     phone:'(985) 555-0677', lastContact:'10 days ago', status:'warm',    spend:2100, tags:['Alumni','VIP'] },
+
+  // ── ADMINISTRATION ────────────────────────────────────────────────────────
+  {
+    id: 1,
+    name: 'Nayef Samhat',
+    school: 'Wofford College',
+    title: 'President',
+    tier: 'Platinum',
+    email: 'samhatnr@wofford.edu',
+    phone: '(864) 597-4010',
+    lastContact: '5 days ago',
+    status: 'hot',
+    spend: 0,
+    tags: ['Administration', 'Transitioning', 'Time-Sensitive'],
+    notes: 'President since 2013. Leading $470M Drive for 5 fundraising campaign. Stepping down end of 2025-26 academic year. High-priority outreach window before transition.'
+  },
+  {
+    id: 2,
+    name: 'Christopher A.P. Carpenter',
+    school: 'Wofford College',
+    title: 'Board of Trustees Chairman',
+    tier: 'Platinum',
+    email: 'carpenter@wofford.edu',
+    phone: '(864) 597-4011',
+    lastContact: '12 days ago',
+    status: 'warm',
+    spend: 0,
+    tags: ['Administration', 'Alumni', 'Board', 'Decision Maker'],
+    notes: 'Class of 1990 alumnus. Currently overseeing search for Wofford's 12th president. Key governance contact during leadership transition.'
+  },
+  {
+    id: 3,
+    name: 'Timothy Schmitz',
+    school: 'Wofford College',
+    title: 'Willimon Family Provost',
+    tier: 'Gold',
+    email: 'schmitzta@wofford.edu',
+    phone: '(864) 597-4012',
+    lastContact: '18 days ago',
+    status: 'warm',
+    spend: 0,
+    tags: ['Administration', 'Academic', 'Long-Tenured'],
+    notes: 'At Wofford since 2000. Key academic decision-maker for institutional technology and operations.'
+  },
+  {
+    id: 4,
+    name: 'Calhoun L. Kennedy Jr.',
+    school: 'Wofford College',
+    title: 'VP for Philanthropy & Engagement',
+    tier: 'Gold',
+    email: 'kennedycl@wofford.edu',
+    phone: '(864) 597-4013',
+    lastContact: '8 days ago',
+    status: 'hot',
+    spend: 0,
+    tags: ['Administration', 'Philanthropy', 'Sponsorship', 'Drive for 5'],
+    notes: 'Primary contact for sponsorships, donations, and the $470M Drive for 5 campaign. Direct alignment with revenue platform goals.'
+  },
+
+  // ── ATHLETICS ─────────────────────────────────────────────────────────────
+  {
+    id: 5,
+    name: 'Shawn Watson',
+    school: 'Wofford College',
+    title: 'Head Football Coach',
+    tier: 'Gold',
+    email: 'watsonsc@wofford.edu',
+    phone: '(864) 597-4020',
+    lastContact: '3 days ago',
+    status: 'hot',
+    spend: 0,
+    tags: ['Athletics', 'Football', 'Coach', 'Year 3'],
+    notes: 'Entering 3rd season. 6-6 record in 2025. Gibbs Stadium ticket demand tied directly to team performance. Strong outreach window pre-season.'
+  },
+  {
+    id: 6,
+    name: 'Kevin Giltner',
+    school: 'Wofford College',
+    title: 'Head Men's Basketball Coach',
+    tier: 'Gold',
+    email: 'giltnerkj@wofford.edu',
+    phone: '(864) 597-4021',
+    lastContact: '6 days ago',
+    status: 'hot',
+    spend: 0,
+    tags: ['Athletics', 'Basketball', 'Coach', 'Alumni', 'New Hire'],
+    notes: 'Class of 2012 Wofford grad. Five-time SoCon champion. Returning home after 6 seasons at Virginia Tech. High fan energy around new era — prime season ticket outreach window.'
+  },
+
+  // ── TERRIER SPORTS PROPERTIES ─────────────────────────────────────────────
+  {
+    id: 7,
+    name: 'Shawn Tyler',
+    school: 'Wofford College',
+    title: 'Director of Sales — Terrier Sports Properties',
+    tier: 'Gold',
+    email: 'shawn@terriersportsproperties.com',
+    phone: '(864) 597-4000',
+    lastContact: '2 days ago',
+    status: 'hot',
+    spend: 0,
+    tags: ['Sponsor', 'Key Contact', 'Peak Sports']
+  },
+  {
+    id: 8,
+    name: 'Devin Foster',
+    school: 'Wofford College',
+    title: 'Ticketing — Terrier Sports Properties',
+    tier: 'Gold',
+    email: 'devin@terriersportsproperties.com',
+    phone: '(864) 597-4001',
+    lastContact: '2 days ago',
+    status: 'hot',
+    spend: 0,
+    tags: ['Ticketing', 'Key Contact', 'Peak Sports']
+  },
+  {
+    id: 9,
+    name: 'Scott Kull',
+    school: 'Wofford College',
+    title: 'Director of Athletics',
+    tier: 'Platinum',
+    email: 'kullsr@wofford.edu',
+    phone: '(864) 597-4002',
+    lastContact: '5 days ago',
+    status: 'warm',
+    spend: 0,
+    tags: ['Admin', 'Decision Maker', 'VIP', 'Institutional']
+  },
+
 ];
 
 const campaigns = [
@@ -1527,7 +1645,10 @@ const [editedEmail, setEditedEmail]         = React.useState('');
 const statusColor = s => ({ hot:'#ef4444', warm:'#f59e0b', cold:'#64748b' }[s] || '#64748b');
 const tierColor   = t => ({ Gold:'#886E4C', Silver:'#94a3b8', Bronze:'#e07b2a', Prospect:'#3b82f6' }[t] || '#64748b');
 
-const filteredContacts = filterStatus === 'all' ? contacts : filterStatus === 'movers' ? contacts.filter(c => c.tags.includes('New Mover')) : contacts.filter(c => c.status === filterStatus);
+const filteredContacts = filterStatus === 'all' ? contacts
+    : filterStatus === 'admin' ? contacts.filter(c => c.tags.includes('Administration') || c.tags.includes('Admin'))
+    : filterStatus === 'athletics' ? contacts.filter(c => c.tags.includes('Athletics') || c.tags.includes('Coach'))
+    : contacts.filter(c => c.status === filterStatus);
 
 const generateEmail = async (contact) => {
   setSelectedContact(contact);
@@ -1612,7 +1733,7 @@ return (
             <p className="text-xs text-slate-400 font-semibold">{filteredContacts.length} of {contacts.length} shown</p>
           </div>
           <div className="flex gap-2">
-            {['all','hot','warm','cold','movers'].map(s => (
+            {['all','hot','warm','cold','admin','athletics'].map(s => (
               <button key={s} onClick={() => setFilterStatus(s)}
                 className="px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition-all"
                 style={filterStatus === s
@@ -1768,8 +1889,8 @@ return (
     {/* CRM stats footer */}
     <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
       {[
-        { label:'Contacts',         value:'8',   sub:'In this demo' },
-        { label:'Hot Leads',        value:'2',   sub:'Ready to close', gold:true },
+        { label:'Contacts',         value:'9',   sub:'Wofford roster' },
+        { label:'Hot Leads',        value:'5',   sub:'Ready to close', gold:true },
         { label:'Emails Drafted',   value:'∞',   sub:'AI-powered' },
         { label:'Avg Response Rate',value:'34%', sub:'Industry avg: 21%', gold:true },
       ].map((s,i) => (
@@ -1808,8 +1929,54 @@ export default function App() {
   ];
 
   return (
-    <div className="app-shell content-bg">
+    <div className="app-shell content-bg" style={{position:'relative'}}>
       <Styles/>
+      
+      {/* Wofford Boss Mascot — full app watermark */}
+      <div style={{
+        position:'fixed', bottom:0, right:0,
+        width:'420px', height:'420px',
+        pointerEvents:'none', zIndex:0,
+        opacity:0.04, userSelect:'none',
+        overflow:'hidden',
+      }}>
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',height:'100%'}}>
+          {/* Boston Terrier head — simplified Boss mascot */}
+          {/* Skull */}
+          <ellipse cx="100" cy="90" rx="68" ry="62" fill="#886E4C"/>
+          {/* Ears */}
+          <ellipse cx="44" cy="52" rx="20" ry="28" fill="#886E4C" transform="rotate(-15 44 52)"/>
+          <ellipse cx="156" cy="52" rx="20" ry="28" fill="#886E4C" transform="rotate(15 156 52)"/>
+          <ellipse cx="44" cy="50" rx="12" ry="20" fill="#000" transform="rotate(-15 44 50)"/>
+          <ellipse cx="156" cy="50" rx="12" ry="20" fill="#000" transform="rotate(15 156 50)"/>
+          {/* Face */}
+          <ellipse cx="100" cy="94" rx="62" ry="56" fill="#000"/>
+          {/* White blaze */}
+          <ellipse cx="100" cy="78" rx="28" ry="36" fill="#fff"/>
+          {/* Eyes */}
+          <circle cx="74" cy="72" r="16" fill="#fff"/>
+          <circle cx="126" cy="72" r="16" fill="#fff"/>
+          <circle cx="76" cy="74" r="9" fill="#000"/>
+          <circle cx="128" cy="74" r="9" fill="#000"/>
+          <circle cx="78" cy="72" r="3" fill="#fff"/>
+          <circle cx="130" cy="72" r="3" fill="#fff"/>
+          {/* Nose */}
+          <ellipse cx="100" cy="106" rx="22" ry="14" fill="#000"/>
+          <ellipse cx="100" cy="103" rx="14" ry="8" fill="#333"/>
+          {/* Mouth */}
+          <path d="M82 118 Q100 132 118 118" stroke="#000" strokeWidth="3" fill="none"/>
+          {/* Collar */}
+          <rect x="32" y="148" width="136" height="22" rx="11" fill="#886E4C"/>
+          <circle cx="60" cy="159" r="5" fill="#000"/>
+          <circle cx="80" cy="159" r="5" fill="#000"/>
+          <circle cx="100" cy="159" r="5" fill="#000"/>
+          <circle cx="120" cy="159" r="5" fill="#000"/>
+          <circle cx="140" cy="159" r="5" fill="#000"/>
+          {/* Collar tag */}
+          <circle cx="100" cy="172" r="9" fill="#C7B37F"/>
+          <text x="100" y="177" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#000">W</text>
+        </svg>
+      </div>
 
       {/* ── SIDEBAR ── */}
       <div className="sidebar-panel text-white sidebar-bg">
@@ -1825,7 +1992,18 @@ export default function App() {
               <h1 className="futura-heading text-white" style={{fontSize:'22px', lineHeight:'1.1'}}>
                 Ace<span style={{color:C.limeBright}}>.</span><span style={{color:C.lime}}>ai</span>
               </h1>
-              <p className="mono-label text-white/25" style={{fontSize:'8px'}}>Wofford Terriers · SoCon</p>
+              <div style={{display:'flex',alignItems:'center',gap:'6px',marginTop:'4px'}}>
+                <svg width="14" height="14" viewBox="0 0 100 100" fill="none">
+                  <ellipse cx="50" cy="54" rx="38" ry="30" fill="#886E4C" opacity="0.9"/>
+                  <circle cx="35" cy="40" r="14" fill="#000" />
+                  <circle cx="65" cy="40" r="14" fill="#000" />
+                  <circle cx="35" cy="40" r="7" fill="#fff" opacity="0.9"/>
+                  <circle cx="65" cy="40" r="7" fill="#fff" opacity="0.9"/>
+                  <ellipse cx="50" cy="62" rx="14" ry="10" fill="#000" opacity="0.8"/>
+                </svg>
+                <span style={{fontFamily:"'Space Mono',monospace",fontSize:'8px',letterSpacing:'2px',color:'rgba(199,179,127,0.7)',textTransform:'uppercase'}}>Terriers</span>
+              </div>
+              <p className="mono-label text-white/25" style={{fontSize:'8px'}}>Wofford Terriers · SoCon · Go Terriers 🐾</p>
             </div>
           </div>
           <div className="hidden md:block w-full mt-4 px-3 py-2.5 rounded-lg" style={{background:'rgba(136,110,76,0.05)', border:'1px solid rgba(136,110,76,0.15)'}}>
@@ -1910,10 +2088,10 @@ export default function App() {
                 <div className="p-5 rounded-2xl border-2 data-card">
                   <p className="mono-label mb-3" style={{color:C.greenLight}}>Active Fan Profile</p>
                   <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-black text-base" style={{background:C.greenMid}}>WH</div>
+                    <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-black text-base" style={{background:C.greenMid}}>SK</div>
                     <div>
-                      <p className="futura-heading text-slate-900" style={{fontSize:'16px'}}>Cara Holloway</p>
-                      <p className="text-sm text-slate-400 flex items-center gap-1.5"><span style={{color:C.lime}}>★</span> Gold Member · Sec 109</p>
+                      <p className="futura-heading text-slate-900" style={{fontSize:'16px'}}>Scott Kull</p>
+                      <p className="text-sm text-slate-400 flex items-center gap-1.5"><span style={{color:C.lime}}>★</span> Platinum · Dir. of Athletics</p>
                     </div>
                   </div>
                 </div>
