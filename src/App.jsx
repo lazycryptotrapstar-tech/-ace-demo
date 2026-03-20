@@ -103,64 +103,6 @@ function injectThemeVars(theme) {
 }
 
 
-// ── THEME CONFIG — swap this object per client ───────────────────────────────
-// To add a new client: copy this object, update all fields, swap ACTIVE_THEME
-const THEMES = {
-  wofford: {
-    id: 'wofford',
-    name: 'Wofford College',
-    mascot: 'Terriers',
-    conference: 'SoCon',
-    colors: {
-      primary:    '#1a1208',   // deep dark
-      mid:        '#2a1e0e',   // dark mid
-      light:      '#4a3520',   // medium
-      accent:     '#886E4C',   // Old Gold
-      accentSoft: '#C7B37F',   // Khaki
-      offWhite:   '#F5F0E8',   // warm off-white
-      border:     '#e8dfc8',   // warm border
-      cognac:     '#6b5538',   // warm brown
-    },
-    cssVars: {
-      '--color-primary':     '#1a1208',
-      '--color-mid':         '#2a1e0e',
-      '--color-accent':      '#886E4C',
-      '--color-accent-soft': '#C7B37F',
-      '--color-bg':          '#F5F0E8',
-      '--color-border':      '#e8dfc8',
-      '--color-dot':         '#886E4C',
-      '--color-nav-active':  'rgba(136,110,76,0.12)',
-      '--color-nav-border':  'rgba(136,110,76,0.28)',
-      '--color-nav-bar':     '#886E4C',
-      '--color-grid':        'rgba(136,110,76,0.06)',
-      '--color-card-hover':  'rgba(136,110,76,0.18)',
-      '--color-glow':        'rgba(136,110,76,0.55)',
-      '--color-cognac-glow': 'rgba(199,179,127,0.5)',
-      '--color-kpi-grad1':   '#1a1208',
-      '--color-kpi-grad2':   '#2a1e0e',
-      '--color-kpi-border':  'rgba(136,110,76,0.30)',
-    }
-  },
-  // ── TEMPLATE for next client ─────────────────────────────────────────────
-  // nextclient: {
-  //   id: 'nextclient',
-  //   name: 'School Name',
-  //   mascot: 'Mascot Name',
-  //   conference: 'Conference',
-  //   colors: { primary, mid, light, accent, accentSoft, offWhite, border, cognac },
-  //   cssVars: { '--color-primary': '#...', ... }
-  // }
-};
-
-// Active theme — change this string to switch clients
-const ACTIVE_THEME = THEMES['wofford'];
-
-// Inject CSS variables into :root for <Styles/> component
-function injectThemeVars(theme) {
-  const root = document.documentElement;
-  Object.entries(theme.cssVars).forEach(([k, v]) => root.style.setProperty(k, v));
-}
-
 
 // P0 FIX: Permanent Railway URL — no longer Cloudflare tunnel
 const N8N_WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL
@@ -191,17 +133,17 @@ const MOCK_DB = {
   fans: [{ id: "FAN_KULL01", name: "Scott Kull", loyaltyTier: "Platinum", lastPurchase: { section: "120", row: "A" }, title: "Director of Athletics", org: "Wofford College", fanScore: 94, tenure: "11 yrs", sports: ["Football","Basketball","Baseball"], tags: ["Decision Maker","VIP","Institutional"] }],
   inventory: {
     sections: [
-      { id: "H1",  name: "Home Chairback H1",   price: 27.00, status: 'HIGH', zone: 'home_chairback' },
-      { id: "H3",  name: "Home Chairback H3",   price: 27.00, status: 'MED',  zone: 'home_chairback' },
-      { id: "MR",  name: "Mungo Room VIP",      price: 85.00, status: 'LOW',  zone: 'vip' },
-      { id: "HB1", name: "Home Bleacher HB1",   price: 15.00, status: 'HIGH', zone: 'home_bleacher' },
-      { id: "N1",  name: "North End Zone",      price: 10.00, status: 'HIGH', zone: 'north_ez' },
-      { id: "S1",  name: "Verandah Lot",        price: 20.00, status: 'MED',  zone: 'south_ez' },
-      { id: "V1",  name: "Visitor Side",        price: 12.00, status: 'HIGH', zone: 'visitor' },
-      { id: "CS1", name: "Courtside",           price: 65.00, status: 'LOW',  zone: 'courtside' },
-      { id: "C51A","Club 51 A",                 price: 45.00, status: 'MED',  zone: 'club51' },
+      { id: "H1",  name: "Home Chairback H1",   price:27.00, status: 'HIGH', zone: 'home_chairback' },
+      { id: "H3",  name: "Home Chairback H3",   price:27.00, status: 'MED',  zone: 'home_chairback' },
+      { id: "MR",  name: "Mungo Room VIP",      price:85.00, status: 'LOW',  zone: 'vip' },
+      { id: "HB1", name: "Home Bleacher HB1",   price:15.00, status: 'HIGH', zone: 'home_bleacher' },
+      { id: "N1",  name: "North End Zone",      price:10.00, status: 'HIGH', zone: 'north_ez' },
+      { id: "S1",  name: "Verandah Lot",        price:20.00, status: 'MED',  zone: 'south_ez' },
+      { id: "V1",  name: "Visitor Side",        price:12.00, status: 'HIGH', zone: 'visitor' },
+      { id: "CS1", name: "Courtside",           price:65.00, status: 'LOW',  zone: 'courtside' },
+      { id: "C51A","Club 51 A",                 price:45.00, status: 'MED',  zone: 'club51' },
       { id: "SUA", name: "Corner Suite A",      price:120.00, status: 'LOW',  zone: 'suite' },
-      { id: "LB1", name: "Lower Bowl Sec 1",    price: 25.00, status: 'HIGH', zone: 'lower_bowl' },
+      { id: "LB1", name: "Lower Bowl Sec 1",    price:25.00, status: 'HIGH', zone: 'lower_bowl' },
     ],
     fees: { facility: 2.50, processing: 1.50 }
   },
@@ -2584,121 +2526,6 @@ return (
 // ============================================================
 // WOFFORD VENUE DATA
 // ============================================================
-const WOFFORD_VENUES = {
-  football: {
-    id: 'football',
-    name: 'Gibbs Stadium',
-    subtitle: 'Mike Ayers Field · Spartanburg, SC',
-    capacity: '13,000',
-    sport: 'Football',
-    icon: '🏈',
-    color: '#886E4C',
-    description: 'Home of Wofford Terriers Football since 1996',
-    sections: [
-      // Home Sideline — Chairback (between the 40s)
-      { id:'H1', name:'Section H1', zone:'home_chairback', label:'H1', price:27, status:'HIGH', seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
-      { id:'H2', name:'Section H2', zone:'home_chairback', label:'H2', price:27, status:'MED',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
-      { id:'H3', name:'Section H3', zone:'home_chairback', label:'H3', price:27, status:'HIGH', seats:180, desc:'Home Sideline · Chairback · 50 yd line' },
-      { id:'H4', name:'Section H4', zone:'home_chairback', label:'H4', price:27, status:'MED',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
-      { id:'H5', name:'Section H5', zone:'home_chairback', label:'H5', price:27, status:'LOW',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
-      // Home Sideline — Bleachers (end zone to 40)
-      { id:'HB1', name:'Section HB1', zone:'home_bleacher', label:'HB1', price:15, status:'HIGH', seats:220, desc:'Home Sideline · Bleacher · 20-40 yd' },
-      { id:'HB2', name:'Section HB2', zone:'home_bleacher', label:'HB2', price:15, status:'HIGH', seats:220, desc:'Home Sideline · Bleacher · 20-40 yd' },
-      { id:'HB3', name:'Section HB3', zone:'home_bleacher', label:'HB3', price:15, status:'MED',  seats:220, desc:'Home Sideline · Bleacher · 5-20 yd' },
-      { id:'HB4', name:'Section HB4', zone:'home_bleacher', label:'HB4', price:15, status:'LOW',  seats:220, desc:'Home Sideline · Bleacher · 5-20 yd' },
-      // Press Box / Mungo Room (VIP)
-      { id:'MR',  name:'Mungo Room',   zone:'vip',          label:'VIP',  price:85, status:'LOW',  seats:40,  desc:'President's Box · Mungo Room · 50 yd line' },
-      // Visitor Sideline
-      { id:'V1',  name:'Section V1',   zone:'visitor',      label:'V1',   price:12, status:'HIGH', seats:200, desc:'Visitor Sideline · Bleacher · 40-50 yd' },
-      { id:'V2',  name:'Section V2',   zone:'visitor',      label:'V2',   price:12, status:'HIGH', seats:200, desc:'Visitor Sideline · Bleacher · 40-50 yd' },
-      { id:'V3',  name:'Section V3',   zone:'visitor',      label:'V3',   price:12, status:'MED',  seats:200, desc:'Visitor Sideline · Bleacher · 20-40 yd' },
-      // North End Zone
-      { id:'N1',  name:'North End Zone A', zone:'north_ez', label:'NEZ-A', price:10, status:'HIGH', seats:300, desc:'North End Zone · Video Board End' },
-      { id:'N2',  name:'North End Zone B', zone:'north_ez', label:'NEZ-B', price:10, status:'MED',  seats:300, desc:'North End Zone · Video Board End' },
-      // South End Zone (Verandah Lot)
-      { id:'S1',  name:'Verandah Lot A',   zone:'south_ez', label:'VER-A', price:20, status:'MED',  seats:280, desc:'South End Zone · Verandah Lot · Terrier Club Donors' },
-      { id:'S2',  name:'Verandah Lot B',   zone:'south_ez', label:'VER-B', price:20, status:'LOW',  seats:280, desc:'South End Zone · Verandah Lot · Premium Tailgate' },
-      // Student Section
-      { id:'STU', name:'Student Section',  zone:'student',  label:'STU',  price:0,  status:'MED',  seats:500, desc:'Student Section · Free with Wofford ID' },
-    ],
-    zones: {
-      home_chairback: { label:'Home Chairback', color:'#886E4C', desc:'Premium seats between the 40s' },
-      home_bleacher:  { label:'Home Bleacher',  color:'#6b5538', desc:'Home side, end zone to 40' },
-      vip:            { label:'Mungo Room VIP', color:'#C7B37F', desc:'President's Box hospitality' },
-      visitor:        { label:'Visitor Side',   color:'#3a2e1e', desc:'Visitor sideline seating' },
-      north_ez:       { label:'North End Zone', color:'#2a1e0e', desc:'Video board end zone' },
-      south_ez:       { label:'Verandah Lot',   color:'#4a3520', desc:'Donor tailgate end zone' },
-      student:        { label:'Student Section',color:'#1a1208', desc:'Free with Wofford ID' },
-    }
-  },
-  basketball: {
-    id: 'basketball',
-    name: 'Jerry Richardson Indoor Stadium',
-    subtitle: 'The JRIS · Spartanburg, SC',
-    capacity: '3,400',
-    sport: 'Basketball',
-    icon: '🏀',
-    color: '#886E4C',
-    description: 'Home of Wofford Terriers Basketball since 2017',
-    sections: [
-      // Courtside
-      { id:'CS1', name:'Courtside A', zone:'courtside',  label:'CS-A', price:65, status:'LOW',  seats:40,  desc:'Courtside · Chairback · Home sideline' },
-      { id:'CS2', name:'Courtside B', zone:'courtside',  label:'CS-B', price:65, status:'LOW',  seats:40,  desc:'Courtside · Chairback · Visitor sideline' },
-      // Club 51 (Lower Bowl Chairback)
-      { id:'C51A', name:'Club 51 A', zone:'club51',      label:'C51-A', price:45, status:'MED',  seats:120, desc:'Club 51 · Lower Bowl · Home sideline · Full kitchen access' },
-      { id:'C51B', name:'Club 51 B', zone:'club51',      label:'C51-B', price:45, status:'HIGH', seats:120, desc:'Club 51 · Lower Bowl · Center court' },
-      { id:'C51C', name:'Club 51 C', zone:'club51',      label:'C51-C', price:45, status:'MED',  seats:120, desc:'Club 51 · Lower Bowl · Visitor sideline' },
-      // Lower Bowl General
-      { id:'LB1', name:'Section 1',  zone:'lower_bowl',  label:'Sec 1', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Home sideline' },
-      { id:'LB2', name:'Section 2',  zone:'lower_bowl',  label:'Sec 2', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Center court' },
-      { id:'LB3', name:'Section 3',  zone:'lower_bowl',  label:'Sec 3', price:25, status:'MED',  seats:160, desc:'Lower Bowl · Visitor sideline' },
-      { id:'LB4', name:'Section 4',  zone:'lower_bowl',  label:'Sec 4', price:25, status:'MED',  seats:160, desc:'Lower Bowl · Behind basket' },
-      { id:'LB5', name:'Section 5',  zone:'lower_bowl',  label:'Sec 5', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Behind basket' },
-      // Corner Suites (open-air theater box style)
-      { id:'SUA', name:'Suite A',    zone:'suite',       label:'Suite A', price:120, status:'LOW', seats:20, desc:'Corner Suite A · Open-air · Theater box seating' },
-      { id:'SUB', name:'Suite B',    zone:'suite',       label:'Suite B', price:120, status:'LOW', seats:20, desc:'Corner Suite B · Open-air · Theater box seating' },
-      { id:'SUC', name:'Suite C',    zone:'suite',       label:'Suite C', price:120, status:'MED', seats:20, desc:'Corner Suite C · Open-air · Theater box seating' },
-      { id:'SUD', name:'Suite D',    zone:'suite',       label:'Suite D', price:120, status:'MED', seats:20, desc:'Corner Suite D · Open-air · Theater box seating' },
-      // Upper Level
-      { id:'UL1', name:'Upper Level A', zone:'upper',   label:'UL-A', price:18, status:'HIGH', seats:200, desc:'Upper Level · Sideline · Wide angle view' },
-      { id:'UL2', name:'Upper Level B', zone:'upper',   label:'UL-B', price:18, status:'HIGH', seats:200, desc:'Upper Level · Sideline' },
-      // The Boneyard (Student Section)
-      { id:'BY',  name:'The Boneyard', zone:'boneyard', label:'BONE', price:0,  status:'MED',  seats:400, desc:'The Boneyard · Student Section · Private entertainment area · Free with ID' },
-    ],
-    zones: {
-      courtside:  { label:'Courtside',     color:'#C7B37F', desc:'Best seats in the house' },
-      club51:     { label:'Club 51',       color:'#886E4C', desc:'Premium lower bowl · full kitchen' },
-      lower_bowl: { label:'Lower Bowl',    color:'#6b5538', desc:'Main floor seating' },
-      suite:      { label:'Corner Suites', color:'#4a3520', desc:'Open-air theater box suites' },
-      upper:      { label:'Upper Level',   color:'#3a2e1e', desc:'Second level sideline' },
-      boneyard:   { label:'The Boneyard',  color:'#1a1208', desc:'Student section · free with ID' },
-    }
-  },
-  volleyball: {
-    id: 'volleyball',
-    name: 'Jerry Richardson Indoor Stadium',
-    subtitle: 'Volleyball Arena · Spartanburg, SC',
-    capacity: '350',
-    sport: 'Volleyball',
-    icon: '🏐',
-    color: '#886E4C',
-    description: 'Volleyball Competition Venue at JRIS',
-    sections: [
-      { id:'VA1', name:'Section A', zone:'sideline',  label:'Sec A', price:10, status:'HIGH', seats:80,  desc:'Court sideline · Lower bowl' },
-      { id:'VA2', name:'Section B', zone:'sideline',  label:'Sec B', price:10, status:'MED',  seats:80,  desc:'Court sideline · Lower bowl' },
-      { id:'VB1', name:'Section C', zone:'end_line',  label:'Sec C', price:8,  status:'HIGH', seats:60,  desc:'End line · Behind serving' },
-      { id:'VB2', name:'Section D', zone:'end_line',  label:'Sec D', price:8,  status:'MED',  seats:60,  desc:'End line · Behind serving' },
-      { id:'VC1', name:'Premium',   zone:'premium',   label:'Prem',  price:20, status:'LOW',  seats:40,  desc:'Premium floor seats · Courtside' },
-      { id:'STU', name:'Student',   zone:'student',   label:'STU',   price:0,  status:'HIGH', seats:30,  desc:'Student Section · Free with Wofford ID' },
-    ],
-    zones: {
-      sideline: { label:'Sideline',      color:'#886E4C', desc:'Court sideline seating' },
-      end_line: { label:'End Line',      color:'#6b5538', desc:'Behind the serving line' },
-      premium:  { label:'Premium Floor', color:'#C7B37F', desc:'Courtside premium seats' },
-      student:  { label:'Student',       color:'#1a1208', desc:'Free with Wofford ID' },
-    }
-  }
-};
 
 // ============================================================
 // WOFFORD TICKET HUB COMPONENT
