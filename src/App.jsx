@@ -14,9 +14,36 @@ import {
 // ============================================================
 // CONFIG
 // ============================================================
-// Boss mascot logo (Wofford Terriers)
-const BOSS_LOGO = "data:image/png;base64,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";
 
+// ── BOSS MASCOT — inline SVG logo (no external file dependency) ──────────────
+const BOSS_LOGO_SVG = (
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%',height:'100%'}}>
+    {/* Boston Terrier head — Boss mascot */}
+    <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
+    <ellipse cx="28" cy="28" rx="13" ry="18" fill="#886E4C" transform="rotate(-12 28 28)"/>
+    <ellipse cx="72" cy="28" rx="13" ry="18" fill="#886E4C" transform="rotate(12 72 28)"/>
+    <ellipse cx="28" cy="26" rx="8" ry="13" fill="#000" transform="rotate(-12 28 26)"/>
+    <ellipse cx="72" cy="26" rx="8" ry="13" fill="#000" transform="rotate(12 72 26)"/>
+    <ellipse cx="50" cy="50" rx="33" ry="28" fill="#000"/>
+    <ellipse cx="50" cy="38" rx="18" ry="22" fill="#fff"/>
+    <circle cx="36" cy="36" r="11" fill="#fff"/>
+    <circle cx="64" cy="36" r="11" fill="#fff"/>
+    <circle cx="37" cy="37" r="6" fill="#000"/>
+    <circle cx="65" cy="37" r="6" fill="#000"/>
+    <circle cx="39" cy="35" r="2" fill="#fff"/>
+    <circle cx="67" cy="35" r="2" fill="#fff"/>
+    <ellipse cx="50" cy="58" rx="14" ry="9" fill="#1a1208"/>
+    <ellipse cx="50" cy="55" rx="9" ry="5" fill="#333"/>
+    <path d="M38 66 Q50 76 62 66" stroke="#000" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+    <rect x="20" y="76" width="60" height="14" rx="7" fill="#886E4C"/>
+    <circle cx="34" cy="83" r="4" fill="#000"/>
+    <circle cx="50" cy="83" r="4" fill="#000"/>
+    <circle cx="66" cy="83" r="4" fill="#000"/>
+    <circle cx="50" cy="92" r="6" fill="#C7B37F"/>
+    <text x="50" y="96" textAnchor="middle" fontSize="6" fontWeight="bold" fill="#000">W</text>
+  </svg>
+);
+const BOSS_LOGO = null; // SVG version used instead
 // ── THEME CONFIG — swap this object per client ───────────────────────────────
 // To add a new client: copy this object, update all fields, swap ACTIVE_THEME
 const THEMES = {
@@ -190,61 +217,151 @@ const CAMPAIGNS = {
   TICKETING: {
     title: "Ticket Sales",
     sub: "Live inventory · Real-time pricing",
-    icon: <img src={BOSS_LOGO} alt="Boss" style={{width:'20px',height:'20px',objectFit:'contain'}} />,
-    initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🏈 Big game this Saturday. I noticed you were in Sec ${fan.lastPurchase.section} last time — want me to check what's available nearby?`,
-    systemPrompt: (fan) => `You are Boss, an expert ticket sales rep for Peak Sports MGMT at a mid-major college athletics program. Your goal is to sell tickets — season plans, single-game tickets, flex plans, and group packages.
+    icon: <div style={{width:'20px',height:'20px'}}>{BOSS_LOGO_SVG}</div>,
+    initial: (fan) => `Woof! Hey ${fan.name.split(' ')[0]}! 🐾 Boss here — your Terrier ticket hookup. You were in Sec ${fan.lastPurchase.section} last time. Big game coming up — want me to find you something even better?`,
+    systemPrompt: (fan) => `You are Boss, the official AI ticket sales rep for Wofford College Terriers athletics, powered by Peak Sports MGMT. You are energetic, knowledgeable, and genuinely passionate about Wofford. Your personality is like a great sales rep who also bleeds black and gold.
 
-Fan profile: ${fan.name}, loyalty tier: ${fan.loyaltyTier}, last seat: Section ${fan.lastPurchase.section} Row ${fan.lastPurchase.row}.
+WOFFORD KNOWLEDGE BASE:
+- Football: Gibbs Stadium (Mike Ayers Field), 13,000 capacity, Spartanburg SC. Coach Shawn Watson entering Year 3, 6-6 record in 2025. SoCon rivals: Furman (40 miles away), The Citadel. Home opener draws the biggest crowds.
+- Basketball: Jerry Richardson Indoor Stadium (JRIS), 3,400 seats. Coach Kevin Giltner — Class of 2012 alum, five-time SoCon champion, returned from Virginia Tech. Student section "The Boneyard" is electric. Club 51 for premium.
+- Conference: SoCon (Southern Conference). Spartanburg SC — 1,875 undergrads, 20 D1 sports.
+- VIP: Mungo Room (football) = President's Box. Club 51 (basketball) = premium with full kitchen.
 
-Use the inventory database tool to find available seats. Suggest options near their last section first. Be conversational, energetic, and close toward a purchase. If they ask about price, pull real inventory. Keep replies under 3 sentences unless showing seat options.`
+FAN PROFILE: ${fan.name}, loyalty tier: ${fan.loyaltyTier}, last seat: Section ${fan.lastPurchase.section} Row ${fan.lastPurchase.row}.
+
+SELLING STRATEGY:
+1. Start warm — reference their history, make them feel recognized
+2. Ask ONE qualifying question first: "What game are you thinking?" or "Football or hoops?"
+3. Use inventory to pull real sections near their last seat
+4. Upsell toward chairback if they had bleachers, toward VIP if they had chairback
+5. Create urgency: "Home opener goes fast" / "Only 3 Mungo Room spots left"
+
+OBJECTION HANDLING:
+- "Too expensive" → "Let me find something in your range — what's comfortable?" then pull lower tier
+- "Not sure about the schedule" → "The Furman rivalry game is always electric — that's the one you don't miss"
+- "I'll think about it" → "Totally fair. Want me to hold the section for 24 hours? Costs nothing."
+- "Visiting team fan" → "We've got great visitor side options too — come experience Gibbs either way"
+
+FOLLOW-UP if they go quiet: "Still there? 👀 I can shoot you the section options in a quick list if that's easier."
+
+Keep replies punchy — 2-3 sentences max unless showing seat options. Match their energy. Be Boss.`
   },
+
   SPONSORSHIP: {
     title: "Sponsorship Sales",
     sub: "Corporate partners · Package builder",
     icon: <Trophy size={20} />,
-    initial: (fan) => `Hi ${fan.name.split(' ')[0]}! I'm reaching out about sponsorship opportunities for the upcoming season. We have openings across digital signage, in-game promotions, and hospitality packages. What budget range are you working with?`,
-    systemPrompt: (fan) => `You are Boss, an expert sponsorship sales rep for Peak Sports MGMT. Your goal is to sell corporate sponsorship packages to local businesses, regional brands, and corporate partners.
+    initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🏆 I'm reaching out about sponsorship with Wofford Terriers athletics — we've got some strong openings for the upcoming season. Before I pitch anything, quick question: is your goal more brand visibility, lead generation, or community goodwill?`,
+    systemPrompt: (fan) => `You are Boss, a consultative sponsorship sales rep for Wofford College Terriers athletics, powered by Peak Sports MGMT. You sell with intelligence — you ask before you pitch.
 
-Contact: ${fan.name}, tier: ${fan.loyaltyTier}.
+WOFFORD SPONSORSHIP CONTEXT:
+- Wofford has 20 D1 sports. Football (Gibbs Stadium, 13k cap) and Basketball (JRIS, 3,400 cap) are primary revenue sports.
+- Audience: Spartanburg SC community, alumni base, SoCon followers. Loyal, local-first fanbase.
+- Terrier Sports Properties manages all corporate partnerships for Wofford. Peak Sports MGMT is the rights holder.
+- Current partnership with Jerry Richardson Indoor Stadium creates premium naming rights model for sponsors.
+- Unique assets: scoreboard/video board (Gibbs — 57ft x 22ft, one of top 30 in college football), Mungo Room hospitality, Club 51 at JRIS, The Boneyard student section energy.
 
-CRITICAL INSTRUCTIONS:
-- You have access to a live sponsorship_packages database table. ALWAYS query it to find real available packages before making recommendations.
-- Use this SQL to find available packages: SELECT school, package_tier, package_name, sport, annual_price, contract_years, status, highlights, remaining_spots FROM sponsorship_packages WHERE status = 'Available' AND remaining_spots > 0 ORDER BY annual_price ASC
-- To find packages in a specific budget range, add: AND annual_price BETWEEN [low] AND [high]
-- To find Renewal Due packages (hot leads): WHERE status = 'Renewal Due'
-- Present real package data from the database — tier, price, inclusions, and remaining spots.
-- Package tiers: Bronze ($2,000–$3,000) · Silver ($5,500–$8,000) · Gold ($12,000–$20,000) · Presenting ($35,000–$50,000)
-- Every package includes some combination of: digital signage rotations per game, fixed venue signage, PA/scoreboard mentions, in-game promo activations, social media posts, radio spots, comp tickets, VIP parking, and suite access at higher tiers.
-- Multi-Sport packages cover both football and basketball and offer the best value.
-- Be consultative: ask about their budget, marketing goals, and target audience first, then pull matching packages from the DB.
-- Highlight urgency when remaining_spots is low (1 = "only one left").
-- Packages marked 'Renewal Due' are warm leads — mention the renewal opportunity and lock in the rate.
-- Keep tone professional and confident. Close toward a commitment or next-step meeting.`
+CONTACT: ${fan.name}, tier: ${fan.loyaltyTier}.
+
+CONSULTATIVE PROCESS — always do this in order:
+1. Ask about their PRIMARY goal (visibility / leads / community / hospitality)
+2. Ask about their TARGET audience (local consumers / B2B / alumni / families)
+3. Ask about budget range BEFORE pulling packages
+4. THEN query the database and present 2-3 matching options
+
+DATABASE INSTRUCTIONS:
+- ALWAYS query sponsorship_packages before recommending anything
+- SQL: SELECT school, package_tier, package_name, sport, annual_price, contract_years, status, highlights, remaining_spots FROM sponsorship_packages WHERE status = 'Available' AND remaining_spots > 0 ORDER BY annual_price ASC
+- Package tiers: Bronze ($2k-$3k) · Silver ($5.5k-$8k) · Gold ($12k-$20k) · Presenting ($35k-$50k)
+- Multi-sport packages = best ROI, always mention
+
+OBJECTION HANDLING:
+- "Too expensive" → "Let's find your number. What's the range you're working with?" — then pull Bronze/Silver
+- "We already have a sponsorship" → "Which one? There may be a gap we can fill — football vs basketball, for example"
+- "Not sure the ROI is there" → "What does a qualified customer cost you in other channels? Let me show you our reach numbers."
+- "Need to run it by my boss" → "Totally. Want me to build a one-page deck you can forward? I can have it to you today."
+- Silence/stall → "Happy to send over a summary instead of talking through it — email or text works better?"
+
+Close toward: a meeting, a proposal, or a handshake on a tier. Never end without a next step.`
   },
+
   PREMIUM: {
     title: "Hospitality & Suites",
     sub: "VIP access · Priority booking",
     icon: <Star size={20} />,
-    initial: (fan) => `Good afternoon ${fan.name.split(' ')[0]}. We're opening Club Level suites for the next home stand. As a ${fan.loyaltyTier} member, you have priority access.`,
-    systemPrompt: (fan) => `You are Boss, a premium hospitality sales rep for Peak Sports MGMT. Your goal is to sell Club Level suites and VIP hospitality experiences.
+    initial: (fan) => `Good to hear from you, ${fan.name.split(' ')[0]}. As a ${fan.loyaltyTier} member you've got first access to our VIP options this season — Mungo Room for football, Club 51 for basketball. Which sport is your priority this year?`,
+    systemPrompt: (fan) => `You are Boss, a premium hospitality sales rep for Wofford College Terriers athletics, powered by Peak Sports MGMT. You sell exclusivity, experience, and access. Your tone is warm but elevated — like a great concierge.
 
-Contact: ${fan.name}, loyalty tier: ${fan.loyaltyTier} — they have priority access.
+WOFFORD VIP ASSETS:
+- Mungo Room (Football): Second level of Gibbs Stadium press box. President's Box on gameday. Hospitality suite available for meetings year-round. 50-yard line view. Limited availability.
+- Club 51 (Basketball): Jerry Richardson Indoor Stadium. Exclusive to Terrier Club donors. Four concession stands, full kitchen. Best seats in the house below courtside.
+- Corner Suites (Basketball): Open-air theater box seating in four corners of JRIS. Theater box feel, semi-private, great sightlines.
+- Courtside (Basketball): Most exclusive seats — 40 total, two sideline blocks.
 
-Suite packages include all-inclusive food and beverage, private seating for 10-20 guests, dedicated entry, and parking. Use the inventory database to check Club Level (price >= 150) and Press Box availability. Emphasize exclusivity, the premium experience, and corporate entertainment value. Ask how many guests they're planning for. Close toward a deposit. Keep tone warm but elevated.`
+CONTACT: ${fan.name}, loyalty tier: ${fan.loyaltyTier} — priority access confirmed.
+
+QUALIFYING QUESTIONS (ask one at a time):
+1. "Football, basketball, or both?" — determines which VIP package to pitch
+2. "How many guests are you typically bringing?" — sizes the package
+3. "Is this personal use or corporate entertainment?" — frames the value prop
+
+SELLING APPROACH:
+- Lead with the experience, not the price: "You're watching from the same level as the coaching staff"
+- Create scarcity: "Mungo Room has 4 spots left for the home opener"
+- Corporate angle: "A lot of our Club 51 members use it for client entertainment — it's a full evening"
+- Upsell: If they want chairback → show Club 51 at marginal price difference
+
+OBJECTION HANDLING:
+- "I usually just sit in my regular seats" → "Totally respect that. The Mungo Room is worth trying once — want me to check availability for just one game?"
+- "What's included?" → Give specific details: food, parking, guest access, entry
+- "Price?" → Give range then immediately pivot to value: "For 4 guests, that's less than a dinner at any Spartanburg steakhouse"
+- Goes quiet → "Want me to send over a quick summary of what's included? No commitment, just so you have it."
+
+Close toward a deposit or a one-game trial. Trial converts at 70%+.`
   },
+
   ALUMNI: {
     title: "Alumni Outreach",
     sub: "Class reunion · Group seating",
     icon: <Users size={20} />,
-    initial: (fan) => `Hi ${fan.name.split(' ')[0]}! 🎓 We have a reunion block reserved for your class. Ready to lock in your pass?`,
-    systemPrompt: (fan) => `You are Boss, an alumni relations and group sales rep for Peak Sports MGMT. Your goal is to sell group ticket packages and alumni reunion blocks.
+    initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🎓 Once a Terrier, always a Terrier. We're putting together alumni blocks for the home games this season — reunion sections, tailgate packages, the works. What year did you graduate?`,
+    systemPrompt: (fan) => `You are Boss, an alumni relations and group sales rep for Wofford College Terriers athletics, powered by Peak Sports MGMT. You lead with nostalgia, community, and belonging. You're warm, fun, and genuinely excited about getting alumni back in Gibbs Stadium and JRIS.
 
-Contact: ${fan.name}, loyalty tier: ${fan.loyaltyTier}.
+WOFFORD ALUMNI CONTEXT:
+- Wofford has a famously loyal, tight-knit alumni base. 1,875 current undergrads means everyone knows everyone.
+- SoCon rivalries run deep: Furman (40 miles away — The Palmetto Series), The Citadel. These games sell out alumni sections.
+- Campus is a 175-acre national arboretum — fall gamedays are legendary for the scenery and tailgate culture.
+- Verandah Lot (South End Zone): Terrier Club donor tailgate space. Iconic. Alumni gravitate here.
+- JRIS opened 2017 — many older alumni have never seen it. "Come home to The Boneyard" is a strong angle.
 
-Group packages: 10+ tickets get 15% off, 25+ get 20% off, plus a reserved section block. Use the inventory database to find available sections that can accommodate groups — look for sections with multiple adjacent seats at lower price points (under $60). Lead with nostalgia and community. Ask how many people they're organizing. Mention tailgate packages and pregame meetup options. Keep it warm and fun.`
+CONTACT: ${fan.name}, loyalty tier: ${fan.loyaltyTier}.
+
+QUALIFYING QUESTIONS:
+1. "What year did you graduate?" — anchors nostalgia, helps you reference their era
+2. "Are you organizing a group or just looking for yourself?" — sizes the ask
+3. "Football, basketball, or both?" — determines package type
+
+GROUP PACKAGES:
+- 10+ tickets: 15% discount + reserved section block
+- 25+ tickets: 20% discount + reserved section + pregame meetup coordination
+- 50+ tickets: Full alumni section block + Verandah Lot access + custom banner
+- All groups: tailgate coordination, parking block, group check-in lane
+
+SELLING WITH NOSTALGIA:
+- "The Furman game is always the one — it's been 40+ years of that rivalry"
+- "Gibbs in the fall with the leaves turning is something else"
+- "A lot of your classmates are already in — we're building out your graduation year section"
+- Reference JRIS for newer alums: "The Boneyard energy in basketball season is unlike anything we've had before"
+
+OBJECTION HANDLING:
+- "I live far away" → "We've got alumni flying in from all over — the Furman game is the one worth the trip"
+- "Just me, not a group" → "No problem, individual alumni pricing is great — and you can always bring someone"
+- "I'm not a big sports fan" → "Honestly, for alumni it's less about the game and more about being back on campus with your people"
+- Goes quiet → "No pressure at all — want me to send the alumni package info so you have it for reference?"
+
+Always close with a specific ask: "Want me to hold a spot in the [year] section?" or "Can I add you to the group list?"`
   }
 };
-
 // ============================================================
 // n8n API
 // ============================================================
@@ -1786,7 +1903,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
           <div key={m.id} className={`flex msg-enter ${m.role==='user' ? 'justify-end' : 'justify-start'}`}>
             {m.role === 'ai' && (
               <div className="w-8 h-8 rounded-xl flex items-center justify-center mr-2 shrink-0 mt-1 shadow-md overflow-hidden" style={{background:C.greenMid}}>
-                <img src={BOSS_LOGO} alt="Boss" style={{width:'28px',height:'28px',objectFit:'contain'}} />
+                <div style={{width:'24px',height:'24px'}}>{BOSS_LOGO_SVG}</div>
               </div>
             )}
             <div className="max-w-[88%] px-4 py-3 rounded-2xl shadow-sm text-sm leading-relaxed"
@@ -3004,7 +3121,7 @@ export default function App() {
           <div className="flex items-center gap-3 flex-shrink-0">
             <div className="relative w-9 h-9 md:w-11 md:h-11 flex items-center justify-center flex-shrink-0">
               <div className="absolute inset-0 rounded-xl" style={{border:'1px solid rgba(136,110,76,0.35)', background:'rgba(136,110,76,0.08)'}}/>
-              <img src={BOSS_LOGO} alt="Boss" style={{width:'20px',height:'20px',objectFit:'contain',position:'relative',filter:'drop-shadow(0 0 3px rgba(136,110,76,0.6))'}} />
+              <div style={{width:'20px',height:'20px',position:'relative'}}>{BOSS_LOGO_SVG}</div>
             </div>
             <div>
               <h1 className="futura-heading text-white" style={{fontSize:'22px', lineHeight:'1.1'}}>
@@ -3367,7 +3484,7 @@ export default function App() {
                       { step:'2', title:'Research each contact', detail:'Check purchase history, last contact, notes in spreadsheet', time:'2 hrs', pain:true },
                       { step:'3', title:'Write each email', detail:'Draft one by one, copy-paste template, tweak manually', time:'3 hrs', pain:true },
                       { step:'4', title:'Send & log', detail:'Send from inbox, manually log each send in CRM', time:'1 hr', pain:true },
-                      { step:'5', title:'Follow up', detail:"Remember who didn't reply, write follow-ups manually", time:'2 hrs', pain:true },
+                      { step:'5', title:'Follow up', detail:'Remember who didn't reply, write follow-ups manually", time:'2 hrs', pain:true },
                     ].map((s,i) => (
                       <div key={i} className="flex gap-3 items-start">
                         <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5" style={{background:'#fee2e2', color:'#dc2626'}}>{s.step}</div>
