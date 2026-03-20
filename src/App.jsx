@@ -67,7 +67,7 @@ const CAMPAIGNS = {
   TICKETING: {
     title: "Ticket Sales",
     sub: "Live inventory · Real-time pricing",
-    icon: <Zap size={20} />,
+    icon: <span style={{fontSize:'20px'}}>🐾</span>,
     initial: (fan) => `Hey ${fan.name.split(' ')[0]}! 🏈 Big game this Saturday. I noticed you were in Sec ${fan.lastPurchase.section} last time — want me to check what's available nearby?`,
     systemPrompt: (fan) => `You are Ace, an expert ticket sales rep for Peak Sports MGMT at a mid-major college athletics program. Your goal is to sell tickets — season plans, single-game tickets, flex plans, and group packages.
 
@@ -1038,7 +1038,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{background:'rgba(136,110,76,0.1)', border:'1px solid rgba(136,110,76,0.25)'}}>
-              <Zap size={20} style={{color:C.lime}}/>
+              <span style={{fontSize:'20px'}}>🐾</span>
             </div>
             <div>
               <p className="futura-heading text-white" style={{fontSize:'17px', lineHeight:'1.2'}}>{CAMPAIGNS[campaign]?.title}</p>
@@ -1061,7 +1061,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
           <div key={m.id} className={`flex msg-enter ${m.role==='user' ? 'justify-end' : 'justify-start'}`}>
             {m.role === 'ai' && (
               <div className="w-8 h-8 rounded-xl flex items-center justify-center mr-2 shrink-0 mt-1 shadow-md" style={{background:C.greenMid}}>
-                <Zap size={13} style={{color:C.lime}}/>
+                <span style={{fontSize:'13px'}}>🐾</span>
               </div>
             )}
             <div className="max-w-[88%] px-4 py-3 rounded-2xl shadow-sm text-sm leading-relaxed"
@@ -1119,7 +1119,7 @@ const MobileDemo = ({ campaign, currentFan, onTransaction }) => {
         {isTyping && (
           <div className="flex items-end gap-2">
             <div className="w-8 h-8 rounded-xl flex items-center justify-center shadow-md" style={{background:C.greenMid}}>
-              <Zap size={13} style={{color:C.lime}}/>
+              <span style={{fontSize:'13px'}}>🐾</span>
             </div>
             <div className="px-4 py-3 rounded-2xl shadow-sm bg-white flex gap-1.5 items-center" style={{borderTopLeftRadius:'4px'}}>
               <div className="w-2 h-2 rounded-full dot-1" style={{background:C.lime}}/>
