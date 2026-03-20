@@ -2171,7 +2171,7 @@ export default function App() {
                       { step:'2', title:'Research each contact', detail:'Check purchase history, last contact, notes in spreadsheet', time:'2 hrs', pain:true },
                       { step:'3', title:'Write each email', detail:'Draft one by one, copy-paste template, tweak manually', time:'3 hrs', pain:true },
                       { step:'4', title:'Send & log', detail:'Send from inbox, manually log each send in CRM', time:'1 hr', pain:true },
-                      { step:'5', title:'Follow up', detail:'Remember who didn't reply, write follow-ups manually', time:'2 hrs', pain:true },
+                      { step:'5', title:'Follow up', detail:"Remember who didn't reply, write follow-ups manually", time:'2 hrs', pain:true },
                     ].map((s,i) => (
                       <div key={i} className="flex gap-3 items-start">
                         <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0 mt-0.5" style={{background:'#fee2e2', color:'#dc2626'}}>{s.step}</div>
