@@ -1495,133 +1495,19 @@ const CRMTab = () => {
 const contacts = [
 
   // ── ADMINISTRATION ────────────────────────────────────────────────────────
-  {
-    id: 1,
-    name: 'Nayef Samhat',
-    school: 'Wofford College',
-    title: 'President',
-    tier: 'Platinum',
-    email: 'samhatnr@wofford.edu',
-    phone: '(864) 597-4010',
-    lastContact: '5 days ago',
-    status: 'hot',
-    spend: 0,
-    tags: ['Administration', 'Transitioning', 'Time-Sensitive'],
-    notes: 'President since 2013. Leading $470M Drive for 5 fundraising campaign. Stepping down end of 2025-26 academic year. High-priority outreach window before transition.'
-  },
-  {
-    id: 2,
-    name: 'Christopher A.P. Carpenter',
-    school: 'Wofford College',
-    title: 'Board of Trustees Chairman',
-    tier: 'Platinum',
-    email: 'carpenter@wofford.edu',
-    phone: '(864) 597-4011',
-    lastContact: '12 days ago',
-    status: 'warm',
-    spend: 0,
-    tags: ['Administration', 'Alumni', 'Board', 'Decision Maker'],
-    notes: 'Class of 1990 alumnus. Currently overseeing search for Wofford's 12th president. Key governance contact during leadership transition.'
-  },
-  {
-    id: 3,
-    name: 'Timothy Schmitz',
-    school: 'Wofford College',
-    title: 'Willimon Family Provost',
-    tier: 'Gold',
-    email: 'schmitzta@wofford.edu',
-    phone: '(864) 597-4012',
-    lastContact: '18 days ago',
-    status: 'warm',
-    spend: 0,
-    tags: ['Administration', 'Academic', 'Long-Tenured'],
-    notes: 'At Wofford since 2000. Key academic decision-maker for institutional technology and operations.'
-  },
-  {
-    id: 4,
-    name: 'Calhoun L. Kennedy Jr.',
-    school: 'Wofford College',
-    title: 'VP for Philanthropy & Engagement',
-    tier: 'Gold',
-    email: 'kennedycl@wofford.edu',
-    phone: '(864) 597-4013',
-    lastContact: '8 days ago',
-    status: 'hot',
-    spend: 0,
-    tags: ['Administration', 'Philanthropy', 'Sponsorship', 'Drive for 5'],
-    notes: 'Primary contact for sponsorships, donations, and the $470M Drive for 5 campaign. Direct alignment with revenue platform goals.'
-  },
+  { id:1,  name:'Nayef Samhat',               school:'Wofford College', title:'President',                        tier:'Platinum', email:'samhatnr@wofford.edu',    phone:'(864) 597-4010', lastContact:'5 days ago',  status:'hot',  spend:0, tags:['Administration','Transitioning','Time-Sensitive'],    notes:'President since 2013. Leading $470M Drive for 5 campaign. Stepping down end of 2025-26 year. Prime outreach window.' },
+  { id:2,  name:'Christopher A.P. Carpenter', school:'Wofford College', title:'Board of Trustees Chairman',       tier:'Platinum', email:'carpenter@wofford.edu',   phone:'(864) 597-4011', lastContact:'12 days ago', status:'warm', spend:0, tags:['Administration','Alumni','Board','Decision Maker'],    notes:"Class of 1990 alumnus. Overseeing search for Wofford's 12th president." },
+  { id:3,  name:'Timothy Schmitz',            school:'Wofford College', title:'Willimon Family Provost',          tier:'Gold',     email:'schmitzta@wofford.edu',   phone:'(864) 597-4012', lastContact:'18 days ago', status:'warm', spend:0, tags:['Administration','Academic','Long-Tenured'],            notes:'At Wofford since 2000. Key academic decision-maker.' },
+  { id:4,  name:'Calhoun L. Kennedy Jr.',     school:'Wofford College', title:'VP for Philanthropy & Engagement', tier:'Gold',     email:'kennedycl@wofford.edu',   phone:'(864) 597-4013', lastContact:'8 days ago',  status:'hot',  spend:0, tags:['Administration','Philanthropy','Sponsorship','Drive for 5'], notes:'Primary contact for sponsorships and the $470M Drive for 5 campaign.' },
 
   // ── ATHLETICS ─────────────────────────────────────────────────────────────
-  {
-    id: 5,
-    name: 'Shawn Watson',
-    school: 'Wofford College',
-    title: 'Head Football Coach',
-    tier: 'Gold',
-    email: 'watsonsc@wofford.edu',
-    phone: '(864) 597-4020',
-    lastContact: '3 days ago',
-    status: 'hot',
-    spend: 0,
-    tags: ['Athletics', 'Football', 'Coach', 'Year 3'],
-    notes: 'Entering 3rd season. 6-6 record in 2025. Gibbs Stadium ticket demand tied directly to team performance. Strong outreach window pre-season.'
-  },
-  {
-    id: 6,
-    name: 'Kevin Giltner',
-    school: 'Wofford College',
-    title: 'Head Men's Basketball Coach',
-    tier: 'Gold',
-    email: 'giltnerkj@wofford.edu',
-    phone: '(864) 597-4021',
-    lastContact: '6 days ago',
-    status: 'hot',
-    spend: 0,
-    tags: ['Athletics', 'Basketball', 'Coach', 'Alumni', 'New Hire'],
-    notes: 'Class of 2012 Wofford grad. Five-time SoCon champion. Returning home after 6 seasons at Virginia Tech. High fan energy around new era — prime season ticket outreach window.'
-  },
+  { id:5,  name:'Shawn Watson',               school:'Wofford College', title:'Head Football Coach',              tier:'Gold',     email:'watsonsc@wofford.edu',    phone:'(864) 597-4020', lastContact:'3 days ago',  status:'hot',  spend:0, tags:['Athletics','Football','Coach','Year 3'],                notes:'Entering 3rd season. 6-6 record in 2025. Gibbs Stadium demand tied to team performance.' },
+  { id:6,  name:'Kevin Giltner',              school:'Wofford College', title:"Head Men's Basketball Coach",      tier:'Gold',     email:'giltnerkj@wofford.edu',   phone:'(864) 597-4021', lastContact:'6 days ago',  status:'hot',  spend:0, tags:['Athletics','Basketball','Coach','Alumni','New Hire'],   notes:'Class of 2012 Wofford grad. Five-time SoCon champion. Returned from Virginia Tech. High fan energy.' },
 
   // ── TERRIER SPORTS PROPERTIES ─────────────────────────────────────────────
-  {
-    id: 7,
-    name: 'Shawn Tyler',
-    school: 'Wofford College',
-    title: 'Director of Sales — Terrier Sports Properties',
-    tier: 'Gold',
-    email: 'shawn@terriersportsproperties.com',
-    phone: '(864) 597-4000',
-    lastContact: '2 days ago',
-    status: 'hot',
-    spend: 0,
-    tags: ['Sponsor', 'Key Contact', 'Peak Sports']
-  },
-  {
-    id: 8,
-    name: 'Devin Foster',
-    school: 'Wofford College',
-    title: 'Ticketing — Terrier Sports Properties',
-    tier: 'Gold',
-    email: 'devin@terriersportsproperties.com',
-    phone: '(864) 597-4001',
-    lastContact: '2 days ago',
-    status: 'hot',
-    spend: 0,
-    tags: ['Ticketing', 'Key Contact', 'Peak Sports']
-  },
-  {
-    id: 9,
-    name: 'Scott Kull',
-    school: 'Wofford College',
-    title: 'Director of Athletics',
-    tier: 'Platinum',
-    email: 'kullsr@wofford.edu',
-    phone: '(864) 597-4002',
-    lastContact: '5 days ago',
-    status: 'warm',
-    spend: 0,
-    tags: ['Admin', 'Decision Maker', 'VIP', 'Institutional']
-  },
+  { id:7,  name:'Shawn Tyler',                school:'Wofford College', title:'Director of Sales — Terrier Sports Properties',  tier:'Gold',     email:'shawn@terriersportsproperties.com', phone:'(864) 597-4000', lastContact:'2 days ago',  status:'hot',  spend:0, tags:['Sponsor','Key Contact','Peak Sports'] },
+  { id:8,  name:'Devin Foster',               school:'Wofford College', title:'Ticketing — Terrier Sports Properties',           tier:'Gold',     email:'devin@terriersportsproperties.com', phone:'(864) 597-4001', lastContact:'2 days ago',  status:'hot',  spend:0, tags:['Ticketing','Key Contact','Peak Sports'] },
+  { id:9,  name:'Scott Kull',                 school:'Wofford College', title:'Director of Athletics',            tier:'Platinum', email:'kullsr@wofford.edu',      phone:'(864) 597-4002', lastContact:'5 days ago',  status:'warm', spend:0, tags:['Admin','Decision Maker','VIP','Institutional'] },
 
 ];
 
