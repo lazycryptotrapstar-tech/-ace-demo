@@ -1851,8 +1851,10 @@ const SchoolGallery = ({ activeId, onSelect }) => {
 
 export default function App() {
   const [activeSchoolId, setActiveSchoolId] = useState('wofford');
+  const [activeTab, setActiveTab] = useState('mobile');
   const [memberTier, setMemberTier] = useState('platinum');
   const school = SCHOOL_LIBRARY[activeSchoolId] || SCHOOL_LIBRARY.wofford;
+  
   const sc = school.colors;
   const [localTransactions, setLocalTransactions] = useState([...MOCK_DB.initialStats]);
   const [activeCampaign, setActiveCampaign] = useState('TICKETING');
