@@ -191,7 +191,7 @@ const WoffordTicketHub = ({ onTransaction }) => {
             {[
               { label:'Venue', value:v.name.split(' ').slice(0,2).join(' ') },
               { label:'Section', value:selectedSection?.label || '—' },
-              { label:'Quantity', value:`${qty} tickets` },
+              { label:'Quantity', value:\`\${qty} tickets\` },
               { label:'Total Paid', value:\`$\${total.toFixed(2)}\`, gold:true },
             ].map((item,i) => (
               <div key={i} className="p-4 rounded-2xl" style={{background:'#F5F0E8'}}>

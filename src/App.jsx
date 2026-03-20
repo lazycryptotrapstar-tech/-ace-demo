@@ -17,7 +17,68 @@ import {
 // Boss mascot logo (Wofford Terriers)
 const BOSS_LOGO = "data:image/png;base64,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";
 
-const N8N_WEBHOOK_URL = 'https://may-transition-pierre-calculate.trycloudflare.com/webhook/2e28cfe9-961f-48fb-a548-3f0306448996/chat';
+// ── THEME CONFIG — swap this object per client ───────────────────────────────
+// To add a new client: copy this object, update all fields, swap ACTIVE_THEME
+const THEMES = {
+  wofford: {
+    id: 'wofford',
+    name: 'Wofford College',
+    mascot: 'Terriers',
+    conference: 'SoCon',
+    colors: {
+      primary:    '#1a1208',   // deep dark
+      mid:        '#2a1e0e',   // dark mid
+      light:      '#4a3520',   // medium
+      accent:     '#886E4C',   // Old Gold
+      accentSoft: '#C7B37F',   // Khaki
+      offWhite:   '#F5F0E8',   // warm off-white
+      border:     '#e8dfc8',   // warm border
+      cognac:     '#6b5538',   // warm brown
+    },
+    cssVars: {
+      '--color-primary':     '#1a1208',
+      '--color-mid':         '#2a1e0e',
+      '--color-accent':      '#886E4C',
+      '--color-accent-soft': '#C7B37F',
+      '--color-bg':          '#F5F0E8',
+      '--color-border':      '#e8dfc8',
+      '--color-dot':         '#886E4C',
+      '--color-nav-active':  'rgba(136,110,76,0.12)',
+      '--color-nav-border':  'rgba(136,110,76,0.28)',
+      '--color-nav-bar':     '#886E4C',
+      '--color-grid':        'rgba(136,110,76,0.06)',
+      '--color-card-hover':  'rgba(136,110,76,0.18)',
+      '--color-glow':        'rgba(136,110,76,0.55)',
+      '--color-cognac-glow': 'rgba(199,179,127,0.5)',
+      '--color-kpi-grad1':   '#1a1208',
+      '--color-kpi-grad2':   '#2a1e0e',
+      '--color-kpi-border':  'rgba(136,110,76,0.30)',
+    }
+  },
+  // ── TEMPLATE for next client ─────────────────────────────────────────────
+  // nextclient: {
+  //   id: 'nextclient',
+  //   name: 'School Name',
+  //   mascot: 'Mascot Name',
+  //   conference: 'Conference',
+  //   colors: { primary, mid, light, accent, accentSoft, offWhite, border, cognac },
+  //   cssVars: { '--color-primary': '#...', ... }
+  // }
+};
+
+// Active theme — change this string to switch clients
+const ACTIVE_THEME = THEMES['wofford'];
+
+// Inject CSS variables into :root for <Styles/> component
+function injectThemeVars(theme) {
+  const root = document.documentElement;
+  Object.entries(theme.cssVars).forEach(([k, v]) => root.style.setProperty(k, v));
+}
+
+
+// P0 FIX: Permanent Railway URL — no longer Cloudflare tunnel
+const N8N_WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL
+  || 'https://n8n-production-f9c2.up.railway.app/webhook/2e28cfe9-961f-48fb-a548-3f0306448996/chat';
 
 // ============================================================
 // COLORS
@@ -44,25 +105,25 @@ const MOCK_DB = {
   fans: [{ id: "FAN_KULL01", name: "Scott Kull", loyaltyTier: "Platinum", lastPurchase: { section: "120", row: "A" }, title: "Director of Athletics", org: "Wofford College", fanScore: 94, tenure: "11 yrs", sports: ["Football","Basketball","Baseball"], tags: ["Decision Maker","VIP","Institutional"] }],
   inventory: {
     sections: [
-      { id: "101", name: "North End Zone", price: 35.00, status: 'HIGH', zone: 'endzone' },
-      { id: "105", name: "North End Zone", price: 40.00, status: 'MED',  zone: 'endzone' },
-      { id: "109", name: "South End Zone", price: 35.00, status: 'LOW',  zone: 'endzone' },
-      { id: "113", name: "South End Zone", price: 40.00, status: 'HIGH', zone: 'endzone' },
-      { id: "120", name: "Home Sideline",  price: 85.00, status: 'HIGH', zone: 'sideline' },
-      { id: "124", name: "Home Sideline",  price: 95.00, status: 'MED',  zone: 'sideline' },
-      { id: "128", name: "Away Sideline",  price: 75.00, status: 'HIGH', zone: 'sideline' },
-      { id: "132", name: "Away Sideline",  price: 80.00, status: 'LOW',  zone: 'sideline' },
-      { id: "200", name: "Club Level",     price: 175.00, status: 'MED', zone: 'club' },
-      { id: "204", name: "Club Level",     price: 175.00, status: 'HIGH',zone: 'club' },
-      { id: "210", name: "Press Box",      price: 225.00, status: 'LOW', zone: 'club' },
+      { id: "H1",  name: "Home Chairback H1",   price: 27.00, status: 'HIGH', zone: 'home_chairback' },
+      { id: "H3",  name: "Home Chairback H3",   price: 27.00, status: 'MED',  zone: 'home_chairback' },
+      { id: "MR",  name: "Mungo Room VIP",      price: 85.00, status: 'LOW',  zone: 'vip' },
+      { id: "HB1", name: "Home Bleacher HB1",   price: 15.00, status: 'HIGH', zone: 'home_bleacher' },
+      { id: "N1",  name: "North End Zone",      price: 10.00, status: 'HIGH', zone: 'north_ez' },
+      { id: "S1",  name: "Verandah Lot",        price: 20.00, status: 'MED',  zone: 'south_ez' },
+      { id: "V1",  name: "Visitor Side",        price: 12.00, status: 'HIGH', zone: 'visitor' },
+      { id: "CS1", name: "Courtside",           price: 65.00, status: 'LOW',  zone: 'courtside' },
+      { id: "C51A","Club 51 A",                 price: 45.00, status: 'MED',  zone: 'club51' },
+      { id: "SUA", name: "Corner Suite A",      price:120.00, status: 'LOW',  zone: 'suite' },
+      { id: "LB1", name: "Lower Bowl Sec 1",    price: 25.00, status: 'HIGH', zone: 'lower_bowl' },
     ],
-    fees: { facility: 12.50, processing: 4.50 }
+    fees: { facility: 2.50, processing: 1.50 }
   },
   initialStats: [
-    { fanName: "Cara H.",    campaign: "Ticket Sales",      amount: 102.50,   id: "TX_1" },
-    { fanName: "Cara S.",   campaign: "Hospitality",       amount: 3500.00,  id: "TX_2" },
-    { fanName: "Marcus T.", campaign: "Alumni Outreach",   amount: 280.00,   id: "TX_3" },
-    { fanName: "Sandra L.", campaign: "Sponsorship Sales", amount: 12500.00, id: "TX_4" },
+    { fanName: "Scott K.",    campaign: "Ticket Sales",      amount: 102.50,   id: "TX_1" },
+    { fanName: "Calhoun K.",  campaign: "Sponsorship",       amount: 3500.00,  id: "TX_2" },
+    { fanName: "Shawn T.",    campaign: "Alumni Outreach",   amount: 280.00,   id: "TX_3" },
+    { fanName: "Nayef S.",    campaign: "Sponsorship Sales", amount: 12500.00, id: "TX_4" },
   ]
 };
 
@@ -230,14 +291,14 @@ const Styles = () => (
       transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
     .data-card:hover {
-      box-shadow: 0 6px 32px rgba(136,110,76,0.18), 0 2px 12px rgba(26,18,8,0.08);
+      box-shadow: 0 6px 32px var(--color-card-hover), 0 2px 12px rgba(26,18,8,0.08);
       transform: translateY(-2px);
     }
 
     /* ── KPI CARD DARK ── */
     .kpi-dark {
       background: linear-gradient(145deg, #1a1208 0%, #2a1e0e 100%);
-      border: 1px solid rgba(136,110,76,0.30);
+      border: 1px solid var(--color-kpi-border);
       box-shadow: 0 4px 28px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
       border-radius: 20px;
     }
@@ -312,7 +373,10 @@ const Styles = () => (
 );
 
 // ============================================================
-// COLLEGE FOOTBALL STADIUM MAP — Ticketmaster-style concentric rings
+// DEPRECATED — CollegeStadiumMap (P2 cleanup)
+// No longer used by active WoffordTicketHub. Retained for Sales Agent
+// chat flow (stadium map triggered by AI keywords). Safe to remove
+// once chat flow is updated to use WoffordTicketHub venue data.
 // ============================================================
 const CollegeStadiumMap = ({ onSelectSection, activeSection, showSeatView, onSeatView }) => {
   const [hoveredId, setHoveredId] = React.useState(null);
@@ -817,7 +881,8 @@ const SeatView = ({ section, onClose }) => {
 
 
 // ============================================================
-// SEAT PICKER
+// DEPRECATED — GranularSeatPicker (P2 cleanup)
+// No longer used by active WoffordTicketHub. Safe to remove.
 // ============================================================
 const GranularSeatPicker = ({ sectionId, onSelect, selectedSeats }) => {
   const rows = ['A','B','C','D','E','F','G','H'];
@@ -877,147 +942,456 @@ const GranularSeatPicker = ({ sectionId, onSelect, selectedSeats }) => {
   );
 };
 
+
 // ============================================================
-// TICKET HUB
+// WOFFORD VENUE DATA
 // ============================================================
-const TicketHub = ({ onTransaction }) => {
-  const [hubState, setHubState] = useState('select');
-  const [selectedSection, setSelectedSection] = useState(null);
-  const [selectedSeats, setSelectedSeats] = useState([]);
-  const [seatViewSection, setSeatViewSection] = useState(null);
-  const sectionDetails = selectedSection
-    ? { price: selectedSection.price || MOCK_DB.inventory.sections.find(s => s.id === selectedSection.id)?.price || 0 }
-    : { price: 0 };
-  const hasSelection = selectedSeats.length > 0;
-  const subtotal = hasSelection ? sectionDetails.price * selectedSeats.length : 0;
-  const total = subtotal + (hasSelection ? MOCK_DB.inventory.fees.facility + MOCK_DB.inventory.fees.processing : 0);
+const WOFFORD_VENUES = {
+  football: {
+    id: 'football',
+    name: 'Gibbs Stadium',
+    subtitle: 'Mike Ayers Field · Spartanburg, SC',
+    capacity: '13,000',
+    sport: 'Football',
+    icon: '🏈',
+    color: '#886E4C',
+    description: 'Home of Wofford Terriers Football since 1996',
+    sections: [
+      // Home Sideline — Chairback (between the 40s)
+      { id:'H1', name:'Section H1', zone:'home_chairback', label:'H1', price:27, status:'HIGH', seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
+      { id:'H2', name:'Section H2', zone:'home_chairback', label:'H2', price:27, status:'MED',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
+      { id:'H3', name:'Section H3', zone:'home_chairback', label:'H3', price:27, status:'HIGH', seats:180, desc:'Home Sideline · Chairback · 50 yd line' },
+      { id:'H4', name:'Section H4', zone:'home_chairback', label:'H4', price:27, status:'MED',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
+      { id:'H5', name:'Section H5', zone:'home_chairback', label:'H5', price:27, status:'LOW',  seats:180, desc:'Home Sideline · Chairback · 40-50 yd' },
+      // Home Sideline — Bleachers (end zone to 40)
+      { id:'HB1', name:'Section HB1', zone:'home_bleacher', label:'HB1', price:15, status:'HIGH', seats:220, desc:'Home Sideline · Bleacher · 20-40 yd' },
+      { id:'HB2', name:'Section HB2', zone:'home_bleacher', label:'HB2', price:15, status:'HIGH', seats:220, desc:'Home Sideline · Bleacher · 20-40 yd' },
+      { id:'HB3', name:'Section HB3', zone:'home_bleacher', label:'HB3', price:15, status:'MED',  seats:220, desc:'Home Sideline · Bleacher · 5-20 yd' },
+      { id:'HB4', name:'Section HB4', zone:'home_bleacher', label:'HB4', price:15, status:'LOW',  seats:220, desc:'Home Sideline · Bleacher · 5-20 yd' },
+      // Press Box / Mungo Room (VIP)
+      { id:'MR',  name:'Mungo Room',   zone:'vip',          label:'VIP',  price:85, status:'LOW',  seats:40,  desc:'President's Box · Mungo Room · 50 yd line' },
+      // Visitor Sideline
+      { id:'V1',  name:'Section V1',   zone:'visitor',      label:'V1',   price:12, status:'HIGH', seats:200, desc:'Visitor Sideline · Bleacher · 40-50 yd' },
+      { id:'V2',  name:'Section V2',   zone:'visitor',      label:'V2',   price:12, status:'HIGH', seats:200, desc:'Visitor Sideline · Bleacher · 40-50 yd' },
+      { id:'V3',  name:'Section V3',   zone:'visitor',      label:'V3',   price:12, status:'MED',  seats:200, desc:'Visitor Sideline · Bleacher · 20-40 yd' },
+      // North End Zone
+      { id:'N1',  name:'North End Zone A', zone:'north_ez', label:'NEZ-A', price:10, status:'HIGH', seats:300, desc:'North End Zone · Video Board End' },
+      { id:'N2',  name:'North End Zone B', zone:'north_ez', label:'NEZ-B', price:10, status:'MED',  seats:300, desc:'North End Zone · Video Board End' },
+      // South End Zone (Verandah Lot)
+      { id:'S1',  name:'Verandah Lot A',   zone:'south_ez', label:'VER-A', price:20, status:'MED',  seats:280, desc:'South End Zone · Verandah Lot · Terrier Club Donors' },
+      { id:'S2',  name:'Verandah Lot B',   zone:'south_ez', label:'VER-B', price:20, status:'LOW',  seats:280, desc:'South End Zone · Verandah Lot · Premium Tailgate' },
+      // Student Section
+      { id:'STU', name:'Student Section',  zone:'student',  label:'STU',  price:0,  status:'MED',  seats:500, desc:'Student Section · Free with Wofford ID' },
+    ],
+    zones: {
+      home_chairback: { label:'Home Chairback', color:'#886E4C', desc:'Premium seats between the 40s' },
+      home_bleacher:  { label:'Home Bleacher',  color:'#6b5538', desc:'Home side, end zone to 40' },
+      vip:            { label:'Mungo Room VIP', color:'#C7B37F', desc:'President's Box hospitality' },
+      visitor:        { label:'Visitor Side',   color:'#3a2e1e', desc:'Visitor sideline seating' },
+      north_ez:       { label:'North End Zone', color:'#2a1e0e', desc:'Video board end zone' },
+      south_ez:       { label:'Verandah Lot',   color:'#4a3520', desc:'Donor tailgate end zone' },
+      student:        { label:'Student Section',color:'#1a1208', desc:'Free with Wofford ID' },
+    }
+  },
+  basketball: {
+    id: 'basketball',
+    name: 'Jerry Richardson Indoor Stadium',
+    subtitle: 'The JRIS · Spartanburg, SC',
+    capacity: '3,400',
+    sport: 'Basketball',
+    icon: '🏀',
+    color: '#886E4C',
+    description: 'Home of Wofford Terriers Basketball since 2017',
+    sections: [
+      // Courtside
+      { id:'CS1', name:'Courtside A', zone:'courtside',  label:'CS-A', price:65, status:'LOW',  seats:40,  desc:'Courtside · Chairback · Home sideline' },
+      { id:'CS2', name:'Courtside B', zone:'courtside',  label:'CS-B', price:65, status:'LOW',  seats:40,  desc:'Courtside · Chairback · Visitor sideline' },
+      // Club 51 (Lower Bowl Chairback)
+      { id:'C51A', name:'Club 51 A', zone:'club51',      label:'C51-A', price:45, status:'MED',  seats:120, desc:'Club 51 · Lower Bowl · Home sideline · Full kitchen access' },
+      { id:'C51B', name:'Club 51 B', zone:'club51',      label:'C51-B', price:45, status:'HIGH', seats:120, desc:'Club 51 · Lower Bowl · Center court' },
+      { id:'C51C', name:'Club 51 C', zone:'club51',      label:'C51-C', price:45, status:'MED',  seats:120, desc:'Club 51 · Lower Bowl · Visitor sideline' },
+      // Lower Bowl General
+      { id:'LB1', name:'Section 1',  zone:'lower_bowl',  label:'Sec 1', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Home sideline' },
+      { id:'LB2', name:'Section 2',  zone:'lower_bowl',  label:'Sec 2', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Center court' },
+      { id:'LB3', name:'Section 3',  zone:'lower_bowl',  label:'Sec 3', price:25, status:'MED',  seats:160, desc:'Lower Bowl · Visitor sideline' },
+      { id:'LB4', name:'Section 4',  zone:'lower_bowl',  label:'Sec 4', price:25, status:'MED',  seats:160, desc:'Lower Bowl · Behind basket' },
+      { id:'LB5', name:'Section 5',  zone:'lower_bowl',  label:'Sec 5', price:25, status:'HIGH', seats:160, desc:'Lower Bowl · Behind basket' },
+      // Corner Suites (open-air theater box style)
+      { id:'SUA', name:'Suite A',    zone:'suite',       label:'Suite A', price:120, status:'LOW', seats:20, desc:'Corner Suite A · Open-air · Theater box seating' },
+      { id:'SUB', name:'Suite B',    zone:'suite',       label:'Suite B', price:120, status:'LOW', seats:20, desc:'Corner Suite B · Open-air · Theater box seating' },
+      { id:'SUC', name:'Suite C',    zone:'suite',       label:'Suite C', price:120, status:'MED', seats:20, desc:'Corner Suite C · Open-air · Theater box seating' },
+      { id:'SUD', name:'Suite D',    zone:'suite',       label:'Suite D', price:120, status:'MED', seats:20, desc:'Corner Suite D · Open-air · Theater box seating' },
+      // Upper Level
+      { id:'UL1', name:'Upper Level A', zone:'upper',   label:'UL-A', price:18, status:'HIGH', seats:200, desc:'Upper Level · Sideline · Wide angle view' },
+      { id:'UL2', name:'Upper Level B', zone:'upper',   label:'UL-B', price:18, status:'HIGH', seats:200, desc:'Upper Level · Sideline' },
+      // The Boneyard (Student Section)
+      { id:'BY',  name:'The Boneyard', zone:'boneyard', label:'BONE', price:0,  status:'MED',  seats:400, desc:'The Boneyard · Student Section · Private entertainment area · Free with ID' },
+    ],
+    zones: {
+      courtside:  { label:'Courtside',     color:'#C7B37F', desc:'Best seats in the house' },
+      club51:     { label:'Club 51',       color:'#886E4C', desc:'Premium lower bowl · full kitchen' },
+      lower_bowl: { label:'Lower Bowl',    color:'#6b5538', desc:'Main floor seating' },
+      suite:      { label:'Corner Suites', color:'#4a3520', desc:'Open-air theater box suites' },
+      upper:      { label:'Upper Level',   color:'#3a2e1e', desc:'Second level sideline' },
+      boneyard:   { label:'The Boneyard',  color:'#1a1208', desc:'Student section · free with ID' },
+    }
+  },
+  volleyball: {
+    id: 'volleyball',
+    name: 'Jerry Richardson Indoor Stadium',
+    subtitle: 'Volleyball Arena · Spartanburg, SC',
+    capacity: '350',
+    sport: 'Volleyball',
+    icon: '🏐',
+    color: '#886E4C',
+    description: 'Volleyball Competition Venue at JRIS',
+    sections: [
+      { id:'VA1', name:'Section A', zone:'sideline',  label:'Sec A', price:10, status:'HIGH', seats:80,  desc:'Court sideline · Lower bowl' },
+      { id:'VA2', name:'Section B', zone:'sideline',  label:'Sec B', price:10, status:'MED',  seats:80,  desc:'Court sideline · Lower bowl' },
+      { id:'VB1', name:'Section C', zone:'end_line',  label:'Sec C', price:8,  status:'HIGH', seats:60,  desc:'End line · Behind serving' },
+      { id:'VB2', name:'Section D', zone:'end_line',  label:'Sec D', price:8,  status:'MED',  seats:60,  desc:'End line · Behind serving' },
+      { id:'VC1', name:'Premium',   zone:'premium',   label:'Prem',  price:20, status:'LOW',  seats:40,  desc:'Premium floor seats · Courtside' },
+      { id:'STU', name:'Student',   zone:'student',   label:'STU',   price:0,  status:'HIGH', seats:30,  desc:'Student Section · Free with Wofford ID' },
+    ],
+    zones: {
+      sideline: { label:'Sideline',      color:'#886E4C', desc:'Court sideline seating' },
+      end_line: { label:'End Line',      color:'#6b5538', desc:'Behind the serving line' },
+      premium:  { label:'Premium Floor', color:'#C7B37F', desc:'Courtside premium seats' },
+      student:  { label:'Student',       color:'#1a1208', desc:'Free with Wofford ID' },
+    }
+  }
+};
+
+// ============================================================
+// WOFFORD TICKET HUB COMPONENT
+// ============================================================
+const WoffordTicketHub = ({ onTransaction }) => {
+  const [venue, setVenue] = React.useState('football');
+  const [selectedSection, setSelectedSection] = React.useState(null);
+  const [qty, setQty] = React.useState(2);
+  const [hubState, setHubState] = React.useState('browse');
+  const [filterZone, setFilterZone] = React.useState('all');
+
+  const v = WOFFORD_VENUES[venue];
+  const fees = { facility: 2.50, processing: 1.50 };
+
+  const filteredSections = filterZone === 'all'
+    ? v.sections.filter(s => s.price > 0)
+    : v.sections.filter(s => s.zone === filterZone && s.price > 0);
+
+  const subtotal = selectedSection ? selectedSection.price * qty : 0;
+  const totalFees = selectedSection ? (fees.facility + fees.processing) * qty : 0;
+  const total = subtotal + totalFees;
+
+  const statusColor = s => s === 'HIGH' ? '#ef4444' : s === 'MED' ? '#f59e0b' : '#886E4C';
+  const statusLabel = s => s === 'HIGH' ? 'Selling Fast' : s === 'MED' ? 'Limited' : 'Available';
 
   const handlePurchase = () => {
-    if (!hasSelection) return;
     setHubState('success');
-    onTransaction({ fanName: "Cara Holloway", campaign: "Direct Purchase", amount: total, fromTicketHub: true });
+    onTransaction({ fanName:'Scott Kull', campaign:'Ticket Sales', amount:total, fromTicketHub:true });
   };
 
   if (hubState === 'success') return (
-    <div className="max-w-xl mx-auto py-8 text-center fade-in">
-      <div className="bg-white p-8 md:p-16 shadow-2xl rounded-3xl">
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mx-auto mb-6" style={{background:'rgba(136,110,76,0.10)'}}>
-          <CheckCircle2 size={36} style={{color:C.greenMid}}/>
-        </div>
-        <h2 className="futura-heading mb-2" style={{fontSize:'clamp(28px,5vw,40px)', color:C.greenMid}}>Purchase Complete!</h2>
-        <p className="text-slate-400 text-sm mb-8">Confirmation #AUTH-992-WEB · Tickets sent to your email</p>
-        <div className="grid grid-cols-2 gap-3 mb-8">
-          <div className="p-4 md:p-6 rounded-2xl" style={{background:C.offWhite}}>
-            <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-1">Section</p>
-            <p className="futura-heading" style={{fontSize:'clamp(22px,5vw,32px)', color:C.greenMid}}>{selectedSection?.id}</p>
+    <div className="max-w-xl mx-auto py-8 fade-in">
+      <div className="rounded-3xl overflow-hidden shadow-2xl" style={{background:'#ffffff'}}>
+        {/* Success header with Wofford branding */}
+        <div className="px-8 py-10 text-center relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208 0%, #2a1e0e 100%)'}}>
+          <div className="absolute inset-0 flex items-center justify-center opacity-5">
+            <svg viewBox="0 0 200 200" style={{width:'300px',height:'300px'}}>
+              <ellipse cx="100" cy="90" rx="68" ry="62" fill="#886E4C"/>
+              <ellipse cx="100" cy="94" rx="62" ry="56" fill="#000"/>
+              <ellipse cx="100" cy="78" rx="28" ry="36" fill="#fff"/>
+              <circle cx="74" cy="72" r="16" fill="#fff"/><circle cx="126" cy="72" r="16" fill="#fff"/>
+              <circle cx="76" cy="74" r="9" fill="#000"/><circle cx="128" cy="74" r="9" fill="#000"/>
+              <ellipse cx="100" cy="106" rx="22" ry="14" fill="#000"/>
+              <rect x="32" y="148" width="136" height="22" rx="11" fill="#886E4C"/>
+            </svg>
           </div>
-          <div className="p-4 md:p-6 rounded-2xl" style={{background:C.offWhite}}>
-            <p className="text-xs text-slate-400 font-semibold uppercase tracking-widest mb-1">Total Paid</p>
-            <p className="futura-heading" style={{fontSize:'clamp(22px,5vw,32px)', color:C.gold}}>${total.toFixed(2)}</p>
+          <div className="relative z-10">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:'rgba(136,110,76,0.2)', border:'2px solid #886E4C'}}>
+              <CheckCircle2 size={32} style={{color:'#C7B37F'}}/>
+            </div>
+            <p className="futura-heading text-white" style={{fontSize:'32px'}}>Purchase Complete!</p>
+            <p className="text-white/50 text-sm mt-1 mono-label" style={{fontSize:'9px'}}>GO TERRIERS 🐾</p>
           </div>
         </div>
-        <QrCode size={100} className="mx-auto mb-8 text-slate-200"/>
-        <button onClick={() => { setHubState('select'); setSelectedSection(null); setSelectedSeats([]); }}
-          className="font-bold text-sm hover:underline" style={{color:C.greenMid}}>← Back to marketplace</button>
+        <div className="p-8">
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            {[
+              { label:'Venue', value:v.name.split(' ').slice(0,2).join(' ') },
+              { label:'Section', value:selectedSection?.label || '—' },
+              { label:'Quantity', value:`${qty} tickets` },
+              { label:'Total Paid', value:`$${total.toFixed(2)}`, gold:true },
+            ].map((item,i) => (
+              <div key={i} className="p-4 rounded-2xl" style={{background:'#F5F0E8'}}>
+                <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{color:'#886E4C'}}>{item.label}</p>
+                <p className="futura-heading" style={{fontSize:'20px', color: item.gold ? '#886E4C' : '#1a1208'}}>{item.value}</p>
+              </div>
+            ))}
+          </div>
+          <QrCode size={80} className="mx-auto mb-6" style={{color:'#e8dfc8'}}/>
+          <p className="text-center text-xs text-slate-400 mb-6">Confirmation sent · Tickets delivered to your email</p>
+          <button onClick={() => { setHubState('browse'); setSelectedSection(null); setQty(2); }}
+            className="w-full py-4 rounded-2xl font-black text-white"
+            style={{background:'#1a1208', fontFamily:'Rajdhani, sans-serif', fontSize:'16px'}}>
+            ← Back to Tickets
+          </button>
+        </div>
       </div>
     </div>
   );
 
   return (
     <div className="max-w-7xl mx-auto">
-      {seatViewSection && <SeatView section={seatViewSection} onClose={() => setSeatViewSection(null)}/>}
-
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-3 mb-8 pb-6 border-b-2" style={{borderColor:C.slateLight}}>
-        <div>
-          <p className="page-label mb-2">Marketplace</p>
-          <h2 className="futura-heading leading-none" style={{fontSize:'clamp(36px, 6vw, 56px)', color:C.greenMid}}>Ticket Hub</h2>
+      {/* ── HEADER ── */}
+      <div className="mb-8 pb-6 border-b-2" style={{borderColor:'#e8dfc8'}}>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+          <div>
+            <p className="page-label mb-2">Wofford Terriers · Ticket Marketplace</p>
+            <h2 className="futura-heading leading-none" style={{fontSize:'clamp(36px,6vw,56px)', color:'#1a1208'}}>
+              Ticket Hub
+            </h2>
+            <p className="text-sm mt-2 font-semibold" style={{color:'#886E4C'}}>
+              {v.sport} · {v.name} · {v.capacity} capacity
+            </p>
+          </div>
+          {/* Wofford wordmark strip */}
+          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl" style={{background:'#1a1208'}}>
+            <div style={{textAlign:'right'}}>
+              <p className="futura-heading text-white" style={{fontSize:'18px',lineHeight:'1'}}>WOFFORD</p>
+              <p className="mono-label" style={{color:'#886E4C',fontSize:'9px',letterSpacing:'3px'}}>TERRIERS</p>
+            </div>
+            <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+              <ellipse cx="50" cy="50" rx="42" ry="38" fill="#886E4C"/>
+              <ellipse cx="50" cy="54" rx="36" ry="30" fill="#000"/>
+              <ellipse cx="50" cy="42" rx="18" ry="22" fill="#fff"/>
+              <circle cx="36" cy="38" r="10" fill="#fff"/>
+              <circle cx="64" cy="38" r="10" fill="#fff"/>
+              <circle cx="37" cy="39" r="5" fill="#000"/><circle cx="65" cy="39" r="5" fill="#000"/>
+              <ellipse cx="50" cy="58" rx="14" ry="9" fill="#000"/>
+              <rect x="20" y="76" width="60" height="14" rx="7" fill="#886E4C"/>
+            </svg>
+          </div>
         </div>
-        {hubState === 'checkout' && (
-          <button onClick={() => setHubState('select')} className="flex items-center gap-2 font-semibold text-base hover:opacity-70 transition-opacity pb-2" style={{color:C.slate}}>
-            <ArrowLeft size={18}/> Back to map
-          </button>
-        )}
       </div>
 
-      {/* UNIFIED LAYOUT — map + picker + cart equal width */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 items-start">
-
-        {/* Left: Map + Seat Picker stacked tight */}
-        <div className="min-w-0 space-y-4">
-          {hubState === 'select' ? (
-            <>
-              <CollegeStadiumMap
-                onSelectSection={(s) => { setSelectedSection(s); setSelectedSeats([]); }}
-                activeSection={selectedSection?.id}
-                onSeatView={(s) => setSeatViewSection(s)}
-                showSeatView={true}
-              />
-              {selectedSection && (
-                <GranularSeatPicker
-                  sectionId={selectedSection.id}
-                  onSelect={setSelectedSeats}
-                  selectedSeats={selectedSeats}
-                />
-              )}
-            </>
-          ) : (
-            <div className="bg-white p-10 rounded-3xl shadow-sm border" style={{borderColor:C.slateLight}}>
-              <h3 className="text-3xl font-black mb-8 pb-6 border-b" style={{color:C.green, borderColor:C.slateLight}}>Payment Details</h3>
-              <div className="p-8 rounded-2xl flex items-center justify-between" style={{background:C.offWhite}}>
-                <div className="flex items-center gap-5">
-                  <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-black text-lg" style={{background:C.green}}>CC</div>
-                  <div>
-                    <p className="font-bold text-lg text-slate-900">Primary Card</p>
-                    <p className="text-base text-slate-400 font-mono">•••• 4242</p>
-                  </div>
-                </div>
-                <CheckCircle2 size={32} style={{color:C.greenLight}}/>
-              </div>
+      {/* ── VENUE SELECTOR ── */}
+      <div className="flex gap-3 mb-6 flex-wrap">
+        {Object.values(WOFFORD_VENUES).map(vn => (
+          <button key={vn.id} onClick={() => { setVenue(vn.id); setSelectedSection(null); setFilterZone('all'); }}
+            className="flex items-center gap-3 px-5 py-3 rounded-2xl font-bold transition-all border-2"
+            style={venue === vn.id
+              ? { background:'#1a1208', color:'white', borderColor:'#886E4C', boxShadow:'0 4px 20px rgba(136,110,76,0.3)' }
+              : { background:'white', color:'#3a2e1e', borderColor:'#e8dfc8' }}>
+            <span style={{fontSize:'18px'}}>{vn.icon}</span>
+            <div className="text-left">
+              <p className="futura-heading" style={{fontSize:'15px', lineHeight:'1.1'}}>{vn.sport}</p>
+              <p className="mono-label" style={{fontSize:'8px', color: venue === vn.id ? '#C7B37F' : '#886E4C'}}>{vn.name.split(' ').slice(0,2).join(' ')}</p>
             </div>
-          )}
+          </button>
+        ))}
+      </div>
+
+      {/* ── ZONE FILTER PILLS ── */}
+      <div className="flex gap-2 mb-6 flex-wrap">
+        <button onClick={() => setFilterZone('all')}
+          className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
+          style={filterZone === 'all'
+            ? { background:'#886E4C', color:'white' }
+            : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
+          All Sections
+        </button>
+        {Object.entries(v.zones).map(([zk, zv]) => (
+          <button key={zk} onClick={() => setFilterZone(zk)}
+            className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
+            style={filterZone === zk
+              ? { background:zv.color, color:'white' }
+              : { background:'#F5F0E8', color:'#3a2e1e', border:'1px solid #e8dfc8' }}>
+            {zv.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+
+        {/* ── SECTION GRID ── */}
+        <div className="xl:col-span-2">
+          {/* Venue banner with Boss watermark */}
+          <div className="rounded-2xl mb-4 p-5 relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)', minHeight:'80px'}}>
+            {/* Boss watermark */}
+            <div className="absolute right-4 top-0 bottom-0 flex items-center opacity-10">
+              <svg viewBox="0 0 100 100" style={{width:'80px',height:'80px'}} fill="none">
+                <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
+                <ellipse cx="50" cy="50" rx="32" ry="28" fill="#000"/>
+                <ellipse cx="50" cy="38" rx="16" ry="20" fill="#fff"/>
+                <circle cx="34" cy="34" r="10" fill="#fff"/><circle cx="66" cy="34" r="10" fill="#fff"/>
+                <circle cx="35" cy="35" r="5" fill="#000"/><circle cx="67" cy="35" r="5" fill="#000"/>
+                <ellipse cx="50" cy="54" rx="12" ry="8" fill="#000"/>
+                <rect x="18" y="72" width="64" height="12" rx="6" fill="#886E4C"/>
+              </svg>
+            </div>
+            <div className="relative z-10">
+              <p className="futura-heading text-white" style={{fontSize:'18px'}}>{v.name}</p>
+              <p className="mono-label mt-1" style={{color:'#C7B37F', fontSize:'9px'}}>{v.subtitle} · {v.description}</p>
+            </div>
+          </div>
+
+          {/* Section cards grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {filteredSections.map(sec => {
+              const zoneInfo = v.zones[sec.zone];
+              const isSelected = selectedSection?.id === sec.id;
+              return (
+                <button key={sec.id} onClick={() => setSelectedSection(isSelected ? null : sec)}
+                  className="text-left rounded-2xl border-2 transition-all overflow-hidden"
+                  style={{
+                    borderColor: isSelected ? '#886E4C' : '#e8dfc8',
+                    background: isSelected ? '#1a1208' : 'white',
+                    boxShadow: isSelected ? '0 8px 32px rgba(136,110,76,0.25)' : '0 2px 8px rgba(26,18,8,0.04)',
+                    transform: isSelected ? 'translateY(-2px)' : 'translateY(0)',
+                  }}>
+                  {/* Zone color bar */}
+                  <div className="h-1.5" style={{background: isSelected ? '#886E4C' : zoneInfo?.color || '#e8dfc8'}}/>
+                  <div className="p-4">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <div>
+                        <p className="futura-heading" style={{fontSize:'16px', color: isSelected ? 'white' : '#1a1208'}}>{sec.name}</p>
+                        <p className="text-xs font-semibold mt-0.5" style={{color: isSelected ? '#C7B37F' : '#886E4C'}}>{zoneInfo?.label}</p>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <p className="futura-heading" style={{fontSize:'22px', color: isSelected ? '#C7B37F' : '#886E4C'}}>${sec.price}</p>
+                        <p className="mono-label" style={{fontSize:'8px', color: isSelected ? 'rgba(255,255,255,0.5)' : '#94a3b8'}}>per ticket</p>
+                      </div>
+                    </div>
+                    <p className="text-xs leading-relaxed mb-3" style={{color: isSelected ? 'rgba(255,255,255,0.6)' : '#64748b'}}>{sec.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold px-2 py-1 rounded-lg" style={{
+                        background: isSelected ? 'rgba(136,110,76,0.2)' : `${statusColor(sec.status)}15`,
+                        color: isSelected ? '#C7B37F' : statusColor(sec.status)
+                      }}>
+                        {statusLabel(sec.status)}
+                      </span>
+                      {isSelected && (
+                        <span className="mono-label text-white/60" style={{fontSize:'8px'}}>✓ SELECTED</span>
+                      )}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Right: Sticky cart */}
-        <div className="w-full">
-          <div className="sticky top-6 rounded-3xl overflow-hidden shadow-2xl border" style={{borderColor:C.slateLight}}>
-            <div className="px-7 py-6 text-white" style={{background:C.green}}>
-              <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-black">Order Summary</h3>
-                {hasSelection && <span className="text-sm font-bold px-3 py-1 rounded-full" style={{background:C.gold, color:C.green}}>{selectedSeats.length} seats</span>}
+        {/* ── ORDER PANEL ── */}
+        <div className="sticky top-6">
+          <div className="rounded-3xl overflow-hidden shadow-2xl border-2" style={{borderColor:'#e8dfc8'}}>
+            {/* Panel header with Wofford branding */}
+            <div className="px-6 py-5 relative overflow-hidden" style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)'}}>
+              <div className="absolute right-0 top-0 bottom-0 opacity-8 flex items-center pr-2">
+                <svg viewBox="0 0 100 100" style={{width:'60px',height:'60px'}} fill="none">
+                  <ellipse cx="50" cy="46" rx="38" ry="34" fill="#886E4C"/>
+                  <ellipse cx="50" cy="50" rx="32" ry="28" fill="#000"/>
+                  <ellipse cx="50" cy="38" rx="16" ry="20" fill="#fff"/>
+                  <circle cx="34" cy="34" r="10" fill="#fff"/><circle cx="66" cy="34" r="10" fill="#fff"/>
+                  <circle cx="35" cy="35" r="5" fill="#000"/><circle cx="67" cy="35" r="5" fill="#000"/>
+                  <ellipse cx="50" cy="54" rx="12" ry="8" fill="#000"/>
+                  <rect x="18" y="72" width="64" height="12" rx="6" fill="#886E4C"/>
+                </svg>
               </div>
+              <p className="futura-heading text-white relative z-10" style={{fontSize:'20px'}}>Order Summary</p>
+              <p className="mono-label relative z-10 mt-1" style={{color:'#C7B37F', fontSize:'9px'}}>WOFFORD TERRIERS · {v.sport.toUpperCase()}</p>
             </div>
-            <div className="bg-white p-7 space-y-6">
-              {!hasSelection ? (
-                <div className="py-14 text-center space-y-4">
-                  <MousePointer2 className="mx-auto" size={44} style={{color:C.slateLight}}/>
-                  <p className="text-base text-slate-400 font-semibold">Select a section, then pick your seats</p>
-                  <p className="text-6xl font-black" style={{color:C.slateLight}}>$0.00</p>
+
+            <div className="bg-white p-6">
+              {!selectedSection ? (
+                <div className="py-10 text-center">
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:'#F5F0E8'}}>
+                    <span style={{fontSize:'28px'}}>{v.icon}</span>
+                  </div>
+                  <p className="futura-heading mb-1" style={{fontSize:'18px', color:'#1a1208'}}>Select a Section</p>
+                  <p className="text-sm text-slate-400">Choose from the sections on the left</p>
+                  <p className="futura-heading mt-4" style={{fontSize:'36px', color:'#e8dfc8'}}>$0.00</p>
                 </div>
               ) : (
                 <div className="space-y-5">
-                  <div className="pb-5 border-b" style={{borderColor:C.slateLight}}>
-                    <p className="text-2xl font-black" style={{color:C.green}}>Section {selectedSection?.id}</p>
-                    <p className="text-sm font-semibold mt-1" style={{color:C.greenLight}}>{selectedSeats.length} seats selected · {selectedSeats.join(', ')}</p>
+                  {/* Selected section */}
+                  <div className="p-4 rounded-2xl" style={{background:'#F5F0E8', border:'2px solid #e8dfc8'}}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-2 h-2 rounded-full" style={{background:'#886E4C'}}/>
+                      <p className="font-black text-sm" style={{color:'#1a1208'}}>{selectedSection.name}</p>
+                    </div>
+                    <p className="text-xs text-slate-500 pl-4">{selectedSection.desc}</p>
                   </div>
-                  <div className="space-y-3 text-base">
-                    <div className="flex justify-between"><span className="text-slate-500">Base price</span><span className="font-bold text-slate-900">${subtotal.toFixed(2)}</span></div>
-                    <div className="flex justify-between"><span className="text-slate-400">Facility fee</span><span className="text-slate-400">$12.50</span></div>
-                    <div className="flex justify-between"><span className="text-slate-400">Processing</span><span className="text-slate-400">$4.50</span></div>
+
+                  {/* Quantity selector */}
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{color:'#886E4C'}}>Quantity</p>
+                    <div className="flex items-center gap-3">
+                      {[1,2,3,4,5,6].map(n => (
+                        <button key={n} onClick={() => setQty(n)}
+                          className="w-10 h-10 rounded-xl font-black text-sm transition-all"
+                          style={qty === n
+                            ? { background:'#1a1208', color:'white', boxShadow:'0 4px 12px rgba(26,18,8,0.3)' }
+                            : { background:'#F5F0E8', color:'#3a2e1e' }}>
+                          {n}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex justify-between items-baseline pt-4 border-t-4" style={{borderColor:C.green}}>
-                    <span className="text-xl font-black" style={{color:C.green}}>Total</span>
-                    <span className="text-4xl font-black" style={{color:C.gold}}>${total.toFixed(2)}</span>
+
+                  {/* Price breakdown */}
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">{qty}x {selectedSection.label}</span>
+                      <span className="font-bold" style={{color:'#1a1208'}}>${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span className="text-slate-400">Facility fee ({qty}x)</span>
+                      <span className="text-slate-400">${(fees.facility * qty).toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span className="text-slate-400">Processing ({qty}x)</span>
+                      <span className="text-slate-400">${(fees.processing * qty).toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between items-baseline pt-3 border-t-4" style={{borderColor:'#1a1208'}}>
+                      <span className="futura-heading" style={{fontSize:'18px', color:'#1a1208'}}>Total</span>
+                      <span className="futura-heading" style={{fontSize:'32px', color:'#886E4C'}}>${total.toFixed(2)}</span>
+                    </div>
                   </div>
-                  <button onClick={() => hubState === 'select' ? setHubState('checkout') : handlePurchase()}
-                    className="w-full py-5 rounded-2xl font-black text-xl shadow-lg transition-all active:scale-95 hover:opacity-90"
-                    style={{background:C.green, color:'white'}}>
-                    {hubState === 'select' ? 'Proceed to Payment →' : 'Confirm Purchase'}
+
+                  {/* Purchase button */}
+                  <button onClick={() => setHubState('checkout')}
+                    className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95 hover:opacity-90"
+                    style={{background:'linear-gradient(135deg, #1a1208, #2a1e0e)', fontFamily:'Rajdhani, sans-serif', fontSize:'17px', letterSpacing:'0.03em', boxShadow:'0 8px 24px rgba(26,18,8,0.4)'}}>
+                    Proceed to Payment →
                   </button>
+
+                  {hubState === 'checkout' && (
+                    <div className="space-y-4 fade-in">
+                      <div className="p-4 rounded-2xl flex items-center justify-between" style={{background:'#F5F0E8'}}>
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white" style={{background:'#1a1208'}}>CC</div>
+                          <div>
+                            <p className="font-bold" style={{color:'#1a1208'}}>Primary Card</p>
+                            <p className="text-xs text-slate-400 font-mono">•••• 4242</p>
+                          </div>
+                        </div>
+                        <CheckCircle2 size={24} style={{color:'#886E4C'}}/>
+                      </div>
+                      <button onClick={handlePurchase}
+                        className="w-full py-4 rounded-2xl font-black text-white transition-all active:scale-95"
+                        style={{background:'#886E4C', fontFamily:'Rajdhani, sans-serif', fontSize:'17px'}}>
+                        Confirm Purchase · ${total.toFixed(2)}
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
-              <div className="p-4 rounded-xl flex items-start gap-3" style={{background:'rgba(26,18,8,0.06)'}}>
-                <ShieldCheck size={20} style={{color:C.greenLight}} className="shrink-0 mt-0.5"/>
-                <p className="text-sm font-semibold leading-relaxed" style={{color:C.greenLight}}>University-grade secure checkout</p>
+
+              {/* Shield */}
+              <div className="mt-4 p-3 rounded-xl flex items-center gap-2" style={{background:'#F5F0E8'}}>
+                <ShieldCheck size={16} style={{color:'#886E4C'}}/>
+                <p className="text-xs font-semibold" style={{color:'#886E4C'}}>Secure checkout · Official Wofford tickets</p>
               </div>
             </div>
           </div>
@@ -1799,6 +2173,8 @@ return (
 // MAIN APP
 // ============================================================
 export default function App() {
+  // Inject CSS custom properties for active theme on mount
+  React.useEffect(() => { injectThemeVars(ACTIVE_THEME); }, []);
   const [activeTab, setActiveTab] = useState('mobile');
   const [activeCampaign, setActiveCampaign] = useState('TICKETING');
   const [localTransactions, setLocalTransactions] = useState([...MOCK_DB.initialStats]);
@@ -1991,7 +2367,7 @@ export default function App() {
           )}
 
           {/* TICKET HUB */}
-          {activeTab === 'store' && <div className="fade-in"><TicketHub onTransaction={addTransaction}/></div>}
+          {activeTab === 'store' && <div className="fade-in"><WoffordTicketHub onTransaction={addTransaction}/></div>}
 
           {/* ANALYTICS */}
           {activeTab === 'dash' && (() => {
